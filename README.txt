@@ -21,12 +21,18 @@ Some Puppet data is here
 https://svn.apache.org/repos/infra/infrastructure/trunk/puppet/hosts/nyx-ssl/manifests/init.pp
 
 Crontab:
+# m h   dom mon dow   command
 00 4,12,20 * * * cd /var/www/reporter.apache.org/data && python3.4 parsepmcs.py
-00 01 * * * cd /var/www/reporter.apache.org/ && python mailglomper.py
-00 09 * * * cd /var/www/reporter.apache.org/ && python readjira.py
-00 12 * * * curl "(removed)" > /var/www/reporter.apache.org/data/mailinglists.json
+00 01      * * * cd /var/www/reporter.apache.org/ && python mailglomper.py
+00 09      * * * cd /var/www/reporter.apache.org/ && python readjira.py
+00 12      * * * curl "(redacted)" > /var/www/reporter.apache.org/data/mailinglists.json
 
+Scripts:
+- data/parsepmcs.py
+  creates pmcs.json and projects.json (currently from http://people.apache.org/committer-index.html)
 
-TODO:
-- where are the scripts that populate the data files?
-- the data/ files seem to be static; are they ever updated?
+- mailglomper.py
+  Updates data/maildata_extended.json from http://mail-archives.us.apache.org/mod_mbox/<list>/<date>.mbox
+
+- readjira.py
+  Creates JSON files under /var/www/reporter.apache.org/data/JIRA
