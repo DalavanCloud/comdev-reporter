@@ -36,3 +36,6 @@ Scripts:
 
 - readjira.py
   Creates JSON files under /var/www/reporter.apache.org/data/JIRA
+
+  TODO
+  - How is site/reportingcycles.json created/maintained?
