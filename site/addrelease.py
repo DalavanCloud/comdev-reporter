@@ -41,10 +41,13 @@ def getReleaseData(committee):
 
 saved = False
 committees = getPMCs(user)
-if date and version and committee:
+if date != None and version and committee:
     if committee in committees or isMember(user):
         rdata = getReleaseData(committee)
-        rdata[version] = date
+        if date > 0:
+            rdata[version] = date
+        else: # it's 1970-01-01
+            del rdata[version]
         with open("/var/www/reporter.apache.org/data/releases/%s.json" % committee, "w") as f:
             f.write(json.dumps(rdata))
             f.close()
@@ -60,4 +63,3 @@ if not saved:
         print("Content-Type: application/json\r\n\r\n{\"error\": \"Not saved\"}")
     else:
         print("Content-Type: text/plain\r\n\r\nCould not save. Make sure you have filled out all fields and have access to this committee data! For further inquiries, please contact dev@community.apache.org")
-    
