@@ -71,9 +71,9 @@
       var obj = document.getElementById('contents')
       var x = 0;
       obj.innerHTML += "<h3>Already registered releases:</h3>"
-      var basedate = new Date(baseyear,1,1)
+      var basedate = (new Date(baseyear,1,1)).getTime()/1000 // value as stored in the database
       for (version in json) {
-        if (new Date(json[version]*1000) > basedate) {
+        if (json[version] > basedate) {
           obj.innerHTML += "- " + version + ": " + new Date(json[version]*1000).toDateString() + "<br>"
           x++;
         }
