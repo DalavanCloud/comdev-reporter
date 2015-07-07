@@ -247,7 +247,7 @@ function renderFrontPage(json) {
 		GetAsyncJSON("reportingcycles.json?" + Math.random(), [pmc, reportdate, json.pdata[pmc].name], setReportDate)
 
 
-		// PMC + Committer changes
+		// LDAP committee + Committer changes
 
 		var mo = new Date().getMonth() - 3;
 		var after = new Date();
@@ -299,12 +299,12 @@ function renderFrontPage(json) {
 				}
 			}
 			if (l == 0) {
-				addLine(pmc, " - No new PMC members added in the last 3 months")
+				addLine(pmc, " - No new LDAP committee members added in the last 3 months")
 				changes.innerHTML += "&rarr; <font color='red'><b>No new LDAP committee members in the last 3 months.</b></font><br/>";
 			}
 			if (npn) {
 				if (np < after.getTime() / 1000) {
-					addLine(pmc, " - Last PMC addition was " + npn + " at " + new Date(np * 1000).toDateString())
+					addLine(pmc, " - Last LDAP committee addition was " + npn + " at " + new Date(np * 1000).toDateString())
 				}
 				changes.innerHTML += "&rarr; " + "<b>Latest LDAP committee addition: </b>" + new Date(np * 1000).toDateString() + " (" + npn + ")<br/>"
 			}
@@ -347,7 +347,7 @@ function renderFrontPage(json) {
 				addLine(pmc, " - Last committer addition was more than 2 years ago")
 				changes.innerHTML += "&rarr; " + "<b>Latest committer addition: </b><font color='red'>more than two years ago (not in the archive!)</font><br/>"
 			}
-			changes.innerHTML += "&rarr; " + "<b>Currently " + json.count[pmc][1] + " committers and " + json.count[pmc][0] + " PMC members."
+			changes.innerHTML += "&rarr; " + "<b>Currently " + json.count[pmc][1] + " committers and " + json.count[pmc][0] + " LDAP committee members."
 			addLine(pmc)
 		}
 
