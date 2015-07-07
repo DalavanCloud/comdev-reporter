@@ -38,7 +38,13 @@
     <script src="js/foundation.min.js"></script>
     
     <script>
-     var committee = document.location.search.substr(1);
+    // location may have appended ;yyyy for debugging purposes
+     var srch = document.location.search.substr(1).split(';'); // drop ? from the search and split at semicolon
+     var committee = srch[0]; // before the semi (if any)
+     var baseyear = parseInt(srch[1]); // grab trailing start year
+     if (isNan(baseyear) || baseyear < 1970) {
+         baseyear=1999; // ensure sensible default value
+     }
      document.getElementById('committee').value = committee;
      var date = new Date();
      var xdate = document.getElementById('xdate');
@@ -65,8 +71,9 @@
       var obj = document.getElementById('contents')
       var x = 0;
       obj.innerHTML += "<h3>Already registered releases:</h3>"
+      var basedate = new Date(baseyear,1,1)
       for (version in json) {
-        if (new Date(json[version]*1000) > new Date(1999,1,1)) {
+        if (new Date(json[version]*1000) > basedate) {
           obj.innerHTML += "- " + version + ": " + new Date(json[version]*1000).toDateString() + "<br>"
           x++;
         }
