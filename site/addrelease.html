@@ -13,21 +13,21 @@
 <body onload='GetAsyncJSON("/releases/" + committee + ".json?now=" + Math.random(), null, listReleaseData)'>
 
 <div id="contents" class="row-12" style="margin: 0 auto; width: 1000px; ">
-  <h2 style="text-align: center;">Apache Committee Report Helper: Add a release</h2>
+  <h2 style="text-align: center;">Apache Committee Report Helper: Add (or remove) a release</h2>
   <p>Please fill out the fields below to add a release to our report database.<br> 
      This is not a requirement, but a help to those that use the Apache Reporter System to gauge the committee's development.<br>
      Note that there is a single listing for each PMC, so PMCs with multiple independent product releases
      should use a prefix to distinguish these. 
      For example Apache Commons releases LANG and IO separately, so uses versions such as "LANG-1.2" and "IO-2.3" 
   </p>
+  <p>To remove a release, provide its version and set the date to 1970-01-01</p>
    <form action="addrelease.py" method="post" id="form" onsubmit="return validate(this)">
     
     <input type="hidden" name="date" value="" id="date"/>
     <b>Committee:</b><input type="text" name="committee" value="" readonly="readonly" id="committee"/><br>
     <b>Full version name:</b> (Note: use a product name prefix if the PMC releases multiple products)<input type="text" name="version" value="" placeholder="1.2.0 or LANG-1.2.0 (e.g. Commons)" id="version"/><br>
-    <b>Date of release (YYYY-MM-DD):</b><input type="text" name="xdate" value="" placeholder="YYYY-MM-DD" id="xdate"/><br>
+    <b>Date of release (YYYY-MM-DD):</b><input type="text" name="xdate" value="" placeholder="YYYY-MM-DD (use 1970-01-01 to remove a release)" id="xdate"/><br>
     <input type="submit" value="Add release data"/><br>
-    <small>Need to remove a release? Enter the version of the release and 1970-01-01 as the date then!</small>
    </form>
 </div>
 <div id="footer" style="text-align: center">
