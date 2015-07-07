@@ -71,6 +71,12 @@
   "July", 
   "October"
  ], 
+ "aurora": [
+  "March", 
+  "June", 
+  "September", 
+  "December"
+ ], 
  "avro": [
   "January", 
   "April", 
@@ -641,6 +647,18 @@
   "September", 
   "December"
  ], 
+ "orc": [
+  "January", 
+  "April", 
+  "July", 
+  "October"
+ ], 
+ "parquet": [
+  "January", 
+  "April", 
+  "July", 
+  "October"
+ ], 
  "pdfbox": [
   "January", 
   "April", 
@@ -712,6 +730,12 @@
   "May", 
   "August", 
   "November"
+ ], 
+ "samza": [
+  "January", 
+  "April", 
+  "July", 
+  "October"
  ], 
  "santuario": [
   "February", 
@@ -928,6 +952,12 @@
   "April", 
   "July", 
   "October"
+ ], 
+ "whimsy": [
+  "February", 
+  "May", 
+  "August", 
+  "November"
  ], 
  "whirr": [
   "March", 
