@@ -44,7 +44,7 @@
      var baseyear = 1999;
      if (srch.length > 1) {
          baseyear = parseInt(srch[1]); // grab trailing start year
-         if (isNan(baseyear) || baseyear < 1970) {
+         if (isNaN(baseyear) || baseyear < 1970) {
              baseyear=1999; // ensure sensible default value
          }
      }
