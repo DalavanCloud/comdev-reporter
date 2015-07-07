@@ -47,7 +47,8 @@ if date != None and version and committee:
         if date > 0:
             rdata[version] = date
         else: # it's 1970-01-01
-            del rdata[version]
+            if version in rdata:
+                del rdata[version]
         with open("/var/www/reporter.apache.org/data/releases/%s.json" % committee, "w") as f:
             f.write(json.dumps(rdata))
             f.close()
