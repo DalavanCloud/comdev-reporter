@@ -12,13 +12,13 @@
 </head>
 <body onload='GetAsyncJSON("/releases/" + project + ".json?now=" + Math.random(), null, listReleaseData)'>
 
-<div id="contents" class="row-12" style="text-align: center; margin: 0 auto; width: 1000px; ">
-  <h2>Apache Project Report Helper: Add a release</h2>
-  <p>Please fill out the fields below to add a release to our report database. This is not a requirement, but a help to those that use the Apache Reporter System to gauge the project's development.</p>
+<div id="contents" class="row-12" style="margin: 0 auto; width: 1000px; ">
+  <h2 style="text-align: center;">Apache Committee Report Helper: Add a release</h2>
+  <p>Please fill out the fields below to add a release to our report database. This is not a requirement, but a help to those that use the Apache Reporter System to gauge the committee's development.</p>
    <form action="addrelease.py" method="post" id="form" onsubmit="return validate(this)">
     
     <input type="hidden" name="date" value="" id="date"/>
-    <b>Project:</b></b><input type="text" name="project" value="" readonly="readonly" id="project"/><br/>
+    <b>Committee:</b></b><input type="text" name="committee" value="" readonly="readonly" id="committee"/><br/>
     <b>Full version name:</b></b><input type="text" name="version" value="" placeholder="1.2.0" id="version"/><br/>
     <b>Date of release (YYYY-MM-DD):</b></b><input type="text" name="xdate" value="" placeholder="YYYY-MM-DD" id="xdate"/><br/>
     <input type="submit" value="Add release data"/><br>
@@ -26,14 +26,14 @@
    </form>
 </div>
 <div id="footer">
-   Copyright&copy; 2015, the Apache Software Foundation. Licensed under the Apache License v/2.0<br/>
+   Copyright&copy; 2015, the Apache Software Foundation. Licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License, Version 2.0</a><br/>
    For inquiries, contact <a href="mailto:dev@community.apache.org">dev@community.apache.org</a>.
 </div>
     <script src="js/foundation.min.js"></script>
     
     <script>
-     var project = document.location.search.substr(1);
-     document.getElementById('project').value = project;
+     var committee = document.location.search.substr(1);
+     document.getElementById('committee').value = committee;
      var date = new Date();
      var xdate = document.getElementById('xdate');
      var done = false;
@@ -69,7 +69,7 @@
       if (x == 0) {
         obj.innerHTML += "No releases registered yet"
       }
-      document.getElementById('project').value = project;
+      document.getElementById('committee').value = committee;
      }
      
     </script>

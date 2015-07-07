@@ -175,7 +175,7 @@ function addLine(pmc, line) {
 function renderFrontPage(json) {
 	jsdata = json
 	var container = document.getElementById('contents')
-	container.innerHTML = "<h2 style='text-align: center; margin-bottom: 10px;' class='hide-for-small-only'>Apache Project Report Helper</h2>Click on a project name to view statistics:"
+	container.innerHTML = "<h2 style='text-align: center; margin-bottom: 10px;' class='hide-for-small-only'>Apache Committee Report Helper</h2>Click on a committee name to view statistics:"
 	var top = document.createElement('div');
 	container.appendChild(top)
 
@@ -202,7 +202,7 @@ function renderFrontPage(json) {
 	for (i in json.pmcs) {
 
 		var pmc = json.pmcs[i]
-		templates[pmc] = "Report from the " + (json.pdata[pmc].name ? json.pdata[pmc].name : pmc) + " project [" + (json.pdata[pmc].chair ? json.pdata[pmc].chair : "Put your name here") + "]\n\n"
+		templates[pmc] = "Report from the " + (json.pdata[pmc].name ? json.pdata[pmc].name : pmc) + " committee [" + (json.pdata[pmc].chair ? json.pdata[pmc].chair : "Put your name here") + "]\n\n"
 
 		addLine(pmc, "## Description:")
 		if (json.pdata[pmc].shortdesc) {
@@ -230,7 +230,7 @@ function renderFrontPage(json) {
 		var health = document.createElement('p');
 		if (json.health[pmc] && !isNaN(json.health[pmc]['cscore'])) {
 			health.style.marginTop = "10px"
-			health.innerHTML = "<b>Project Health score:</b> <a href='/chi.py#"+pmc+"'><u><font color='" + hcolors[json.health[pmc]['cscore']] + "'>" + (6.33+(json.health[pmc]['score']*-1.00*(20/12.25))).toFixed(2) + " (" + hvalues[json.health[pmc]['cscore']] + ")</u></font></a>"
+			health.innerHTML = "<b>Committee Health score:</b> <a href='/chi.py#"+pmc+"'><u><font color='" + hcolors[json.health[pmc]['cscore']] + "'>" + (6.33+(json.health[pmc]['score']*-1.00*(20/12.25))).toFixed(2) + " (" + hvalues[json.health[pmc]['cscore']] + ")</u></font></a>"
 			obj.appendChild(health)
 		}
 		pcontainer.appendChild(obj)
@@ -242,7 +242,7 @@ function renderFrontPage(json) {
 		var mo = new Date().getMonth();
 		var reportdate = buildPanel(pmc, "Report date")
 		if (json.pdata[pmc].chair) {
-			reportdate.innerHTML += "<b>Project Chair: </b>" + json.pdata[pmc].chair + "<br/>"
+			reportdate.innerHTML += "<b>Committee Chair: </b>" + json.pdata[pmc].chair + "<br/>"
 		}
 		GetAsyncJSON("reportingcycles.json?" + Math.random(), [pmc, reportdate, json.pdata[pmc].name], setReportDate)
 
@@ -253,7 +253,7 @@ function renderFrontPage(json) {
 		var after = new Date();
 		after.setMonth(mo);
 
-		var changes = buildPanel(pmc, "PMC/Committership changes");
+		var changes = buildPanel(pmc, "LDAP committee/Committership changes");
 
 		var c = 0;
 		for (i in json.changes[pmc].committer) c++;
@@ -262,12 +262,12 @@ function renderFrontPage(json) {
 		var np = 0;
 		var ncn = null;
 		var npn = null;
-		addLine(pmc, "## PMC/Committership changes:")
+		addLine(pmc, "## LDAP committee/Committership changes:")
 		addLine(pmc)
-		addLine(pmc, " - Currently " + json.count[pmc][1] + " committers and " + json.count[pmc][0] + " PMC members in the project.")
+		addLine(pmc, " - Currently " + json.count[pmc][1] + " committers and " + json.count[pmc][0] + " LDAP committee members.")
 		if (c == 0) {
-			changes.innerHTML += "<font color='red'><b>No new changes to the PMC or committer base detected - (LDAP error or no changes for &gt;2 years)</b></font>"
-			addLine(pmc, " - No new changes to the PMC or committership since last report.")
+			changes.innerHTML += "<font color='red'><b>No new changes to the LDAP committee or committer base detected - (LDAP error or no changes for &gt;2 years)</b></font>"
+			addLine(pmc, " - No new changes to the LDAP committee or committership since last report.")
 			addLine(pmc)
 		} else {
 			changes.innerHTML += "<h5>Changes within the last 3 months:</h5>"
@@ -282,7 +282,7 @@ function renderFrontPage(json) {
 				}
 			}
 			if (npmc > 1) {
-				addLine(pmc, " - New PMC members:")
+				addLine(pmc, " - New LDAP committee members:")
 			}
 			
 			
@@ -294,19 +294,19 @@ function renderFrontPage(json) {
 				}
 				if (entry[1] > after.getTime() / 1000) {
 					l++;
-					changes.innerHTML += "&rarr; " + entry[0] + " was added to the PMC on " + new Date(entry[1] * 1000).toDateString() + "<br/>";
-					addLine(pmc, (npmc>1? "   " : "") + " - " + entry[0] + " was added to the PMC on " + new Date(entry[1] * 1000).toDateString())
+					changes.innerHTML += "&rarr; " + entry[0] + " was added to the LDAP committee on " + new Date(entry[1] * 1000).toDateString() + "<br/>";
+					addLine(pmc, (npmc>1? "   " : "") + " - " + entry[0] + " was added to the LDAP committee on " + new Date(entry[1] * 1000).toDateString())
 				}
 			}
 			if (l == 0) {
 				addLine(pmc, " - No new PMC members added in the last 3 months")
-				changes.innerHTML += "&rarr; <font color='red'><b>No new PMC members in the last 3 months.</b></font><br/>";
+				changes.innerHTML += "&rarr; <font color='red'><b>No new LDAP committee members in the last 3 months.</b></font><br/>";
 			}
 			if (npn) {
 				if (np < after.getTime() / 1000) {
 					addLine(pmc, " - Last PMC addition was " + npn + " at " + new Date(np * 1000).toDateString())
 				}
-				changes.innerHTML += "&rarr; " + "<b>Latest PMC addition: </b>" + new Date(np * 1000).toDateString() + " (" + npn + ")<br/>"
+				changes.innerHTML += "&rarr; " + "<b>Latest LDAP committee addition: </b>" + new Date(np * 1000).toDateString() + " (" + npn + ")<br/>"
 			}
 			
 			
@@ -555,7 +555,7 @@ function renderFrontPage(json) {
 
 	}
 	if (json.pmcs.length == 0) {
-		container.innerHTML = "You are not a member of any top level project PMC, sorry!"
+		container.innerHTML = "You are not a member of any PMC, sorry!"
 	}
 
 	$("#tabcontents").find("[id^='tab']").hide();
