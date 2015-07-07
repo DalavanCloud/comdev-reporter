@@ -243,16 +243,16 @@ if m:
             if group in npmcs:
                 if npmcs[group] < afterFull:
                     score += 1
-                    note.append("No new PMC members invited for more than a year (-1.00&#27683;)")
+                    note.append("No new LDAP committee members invited for more than a year (-1.00&#27683;)")
                 elif npmcs[group] < afterHalf:
                     score += 0.5
-                    note.append("No new PMC members invited for more than six months (-0.50&#27683;)")
+                    note.append("No new LDAP committee members invited for more than six months (-0.50&#27683;)")
                 else:
                     score -= 0.5
-                    note.append("New PMC member(s) invited within the last six months (+0.50&#27683;)")
+                    note.append("New LDAP committee member(s) invited within the last six months (+0.50&#27683;)")
             elif group != "bookkeeper":
                 score += 2
-                note.append("No new PMC members invited for more than 2 years (-2.00&#27683;)")
+                note.append("No new LDAP committee members invited for more than 2 years (-2.00&#27683;)")
                 
             if group in ncoms:
                 if ncoms[group] < afterFull:
