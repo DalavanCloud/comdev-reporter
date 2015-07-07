@@ -18,15 +18,15 @@
    <form action="addrelease.py" method="post" id="form" onsubmit="return validate(this)">
     
     <input type="hidden" name="date" value="" id="date"/>
-    <b>Committee:</b></b><input type="text" name="committee" value="" readonly="readonly" id="committee"/><br/>
-    <b>Full version name:</b></b><input type="text" name="version" value="" placeholder="1.2.0" id="version"/><br/>
-    <b>Date of release (YYYY-MM-DD):</b></b><input type="text" name="xdate" value="" placeholder="YYYY-MM-DD" id="xdate"/><br/>
+    <b>Committee:</b><input type="text" name="committee" value="" readonly="readonly" id="committee"/><br>
+    <b>Full version name:</b><input type="text" name="version" value="" placeholder="1.2.0" id="version"/><br>
+    <b>Date of release (YYYY-MM-DD):</b><input type="text" name="xdate" value="" placeholder="YYYY-MM-DD" id="xdate"/><br>
     <input type="submit" value="Add release data"/><br>
     <small>Need to remove a release? Enter the version of the release and 1970-01-01 as the date then!</small>
    </form>
 </div>
 <div id="footer">
-   Copyright&copy; 2015, the Apache Software Foundation. Licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License, Version 2.0</a><br/>
+   Copyright&copy; 2015, the Apache Software Foundation. Licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License, Version 2.0</a><br>
    For inquiries, contact <a href="mailto:dev@community.apache.org">dev@community.apache.org</a>.
 </div>
     <script src="js/foundation.min.js"></script>
@@ -61,7 +61,7 @@
       obj.innerHTML += "<h3>Already registered releases:</h3>"
       for (version in json) {
         if (new Date(json[version]*1000) > new Date(1999,1,1)) {
-          obj.innerHTML += "- " + version + ": " + new Date(json[version]*1000).toDateString() + "<br/>"
+          obj.innerHTML += "- " + version + ": " + new Date(json[version]*1000).toDateString() + "<br>"
           x++;
         }
         
