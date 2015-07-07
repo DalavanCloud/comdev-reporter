@@ -66,6 +66,11 @@
       return true
      }
      
+     function Release(version, date) {
+       this.version = version;
+       this.date = date;
+     }
+
      function listReleaseData(json, a,b) {
       if (done) {
         return;
@@ -74,16 +79,23 @@
       var obj = document.getElementById('contents')
       var x = 0;
       obj.innerHTML += "<h3>Already registered releases:</h3>"
-      var basedate = (new Date(baseyear,1,1)).getTime()/1000 // value as stored in the database
+      var bd = new Date(baseyear,1,1);
+      var basedate = bd.getTime()/1000 // value as stored in the database
+      var recent = new Array();
       for (version in json) {
         if (json[version] > basedate) {
-          obj.innerHTML += "- " + version + ": " + new Date(json[version]*1000).toDateString() + "<br>"
+          recent.push(new Release(version, json[version]));
           x++;
         }
-        
       }
       if (x == 0) {
-        obj.innerHTML += "No releases registered yet"
+        obj.innerHTML += "No releases registered yet since " + bd.toDateString() 
+      } else {
+        recent.sort(function(a,b){return b.date - a.date}); // reverse sort
+        for (idx in recent) {
+          rel = recent[idx];
+          obj.innerHTML += "- " + rel.version + ": " + new Date(rel.date*1000).toDateString() + "<br>"
+        }
       }
       document.getElementById('committee').value = committee;
      }
