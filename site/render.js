@@ -117,7 +117,7 @@ function setReportDate(json, x) {
 	reportdate.innerHTML += "<b>Next report date: " + (nextdate ? nextdate.toDateString() : "Unknown(?)") + "</b>"
 	if (nextdate) {
 		var link = "https://svn.apache.org/repos/private/foundation/board/board_agenda_" +  nextdate.getFullYear() + "_" + (nextdate.getMonth() < 9 ? "0" : "") + (nextdate.getMonth() +1) + "_" + nextdate.getDate() + ".txt"
-		reportdate.innerHTML += "<br/>File your report in <a href='"+link+"'>"+link+"</a> when it has been seeded."
+		reportdate.innerHTML += "<br>File your report in <a href='"+link+"'>"+link+"</a> when it has been seeded."
 	}
 	
 }
@@ -242,7 +242,7 @@ function renderFrontPage(json) {
 		var mo = new Date().getMonth();
 		var reportdate = buildPanel(pmc, "Report date")
 		if (json.pdata[pmc].chair) {
-			reportdate.innerHTML += "<b>Committee Chair: </b>" + json.pdata[pmc].chair + "<br/>"
+			reportdate.innerHTML += "<b>Committee Chair: </b>" + json.pdata[pmc].chair + "<br>"
 		}
 		GetAsyncJSON("reportingcycles.json?" + Math.random(), [pmc, reportdate, json.pdata[pmc].name], setReportDate)
 
@@ -294,19 +294,19 @@ function renderFrontPage(json) {
 				}
 				if (entry[1] > after.getTime() / 1000) {
 					l++;
-					changes.innerHTML += "&rarr; " + entry[0] + " was added to the LDAP committee on " + new Date(entry[1] * 1000).toDateString() + "<br/>";
+					changes.innerHTML += "&rarr; " + entry[0] + " was added to the LDAP committee on " + new Date(entry[1] * 1000).toDateString() + "<br>";
 					addLine(pmc, (npmc>1? "   " : "") + " - " + entry[0] + " was added to the LDAP committee on " + new Date(entry[1] * 1000).toDateString())
 				}
 			}
 			if (l == 0) {
 				addLine(pmc, " - No new LDAP committee members added in the last 3 months")
-				changes.innerHTML += "&rarr; <font color='red'><b>No new LDAP committee members in the last 3 months.</b></font><br/>";
+				changes.innerHTML += "&rarr; <font color='red'><b>No new LDAP committee members in the last 3 months.</b></font><br>";
 			}
 			if (npn) {
 				if (np < after.getTime() / 1000) {
 					addLine(pmc, " - Last LDAP committee addition was " + npn + " at " + new Date(np * 1000).toDateString())
 				}
-				changes.innerHTML += "&rarr; " + "<b>Latest LDAP committee addition: </b>" + new Date(np * 1000).toDateString() + " (" + npn + ")<br/>"
+				changes.innerHTML += "&rarr; " + "<b>Latest LDAP committee addition: </b>" + new Date(np * 1000).toDateString() + " (" + npn + ")<br>"
 			}
 			
 			
@@ -329,12 +329,12 @@ function renderFrontPage(json) {
 				}
 				if (entry[1] > after.getTime() / 1000) {
 					l++;
-					changes.innerHTML += "&rarr; " + entry[0] + " was added as a committer on " + new Date(entry[1] * 1000).toDateString() + "<br/>";
+					changes.innerHTML += "&rarr; " + entry[0] + " was added as a committer on " + new Date(entry[1] * 1000).toDateString() + "<br>";
 					addLine(pmc, (ncom>1? "   " : "") + " - " + entry[0] + " was added as a committer on " + new Date(entry[1] * 1000).toDateString())
 				}
 			}
 			if (l == 0) {
-				changes.innerHTML += "&rarr; <font color='red'><b>No new committers in the last 3 months.</b></font><br/>";
+				changes.innerHTML += "&rarr; <font color='red'><b>No new committers in the last 3 months.</b></font><br>";
 				addLine(pmc, " - No new committers added in the last 3 months")
 			}
 			
@@ -342,10 +342,10 @@ function renderFrontPage(json) {
 				if (nc < after.getTime() / 1000) {
 					addLine(pmc, " - Last committer addition was " + ncn + " at " + new Date(nc * 1000).toDateString())
 				}
-				changes.innerHTML += "&rarr; " + "<b>Latest committer addition: </b>" + new Date(nc * 1000).toDateString() + " (" + ncn + ")<br/>"
+				changes.innerHTML += "&rarr; " + "<b>Latest committer addition: </b>" + new Date(nc * 1000).toDateString() + " (" + ncn + ")<br>"
 			} else {
 				addLine(pmc, " - Last committer addition was more than 2 years ago")
-				changes.innerHTML += "&rarr; " + "<b>Latest committer addition: </b><font color='red'>more than two years ago (not in the archive!)</font><br/>"
+				changes.innerHTML += "&rarr; " + "<b>Latest committer addition: </b><font color='red'>more than two years ago (not in the archive!)</font><br>"
 			}
 			changes.innerHTML += "&rarr; " + "<b>Currently " + json.count[pmc][1] + " committers and " + json.count[pmc][0] + " LDAP committee members."
 			addLine(pmc)
@@ -372,7 +372,7 @@ function renderFrontPage(json) {
 				if (new Date(date * 1000) > new Date()) {
 					err = " (<font color='red'>This seems wrong?!</font>)"
 				}
-				releases.innerHTML += "&rarr; " + "<b>" + version + " was released on </b>" + new Date(date * 1000).toDateString() + err + "<br/>"
+				releases.innerHTML += "&rarr; " + "<b>" + version + " was released on </b>" + new Date(date * 1000).toDateString() + err + "<br>"
 				addLine(pmc, " - " + version + " was released on " + new Date(date * 1000).toDateString() + err)
 				nr++;
 			}
@@ -380,15 +380,15 @@ function renderFrontPage(json) {
 
 		if (nr == 0) {
 			if (lr) {
-				releases.innerHTML += "&rarr; " + "<b>Latest release was " + lr + ", released on </b>" + new Date(lrn * 1000).toDateString() + "<br/>"
+				releases.innerHTML += "&rarr; " + "<b>Latest release was " + lr + ", released on </b>" + new Date(lrn * 1000).toDateString() + "<br>"
 				addLine(pmc, " - Last release was " + lr + " on " + new Date(lrn * 1000).toDateString())
 			} else {
-				releases.innerHTML += "No release data could be found.<br/>"
+				releases.innerHTML += "No release data could be found.<br>"
 				addLine(pmc, " - <font color='red'>No release data could be found [FIX!]</font>")
 			}
 		}
-		releases.innerHTML += "<i>(A total of " + (tr - nr) + " older release(s) were found for " + pmc + " in our db)</i><br/>"
-		releases.innerHTML += "<br/><a href='javascript:void(0);' onclick=\"$('#rdialog_" + pmc + "').dialog({minWidth: 450, minHeight: 240});\">Add a release</a> - <a href='javascript:void(0);' onclick=\"$('#dialog_" + pmc + "').dialog({minWidth: 450, minHeight: 240});\">Fetch releases from JIRA</a><br/>"
+		releases.innerHTML += "<i>(A total of " + (tr - nr) + " older release(s) were found for " + pmc + " in our db)</i><br>"
+		releases.innerHTML += "<br><a href='javascript:void(0);' onclick=\"$('#rdialog_" + pmc + "').dialog({minWidth: 450, minHeight: 240});\">Add a release</a> - <a href='javascript:void(0);' onclick=\"$('#dialog_" + pmc + "').dialog({minWidth: 450, minHeight: 240});\">Fetch releases from JIRA</a><br>"
 
 		if (tr > 0) {
 			var div = renderReleaseChart(json.releases[pmc], pmc, releases);
@@ -542,7 +542,7 @@ function renderFrontPage(json) {
 		dialog.setAttribute("id", "dialog_" + pmc);
 		dialog.setAttribute("title", "Fetch data from JIRA")
 		dialog.setAttribute("style", "display: none;")
-		dialog.innerHTML = "<form><b>JIRA Project:</b><input type='text' name='jira' placeholder='FOO'><br/><b>Optional prepend:</b> <input name='prepend' type='text' placeholder='Foo'/><br><input type='button' value='Fetch from JIRA' onclick='fetchJIRA(\"" + pmc + "\", this.form[\"jira\"].value, this.form[\"prepend\"].value);'></form><p>If you have multiple JIRA projects and they only have the version number in their release versions, please enter the component name in the 'prepend' field.</p>"
+		dialog.innerHTML = "<form><b>JIRA Project:</b><input type='text' name='jira' placeholder='FOO'><br><b>Optional prepend:</b> <input name='prepend' type='text' placeholder='Foo'/><br><input type='button' value='Fetch from JIRA' onclick='fetchJIRA(\"" + pmc + "\", this.form[\"jira\"].value, this.form[\"prepend\"].value);'></form><p>If you have multiple JIRA projects and they only have the version number in their release versions, please enter the component name in the 'prepend' field.</p>"
 		document.getElementById('tab_' + pmc).appendChild(dialog)
 		
 		// Manually add release dialog
@@ -550,7 +550,7 @@ function renderFrontPage(json) {
 		rdialog.setAttribute("id", "rdialog_" + pmc);
 		rdialog.setAttribute("title", "Add a release")
 		rdialog.setAttribute("style", "display: none;")
-		rdialog.innerHTML = "<form><b>Version:</b><input type='text' name='version' placeholder='1.2.3'><br/><b>Date:</b> <input name='date' type='text' placeholder='YYYY-MM-DD'/><br><input type='button' value='Add release' onclick='addRelease(\"" + pmc + "\", this.form[\"version\"].value, this.form[\"date\"].value);'></form>"
+		rdialog.innerHTML = "<form><b>Version:</b><input type='text' name='version' placeholder='1.2.3'><br><b>Date:</b> <input name='date' type='text' placeholder='YYYY-MM-DD'/><br><input type='button' value='Add release' onclick='addRelease(\"" + pmc + "\", this.form[\"version\"].value, this.form[\"date\"].value);'></form>"
 		document.getElementById('tab_' + pmc).appendChild(rdialog)
 
 	}
@@ -636,8 +636,8 @@ function renderJIRA(pmc) {
 	addLine(pmc, " - " + jsdata.jira[pmc][0] + " JIRA tickets created in the last 3 months");
 	addLine(pmc, " - " + jsdata.jira[pmc][1] + " JIRA tickets closed/resolved in the last 3 months");
 	addLine(pmc)
-	obj.innerHTML += jsdata.jira[pmc][0] + " JIRA tickets created in the last 3 months<br/>";
-	obj.innerHTML += jsdata.jira[pmc][1] + " JIRA tickets closed/resolved in the last 3 months<br/>";
+	obj.innerHTML += jsdata.jira[pmc][0] + " JIRA tickets created in the last 3 months<br>";
+	obj.innerHTML += jsdata.jira[pmc][1] + " JIRA tickets closed/resolved in the last 3 months<br>";
 	if (jsdata.keys[pmc]) {
 		obj.innerHTML += "Keys used: <kbd>" + jsdata.keys[pmc].join(", ") + "</kbd>"
 	}
