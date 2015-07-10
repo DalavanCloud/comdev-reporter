@@ -253,7 +253,7 @@ function renderFrontPage(json) {
 		var after = new Date();
 		after.setMonth(mo);
 
-		var changes = buildPanel(pmc, "LDAP committee/Committership changes");
+		var changes = buildPanel(pmc, "LDAP committee group/Committership changes");
 
 		var c = 0;
 		for (i in json.changes[pmc].committer) c++;
@@ -262,12 +262,12 @@ function renderFrontPage(json) {
 		var np = 0;
 		var ncn = null;
 		var npn = null;
-		addLine(pmc, "## LDAP committee/Committership changes:")
+		addLine(pmc, "## LDAP committee group/Committership changes:")
 		addLine(pmc)
-		addLine(pmc, " - Currently " + json.count[pmc][1] + " committers and " + json.count[pmc][0] + " LDAP committee members.")
+		addLine(pmc, " - Currently " + json.count[pmc][1] + " committers and " + json.count[pmc][0] + " LDAP committee group members.")
 		if (c == 0) {
-			changes.innerHTML += "<font color='red'><b>No new changes to the LDAP committee or committer base detected - (LDAP error or no changes for &gt;2 years)</b></font>"
-			addLine(pmc, " - No new changes to the LDAP committee or committership since last report.")
+			changes.innerHTML += "<font color='red'><b>No new changes to the LDAP committee group or committer base detected - (LDAP error or no changes for &gt;2 years)</b></font>"
+			addLine(pmc, " - No new changes to the LDAP committee group or committership since last report.")
 			addLine(pmc)
 		} else {
 			changes.innerHTML += "<h5>Changes within the last 3 months:</h5>"
@@ -282,7 +282,7 @@ function renderFrontPage(json) {
 				}
 			}
 			if (npmc > 1) {
-				addLine(pmc, " - New LDAP committee members:")
+				addLine(pmc, " - New LDAP committee group members:")
 			}
 			
 			
@@ -294,19 +294,19 @@ function renderFrontPage(json) {
 				}
 				if (entry[1] > after.getTime() / 1000) {
 					l++;
-					changes.innerHTML += "&rarr; " + entry[0] + " was added to the LDAP committee on " + new Date(entry[1] * 1000).toDateString() + "<br>";
-					addLine(pmc, (npmc>1? "   " : "") + " - " + entry[0] + " was added to the LDAP committee on " + new Date(entry[1] * 1000).toDateString())
+					changes.innerHTML += "&rarr; " + entry[0] + " was added to the LDAP committee group on " + new Date(entry[1] * 1000).toDateString() + "<br>";
+					addLine(pmc, (npmc>1? "   " : "") + " - " + entry[0] + " was added to the LDAP committee group on " + new Date(entry[1] * 1000).toDateString())
 				}
 			}
 			if (l == 0) {
-				addLine(pmc, " - No new LDAP committee members added in the last 3 months")
-				changes.innerHTML += "&rarr; <font color='red'><b>No new LDAP committee members in the last 3 months.</b></font><br>";
+				addLine(pmc, " - No new LDAP committee group members added in the last 3 months")
+				changes.innerHTML += "&rarr; <font color='red'><b>No new LDAP committee group members in the last 3 months.</b></font><br>";
 			}
 			if (npn) {
 				if (np < after.getTime() / 1000) {
-					addLine(pmc, " - Last LDAP committee addition was " + npn + " at " + new Date(np * 1000).toDateString())
+					addLine(pmc, " - Last LDAP committee group addition was " + npn + " at " + new Date(np * 1000).toDateString())
 				}
-				changes.innerHTML += "&rarr; " + "<b>Latest LDAP committee addition: </b>" + new Date(np * 1000).toDateString() + " (" + npn + ")<br>"
+				changes.innerHTML += "&rarr; " + "<b>Latest LDAP committee group addition: </b>" + new Date(np * 1000).toDateString() + " (" + npn + ")<br>"
 			}
 			
 			
