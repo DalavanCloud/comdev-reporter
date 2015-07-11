@@ -1,4 +1,10 @@
-import re, urllib.request
+import sys
+# The code uses urllib.request which is Python3
+if sys.hexversion < 0x030000F0:
+    raise RuntimeError("This script requires Python3")
+
+import re
+import urllib.request
 import csv
 import json
 import os
