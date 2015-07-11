@@ -37,5 +37,10 @@ Scripts:
 - readjira.py
   Creates JSON files under /var/www/reporter.apache.org/data/JIRA
 
-  TODO
-  - How is site/reportingcycles.json created/maintained?
+TODO
+ - How is site/reportingcycles.json created/maintained?
+ - need to set up pubsubber process. However pubsubber.py [1] only allows a single instance
+ 
+ 
+[1] https://svn.apache.org/repos/asf/comdev/projects.apache.org/scripts/cronjobs/pubsubber.py
+ 
