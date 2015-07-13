@@ -39,8 +39,10 @@ Scripts:
 
 TODO
  - How is site/reportingcycles.json created/maintained?
- - need to set up pubsubber process. However pubsubber.py [1] only allows a single instance
- 
- 
-[1] https://svn.apache.org/repos/asf/comdev/projects.apache.org/scripts/cronjobs/pubsubber.py
- 
+
+ - ensure that pubsubber.py is started on reboot, using a command of the form:
+cd /var/www/projects.apache.org/scripts/cronjobs &&\
+ python pubsubber.py start \
+   comdev/projects.apache.org /var/www/projects.apache.org/ \
+   comdev/reporter.apache.org /var/www/reporter.apache.org/
+
