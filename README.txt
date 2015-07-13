@@ -50,3 +50,9 @@ cd /var/www/projects.apache.org/scripts/cronjobs &&\
    comdev/projects.apache.org /var/www/projects.apache.org/ \
    comdev/reporter.apache.org /var/www/reporter.apache.org/
 
+- ensure that scandist.py is started, for example
+cd /var/www/reporter.apache.org/ &&\
+ nohup python -u scandist.py forground &
+(The '-u' flag ensures output is unbuffered)
+
+Running as a daemon is also possible, but then the output is lost.
