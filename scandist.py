@@ -25,7 +25,8 @@ else:
     version = 3
     import json, http.client, urllib.request, urllib.parse, configparser, re, base64, sys, os, time, atexit, signal, logging, subprocess
 
-targets = {}
+targets = {} # dict: key = project name, value = list of commits for the project
+
 ###########################################################
 # Daemon class, curtesy of an anonymous good-hearted soul #
 ###########################################################
@@ -208,11 +209,13 @@ class PubSubClient(Thread):
                 try:
                     obj = json.loads(line)
                     if "commit" in obj and "repository" in obj['commit']:
-                        # If it's a change
                         if 'changed' in obj['commit']:
                         
                             #Grab some vars
                             commit = obj['commit']
+                            # e.g. {"committer": "sebb", "log": "Ensure we exit on control+C", "repository": "13f79535-47bb-0310-9956-ffa450edef68", "format": 1, 
+                            # "changed": {"comdev/reporter.apache.org/trunk/scandist.py": {"flags": "U  "}}, 
+                            # "date": "2015-07-13 13:38:33 +0000 (Mon, 13 Jul 2015)", "type": "svn", "id": 1690668}
                             svnuser = commit['committer']
                             path, action = commit['changed'].popitem()
                             
@@ -252,10 +255,10 @@ def main():
         time.sleep(600)
         targetstwo = targets
         targets = {}
+        sender = 'no-reply@reporter.apache.org'
         for user in targetstwo:
             email = user + "@apache.org"
             project = targetstwo[user]
-            sender = 'no-reply@reporter.apache.org'
             receivers = [email, 'humbedooh@apache.org']
             print("Notifying %s of new data pushed to %s" % (email, project))
             message = """From: Apache Reporter Service <no-reply@reporter.apache.org>
