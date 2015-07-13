@@ -20,6 +20,10 @@ https://svn.apache.org/repos/infra/infrastructure/trunk/machines/vms/nyx-ssl.apa
 Some Puppet data is here
 https://svn.apache.org/repos/infra/infrastructure/trunk/puppet/hosts/nyx-ssl/manifests/init.pp
 
+Note: the puppet config for the VM is stored at:
+
+https://git1-us-west.apache.org/repos/asf?p=infrastructure-puppet.git;a=blob_plain;f=data/nodes/projects-vm.apache.org.yaml
+
 Crontab:
 # m h   dom mon dow   command
 00 4,12,20 * * * cd /var/www/reporter.apache.org/data && python3.4 parsepmcs.py
