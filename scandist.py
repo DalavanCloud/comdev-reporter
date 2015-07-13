@@ -218,7 +218,12 @@ class PubSubClient(Thread):
                             # "date": "2015-07-13 13:38:33 +0000 (Mon, 13 Jul 2015)", "type": "svn", "id": 1690668}
 
                             # Note: a single commit can change multiple paths
-                            for path in commit['changed']:
+                            paths = commit['changed']
+                            for path in paths:
+                                if paths[path]['flags'] == 'D  ':
+                                    if debug:
+                                        print "Ignoring deletion of path '%s' " % path
+                                    continue # it's a deletion; ignore
                                 # Is it a dist/release commit?
                                 match = re.match(r"^release/([a-z0-9]+)", path)
                                 if match:
@@ -263,7 +268,7 @@ According to https://svn.apache.org/repos/asf/subversion/trunk/tools/server-side
 def main():
     global targets
     if debug:
-        print("Foreground test mode enabled, no updates will be made")
+        print("Foreground test mode enabled")
         
   
     
