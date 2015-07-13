@@ -248,8 +248,6 @@ def main():
     svn_thread.start()
     
     while True:
-        now = time.time()
-        then = now - 86400
        
         time.sleep(600)
         targetstwo = targets
