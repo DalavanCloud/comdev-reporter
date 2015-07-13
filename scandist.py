@@ -179,6 +179,10 @@ def read_chunk(req):
 
 # PubSub class: handles connecting to a pubsub service and checking commits
 class PubSubClient(Thread):
+    def __init__(self):
+        Thread.__init__(self)
+        self.setDaemon(True) # ensure script exits when main process is killed with ^C
+
     def run(self):
         global targets
         while True:
@@ -239,6 +243,7 @@ def main():
     
     # Start the svn thread
     svn_thread = PubSubClient()
+    # 0d268c88-bc11-4956-87df-91683dc98e59 = https://dist.apache.org/repos/dist
     svn_thread.url = "http://hades.apache.org:2069/commits/*"
     svn_thread.start()
     
