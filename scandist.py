@@ -216,16 +216,22 @@ class PubSubClient(Thread):
                             # e.g. {"committer": "sebb", "log": "Ensure we exit on control+C", "repository": "13f79535-47bb-0310-9956-ffa450edef68", "format": 1, 
                             # "changed": {"comdev/reporter.apache.org/trunk/scandist.py": {"flags": "U  "}}, 
                             # "date": "2015-07-13 13:38:33 +0000 (Mon, 13 Jul 2015)", "type": "svn", "id": 1690668}
-                            svnuser = commit['committer']
-                            path, action = commit['changed'].popitem()
-                            
-                            # Figure out the root thingermajig
-                            match = re.match(r"^release/([a-z0-9]+)", path)
-                            if match:
-                                if match.group(1) != "incubator":
-                                    targets[svnuser] = match.group(1)
-                            
-                    
+
+                            # Note: a single commit can change multiple paths
+                            for path in commit['changed']:
+                                # Is it a dist/release commit?
+                                match = re.match(r"^release/([a-z0-9]+)", path)
+                                if match:
+                                    project = match.group(1) 
+                                    if project != "incubator":
+                                        # a single commit can potentially affect multiple projects
+                                        # create the array if necessary
+                                        if not project in targets:
+                                            targets[project] = []
+                                        # would like to use a set, but cannot add dicts to sets
+                                        if not commit in targets[project]: 
+                                            targets[project].append(commit)
+
 
                 except ValueError as detail:
                     continue
@@ -237,6 +243,23 @@ class PubSubClient(Thread):
 ################         
 # Main program #
 ################
+
+"""
+According to https://svn.apache.org/repos/asf/subversion/trunk/tools/server-side/svnpubsub/svnpubsub/server.py
+
+#   URLs are constructed from 3 parts:
+#       /${notification}/${optional_type}/${optional_repository}
+#
+#   Notifications can be sent for commits or metadata (e.g., revprop) changes.
+#   If the type is included in the URL, you will only get notifications of that type.
+#   The type can be * and then you will receive notifications of any type.
+#
+#   If the repository is included in the URL, you will only receive
+#   messages about that repository.  The repository can be * and then you
+#   will receive messages about all repositories.
+
+"""
+
 def main():
     global targets
     if debug:
@@ -247,31 +270,42 @@ def main():
     # Start the svn thread
     svn_thread = PubSubClient()
     # 0d268c88-bc11-4956-87df-91683dc98e59 = https://dist.apache.org/repos/dist
-    svn_thread.url = "http://hades.apache.org:2069/commits/*"
+    svn_thread.url = "http://hades.apache.org:2069/commits/svn/0d268c88-bc11-4956-87df-91683dc98e59"
     svn_thread.start()
     
     while True:
-       
-        time.sleep(600)
+        if debug:
+           time.sleep(20)
+        else:
+           time.sleep(600)
         targetstwo = targets
         targets = {}
         sender = 'no-reply@reporter.apache.org'
-        for user in targetstwo:
-            email = user + "@apache.org"
-            project = targetstwo[user]
-            receivers = [email, 'humbedooh@apache.org']
-            print("Notifying %s of new data pushed to %s" % (email, project))
-            message = """From: Apache Reporter Service <no-reply@reporter.apache.org>
-To: %s <%s>
+        for project in targetstwo:
+            #print("targetstwo[project] = %s" % targetstwo[project])
+            for commit in targetstwo[project]:
+                #print("commit = %s" % commit)
+                tmpdict = {'project' : project}
+                #print("tmpdict = %s" % tmpdict)
+                tmpdict.update(commit) # add project without corrupting commit
+                #print("tmpdict = %s" % tmpdict)
+                # e.g. {"committer": "sebb", "log": "Ensure we exit on control+C", "repository": "13f79535-47bb-0310-9956-ffa450edef68", "format": 1, 
+                # "changed": {"comdev/reporter.apache.org/trunk/scandist.py": {"flags": "U  "}}, 
+                # "date": "2015-07-13 13:38:33 +0000 (Mon, 13 Jul 2015)", "type": "svn", "id": 1690668}
+                email = commit['committer'] + "@apache.org"
+                receivers = [email, 'sebb@apache.org']
+                print("Notifying %(committer)s of new data pushed to %(project)s in r%(id)s" % tmpdict)
+                message = """From: Apache Reporter Service <no-reply@reporter.apache.org>
+To: %(committer)s <%(committer)s.apache.org>
 Reply-To: dev@community.apache.org
-Subject: Please add your release data for '%s'
+Subject: Please add your release data for '%(project)s'
 
 Hi,
 This is an automated email from reporter.apache.org.
 I see that you just pushed something to our release repository for the %s project.
 
 If you are a PMC member of this project, we ask that you log on to:
-https://reporter.apache.org/addrelease.html?%s
+https://reporter.apache.org/addrelease.html?%(project)s
 and add your release data (version and date) to the database.
 
 If you are not a PMC member, please have a PMC member add this information.
@@ -282,15 +316,16 @@ able to see the latest release data for this project.
 
 With regards,
 The Apache Reporter Service.
-            """ % (user, email, project, project, project)
+                """ % tmpdict;
             
-            try:
-               smtpObj = smtplib.SMTP('localhost')
-               smtpObj.sendmail(sender, receivers, message)         
-               print "Successfully sent email"
-            except SMTPException:
-               print "Error: unable to send email"
-               
+                try:
+                   smtpObj = smtplib.SMTP('localhost')
+                   smtpObj.sendmail(sender, receivers, message)  
+                   #print message       
+                   print "Successfully sent email"
+                except Exception as ex:
+                   print "Error: unable to send email", ex
+
 
 ##############
 # Daemonizer #
