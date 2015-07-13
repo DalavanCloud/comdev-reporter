@@ -204,19 +204,13 @@ class PubSubClient(Thread):
                 try:
                     obj = json.loads(line)
                     if "commit" in obj and "repository" in obj['commit']:
-                        obj['commit']['whence'] = time.time()
-                    
-                            
-                        # If it's our public svn repo, then...
+                        # If it's a change
                         if 'changed' in obj['commit']:
                         
                             #Grab some vars
                             commit = obj['commit']
-                            body = commit['log']
                             svnuser = commit['committer']
                             path, action = commit['changed'].popitem()
-                            revision = commit['id']
-                            email = svnuser + "@apache.org"
                             
                             # Figure out the root thingermajig
                             match = re.match(r"^release/([a-z0-9]+)", path)
