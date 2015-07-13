@@ -294,7 +294,7 @@ def main():
                 # "date": "2015-07-13 13:38:33 +0000 (Mon, 13 Jul 2015)", "type": "svn", "id": 1690668}
                 email = commit['committer'] + "@apache.org"
                 receivers = [email, 'sebb@apache.org']
-                print("Notifying %(committer)s of new data pushed to %(project)s in r%(id)s" % tmpdict)
+                print "Notifying %(committer)s of new data pushed to %(project)s in r%(id)s" % tmpdict
                 message = """From: Apache Reporter Service <no-reply@reporter.apache.org>
 To: %(committer)s <%(committer)s.apache.org>
 Reply-To: dev@community.apache.org
@@ -302,7 +302,7 @@ Subject: Please add your release data for '%(project)s'
 
 Hi,
 This is an automated email from reporter.apache.org.
-I see that you just pushed something to our release repository for the %s project.
+I see that you just pushed something to our release repository for the %(project)s project.
 
 If you are a PMC member of this project, we ask that you log on to:
 https://reporter.apache.org/addrelease.html?%(project)s
