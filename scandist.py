@@ -302,7 +302,11 @@ Subject: Please add your release data for '%(project)s'
 
 Hi,
 This is an automated email from reporter.apache.org.
-I see that you just pushed something to our release repository for the %(project)s project.
+I see that you just pushed something to our release repository for the '%(project)s' project
+in the following commit:
+
+r%(id)s
+%(log).78s
 
 If you are a PMC member of this project, we ask that you log on to:
 https://reporter.apache.org/addrelease.html?%(project)s
