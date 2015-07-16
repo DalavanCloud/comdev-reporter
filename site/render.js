@@ -215,6 +215,10 @@ function renderFrontPage(json) {
 		addLine(pmc, "## Activity:")
 		addLine(pmc, " - <font color='red'>TODO - the PMC <b><u>MUST</u></b> provide this information</font>")
 		addLine(pmc)
+		
+		addLine(pmc, "## Health report:")
+		addLine(pmc, " - <font color='red'>TODO - Please use this paragraph to elaborate on why the current project activity (mails, commits, bugs etc) is at its current level.</font>")
+		addLine(pmc)
 
 		addLine(pmc, "## Issues:")
 		addLine(pmc, " - <font color='red'>TODO - list any issues that require board attention, \n  or say \"there are no issues requiring board attention at this time\"</font>")
