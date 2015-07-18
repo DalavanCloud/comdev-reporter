@@ -27,6 +27,9 @@ else:
 
 targets = {} # dict: key = project name, value = list of commits for the project
 
+sendEmail = True # Allow e-mails to be disabled for testing
+trace = False # More detailed debug
+
 ###########################################################
 # Daemon class, curtesy of an anonymous good-hearted soul #
 ###########################################################
@@ -176,6 +179,39 @@ def read_chunk(req):
 # Main listener program #
 #########################
 
+# Extract out processing so it can be independently tested
+def processCommit(commit):
+    # e.g. {"committer": "sebb", "log": "Ensure we exit on control+C", "repository": "13f79535-47bb-0310-9956-ffa450edef68", "format": 1, 
+    # "changed": {"comdev/reporter.apache.org/trunk/scandist.py": {"flags": "U  "}}, 
+    # "date": "2015-07-13 13:38:33 +0000 (Mon, 13 Jul 2015)", "type": "svn", "id": 1690668}
+    #
+    # Note: a single commit can change multiple paths
+    paths = commit['changed']
+    for path in paths:
+        if trace:
+            print "Checking " + path
+        if paths[path]['flags'] == 'D  ':
+            if debug:
+                print "Ignoring deletion of path '%s' " % path
+            continue  # it's a deletion; ignore
+        # Is it a dist/release commit?
+        match = re.match(RELEASE_MATCH, path)
+        if match:
+            project = match.group(1) 
+            if project != "incubator":
+                # a single commit can potentially affect multiple projects
+                # create the array if necessary
+                if not project in targets:
+                    targets[project] = []
+                # would like to use a set, but cannot add dicts to sets
+                if not commit in targets[project]: 
+                    targets[project].append(commit)
+            else:
+                if trace:
+                    print "Ignoring incubator commit: " + path
+        else:
+            if trace:
+                print "Did not match: " + path
 
 
 # PubSub class: handles connecting to a pubsub service and checking commits
@@ -207,36 +243,13 @@ class PubSubClient(Thread):
                 else:
                     line = str( line ).rstrip('\r\n,').replace('\x00','') # strip away any old pre-0.9 commas from gitpubsub chunks and \0 in svnpubsub chunks
                 try:
+                    if trace:
+                        print line
                     obj = json.loads(line)
                     if "commit" in obj and "repository" in obj['commit']:
                         if 'changed' in obj['commit']:
-                        
-                            #Grab some vars
                             commit = obj['commit']
-                            # e.g. {"committer": "sebb", "log": "Ensure we exit on control+C", "repository": "13f79535-47bb-0310-9956-ffa450edef68", "format": 1, 
-                            # "changed": {"comdev/reporter.apache.org/trunk/scandist.py": {"flags": "U  "}}, 
-                            # "date": "2015-07-13 13:38:33 +0000 (Mon, 13 Jul 2015)", "type": "svn", "id": 1690668}
-
-                            # Note: a single commit can change multiple paths
-                            paths = commit['changed']
-                            for path in paths:
-                                if paths[path]['flags'] == 'D  ':
-                                    if debug:
-                                        print "Ignoring deletion of path '%s' " % path
-                                    continue # it's a deletion; ignore
-                                # Is it a dist/release commit?
-                                match = re.match(r"^release/([a-z0-9]+)", path)
-                                if match:
-                                    project = match.group(1) 
-                                    if project != "incubator":
-                                        # a single commit can potentially affect multiple projects
-                                        # create the array if necessary
-                                        if not project in targets:
-                                            targets[project] = []
-                                        # would like to use a set, but cannot add dicts to sets
-                                        if not commit in targets[project]: 
-                                            targets[project].append(commit)
-
+                            processCommit(commit)
 
                 except ValueError as detail:
                     continue
@@ -265,17 +278,25 @@ According to https://svn.apache.org/repos/asf/subversion/trunk/tools/server-side
 
 """
 
+DEFAULT_URL = "http://hades.apache.org:2069/commits/svn/0d268c88-bc11-4956-87df-91683dc98e59"
+RELEASE_MATCH = r"^release/([a-z0-9]+)"
+
 def main():
     global targets
+    global sendEmail
     if debug:
         print("Foreground test mode enabled")
+    if not sendEmail:
+        print "Not sending email"
         
   
     
     # Start the svn thread
     svn_thread = PubSubClient()
     # 0d268c88-bc11-4956-87df-91683dc98e59 = https://dist.apache.org/repos/dist
-    svn_thread.url = "http://hades.apache.org:2069/commits/svn/0d268c88-bc11-4956-87df-91683dc98e59"
+    svn_thread.url = DEFAULT_URL
+    if trace:
+        print "Using " + DEFAULT_URL + " matching " + RELEASE_MATCH
     svn_thread.start()
     
     while True:
@@ -326,6 +347,11 @@ able to see the latest release data for this project.
 With regards,
 The Apache Reporter Service.
                 """ % tmpdict;
+                
+                if not sendEmail:
+                    print "Not sending email to " + str(receivers)
+                    print message
+                    continue
             
                 try:
                    smtpObj = smtplib.SMTP('localhost')
@@ -354,6 +380,15 @@ if __name__ == "__main__":
                     daemon.restart()
                 elif 'foreground' == sys.argv[1]:
                     debug = True
+                    main()
+                elif 'test' == sys.argv[1]: # allow override of URL and RE for tesing purposes
+                    debug = True
+                    sendEmail = False
+                    trace = True
+                    if len(sys.argv) > 2:
+                        DEFAULT_URL = sys.argv[2]
+                    if len(sys.argv) > 3:
+                        RELEASE_MATCH = sys.argv[3]
                     main()
                 else:
                     print("Unknown command")
