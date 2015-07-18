@@ -180,6 +180,16 @@ def read_chunk(req):
 # Main listener program #
 #########################
 
+IGNORED_FILES={
+    ".htaccess",
+    "KEYS",
+    "HEADER.html",
+    "README.html",
+    }
+
+def isIgnored(filename):
+    return filename in IGNORED_FILES
+
 # Extract out processing so it can be independently tested
 def processCommit(commit):
     # e.g. {"committer": "sebb", "log": "Ensure we exit on control+C", "repository": "13f79535-47bb-0310-9956-ffa450edef68", "format": 1, 
@@ -200,6 +210,13 @@ def processCommit(commit):
         if match:
             project = match.group(1) 
             if project != "incubator":
+                match = re.match(".*/(.+)$", path)
+                if match:
+                    fileName = match.group(1)
+                    if isIgnored(fileName):
+                        if debug:
+                            print "Ignoring update of file " + path
+                        continue
                 # a single commit can potentially affect multiple projects
                 # create the array if necessary
                 if not project in targets:
