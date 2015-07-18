@@ -25,7 +25,7 @@ else:
     version = 3
     import json, http.client, urllib.request, urllib.parse, configparser, re, base64, sys, os, time, atexit, signal, logging, subprocess
 
-targets = {} # dict: key = project name, value = list of commits for the project
+targets = {} # dict: key = project name, value = {dict: key = committer, value = list of commits by the committer for the project}
 
 sendEmail = True # Allow e-mails to be disabled for testing
 debug = False
@@ -218,12 +218,14 @@ def processCommit(commit):
                             print "Ignoring update of file " + path
                         continue
                 # a single commit can potentially affect multiple projects
-                # create the array if necessary
+                # create the dict and array if necessary
                 if not project in targets:
-                    targets[project] = []
-                # would like to use a set, but cannot add dicts to sets
-                if not commit in targets[project]: 
-                    targets[project].append(commit)
+                    targets[project] = {}
+                committer = commit['committer']
+                if not committer in targets[project]:
+                    targets[project][committer] = []
+                if not commit in targets[project][committer]: 
+                    targets[project][committer].append(commit)
             else:
                 if trace:
                     print "Ignoring incubator commit: " + path
@@ -300,7 +302,6 @@ DEFAULT_URL = "http://hades.apache.org:2069/commits/svn/0d268c88-bc11-4956-87df-
 RELEASE_MATCH = r"^release/([a-z0-9]+)"
 
 def main():
-    global targets
     global sendEmail
     if debug:
         print("Foreground test mode enabled")
@@ -322,23 +323,40 @@ def main():
            time.sleep(20)
         else:
            time.sleep(600)
+        processTargets()
+
+def processTargets():
+        global targets
         targetstwo = targets
         targets = {}
         sender = 'no-reply@reporter.apache.org'
         for project in targetstwo:
             #print("targetstwo[project] = %s" % targetstwo[project])
-            for commit in targetstwo[project]:
-                #print("commit = %s" % commit)
-                tmpdict = {'project' : project}
-                #print("tmpdict = %s" % tmpdict)
-                tmpdict.update(commit) # add project without corrupting commit
-                #print("tmpdict = %s" % tmpdict)
-                # e.g. {"committer": "sebb", "log": "Ensure we exit on control+C", "repository": "13f79535-47bb-0310-9956-ffa450edef68", "format": 1, 
-                # "changed": {"comdev/reporter.apache.org/trunk/scandist.py": {"flags": "U  "}}, 
-                # "date": "2015-07-13 13:38:33 +0000 (Mon, 13 Jul 2015)", "type": "svn", "id": 1690668}
-                email = commit['committer'] + "@apache.org"
+            tmpdict = {'project' : project}
+            for committer in targetstwo[project]:
+                tmpdict.update({'committer' : committer})
+                # gather up all the commits for this preject+committer
+                ids=[]
+                logs=[]
+                for commit in targetstwo[project][committer]:
+                    ids.append(str(commit['id'])) # we join these later
+                    logs.append(commit['log'])
+                tmpdict.update({'id' : ids[0]})
+                # build up the log entry
+                log = logs[0][:78] # truncate if necessary
+                if len(ids) > 1: # muktiple commits; add the other ids (but not log messages)
+                    log += "\n"
+                    offset = len(log)
+                    log += "See also:"
+                    for id in ids[1:]:
+                        if len(log) - offset > 70:
+                            log += "\n"
+                            offset = len(log)
+                        log += " r" + id
+                tmpdict.update({'log' : log})
+                email = committer + "@apache.org"
                 receivers = [email, 'sebb@apache.org']
-                print "Notifying %(committer)s of new data pushed to %(project)s in r%(id)s" % tmpdict
+                print "Notifying '%(committer)s' of new data pushed to '%(project)s' in r%(id)s" % tmpdict
                 message = """From: Apache Reporter Service <no-reply@reporter.apache.org>
 To: %(committer)s <%(committer)s.apache.org>
 Reply-To: dev@community.apache.org
@@ -350,7 +368,7 @@ I see that you just pushed something to our release repository for the '%(projec
 in the following commit:
 
 r%(id)s
-%(log).78s
+%(log)s
 
 If you are a PMC member of this project, we ask that you log on to:
 https://reporter.apache.org/addrelease.html?%(project)s
@@ -368,7 +386,10 @@ The Apache Reporter Service.
                 
                 if not sendEmail:
                     print "Not sending email to " + str(receivers)
-                    print message
+                    if trace:
+                        print message
+                    else:
+                        print "r%(id)s\n%(log)s" % tmpdict
                     continue
             
                 try:
