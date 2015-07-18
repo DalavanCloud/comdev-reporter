@@ -28,6 +28,7 @@ else:
 targets = {} # dict: key = project name, value = list of commits for the project
 
 sendEmail = True # Allow e-mails to be disabled for testing
+debug = False
 trace = False # More detailed debug
 
 ###########################################################
