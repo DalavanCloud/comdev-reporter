@@ -338,10 +338,13 @@ def processTargets():
                 # gather up all the commits for this preject+committer
                 ids=[]
                 logs=[]
+                dates=[]
                 for commit in targetstwo[project][committer]:
                     ids.append(str(commit['id'])) # we join these later
                     logs.append(commit['log'])
+                    dates.append(commit['date'])
                 tmpdict.update({'id' : ids[0]})
+                tmpdict.update({'date' : dates[0]})
                 # build up the log entry
                 log = logs[0][:78] # truncate if necessary
                 if len(ids) > 1: # multiple commits; add the other ids (but not log messages)
@@ -367,7 +370,7 @@ This is an automated email from reporter.apache.org.
 I see that you just pushed something to our release repository for the '%(project)s' project
 in the following commit:
 
-r%(id)s
+r%(id)s at %(date)s
 %(log)s
 
 If you are a PMC member of this project, we ask that you log on to:
