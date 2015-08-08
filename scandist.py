@@ -344,7 +344,7 @@ def processTargets():
                 tmpdict.update({'id' : ids[0]})
                 # build up the log entry
                 log = logs[0][:78] # truncate if necessary
-                if len(ids) > 1: # muktiple commits; add the other ids (but not log messages)
+                if len(ids) > 1: # multiple commits; add the other ids (but not log messages)
                     log += "\n"
                     offset = len(log)
                     log += "See also:"
