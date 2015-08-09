@@ -201,10 +201,6 @@ def processCommit(commit):
     for path in paths:
         if trace:
             print "Checking " + path
-        if paths[path]['flags'] == 'D  ':
-            if debug:
-                print "Ignoring deletion of path '%s' " % path
-            continue  # it's a deletion; ignore
         # Is it a dist/release commit?
         match = re.match(RELEASE_MATCH, path)
         if match:
@@ -212,6 +208,10 @@ def processCommit(commit):
             if project != "incubator":
                 match = re.match(".*/(.+)$", path)
                 if match:
+                    if paths[path]['flags'] == 'D  ':
+                        if debug:
+                            print "Ignoring deletion of path '%s' " % path
+                        continue  # it's a deletion; ignore        
                     fileName = match.group(1)
                     if isIgnored(fileName):
                         if debug:
