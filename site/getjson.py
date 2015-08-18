@@ -20,7 +20,7 @@ pmap = {
 
 ldapmap = {
     'webservices': 'ws',
-    'whimsical': 'whimsy'
+    'whimsy': 'whimsical'
 }
 
 jirapass = ""
