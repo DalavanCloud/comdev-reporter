@@ -16,12 +16,12 @@ pmap = {
     'community': 'comdev',
     'ws': 'webservices',
     'hc': 'httpcomponents',
-    'whimsy': 'whimsical'
+    'whimsical': 'whimsy'
 }
 
 ldapmap = {
     'webservices': 'ws',
-    'whimsy': 'whimsical'
+    'whimsical': 'whimsy'
 }
 
 jirapass = ""
