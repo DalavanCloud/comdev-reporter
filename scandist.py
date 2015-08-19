@@ -299,7 +299,7 @@ According to https://svn.apache.org/repos/asf/subversion/trunk/tools/server-side
 """
 
 DEFAULT_URL = "http://hades.apache.org:2069/commits/svn/0d268c88-bc11-4956-87df-91683dc98e59"
-RELEASE_MATCH = r"^release/([a-z0-9]+)"
+RELEASE_MATCH = r"^release/([^/]+)/" # match any name followed by /
 
 def main():
     global sendEmail
