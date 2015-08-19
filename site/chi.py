@@ -139,7 +139,7 @@ if m:
                     nentry = entry.replace("empire-", "empire-db-")
                 if True:
                     emails[tlp] = emails[tlp] if tlp in emails else {}
-                    emails[tlp][entry] = mld[nentry]
+                    emails[tlp][nentry] = mld[entry]
         jdata = {}
         ddata = {}
         rdata = {}
