@@ -71,7 +71,7 @@ for mlist in re.finditer(r"<a href='([-a-z0-9]+)/'", data):
         if y == 50:
                 y = 0
                 with open("data/maildata_extended.json",'w+') as f:
-                        f.write(json.dumps(mls))
+                        f.write(json.dumps(mls, indent=1))
 with open("data/maildata_extended.json",'w+') as f:
         f.write(json.dumps(mls, indent=1))
 print("Dumped JSON")

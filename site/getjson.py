@@ -79,7 +79,7 @@ def getJIRAProjects(project):
                 req.add_header("Authorization", "Basic %s" % base64string)
                 x = json.loads(urllib2.urlopen(req).read())
                 with open("/var/www/reporter.apache.org/data/JIRA/projects.json", "w") as f:
-                    f.write(json.dumps(x))
+                    f.write(json.dumps(x, indent=1))
                     f.close()
             except:
                 pass
@@ -118,12 +118,12 @@ def getJIRAS(project):
             req.add_header("Authorization", "Basic %s" % base64string)
             rdata = json.loads(urllib2.urlopen(req).read())
             with open("/var/www/reporter.apache.org/data/JIRA/%s.json" % project, "w") as f:
-                f.write(json.dumps([cdata['total'], rdata['total'], project]))
+                f.write(json.dumps([cdata['total'], rdata['total'], project], indent=1))
                 f.close()
             return cdata['total'], rdata['total'], project
         except Exception as err:
             with open("/var/www/reporter.apache.org/data/JIRA/%s.json" % project, "w") as f:
-                f.write(json.dumps([0,0,None]))
+                f.write(json.dumps([0,0,None], indent=1))
                 f.close()
             return 0,0, None
 
@@ -313,7 +313,7 @@ if m:
         'keys': keys,
         'health': health
     }
-    dump = json.dumps(output)
+    dump = json.dumps(output, indent=1)
     print ("Content-Type: application/json\r\nContent-Length: %u\r\n\r\n" % (len(dump)+1))
     print(dump)
 else:

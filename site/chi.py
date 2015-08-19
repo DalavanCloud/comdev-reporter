@@ -291,7 +291,7 @@ if m:
                 'cscore': s
             })
         with open("/var/www/reporter.apache.org/data/health.json", "w") as f:
-            f.write(json.dumps(notes))
+            f.write(json.dumps(notes, indent=1))
             f.close()
             
         print ("Content-Type: text/html\r\n\r\n<h1><img src='/img/chi.png' style='vertical-align: middle;'/> Community Health Issues</h1><p>This is a quantitative guideline only. There may be niche cases where the summaries below to not apply. <br/>Scores range from -10.00 (worst possible score) to +10.00 (best possible score), harmonized by <img src='/img/equation.png' style='vertical-align: middle;'/></p>")

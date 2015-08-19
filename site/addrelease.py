@@ -50,12 +50,12 @@ if date != None and version and committee:
             if version in rdata:
                 del rdata[version]
         with open("/var/www/reporter.apache.org/data/releases/%s.json" % committee, "w") as f:
-            f.write(json.dumps(rdata))
+            f.write(json.dumps(rdata, indent=1))
             f.close()
             saved = True
             if dojson:
                 print("Content-Type: application/json\r\n\r\n")
-                print(json.dumps({'versions': rdata}))
+                print(json.dumps({'versions': rdata}, indent=1))
             else:
                 print("Content-Type: text/html\r\n\r\n<h3>Data submitted!</h3>You may see the updated committee data at: <a href='https://reporter.apache.org/?%s'>https://reporter.apache.org/?%s</a>." % (committee, committee))
 
