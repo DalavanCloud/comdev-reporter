@@ -114,12 +114,12 @@ cdata = {}
 if m:
     uid = m.group(1)
     if uid:
-        mlstats = {}
+        mlstats = {} # Does not appear to be used
         with open("/var/www/reporter.apache.org/data/mailinglists.json", "r") as f:
             ml = json.loads(f.read())
             f.close()
             for entry in ml:
-                tlp = entry.split(".")[0]
+                tlp = entry.split(".")[0] # e.g. lucene.apache.org-general => lucene
                 if tlp in pmap:
                     tlp = pmap[tlp]
                 if True:
