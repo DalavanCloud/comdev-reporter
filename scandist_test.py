@@ -11,6 +11,7 @@ TODO: needs to check the output somehow
 
 """
 
+from __future__ import print_function
 import scandist
 import json
 import ast
@@ -19,13 +20,13 @@ import datetime
 def processBatch():
     for project in scandist.targets:
         # show what is to be processed
-        print "Batch: <<",project,
+        print("Batch: <<",project, end="")
         committers = scandist.targets[project]
         for committer in committers:
-            print committer,
+            print(committer, end="")
             for entry in committers[committer]:
-                print entry['id'],
-        print ">>"
+                print(entry['id'], end="")
+        print(">>")
     scandist.processTargets()
     
 if __name__ == "__main__":
