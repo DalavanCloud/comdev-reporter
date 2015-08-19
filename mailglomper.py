@@ -29,6 +29,18 @@ for i in range(0,7):
 data = urllib.urlopen("http://mail-archives.us.apache.org/mod_mbox/").read()
 print("Fetched %u bytes of main data" % len(data))
 y = 0
+"""
+N.B. The project name empire-db is truncated to empire in the main list
+
+Rather than fixing this here, it is done in the scripts that read the output file
+This is because those scripts assume that the first hyphen separates the
+project name from the mailing list name.
+Since list names may contain hyphens (e.g. lucene-net-dev) that is a necessary assumption.
+
+Potentially the generated file could use a separator that is not allowed in project names,
+but this would require converting the input file and potentially allowing both separators in
+the files that process the output for a short while.
+"""
 for mlist in re.finditer(r"<a href='([-a-z0-9]+)/'", data):
         ml = mlist.group(1)
         y += 1
@@ -61,7 +73,7 @@ for mlist in re.finditer(r"<a href='([-a-z0-9]+)/'", data):
                 with open("data/maildata_extended.json",'w+') as f:
                         f.write(json.dumps(mls))
 with open("data/maildata_extended.json",'w+') as f:
-        f.write(json.dumps(mls))
+        f.write(json.dumps(mls, indent=1))
 print("Dumped JSON")
 
 
