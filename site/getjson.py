@@ -241,6 +241,7 @@ if m:
             # fix for empire-db?
             if re.match("^empire-db.+", entry):
                 tlp = "empire-db"
+                entry = entry.replace("-db", "", 1)
             if tlp in groups:
                 emails[tlp] = emails[tlp] if tlp in emails else {}
                 emails[tlp][entry] = mld[entry]
