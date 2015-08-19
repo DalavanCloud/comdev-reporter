@@ -722,12 +722,14 @@ function renderChart(json, name, container, delivery) {
 				title: 'Emails per week',
 				titleTextStyle: {
 					color: '#DD0000'
-				}
+				},
+				min: 0
 			}, {
 				title: 'Subscribers',
 				titleTextStyle: {
 					color: '#0000DD'
-				}
+				},
+				min: 0
 			},
 		] : [{
 				title: 'Subscribers',
