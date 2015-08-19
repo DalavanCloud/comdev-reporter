@@ -33,13 +33,52 @@ Crontab:
 
 Scripts:
 - data/parsepmcs.py
-  creates pmcs.json and projects.json (currently from http://people.apache.org/committer-index.html)
+  Updates data/pmcs.json and data/projects.json (currently from http://people.apache.org/committer-index.html)
 
 - mailglomper.py
   Updates data/maildata_extended.json from http://mail-archives.us.apache.org/mod_mbox/<list>/<date>.mbox
 
 - readjira.py
-  Creates JSON files under /var/www/reporter.apache.org/data/JIRA
+  Creates JSON files under data/JIRA
+
+- addrelease.py
+  Updates data/releases/%s.json % committee from form data
+
+- site/chi.py
+  Creates data/health.json
+
+- site/getjson.py
+  Updates data/JIRA/projects.json (from JIRA)
+  Updates data/JIRA/%s.json % project (from JIRA)
+  
+- site/jiraversions.py
+  Updates data/releases/%s.json % project
+
+- parseversions.py
+  Updates data/releases/%s.json project from 
+
+Data file consumers:
+- chi.py
+  data/maildata_extended.json
+  data/mailinglists.json
+  data/pmcs.json
+  data/projects.json
+  data/releases/%s.json % project
+  site/json/foundation/pmcs.json
+  site/json/foundation/chairs.json
+  site/json/projects/%s.json % project
+
+- getjson.py
+  data/health.json
+  data/maildata_extended.json
+  data/mailinglists.json
+  data/pmcs.json
+  data/projects.json
+  data/releases/%s.json
+  data/JIRA/projects.json
+  site/json/foundation/pmcs.json
+  site/json/foundation/chairs.json
+  site/json/projects/%s.json % project
 
 TODO
  - How is site/reportingcycles.json created/maintained?
