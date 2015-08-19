@@ -239,12 +239,13 @@ if m:
             if tlp in pmap:
                 tlp = pmap[tlp]
             # fix for empire-db?
+            entrynew = entry
             if re.match("^empire-db.+", entry):
                 tlp = "empire-db"
-                entry = entry.replace("-db", "", 1)
+                entrynew = entry.replace("-db", "", 1)
             if tlp in groups:
                 emails[tlp] = emails[tlp] if tlp in emails else {}
-                emails[tlp][entry] = mld[entry]
+                emails[tlp][entry] = mld[entrynew]
     jdata = {}
     ddata = {}
     rdata = {}
