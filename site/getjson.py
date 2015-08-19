@@ -19,6 +19,10 @@ pmap = {
     'empire': 'empire-db'
 }
 
+mboxmap = {
+    'empire-db': 'empire'
+}
+
 ldapmap = {
     'webservices': 'ws'
 }
@@ -234,6 +238,9 @@ if m:
             tlp = entry.split("-")[0]
             if tlp in pmap:
                 tlp = pmap[tlp]
+            # fix for empire-db?
+            if re.match("^empire-db.+", entry):
+                tlp = "empire-db"
             if tlp in groups:
                 emails[tlp] = emails[tlp] if tlp in emails else {}
                 emails[tlp][entry] = mld[entry]
