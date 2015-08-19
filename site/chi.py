@@ -16,7 +16,8 @@ pmap = {
     'community': 'comdev',
     'ws': 'webservices',
     'hc': 'httpcomponents',
-    'whimsical': 'whimsy'
+    'whimsical': 'whimsy',
+    'empire': 'empire-db'
 }
 
 ldapmap = {
