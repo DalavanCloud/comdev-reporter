@@ -729,7 +729,8 @@ function renderChart(json, name, container, delivery) {
 				titleTextStyle: {
 					color: '#0000DD'
 				},
-				min: 0
+				min: 0,
+				minValue: 0
 			},
 		] : [{
 				title: 'Subscribers',
