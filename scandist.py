@@ -200,7 +200,7 @@ def processCommit(commit):
     paths = commit['changed']
     for path in paths:
         if trace:
-            print "Checking " + path
+            print("Checking " + path)
         # Is it a dist/release commit?
         match = re.match(RELEASE_MATCH, path)
         if match:
@@ -210,12 +210,12 @@ def processCommit(commit):
                 if match:
                     if paths[path]['flags'] == 'D  ':
                         if debug:
-                            print "Ignoring deletion of path '%s' " % path
+                            print("Ignoring deletion of path '%s' " % path)
                         continue  # it's a deletion; ignore        
                     fileName = match.group(1)
                     if isIgnored(fileName):
                         if debug:
-                            print "Ignoring update of file " + path
+                            print("Ignoring update of file %s" % path)
                         continue
                 # a single commit can potentially affect multiple projects
                 # create the dict and array if necessary
@@ -228,10 +228,10 @@ def processCommit(commit):
                     targets[project][committer].append(commit)
             else:
                 if trace:
-                    print "Ignoring incubator commit: " + path
+                    print("Ignoring incubator commit: %s" % path)
         else:
             if trace:
-                print "Did not match: " + path
+                print("Did not match: %s" % path)
 
 
 # PubSub class: handles connecting to a pubsub service and checking commits
@@ -264,7 +264,7 @@ class PubSubClient(Thread):
                     line = str( line ).rstrip('\r\n,').replace('\x00','') # strip away any old pre-0.9 commas from gitpubsub chunks and \0 in svnpubsub chunks
                 try:
                     if trace:
-                        print line
+                        print(line)
                     obj = json.loads(line)
                     if "commit" in obj and "repository" in obj['commit']:
                         if 'changed' in obj['commit']:
@@ -306,7 +306,7 @@ def main():
     if debug:
         print("Foreground test mode enabled")
     if not sendEmail:
-        print "Not sending email"
+        print("Not sending email")
         
   
     
@@ -315,7 +315,7 @@ def main():
     # 0d268c88-bc11-4956-87df-91683dc98e59 = https://dist.apache.org/repos/dist
     svn_thread.url = DEFAULT_URL
     if trace:
-        print "Using " + DEFAULT_URL + " matching " + RELEASE_MATCH
+        print("Using " + DEFAULT_URL + " matching " + RELEASE_MATCH)
     svn_thread.start()
     
     while True:
@@ -359,7 +359,7 @@ def processTargets():
                 tmpdict.update({'log' : log})
                 email = committer + "@apache.org"
                 receivers = [email, 'sebb@apache.org']
-                print "Notifying '%(committer)s' of new data pushed to '%(project)s' in r%(id)s" % tmpdict
+                print("Notifying '%(committer)s' of new data pushed to '%(project)s' in r%(id)s" % tmpdict)
                 message = """From: Apache Reporter Service <no-reply@reporter.apache.org>
 To: %(committer)s <%(committer)s.apache.org>
 Reply-To: dev@community.apache.org
@@ -388,20 +388,20 @@ The Apache Reporter Service.
                 """ % tmpdict;
                 
                 if not sendEmail:
-                    print "Not sending email to " + str(receivers)
+                    print("Not sending email to %s" % str(receivers))
                     if trace:
-                        print message
+                        print(message)
                     else:
-                        print "r%(id)s\n%(log)s" % tmpdict
+                        print("r%(id)s\n%(log)s" % tmpdict)
                     continue
             
                 try:
                    smtpObj = smtplib.SMTP('localhost')
                    smtpObj.sendmail(sender, receivers, message)  
                    #print message       
-                   print "Successfully sent email"
+                   print("Successfully sent email")
                 except Exception as ex:
-                   print "Error: unable to send email", ex
+                   print("Error: unable to send email", ex)
 
 
 ##############
