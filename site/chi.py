@@ -133,9 +133,13 @@ if m:
                 tlp = entry.split("-")[0]
                 if tlp in pmap:
                     tlp = pmap[tlp]
+                nentry = entry
+                if tlp == "empire":
+                    tlp = "empire-db"
+                    nentry = entry.replace("empire-", "empire-db-")
                 if True:
                     emails[tlp] = emails[tlp] if tlp in emails else {}
-                    emails[tlp][entry] = mld[entry]
+                    emails[tlp][entry] = mld[nentry]
         jdata = {}
         ddata = {}
         rdata = {}
