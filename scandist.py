@@ -188,7 +188,7 @@ IGNORED_FILES={
     }
 
 def isIgnored(filename):
-    return filename in IGNORED_FILES
+    return filename.endswith('/') or  filename in IGNORED_FILES
 
 # Extract out processing so it can be independently tested
 def processCommit(commit):
