@@ -168,10 +168,7 @@
   "November"
  ], 
  "climate": [
-  "February", 
-  "May", 
-  "August", 
-  "November"
+  "Next month: missing in August"
  ], 
  "cloudstack": [
   "March", 
@@ -180,10 +177,7 @@
   "December"
  ], 
  "cocoon": [
-  "February", 
-  "May", 
-  "August", 
-  "November"
+  "Next month: missing in August"
  ], 
  "comdev": [
   "February", 
@@ -270,10 +264,7 @@
   "October"
  ], 
  "drill": [
-  "February", 
-  "May", 
-  "August", 
-  "November"
+  "Next month: missing in August"
  ], 
  "empire-db": [
   "February", 
@@ -336,10 +327,7 @@
   "November"
  ], 
  "gora": [
-  "February", 
-  "May", 
-  "August", 
-  "November"
+  "Next month: missing in August"
  ], 
  "gump": [
   "March", 
@@ -396,10 +384,6 @@
   "November"
  ], 
  "ignite": [
-  "February", 
-  "May", 
-  "August", 
-  "November",
   "Next month: new, monthly through November"
  ], 
  "incubator": [
@@ -476,6 +460,9 @@
   "June", 
   "September", 
   "December"
+ ], 
+ "lens": [
+  "Next month: new, monthly through November"
  ], 
  "libcloud": [
   "February", 
@@ -561,6 +548,9 @@
   "July", 
   "October"
  ], 
+ "nifi": [
+  "Next month: new, monthly through October"
+ ], 
  "nutch": [
   "January", 
   "April", 
@@ -586,10 +576,7 @@
   "December"
  ], 
  "oltu": [
-  "February", 
-  "May", 
-  "August", 
-  "November"
+  "Next month: missing in August"
  ], 
  "onami": [
   "January", 
@@ -658,10 +645,7 @@
   "October"
  ], 
  "perl": [
-  "February", 
-  "May", 
-  "August", 
-  "November"
+  "Next month: missing in August"
  ], 
  "phoenix": [
   "February", 
@@ -728,6 +712,9 @@
   "May", 
   "August", 
   "November"
+ ], 
+ "serf": [
+  "Next month: new, monthly through November"
  ], 
  "servicemix": [
   "March", 
@@ -874,16 +861,7 @@
   "December"
  ], 
  "tomee": [
-  "January", 
-  "April", 
-  "July", 
-  "October"
- ], 
- "traffic server": [
-  "January", 
-  "April", 
-  "July", 
-  "October"
+  "Next month: missing in July, August"
  ], 
  "trafficserver": [
   "January", 
@@ -909,6 +887,9 @@
   "September", 
   "December"
  ], 
+ "usergrid": [
+  "Next month: new, monthly through November"
+ ], 
  "vcl": [
   "March", 
   "June", 
@@ -927,12 +908,6 @@
   "July", 
   "October"
  ], 
- "web services": [
-  "January", 
-  "April", 
-  "July", 
-  "October"
- ], 
  "webservices": [
   "January", 
   "April", 
@@ -940,11 +915,7 @@
   "October"
  ], 
  "whimsy": [
-  "February", 
-  "May", 
-  "August", 
-  "November",
-  "Next month: missing in August" 
+  "Next month: missing in August"
  ], 
  "wicket": [
   "March", 
@@ -959,6 +930,12 @@
   "December"
  ], 
  "wookie": [
+  "January", 
+  "April", 
+  "July", 
+  "October"
+ ], 
+ "ws": [
   "January", 
   "April", 
   "July", 
