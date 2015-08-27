@@ -78,6 +78,10 @@ function getWednesdays(mo, y) {
 
 	return wednesdays;
 }
+// s.match(/^(Every|Next) month/) does not seem to match Next month?
+function everyMonth(s) {
+    return s == 'Every month' || s.match(/^Next month/)
+}
 
 // Called by: GetAsyncJSON("reportingcycles.json?" + Math.random(), [pmc, reportdate, json.pdata[pmc].name], setReportDate) 
 function setReportDate(json, x) {
@@ -94,7 +98,7 @@ function setReportDate(json, x) {
 	for (i in json[pmc]) {
 		sm = json[pmc][i]
 		for (x in m) {
-			if (m[x] == sm || sm.match(/^(Every|Next) month/)) {
+			if (m[x] == sm || everyMonth(sm) {
 				dates.push(getWednesdays(x)[2])
 			}
 		}
@@ -104,7 +108,7 @@ function setReportDate(json, x) {
 	for (i in json[pmc]) {
 		sm = json[pmc][i]
 		for (x in m) {
-			if (m[x] == sm || sm.match(/^(Every|Next) month/)) {
+			if (m[x] == sm || everyMonth(sm)) {
 				dates.push(getWednesdays(x)[2])
 			}
 		}
