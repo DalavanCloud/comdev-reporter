@@ -53,6 +53,12 @@
   "September", 
   "December"
  ], 
+ "apr": [
+  "March", 
+  "June", 
+  "September", 
+  "December"
+ ], 
  "archiva": [
   "March", 
   "June", 
@@ -179,17 +185,17 @@
   "August", 
   "November"
  ], 
+ "comdev": [
+  "February", 
+  "May", 
+  "August", 
+  "November"
+ ], 
  "commons": [
   "March", 
   "June", 
   "September", 
   "December"
- ], 
- "community development": [
-  "February", 
-  "May", 
-  "August", 
-  "November"
  ], 
  "continuum": [
   "February", 
@@ -245,12 +251,6 @@
   "July", 
   "October"
  ], 
- "deltacloud": [
-  "January", 
-  "April", 
-  "July", 
-  "October"
- ], 
  "deltaspike": [
   "February", 
   "May", 
@@ -258,12 +258,6 @@
   "November"
  ], 
  "devicemap": [
-  "February", 
-  "May", 
-  "August", 
-  "November"
- ], 
- "directmemory": [
   "February", 
   "May", 
   "August", 
@@ -473,12 +467,6 @@
   "September", 
   "December"
  ], 
- "lenya": [
-  "February", 
-  "May", 
-  "August", 
-  "November"
- ], 
  "libcloud": [
   "February", 
   "May", 
@@ -497,7 +485,7 @@
   "September", 
   "December"
  ], 
- "lucene.net": [
+ "lucenenet": [
   "March", 
   "June", 
   "September", 
@@ -611,12 +599,6 @@
   "August", 
   "November"
  ], 
- "open climate workbench": [
-  "February", 
-  "May", 
-  "August", 
-  "November"
- ], 
  "openjpa": [
   "January", 
   "April", 
@@ -694,12 +676,6 @@
   "May", 
   "August", 
   "November"
- ], 
- "portable runtime": [
-  "March", 
-  "June", 
-  "September", 
-  "December"
  ], 
  "portals": [
   "March", 
@@ -995,17 +971,17 @@
   "August", 
   "November"
  ], 
- "xml graphics": [
-  "February", 
-  "May", 
-  "August", 
-  "November"
- ], 
  "xmlgraphics": [
   "February", 
   "May", 
   "August", 
   "November"
+ ], 
+ "zest": [
+  "March", 
+  "June", 
+  "September", 
+  "December"
  ], 
  "zookeeper": [
   "March", 
