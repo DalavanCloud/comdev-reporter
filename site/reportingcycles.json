@@ -395,6 +395,13 @@
   "August", 
   "November"
  ], 
+ "ignite": [
+  "February", 
+  "May", 
+  "August", 
+  "November",
+  "Next month: new, monthly through November"
+ ], 
  "incubator": [
   "Every month"
  ], 
@@ -936,7 +943,8 @@
   "February", 
   "May", 
   "August", 
-  "November"
+  "November", 
+  "Next month: missing in August" 
  ], 
  "wicket": [
   "March", 

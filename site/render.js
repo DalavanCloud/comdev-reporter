@@ -85,7 +85,6 @@ function setReportDate(json, x) {
 	var reportdate = x[1]
 	var fullname = (x[2] ? x[2] : "Unknown").replace(/Apache /, "")
 	var m = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
-	var em = 'Every month'
 	var today = new Date()
 
 	var dates = [] // the entries must be in date order
@@ -95,7 +94,7 @@ function setReportDate(json, x) {
 	for (i in json[pmc]) {
 		sm = json[pmc][i]
 		for (x in m) {
-			if (m[x] == sm || sm == em) {
+			if (m[x] == sm || sm.match(/^(Every|Next) month/)) {
 				dates.push(getWednesdays(x)[2])
 			}
 		}
@@ -105,7 +104,7 @@ function setReportDate(json, x) {
 	for (i in json[pmc]) {
 		sm = json[pmc][i]
 		for (x in m) {
-			if (m[x] == sm || sm == em) {
+			if (m[x] == sm || sm.match(/^(Every|Next) month/)) {
 				dates.push(getWednesdays(x)[2])
 			}
 		}
