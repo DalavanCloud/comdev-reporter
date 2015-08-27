@@ -78,9 +78,9 @@ function getWednesdays(mo, y) {
 
 	return wednesdays;
 }
-// s.match(/^(Every|Next) month/) does not seem to match Next month?
+// check if the entry is a wildcard month
 function everyMonth(s) {
-    if (s.indexOf('Next month') >= 0) {
+    if (s.indexOf('Next month') == 0) {
         return true
     }
     if (s == 'Every month') {
@@ -101,22 +101,32 @@ function setReportDate(json, x) {
 	if (!json[pmc]) {
 		pmc = fullname
 	}
+
+    rm = json[pmc] // reporting months for the pmc
+
+    // First check if the list contains an every month indicator
+    // This is necessary to ensure that the dates are added to the list in order
 	for (i in json[pmc]) {
 		sm = json[pmc][i]
-		em = everyMonth(sm)
-		for (x in m) {
-			if (em || m[x] == sm) {
+		if (everyMonth(sm)) {
+			rm = m // reset to every month
+			break
+		}
+	}
+
+	// Check the months in order, so it does not matter if the data is unordered
+	for (x in m) {
+		for (i in rm) {
+			if (m[x] == rm[i]) {
 				dates.push(getWednesdays(x)[2])
 			}
 		}
 	}
 	// cannot combine with the code above because that would destroy the order
 	var ny = today.getFullYear() + 1;
-	for (i in json[pmc]) {
-		sm = json[pmc][i]
-        em = everyMonth(sm)
-		for (x in m) {
-			if (em || m[x] == sm) {
+	for (x in m) {
+		for (i in rm) {
+			if (m[x] == rm[i]) {
 				dates.push(getWednesdays(x, ny)[2])
 			}
 		}
