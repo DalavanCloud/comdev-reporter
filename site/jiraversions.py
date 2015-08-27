@@ -51,7 +51,7 @@ if (isMember(user) or project in groups)  and jiraname:
        base64string = base64.encodestring('%s:%s' % ('githubbot', jirapass))[:-1]
        rdata = getReleaseData(project)
        try:
-           req = req = urllib2.Request("https://issues.apache.org/jira/rest/api/2/project/%s/versions" % jiraname)
+           req = urllib2.Request("https://issues.apache.org/jira/rest/api/2/project/%s/versions" % jiraname)
            req.add_header("Authorization", "Basic %s" % base64string)
            cdata = json.loads(urllib2.urlopen(req).read())
            for entry in cdata:

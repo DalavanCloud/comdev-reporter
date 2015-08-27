@@ -75,7 +75,7 @@ def getJIRAProjects(project):
             base64string = base64.encodestring('%s:%s' % ('githubbot', jirapass))[:-1]
     
             try:
-                req = req = urllib2.Request("https://issues.apache.org/jira/rest/api/2/project.json")
+                req = urllib2.Request("https://issues.apache.org/jira/rest/api/2/project.json")
                 req.add_header("Authorization", "Basic %s" % base64string)
                 x = json.loads(urllib2.urlopen(req).read())
                 with open("/var/www/reporter.apache.org/data/JIRA/projects.json", "w") as f:
@@ -111,10 +111,10 @@ def getJIRAS(project):
         base64string = base64.encodestring('%s:%s' % ('githubbot', jirapass))[:-1]
 
         try:
-            req = req = urllib2.Request("""https://issues.apache.org/jira/rest/api/2/search?jql=project%20=%20""" + project + """%20AND%20created%20%3E=%20-91d""")
+            req = urllib2.Request("""https://issues.apache.org/jira/rest/api/2/search?jql=project%20=%20""" + project + """%20AND%20created%20%3E=%20-91d""")
             req.add_header("Authorization", "Basic %s" % base64string)
             cdata = json.loads(urllib2.urlopen(req).read())
-            req = req = urllib2.Request("""https://issues.apache.org/jira/rest/api/2/search?jql=project%20=%20""" + project + """%20AND%20resolved%20%3E=%20-91d""")
+            req = urllib2.Request("""https://issues.apache.org/jira/rest/api/2/search?jql=project%20=%20""" + project + """%20AND%20resolved%20%3E=%20-91d""")
             req.add_header("Authorization", "Basic %s" % base64string)
             rdata = json.loads(urllib2.urlopen(req).read())
             with open("/var/www/reporter.apache.org/data/JIRA/%s.json" % project, "w") as f:
