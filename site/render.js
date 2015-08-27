@@ -65,12 +65,12 @@ function getWednesdays(mo, y) {
 
 	d.setDate(1);
 
-	// Get the first Monday in the month
+	// Get the first Wednesday (day 3 of week) in the month
 	while (d.getDay() !== 3) {
 		d.setDate(d.getDate() + 1);
 	}
 
-	// Get all the other Mondays in the month
+	// Get all the other Wednesdays in the month
 	while (d.getMonth() === month) {
 		wednesdays.push(new Date(d.getTime()));
 		d.setDate(d.getDate() + 7);
@@ -85,32 +85,30 @@ function setReportDate(json, x) {
 	var reportdate = x[1]
 	var fullname = (x[2] ? x[2] : "Unknown").replace(/Apache /, "")
 	var m = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+	var em = 'Every month'
 	var today = new Date()
 
-	var dates = []
+	var dates = [] // the entries must be in date order
 	if (!json[pmc]) {
 		pmc = fullname
 	}
 	for (i in json[pmc]) {
-		tm = 0;
 		sm = json[pmc][i]
 		for (x in m) {
-			if (m[x] == sm) {
-				tm = x;
+			if (m[x] == sm || sm == em) {
+				dates.push(getWednesdays(x)[2])
 			}
 		}
-		dates.push(getWednesdays(tm)[2])
 	}
+	// cannot combine with the code above because that would destroy the order
 	var ny = today.getFullYear() + 1;
 	for (i in json[pmc]) {
-		tm = 0;
 		sm = json[pmc][i]
 		for (x in m) {
-			if (m[x] == sm) {
-				tm = x;
+			if (m[x] == sm || sm == em) {
+				dates.push(getWednesdays(x)[2])
 			}
 		}
-		dates.push(getWednesdays(tm)[2], ny)
 	}
 	var nextdate = dates[0];
 	while (nextdate < today) {
@@ -118,7 +116,8 @@ function setReportDate(json, x) {
 	}
 	reportdate.innerHTML += "<b>Next report date: " + (nextdate ? nextdate.toDateString() : "Unknown(?)") + "</b>"
 	if (nextdate) {
-		var link = "https://svn.apache.org/repos/private/foundation/board/board_agenda_" +  nextdate.getFullYear() + "_" + (nextdate.getMonth() < 9 ? "0" : "") + (nextdate.getMonth() +1) + "_" + nextdate.getDate() + ".txt"
+		var link = "https://svn.apache.org/repos/private/foundation/board/board_agenda_" +  nextdate.getFullYear() +
+					"_" + (nextdate.getMonth() < 9 ? "0" : "") + (nextdate.getMonth() +1) + "_" + nextdate.getDate() + ".txt"
 		reportdate.innerHTML += "<br>File your report in <a href='"+link+"'>"+link+"</a> when it has been seeded."
 	}
 	
