@@ -115,7 +115,7 @@ function setReportDate(json, x) {
 		sm = json[pmc][i]
 		for (x in m) {
 			if (m[x] == sm || everyMonth(sm)) {
-				dates.push(getWednesdays(x)[2], ny)
+				dates.push(getWednesdays(x, ny)[2])
 			}
 		}
 	}
