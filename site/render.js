@@ -80,7 +80,7 @@ function getWednesdays(mo, y) {
 }
 // s.match(/^(Every|Next) month/) does not seem to match Next month?
 function everyMonth(s) {
-    if (s.indexOf("Next month") == 0) {
+    if (s.indexOf('Next month') >= 0) {
         return true
     }
     if (s == 'Every month') {
