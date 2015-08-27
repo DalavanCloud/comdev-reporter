@@ -4,6 +4,7 @@ var templates = {}
 var nproject = null;
 
 // Function for async fetching of a single JSON file with JS callback
+// Parses Url as JSON and calls callback(JSON, xstate)
 
 function GetAsyncJSON(theUrl, xstate, callback) {
 	var xmlHttp = null;
@@ -78,6 +79,7 @@ function getWednesdays(mo, y) {
 	return wednesdays;
 }
 
+// Called by: GetAsyncJSON("reportingcycles.json?" + Math.random(), [pmc, reportdate, json.pdata[pmc].name], setReportDate) 
 function setReportDate(json, x) {
 	var pmc = x[0]
 	var reportdate = x[1]
@@ -609,6 +611,7 @@ function renderFrontPage(json) {
 
 }
 
+// Called by: GetAsyncJSON('/getjson.py?only='+ this.value, this.value, mergeData) 
 function mergeData(json, pmc) {
 	if (jsdata.pmcs.indexOf(pmc) >= 0) {
 		return
