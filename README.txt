@@ -58,15 +58,26 @@ Scripts:
   Updates data/releases/%s.json project from 
 
 Data file consumers:
+Note: the prefix ~pao means that the file is held under the projects.apache.org workspace
 - chi.py
   data/maildata_extended.json
   data/mailinglists.json
   data/pmcs.json
   data/projects.json
   data/releases/%s.json % project
-  site/json/foundation/pmcs.json
-  site/json/foundation/chairs.json
-  site/json/projects/%s.json % project
+  ~pao/site/json/foundation/pmcs.json
+  ~pao/site/json/foundation/chairs.json
+  ~pao/site/json/projects/%s.json % project
+
+- deathnote.py
+  data/maildata_extended.json
+  data/mailinglists.json
+  data/pmcs.json
+  data/projects.json
+  data/releases/%s.json % project
+  ~pao/site/json/foundation/pmcs.json
+  ~pao/site/json/foundation/chairs.json
+  ~pao/site/json/projects/%s.json % project
 
 - getjson.py
   data/health.json
@@ -74,11 +85,15 @@ Data file consumers:
   data/mailinglists.json
   data/pmcs.json
   data/projects.json
-  data/releases/%s.json
+  data/releases/%s.json % project
   data/JIRA/projects.json
-  site/json/foundation/pmcs.json
-  site/json/foundation/chairs.json
-  site/json/projects/%s.json % project
+  data/JIRA/%s.json % project
+  ~pao/site/json/foundation/pmcs.json
+  ~pao/site/json/foundation/chairs.json
+  ~pao/site/json/projects/%s.json % project
+
+- render.js
+  site/reportingcycles.json
 
 TODO
  - How is site/reportingcycles.json created/maintained?
