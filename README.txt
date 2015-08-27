@@ -54,8 +54,8 @@ Scripts:
 - site/jiraversions.py
   Updates data/releases/%s.json % project
 
-- parseversions.py
-  Updates data/releases/%s.json project from 
+- parseversions.py - is this used anywhere?
+  Updates data/releases/%s.json project from JIRA
 
 Data file consumers:
 Note: the prefix ~pao means that the file is held under the projects.apache.org workspace
@@ -94,6 +94,9 @@ Note: the prefix ~pao means that the file is held under the projects.apache.org 
 
 - render.js
   site/reportingcycles.json
+  site/getjson.py?only=project
+  site/jiraversions.py?project=<pmc>&jiraname=<project>&prepend=<prepend>
+  site/addrelease.py?json=true&committee=xxx&version=xxx&date=xxx
 
 TODO
  - How is site/reportingcycles.json created/maintained?
