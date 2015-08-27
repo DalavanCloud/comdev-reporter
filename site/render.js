@@ -114,6 +114,7 @@ function setReportDate(json, x) {
 	while (nextdate < today) {
 		nextdate = dates.shift();
 	}
+    reportdate.innerHTML += "<b>Reporting schedule: " + (json[pmc] ? json[pmc].join(', ') : "Unknown(?)") + "</b><br>"
 	reportdate.innerHTML += "<b>Next report date: " + (nextdate ? nextdate.toDateString() : "Unknown(?)") + "</b>"
 	if (nextdate) {
 		var link = "https://svn.apache.org/repos/private/foundation/board/board_agenda_" +  nextdate.getFullYear() +
