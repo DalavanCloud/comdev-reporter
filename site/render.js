@@ -103,8 +103,9 @@ function setReportDate(json, x) {
 	}
 	for (i in json[pmc]) {
 		sm = json[pmc][i]
+		em = everyMonth(sm)
 		for (x in m) {
-			if (m[x] == sm || everyMonth(sm)) {
+			if (em || m[x] == sm) {
 				dates.push(getWednesdays(x)[2])
 			}
 		}
@@ -113,8 +114,9 @@ function setReportDate(json, x) {
 	var ny = today.getFullYear() + 1;
 	for (i in json[pmc]) {
 		sm = json[pmc][i]
+        em = everyMonth(sm)
 		for (x in m) {
-			if (m[x] == sm || everyMonth(sm)) {
+			if (em || m[x] == sm) {
 				dates.push(getWednesdays(x, ny)[2])
 			}
 		}
