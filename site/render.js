@@ -79,17 +79,19 @@ function getWednesdays(mo, y) {
 	return wednesdays;
 }
 // check if the entry is a wildcard month
+
 function everyMonth(s) {
-    if (s.indexOf('Next month') == 0) {
-        return true
-    }
-    if (s == 'Every month') {
-        return true
-    }
-    return false
+	if (s.indexOf('Next month') == 0) {
+		return true
+	}
+	if (s == 'Every month') {
+		return true
+	}
+	return false
 }
 
 // Called by: GetAsyncJSON("reportingcycles.json?" + Math.random(), [pmc, reportdate, json.pdata[pmc].name], setReportDate) 
+
 function setReportDate(json, x) {
 	var pmc = x[0]
 	var reportdate = x[1]
@@ -102,10 +104,10 @@ function setReportDate(json, x) {
 		pmc = fullname
 	}
 
-    rm = json[pmc] // reporting months for the pmc
+	rm = json[pmc] // reporting months for the pmc
 
-    // First check if the list contains an every month indicator
-    // This is necessary to ensure that the dates are added to the list in order
+	// First check if the list contains an every month indicator
+	// This is necessary to ensure that the dates are added to the list in order
 	for (i in json[pmc]) {
 		sm = json[pmc][i]
 		if (everyMonth(sm)) {
@@ -135,14 +137,14 @@ function setReportDate(json, x) {
 	while (nextdate < today) {
 		nextdate = dates.shift();
 	}
-    reportdate.innerHTML += "<b>Reporting schedule:</b> " + (json[pmc] ? json[pmc].join(', ') : "Unknown(?)") + "<br>"
+	reportdate.innerHTML += "<b>Reporting schedule:</b> " + (json[pmc] ? json[pmc].join(', ') : "Unknown(?)") + "<br>"
 	reportdate.innerHTML += "<b>Next report date: " + (nextdate ? nextdate.toDateString() : "Unknown(?)") + "</b>"
 	if (nextdate) {
-		var link = "https://svn.apache.org/repos/private/foundation/board/board_agenda_" +  nextdate.getFullYear() +
-					"_" + (nextdate.getMonth() < 9 ? "0" : "") + (nextdate.getMonth() +1) + "_" + nextdate.getDate() + ".txt"
-		reportdate.innerHTML += "<br>File your report in <a href='"+link+"'>"+link+"</a> when it has been seeded."
+		var link = "https://svn.apache.org/repos/private/foundation/board/board_agenda_" + nextdate.getFullYear() +
+			"_" + (nextdate.getMonth() < 9 ? "0" : "") + (nextdate.getMonth() + 1) + "_" + nextdate.getDate() + ".txt"
+		reportdate.innerHTML += "<br>File your report in <a href='" + link + "'>" + link + "</a> when it has been seeded."
 	}
-	
+
 }
 
 function buildPanel(pmc, title) {
@@ -238,7 +240,7 @@ function renderFrontPage(json) {
 		addLine(pmc, "## Activity:")
 		addLine(pmc, " - <font color='red'>TODO - the PMC <b><u>MUST</u></b> provide this information</font>")
 		addLine(pmc)
-		
+
 		addLine(pmc, "## Health report:")
 		addLine(pmc, " - <font color='red'>TODO - Please use this paragraph to elaborate on why the current project activity (mails, commits, bugs etc) is at its current level.</font>")
 		addLine(pmc)
@@ -257,7 +259,7 @@ function renderFrontPage(json) {
 		var health = document.createElement('p');
 		if (json.health[pmc] && !isNaN(json.health[pmc]['cscore'])) {
 			health.style.marginTop = "10px"
-			health.innerHTML = "<b>Committee Health score:</b> <a href='/chi.py#"+pmc+"'><u><font color='" + hcolors[json.health[pmc]['cscore']] + "'>" + (6.33+(json.health[pmc]['score']*-1.00*(20/12.25))).toFixed(2) + " (" + hvalues[json.health[pmc]['cscore']] + ")</u></font></a>"
+			health.innerHTML = "<b>Committee Health score:</b> <a href='/chi.py#" + pmc + "'><u><font color='" + hcolors[json.health[pmc]['cscore']] + "'>" + (6.33 + (json.health[pmc]['score'] * -1.00 * (20 / 12.25))).toFixed(2) + " (" + hvalues[json.health[pmc]['cscore']] + ")</u></font></a>"
 			obj.appendChild(health)
 		}
 		pcontainer.appendChild(obj)
@@ -299,7 +301,7 @@ function renderFrontPage(json) {
 		} else {
 			changes.innerHTML += "<h5>Changes within the last 3 months:</h5>"
 			var l = 0;
-			
+
 			// pre-flight check
 			var npmc = 0;
 			for (i in json.changes[pmc].pmc) {
@@ -311,8 +313,8 @@ function renderFrontPage(json) {
 			if (npmc > 1) {
 				addLine(pmc, " - New LDAP committee group members:")
 			}
-			
-			
+
+
 			for (i in json.changes[pmc].pmc) {
 				var entry = json.changes[pmc].pmc[i];
 				if (entry[1] > np) {
@@ -322,7 +324,7 @@ function renderFrontPage(json) {
 				if (entry[1] > after.getTime() / 1000) {
 					l++;
 					changes.innerHTML += "&rarr; " + entry[0] + " was added to the LDAP committee group on " + new Date(entry[1] * 1000).toDateString() + "<br>";
-					addLine(pmc, (npmc>1? "   " : "") + " - " + entry[0] + " was added to the LDAP committee group on " + new Date(entry[1] * 1000).toDateString())
+					addLine(pmc, (npmc > 1 ? "   " : "") + " - " + entry[0] + " was added to the LDAP committee group on " + new Date(entry[1] * 1000).toDateString())
 				}
 			}
 			if (l == 0) {
@@ -335,8 +337,8 @@ function renderFrontPage(json) {
 				}
 				changes.innerHTML += "&rarr; " + "<b>Latest LDAP committee group addition: </b>" + new Date(np * 1000).toDateString() + " (" + npn + ")<br>"
 			}
-			
-			
+
+
 			// pre-flight check
 			var ncom = 0;
 			for (i in json.changes[pmc].committer) {
@@ -357,14 +359,14 @@ function renderFrontPage(json) {
 				if (entry[1] > after.getTime() / 1000) {
 					l++;
 					changes.innerHTML += "&rarr; " + entry[0] + " was added as a committer on " + new Date(entry[1] * 1000).toDateString() + "<br>";
-					addLine(pmc, (ncom>1? "   " : "") + " - " + entry[0] + " was added as a committer on " + new Date(entry[1] * 1000).toDateString())
+					addLine(pmc, (ncom > 1 ? "   " : "") + " - " + entry[0] + " was added as a committer on " + new Date(entry[1] * 1000).toDateString())
 				}
 			}
 			if (l == 0) {
 				changes.innerHTML += "&rarr; <font color='red'><b>No new committers in the last 3 months.</b></font><br>";
 				addLine(pmc, " - No new committers added in the last 3 months")
 			}
-			
+
 			if (ncn) {
 				if (nc < after.getTime() / 1000) {
 					addLine(pmc, " - Last committer addition was " + ncn + " at " + new Date(nc * 1000).toDateString())
@@ -572,7 +574,7 @@ function renderFrontPage(json) {
 		dialog.setAttribute("style", "display: none;")
 		dialog.innerHTML = "<form><b>JIRA Project:</b><input type='text' name='jira' placeholder='FOO'><br><b>Optional prepend:</b> <input name='prepend' type='text' placeholder='Foo'/><br><input type='button' value='Fetch from JIRA' onclick='fetchJIRA(\"" + pmc + "\", this.form[\"jira\"].value, this.form[\"prepend\"].value);'></form><p>If you have multiple JIRA projects and they only have the version number in their release versions, please enter the component name in the 'prepend' field.</p>"
 		document.getElementById('tab_' + pmc).appendChild(dialog)
-		
+
 		// Manually add release dialog
 		var rdialog = document.createElement('div');
 		rdialog.setAttribute("id", "rdialog_" + pmc);
@@ -618,7 +620,7 @@ function renderFrontPage(json) {
 			json.all.unshift("-----------------------")
 			json.all.unshift("Members-only Quick-nav:")
 		}
-		
+
 		var sel = makeSelect("project", json.all, [])
 		sel.setAttribute("style", "height: 32px !important; padding: 0px !important; margin: 0px !important; margin-left: 32px !important;")
 		sel.style = "break-before: never; break-after: never; float: left"
@@ -633,6 +635,7 @@ function renderFrontPage(json) {
 }
 
 // Called by: GetAsyncJSON('/getjson.py?only='+ this.value, this.value, mergeData) 
+
 function mergeData(json, pmc) {
 	if (jsdata.pmcs.indexOf(pmc) >= 0) {
 		return
@@ -640,12 +643,12 @@ function mergeData(json, pmc) {
 	if (nproject && nproject.length > 0) {
 		for (i in jsdata.pmcs) {
 			if (jsdata.pmcs[i] == nproject) {
-				jsdata.pmcs.splice(i,1);
+				jsdata.pmcs.splice(i, 1);
 				break
 			}
 		}
 	}
-	
+
 	var todo = new Array('count', 'mail', 'delivery', 'jira', 'changes', 'pdata', 'releases', 'keys', 'health')
 	for (i in todo) {
 		var key = todo[i]
@@ -881,8 +884,8 @@ function fetchJIRA(pmc, project, prepend) {
 function addRelease(pmc, version, date) {
 	if (version && version.length > 1 && date.match(/^(\d\d\d\d)-(\d\d)-(\d\d)$/)) {
 		var x = date.split("-");
-		var y = new Date(x[0],parseInt(x[1])-1,parseInt(x[2]));
-		var nn = parseInt(y.getTime()/1000);
+		var y = new Date(x[0], parseInt(x[1]) - 1, parseInt(x[2]));
+		var nn = parseInt(y.getTime() / 1000);
 		GetAsyncJSON("/addrelease.py?json=true&committee=" + pmc + "&version=" + escape(version) + "&date=" + nn, null, function(json) {
 			if (json && json.versions) {
 				var n = 0;
