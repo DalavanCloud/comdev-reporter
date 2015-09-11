@@ -2,9 +2,11 @@
 
 import re, os, json, urllib2, base64, time
 from os import listdir
-from os.path import isfile, join
+from os.path import isfile, join, dirname, abspath
+from inspect import getsourcefile
 
-MYHOME = "/var/www/reporter.apache.org"
+# MYHOME = "/var/www/reporter.apache.org"
+MYHOME = dirname(abspath(getsourcefile(lambda:0))) # automatically work out home location so can run the code anywhere
 mypath = "%s/data/JIRA" % MYHOME
 print("Scanning mypath=%s" % mypath)
 myfiles = [ f for f in listdir(mypath) if isfile(join(mypath,f)) ]
