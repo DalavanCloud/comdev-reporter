@@ -359,7 +359,7 @@ def processTargets():
                 tmpdict.update({'log' : log})
                 email = committer + "@apache.org"
                 tmpdict.update({'email' : email})
-                receivers = [email, 'sebb@apache.org']
+                receivers = [email]
                 print("Notifying '%(committer)s' of new data pushed to '%(project)s' in r%(id)s" % tmpdict)
                 message = """From: Apache Reporter Service <no-reply@reporter.apache.org>
 To: %(committer)s <%(email)s>
