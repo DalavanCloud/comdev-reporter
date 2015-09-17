@@ -196,6 +196,7 @@ def processCommit(commit):
     # "changed": {"comdev/reporter.apache.org/trunk/scandist.py": {"flags": "U  "}}, 
     # "date": "2015-07-13 13:38:33 +0000 (Mon, 13 Jul 2015)", "type": "svn", "id": 1690668}
     #
+    print("%(id)s %(date)s %(log)s" % commit)
     # Note: a single commit can change multiple paths
     paths = commit['changed']
     for path in paths:
