@@ -3,7 +3,6 @@ This file is an attempt to start to document how the reporter.apache.org site is
 It is currently very rudimentary.
 
 
-
 Javascript and CSS are Foundation
 http://foundation.zurb.com
 Current version seems to be 5.5.1 (see start of site/css/foundation.css)
