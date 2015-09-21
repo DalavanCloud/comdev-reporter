@@ -29,7 +29,7 @@ Crontab:
 00 4,12,20 * * * cd /var/www/reporter.apache.org/data && python3.4 parsepmcs.py
 00 01      * * * cd /var/www/reporter.apache.org/ && python mailglomper.py
 00 09      * * * cd /var/www/reporter.apache.org/ && python readjira.py
-00 12      * * * curl "(redacted)" > /var/www/reporter.apache.org/data/mailinglists.json
+00 12      * * * curl -sS "(redacted)" > /var/www/reporter.apache.org/data/mailinglists.json
 
 Scripts:
 - data/parsepmcs.py
