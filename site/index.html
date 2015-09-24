@@ -136,7 +136,7 @@
    google.load("visualization", "1", {packages:["corechart", "timeline"]});
    google.setOnLoadCallback(function() {
       var project = document.location.search.substr(1);
-      GetAsyncJSON("/getjson.py?" + project, project, renderFrontPage)
+      GetAsyncJSON("getjson.py?" + project, project, renderFrontPage)
    });
 </script>
 </body>

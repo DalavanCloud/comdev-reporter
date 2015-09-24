@@ -638,7 +638,7 @@ function renderFrontPage(json) {
 		var sel = makeSelect("project", json.all, [])
 		sel.setAttribute("style", "height: 32px !important; padding: 0px !important; margin: 0px !important; margin-left: 32px !important;")
 		sel.style = "break-before: never; break-after: never; float: left"
-		sel.setAttribute("onchange", "GetAsyncJSON('/getjson.py?only='+ this.value, this.value, mergeData);")
+		sel.setAttribute("onchange", "GetAsyncJSON('getjson.py?only='+ this.value, this.value, mergeData);")
 		btn.appendChild(sel)
 		panellist.appendChild(btn)
 
@@ -648,7 +648,7 @@ function renderFrontPage(json) {
 
 }
 
-// Called by: GetAsyncJSON('/getjson.py?only='+ this.value, this.value, mergeData) 
+// Called by: GetAsyncJSON('getjson.py?only='+ this.value, this.value, mergeData) 
 
 function mergeData(json, pmc) {
 	if (jsdata.pmcs.indexOf(pmc) >= 0) {
@@ -875,7 +875,7 @@ function renderReleaseChart(releases, name, container) {
 
 function fetchJIRA(pmc, project, prepend) {
 	if (project && project.length > 1) {
-		GetAsyncJSON("/jiraversions.py?project=" + pmc + "&jiraname=" + project + "&prepend=" + prepend, null, function(json) {
+		GetAsyncJSON("jiraversions.py?project=" + pmc + "&jiraname=" + project + "&prepend=" + prepend, null, function(json) {
 			if (json && json.versions) {
 				var n = 0;
 				for (version in json.versions) {
@@ -900,7 +900,7 @@ function addRelease(pmc, version, date) {
 		var x = date.split("-");
 		var y = new Date(x[0], parseInt(x[1]) - 1, parseInt(x[2]));
 		var nn = parseInt(y.getTime() / 1000);
-		GetAsyncJSON("/addrelease.py?json=true&committee=" + pmc + "&version=" + escape(version) + "&date=" + nn, null, function(json) {
+		GetAsyncJSON("addrelease.py?json=true&committee=" + pmc + "&version=" + escape(version) + "&date=" + nn, null, function(json) {
 			if (json && json.versions) {
 				var n = 0;
 				for (version in json.versions) {
