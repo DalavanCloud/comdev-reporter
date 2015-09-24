@@ -92,11 +92,25 @@ function everyMonth(s) {
 
 // Called by: GetAsyncJSON("reportingcycles.json?" + Math.random(), [pmc, reportdate, json.pdata[pmc].name], setReportDate) 
 
+var m = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+
+// Format the report month array. Assumes that non-month values appear first
+
+function formatRm(array) {
+    var first = array[0]
+    if (array.length == 1) { // e.g. every month
+        return first
+    }
+    if (m.indexOf(first) < 0) { // non-month value initially
+        return  first.concat('; (default: ', array.slice(1).join(', '),')')
+    }
+    return array.join('% ')
+}
+
 function setReportDate(json, x) {
 	var pmc = x[0]
 	var reportdate = x[1]
 	var fullname = (x[2] ? x[2] : "Unknown").replace(/Apache /, "")
-	var m = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
 	var today = new Date()
 
 	var dates = [] // the entries must be in date order
@@ -137,7 +151,7 @@ function setReportDate(json, x) {
 	while (nextdate < today) {
 		nextdate = dates.shift();
 	}
-	reportdate.innerHTML += "<b>Reporting schedule:</b> " + (json[pmc] ? json[pmc].join(', ') : "Unknown(?)") + "<br>"
+	reportdate.innerHTML += "<b>Reporting schedule:</b> " + (json[pmc] ? formatRm(json[pmc]) : "Unknown(?)") + "<br>"
 	reportdate.innerHTML += "<b>Next report date: " + (nextdate ? nextdate.toDateString() : "Unknown(?)") + "</b>"
 	if (nextdate) {
 		var link = "https://svn.apache.org/repos/private/foundation/board/board_agenda_" + nextdate.getFullYear() +
