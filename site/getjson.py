@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-import os, sys, re, json, subprocess, urllib, time
+import os, sys, re, json, subprocess, time
 import base64, urllib2, cgi
 
 form = cgi.FieldStorage();
