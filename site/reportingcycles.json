@@ -102,6 +102,7 @@
   "December"
  ],
  "bloodhound": [
+  "Next month: missing in September",
   "March",
   "June",
   "September",
@@ -168,7 +169,10 @@
   "November"
  ],
  "climate": [
-  "Next month: missing in August"
+  "February",
+  "May",
+  "August",
+  "November"
  ],
  "cloudstack": [
   "March",
@@ -177,7 +181,10 @@
   "December"
  ],
  "cocoon": [
-  "Next month: missing in August"
+  "February",
+  "May",
+  "August",
+  "November"
  ],
  "comdev": [
   "February",
@@ -264,7 +271,11 @@
   "October"
  ],
  "drill": [
-  "Next month: missing in August"
+  "Next month: missing in August, September",
+  "February",
+  "May",
+  "August",
+  "November"
  ],
  "empire-db": [
   "February",
@@ -327,7 +338,10 @@
   "November"
  ],
  "gora": [
-  "Next month: missing in August"
+  "February",
+  "May",
+  "August",
+  "November"
  ],
  "gump": [
   "March",
@@ -354,6 +368,7 @@
   "October"
  ],
  "helix": [
+  "Next month: missing in September",
   "March",
   "June",
   "September",
@@ -384,7 +399,11 @@
   "November"
  ],
  "ignite": [
-  "Next month: new, monthly through November"
+  "Next month: new, monthly through November",
+  "February",
+  "May",
+  "August",
+  "November"
  ],
  "incubator": [
   "Every month"
@@ -462,7 +481,11 @@
   "December"
  ],
  "lens": [
-  "Next month: new, monthly through November"
+  "Next month: new, monthly through November",
+  "February",
+  "May",
+  "August",
+  "November"
  ],
  "libcloud": [
   "February",
@@ -483,6 +506,7 @@
   "December"
  ],
  "lucenenet": [
+  "Next month: missing in September",
   "March",
   "June",
   "September",
@@ -549,7 +573,11 @@
   "October"
  ],
  "nifi": [
-  "Next month: new, monthly through October"
+  "Next month: new, monthly through October",
+  "January",
+  "April",
+  "July",
+  "October"
  ],
  "nutch": [
   "January",
@@ -576,7 +604,10 @@
   "December"
  ],
  "oltu": [
-  "Next month: missing in August"
+  "February",
+  "May",
+  "August",
+  "November"
  ],
  "onami": [
   "January",
@@ -645,7 +676,10 @@
   "October"
  ],
  "perl": [
-  "Next month: missing in August"
+  "February",
+  "May",
+  "August",
+  "November"
  ],
  "phoenix": [
   "February",
@@ -714,7 +748,11 @@
   "November"
  ],
  "serf": [
-  "Next month: new, monthly through November"
+  "Next month: new, monthly through November",
+  "February",
+  "May",
+  "August",
+  "November"
  ],
  "servicemix": [
   "March",
@@ -801,6 +839,7 @@
   "November"
  ],
  "synapse": [
+  "Next month: not approved in September",
   "March",
   "June",
   "September",
@@ -861,7 +900,10 @@
   "December"
  ],
  "tomee": [
-  "Next month: missing in July, August"
+  "January",
+  "April",
+  "July",
+  "October"
  ],
  "trafficserver": [
   "January",
@@ -888,7 +930,11 @@
   "December"
  ],
  "usergrid": [
-  "Next month: new, monthly through November"
+  "Next month: new, monthly through November",
+  "February",
+  "May",
+  "August",
+  "November"
  ],
  "vcl": [
   "March",
@@ -915,7 +961,10 @@
   "October"
  ],
  "whimsy": [
-  "Next month: missing in August"
+  "February",
+  "May",
+  "August",
+  "November"
  ],
  "wicket": [
   "March",
@@ -924,6 +973,7 @@
   "December"
  ],
  "wink": [
+  "Next month: missing in September",
   "March",
   "June",
   "September",
@@ -958,6 +1008,13 @@
   "May",
   "August",
   "November"
+ ],
+ "yetus": [
+  "Next month: new, monthly through December",
+  "March",
+  "June",
+  "September",
+  "December"
  ],
  "zest": [
   "March",
