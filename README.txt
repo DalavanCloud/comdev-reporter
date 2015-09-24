@@ -98,8 +98,11 @@ Note: the prefix ~pao means that the file is held under the projects.apache.org 
   site/jiraversions.py?project=<pmc>&jiraname=<project>&prepend=<prepend>
   site/addrelease.py?json=true&committee=xxx&version=xxx&date=xxx
 
+NOTE
+  The file site/reportingcycles.json is updated by the reportingcycles.sh script
+  which is run under projects.a.o.
+
 TODO
- - How is site/reportingcycles.json created/maintained?
 
  - ensure that pubsubber.py is started on reboot, using a command of the form:
 cd /var/www/projects.apache.org/scripts/cronjobs &&\
