@@ -1,974 +1,974 @@
 {
  "abdera": [
-  "February", 
-  "May", 
-  "August", 
+  "February",
+  "May",
+  "August",
   "November"
- ], 
+ ],
  "accumulo": [
-  "January", 
-  "April", 
-  "July", 
+  "January",
+  "April",
+  "July",
   "October"
- ], 
+ ],
  "ace": [
-  "January", 
-  "April", 
-  "July", 
+  "January",
+  "April",
+  "July",
   "October"
- ], 
+ ],
  "activemq": [
-  "January", 
-  "April", 
-  "July", 
+  "January",
+  "April",
+  "July",
   "October"
- ], 
+ ],
  "airavata": [
-  "January", 
-  "April", 
-  "July", 
+  "January",
+  "April",
+  "July",
   "October"
- ], 
+ ],
  "allura": [
-  "March", 
-  "June", 
-  "September", 
+  "March",
+  "June",
+  "September",
   "December"
- ], 
+ ],
  "ambari": [
-  "February", 
-  "May", 
-  "August", 
+  "February",
+  "May",
+  "August",
   "November"
- ], 
+ ],
  "ant": [
-  "February", 
-  "May", 
-  "August", 
+  "February",
+  "May",
+  "August",
   "November"
- ], 
+ ],
  "any23": [
-  "March", 
-  "June", 
-  "September", 
+  "March",
+  "June",
+  "September",
   "December"
- ], 
+ ],
  "apr": [
-  "March", 
-  "June", 
-  "September", 
+  "March",
+  "June",
+  "September",
   "December"
- ], 
+ ],
  "archiva": [
-  "March", 
-  "June", 
-  "September", 
+  "March",
+  "June",
+  "September",
   "December"
- ], 
+ ],
  "aries": [
-  "January", 
-  "April", 
-  "July", 
+  "January",
+  "April",
+  "July",
   "October"
- ], 
+ ],
  "attic": [
-  "January", 
-  "April", 
-  "July", 
+  "January",
+  "April",
+  "July",
   "October"
- ], 
+ ],
  "aurora": [
-  "March", 
-  "June", 
-  "September", 
+  "March",
+  "June",
+  "September",
   "December"
- ], 
+ ],
  "avro": [
-  "January", 
-  "April", 
-  "July", 
+  "January",
+  "April",
+  "July",
   "October"
- ], 
+ ],
  "axis": [
-  "March", 
-  "June", 
-  "September", 
+  "March",
+  "June",
+  "September",
   "December"
- ], 
+ ],
  "bigtop": [
-  "March", 
-  "June", 
-  "September", 
+  "March",
+  "June",
+  "September",
   "December"
- ], 
+ ],
  "bloodhound": [
-  "March", 
-  "June", 
-  "September", 
+  "March",
+  "June",
+  "September",
   "December"
- ], 
+ ],
  "bookkeeper": [
-  "February", 
-  "May", 
-  "August", 
+  "February",
+  "May",
+  "August",
   "November"
- ], 
+ ],
  "buildr": [
-  "February", 
-  "May", 
-  "August", 
+  "February",
+  "May",
+  "August",
   "November"
- ], 
+ ],
  "bval": [
-  "March", 
-  "June", 
-  "September", 
+  "March",
+  "June",
+  "September",
   "December"
- ], 
+ ],
  "camel": [
-  "March", 
-  "June", 
-  "September", 
+  "March",
+  "June",
+  "September",
   "December"
- ], 
+ ],
  "cassandra": [
-  "February", 
-  "May", 
-  "August", 
+  "February",
+  "May",
+  "August",
   "November"
- ], 
+ ],
  "cayenne": [
-  "March", 
-  "June", 
-  "September", 
+  "March",
+  "June",
+  "September",
   "December"
- ], 
+ ],
  "celix": [
-  "January", 
-  "April", 
-  "July", 
+  "January",
+  "April",
+  "July",
   "October"
- ], 
+ ],
  "chemistry": [
-  "March", 
-  "June", 
-  "September", 
+  "March",
+  "June",
+  "September",
   "December"
- ], 
+ ],
  "chukwa": [
-  "January", 
-  "April", 
-  "July", 
+  "January",
+  "April",
+  "July",
   "October"
- ], 
+ ],
  "clerezza": [
-  "February", 
-  "May", 
-  "August", 
+  "February",
+  "May",
+  "August",
   "November"
- ], 
+ ],
  "climate": [
   "Next month: missing in August"
- ], 
+ ],
  "cloudstack": [
-  "March", 
-  "June", 
-  "September", 
+  "March",
+  "June",
+  "September",
   "December"
- ], 
+ ],
  "cocoon": [
   "Next month: missing in August"
- ], 
+ ],
  "comdev": [
-  "February", 
-  "May", 
-  "August", 
+  "February",
+  "May",
+  "August",
   "November"
- ], 
+ ],
  "commons": [
-  "March", 
-  "June", 
-  "September", 
+  "March",
+  "June",
+  "September",
   "December"
- ], 
+ ],
  "continuum": [
-  "February", 
-  "May", 
-  "August", 
+  "February",
+  "May",
+  "August",
   "November"
- ], 
+ ],
  "cordova": [
-  "March", 
-  "June", 
-  "September", 
+  "March",
+  "June",
+  "September",
   "December"
- ], 
+ ],
  "couchdb": [
-  "February", 
-  "May", 
-  "August", 
+  "February",
+  "May",
+  "August",
   "November"
- ], 
+ ],
  "creadur": [
-  "February", 
-  "May", 
-  "August", 
+  "February",
+  "May",
+  "August",
   "November"
- ], 
+ ],
  "crunch": [
-  "January", 
-  "April", 
-  "July", 
+  "January",
+  "April",
+  "July",
   "October"
- ], 
+ ],
  "ctakes": [
-  "March", 
-  "June", 
-  "September", 
+  "March",
+  "June",
+  "September",
   "December"
- ], 
+ ],
  "curator": [
-  "March", 
-  "June", 
-  "September", 
+  "March",
+  "June",
+  "September",
   "December"
- ], 
+ ],
  "cxf": [
-  "January", 
-  "April", 
-  "July", 
+  "January",
+  "April",
+  "July",
   "October"
- ], 
+ ],
  "db": [
-  "January", 
-  "April", 
-  "July", 
+  "January",
+  "April",
+  "July",
   "October"
- ], 
+ ],
  "deltaspike": [
-  "February", 
-  "May", 
-  "August", 
+  "February",
+  "May",
+  "August",
   "November"
- ], 
+ ],
  "devicemap": [
-  "February", 
-  "May", 
-  "August", 
+  "February",
+  "May",
+  "August",
   "November"
- ], 
+ ],
  "directory": [
-  "January", 
-  "April", 
-  "July", 
+  "January",
+  "April",
+  "July",
   "October"
- ], 
+ ],
  "drill": [
   "Next month: missing in August"
- ], 
+ ],
  "empire-db": [
-  "February", 
-  "May", 
-  "August", 
+  "February",
+  "May",
+  "August",
   "November"
- ], 
+ ],
  "etch": [
-  "February", 
-  "May", 
-  "August", 
+  "February",
+  "May",
+  "August",
   "November"
- ], 
+ ],
  "falcon": [
-  "March", 
-  "June", 
-  "September", 
+  "March",
+  "June",
+  "September",
   "December"
- ], 
+ ],
  "felix": [
-  "March", 
-  "June", 
-  "September", 
+  "March",
+  "June",
+  "September",
   "December"
- ], 
+ ],
  "flex": [
-  "March", 
-  "June", 
-  "September", 
+  "March",
+  "June",
+  "September",
   "December"
- ], 
+ ],
  "flink": [
-  "March", 
-  "June", 
-  "September", 
+  "March",
+  "June",
+  "September",
   "December"
- ], 
+ ],
  "flume": [
-  "February", 
-  "May", 
-  "August", 
+  "February",
+  "May",
+  "August",
   "November"
- ], 
+ ],
  "forrest": [
-  "February", 
-  "May", 
-  "August", 
+  "February",
+  "May",
+  "August",
   "November"
- ], 
+ ],
  "geronimo": [
-  "January", 
-  "April", 
-  "July", 
+  "January",
+  "April",
+  "July",
   "October"
- ], 
+ ],
  "giraph": [
-  "February", 
-  "May", 
-  "August", 
+  "February",
+  "May",
+  "August",
   "November"
- ], 
+ ],
  "gora": [
   "Next month: missing in August"
- ], 
+ ],
  "gump": [
-  "March", 
-  "June", 
-  "September", 
+  "March",
+  "June",
+  "September",
   "December"
- ], 
+ ],
  "hadoop": [
-  "January", 
-  "April", 
-  "July", 
+  "January",
+  "April",
+  "July",
   "October"
- ], 
+ ],
  "hama": [
-  "February", 
-  "May", 
-  "August", 
+  "February",
+  "May",
+  "August",
   "November"
- ], 
+ ],
  "hbase": [
-  "January", 
-  "April", 
-  "July", 
+  "January",
+  "April",
+  "July",
   "October"
- ], 
+ ],
  "helix": [
-  "March", 
-  "June", 
-  "September", 
+  "March",
+  "June",
+  "September",
   "December"
- ], 
+ ],
  "hive": [
-  "March", 
-  "June", 
-  "September", 
+  "March",
+  "June",
+  "September",
   "December"
- ], 
+ ],
  "http server": [
-  "February", 
-  "May", 
-  "August", 
+  "February",
+  "May",
+  "August",
   "November"
- ], 
+ ],
  "httpcomponents": [
-  "February", 
-  "May", 
-  "August", 
+  "February",
+  "May",
+  "August",
   "November"
- ], 
+ ],
  "httpd": [
-  "February", 
-  "May", 
-  "August", 
+  "February",
+  "May",
+  "August",
   "November"
- ], 
+ ],
  "ignite": [
   "Next month: new, monthly through November"
- ], 
+ ],
  "incubator": [
   "Every month"
- ], 
+ ],
  "isis": [
-  "January", 
-  "April", 
-  "July", 
+  "January",
+  "April",
+  "July",
   "October"
- ], 
+ ],
  "jackrabbit": [
-  "March", 
-  "June", 
-  "September", 
+  "March",
+  "June",
+  "September",
   "December"
- ], 
+ ],
  "james": [
-  "January", 
-  "April", 
-  "July", 
+  "January",
+  "April",
+  "July",
   "October"
- ], 
+ ],
  "jclouds": [
-  "January", 
-  "April", 
-  "July", 
+  "January",
+  "April",
+  "July",
   "October"
- ], 
+ ],
  "jena": [
-  "January", 
-  "April", 
-  "July", 
+  "January",
+  "April",
+  "July",
   "October"
- ], 
+ ],
  "jmeter": [
-  "January", 
-  "April", 
-  "July", 
+  "January",
+  "April",
+  "July",
   "October"
- ], 
+ ],
  "jspwiki": [
-  "January", 
-  "April", 
-  "July", 
+  "January",
+  "April",
+  "July",
   "October"
- ], 
+ ],
  "juddi": [
-  "February", 
-  "May", 
-  "August", 
+  "February",
+  "May",
+  "August",
   "November"
- ], 
+ ],
  "kafka": [
-  "February", 
-  "May", 
-  "August", 
+  "February",
+  "May",
+  "August",
   "November"
- ], 
+ ],
  "karaf": [
-  "March", 
-  "June", 
-  "September", 
+  "March",
+  "June",
+  "September",
   "December"
- ], 
+ ],
  "knox": [
-  "February", 
-  "May", 
-  "August", 
+  "February",
+  "May",
+  "August",
   "November"
- ], 
+ ],
  "labs": [
-  "March", 
-  "June", 
-  "September", 
+  "March",
+  "June",
+  "September",
   "December"
- ], 
+ ],
  "lens": [
   "Next month: new, monthly through November"
- ], 
+ ],
  "libcloud": [
-  "February", 
-  "May", 
-  "August", 
+  "February",
+  "May",
+  "August",
   "November"
- ], 
+ ],
  "logging": [
-  "February", 
-  "May", 
-  "August", 
+  "February",
+  "May",
+  "August",
   "November"
- ], 
+ ],
  "lucene": [
-  "March", 
-  "June", 
-  "September", 
+  "March",
+  "June",
+  "September",
   "December"
- ], 
+ ],
  "lucenenet": [
-  "March", 
-  "June", 
-  "September", 
+  "March",
+  "June",
+  "September",
   "December"
- ], 
+ ],
  "lucy": [
-  "January", 
-  "April", 
-  "July", 
+  "January",
+  "April",
+  "July",
   "October"
- ], 
+ ],
  "mahout": [
-  "January", 
-  "April", 
-  "July", 
+  "January",
+  "April",
+  "July",
   "October"
- ], 
+ ],
  "manifoldcf": [
-  "February", 
-  "May", 
-  "August", 
+  "February",
+  "May",
+  "August",
   "November"
- ], 
+ ],
  "marmotta": [
-  "February", 
-  "May", 
-  "August", 
+  "February",
+  "May",
+  "August",
   "November"
- ], 
+ ],
  "maven": [
-  "January", 
-  "April", 
-  "July", 
+  "January",
+  "April",
+  "July",
   "October"
- ], 
+ ],
  "mesos": [
-  "January", 
-  "April", 
-  "July", 
+  "January",
+  "April",
+  "July",
   "October"
- ], 
+ ],
  "metamodel": [
-  "February", 
-  "May", 
-  "August", 
+  "February",
+  "May",
+  "August",
   "November"
- ], 
+ ],
  "mina": [
-  "January", 
-  "April", 
-  "July", 
+  "January",
+  "April",
+  "July",
   "October"
- ], 
+ ],
  "mrunit": [
-  "March", 
-  "June", 
-  "September", 
+  "March",
+  "June",
+  "September",
   "December"
- ], 
+ ],
  "myfaces": [
-  "January", 
-  "April", 
-  "July", 
+  "January",
+  "April",
+  "July",
   "October"
- ], 
+ ],
  "nifi": [
   "Next month: new, monthly through October"
- ], 
+ ],
  "nutch": [
-  "January", 
-  "April", 
-  "July", 
+  "January",
+  "April",
+  "July",
   "October"
- ], 
+ ],
  "ode": [
-  "January", 
-  "April", 
-  "July", 
+  "January",
+  "April",
+  "July",
   "October"
- ], 
+ ],
  "ofbiz": [
-  "March", 
-  "June", 
-  "September", 
+  "March",
+  "June",
+  "September",
   "December"
- ], 
+ ],
  "olingo": [
-  "March", 
-  "June", 
-  "September", 
+  "March",
+  "June",
+  "September",
   "December"
- ], 
+ ],
  "oltu": [
   "Next month: missing in August"
- ], 
+ ],
  "onami": [
-  "January", 
-  "April", 
-  "July", 
+  "January",
+  "April",
+  "July",
   "October"
- ], 
+ ],
  "oodt": [
-  "March", 
-  "June", 
-  "September", 
+  "March",
+  "June",
+  "September",
   "December"
- ], 
+ ],
  "oozie": [
-  "February", 
-  "May", 
-  "August", 
+  "February",
+  "May",
+  "August",
   "November"
- ], 
+ ],
  "openjpa": [
-  "January", 
-  "April", 
-  "July", 
+  "January",
+  "April",
+  "July",
   "October"
- ], 
+ ],
  "openmeetings": [
-  "January", 
-  "April", 
-  "July", 
+  "January",
+  "April",
+  "July",
   "October"
- ], 
+ ],
  "opennlp": [
-  "March", 
-  "June", 
-  "September", 
+  "March",
+  "June",
+  "September",
   "December"
- ], 
+ ],
  "openoffice": [
-  "January", 
-  "April", 
-  "July", 
+  "January",
+  "April",
+  "July",
   "October"
- ], 
+ ],
  "openwebbeans": [
-  "March", 
-  "June", 
-  "September", 
+  "March",
+  "June",
+  "September",
   "December"
- ], 
+ ],
  "orc": [
-  "January", 
-  "April", 
-  "July", 
+  "January",
+  "April",
+  "July",
   "October"
- ], 
+ ],
  "parquet": [
-  "January", 
-  "April", 
-  "July", 
+  "January",
+  "April",
+  "July",
   "October"
- ], 
+ ],
  "pdfbox": [
-  "January", 
-  "April", 
-  "July", 
+  "January",
+  "April",
+  "July",
   "October"
- ], 
+ ],
  "perl": [
   "Next month: missing in August"
- ], 
+ ],
  "phoenix": [
-  "February", 
-  "May", 
-  "August", 
+  "February",
+  "May",
+  "August",
   "November"
- ], 
+ ],
  "pig": [
-  "March", 
-  "June", 
-  "September", 
+  "March",
+  "June",
+  "September",
   "December"
- ], 
+ ],
  "pivot": [
-  "March", 
-  "June", 
-  "September", 
+  "March",
+  "June",
+  "September",
   "December"
- ], 
+ ],
  "poi": [
-  "February", 
-  "May", 
-  "August", 
+  "February",
+  "May",
+  "August",
   "November"
- ], 
+ ],
  "portals": [
-  "March", 
-  "June", 
-  "September", 
+  "March",
+  "June",
+  "September",
   "December"
- ], 
+ ],
  "qpid": [
-  "February", 
-  "May", 
-  "August", 
+  "February",
+  "May",
+  "August",
   "November"
- ], 
+ ],
  "rave": [
-  "January", 
-  "April", 
-  "July", 
+  "January",
+  "April",
+  "July",
   "October"
- ], 
+ ],
  "river": [
-  "February", 
-  "May", 
-  "August", 
+  "February",
+  "May",
+  "August",
   "November"
- ], 
+ ],
  "roller": [
-  "February", 
-  "May", 
-  "August", 
+  "February",
+  "May",
+  "August",
   "November"
- ], 
+ ],
  "samza": [
-  "January", 
-  "April", 
-  "July", 
+  "January",
+  "April",
+  "July",
   "October"
- ], 
+ ],
  "santuario": [
-  "February", 
-  "May", 
-  "August", 
+  "February",
+  "May",
+  "August",
   "November"
- ], 
+ ],
  "serf": [
   "Next month: new, monthly through November"
- ], 
+ ],
  "servicemix": [
-  "March", 
-  "June", 
-  "September", 
+  "March",
+  "June",
+  "September",
   "December"
- ], 
+ ],
  "shindig": [
-  "January", 
-  "April", 
-  "July", 
+  "January",
+  "April",
+  "July",
   "October"
- ], 
+ ],
  "shiro": [
-  "March", 
-  "June", 
-  "September", 
+  "March",
+  "June",
+  "September",
   "December"
- ], 
+ ],
  "sis": [
-  "February", 
-  "May", 
-  "August", 
+  "February",
+  "May",
+  "August",
   "November"
- ], 
+ ],
  "sling": [
-  "March", 
-  "June", 
-  "September", 
+  "March",
+  "June",
+  "September",
   "December"
- ], 
+ ],
  "spamassassin": [
-  "March", 
-  "June", 
-  "September", 
+  "March",
+  "June",
+  "September",
   "December"
- ], 
+ ],
  "spark": [
-  "February", 
-  "May", 
-  "August", 
+  "February",
+  "May",
+  "August",
   "November"
- ], 
+ ],
  "sqoop": [
-  "January", 
-  "April", 
-  "July", 
+  "January",
+  "April",
+  "July",
   "October"
- ], 
+ ],
  "stanbol": [
-  "March", 
-  "June", 
-  "September", 
+  "March",
+  "June",
+  "September",
   "December"
- ], 
+ ],
  "steve": [
-  "January", 
-  "April", 
-  "July", 
+  "January",
+  "April",
+  "July",
   "October"
- ], 
+ ],
  "storm": [
-  "March", 
-  "June", 
-  "September", 
+  "March",
+  "June",
+  "September",
   "December"
- ], 
+ ],
  "stratos": [
-  "February", 
-  "May", 
-  "August", 
+  "February",
+  "May",
+  "August",
   "November"
- ], 
+ ],
  "struts": [
-  "January", 
-  "April", 
-  "July", 
+  "January",
+  "April",
+  "July",
   "October"
- ], 
+ ],
  "subversion": [
-  "February", 
-  "May", 
-  "August", 
+  "February",
+  "May",
+  "August",
   "November"
- ], 
+ ],
  "synapse": [
-  "March", 
-  "June", 
-  "September", 
+  "March",
+  "June",
+  "September",
   "December"
- ], 
+ ],
  "syncope": [
-  "February", 
-  "May", 
-  "August", 
+  "February",
+  "May",
+  "August",
   "November"
- ], 
+ ],
  "tajo": [
-  "March", 
-  "June", 
-  "September", 
+  "March",
+  "June",
+  "September",
   "December"
- ], 
+ ],
  "tapestry": [
-  "January", 
-  "April", 
-  "July", 
+  "January",
+  "April",
+  "July",
   "October"
- ], 
+ ],
  "tcl": [
-  "January", 
-  "April", 
-  "July", 
+  "January",
+  "April",
+  "July",
   "October"
- ], 
+ ],
  "tez": [
-  "January", 
-  "April", 
-  "July", 
+  "January",
+  "April",
+  "July",
   "October"
- ], 
+ ],
  "thrift": [
-  "January", 
-  "April", 
-  "July", 
+  "January",
+  "April",
+  "July",
   "October"
- ], 
+ ],
  "tika": [
-  "January", 
-  "April", 
-  "July", 
+  "January",
+  "April",
+  "July",
   "October"
- ], 
+ ],
  "tiles": [
-  "March", 
-  "June", 
-  "September", 
+  "March",
+  "June",
+  "September",
   "December"
- ], 
+ ],
  "tomcat": [
-  "March", 
-  "June", 
-  "September", 
+  "March",
+  "June",
+  "September",
   "December"
- ], 
+ ],
  "tomee": [
   "Next month: missing in July, August"
- ], 
+ ],
  "trafficserver": [
-  "January", 
-  "April", 
-  "July", 
+  "January",
+  "April",
+  "July",
   "October"
- ], 
+ ],
  "turbine": [
-  "February", 
-  "May", 
-  "August", 
+  "February",
+  "May",
+  "August",
   "November"
- ], 
+ ],
  "tuscany": [
-  "February", 
-  "May", 
-  "August", 
+  "February",
+  "May",
+  "August",
   "November"
- ], 
+ ],
  "uima": [
-  "March", 
-  "June", 
-  "September", 
+  "March",
+  "June",
+  "September",
   "December"
- ], 
+ ],
  "usergrid": [
   "Next month: new, monthly through November"
- ], 
+ ],
  "vcl": [
-  "March", 
-  "June", 
-  "September", 
+  "March",
+  "June",
+  "September",
   "December"
- ], 
+ ],
  "velocity": [
-  "February", 
-  "May", 
-  "August", 
+  "February",
+  "May",
+  "August",
   "November"
- ], 
+ ],
  "vxquery": [
-  "January", 
-  "April", 
-  "July", 
+  "January",
+  "April",
+  "July",
   "October"
- ], 
+ ],
  "webservices": [
-  "January", 
-  "April", 
-  "July", 
+  "January",
+  "April",
+  "July",
   "October"
- ], 
+ ],
  "whimsy": [
   "Next month: missing in August"
- ], 
+ ],
  "wicket": [
-  "March", 
-  "June", 
-  "September", 
+  "March",
+  "June",
+  "September",
   "December"
- ], 
+ ],
  "wink": [
-  "March", 
-  "June", 
-  "September", 
+  "March",
+  "June",
+  "September",
   "December"
- ], 
+ ],
  "wookie": [
-  "January", 
-  "April", 
-  "July", 
+  "January",
+  "April",
+  "July",
   "October"
- ], 
+ ],
  "ws": [
-  "January", 
-  "April", 
-  "July", 
+  "January",
+  "April",
+  "July",
   "October"
- ], 
+ ],
  "xalan": [
-  "February", 
-  "May", 
-  "August", 
+  "February",
+  "May",
+  "August",
   "November"
- ], 
+ ],
  "xerces": [
-  "February", 
-  "May", 
-  "August", 
+  "February",
+  "May",
+  "August",
   "November"
- ], 
+ ],
  "xmlgraphics": [
-  "February", 
-  "May", 
-  "August", 
+  "February",
+  "May",
+  "August",
   "November"
- ], 
+ ],
  "zest": [
-  "March", 
-  "June", 
-  "September", 
+  "March",
+  "June",
+  "September",
   "December"
- ], 
+ ],
  "zookeeper": [
-  "March", 
-  "June", 
-  "September", 
+  "March",
+  "June",
+  "September",
   "December"
  ]
 }
