@@ -104,7 +104,7 @@ function formatRm(array) {
     if (m.indexOf(first) < 0) { // non-month value initially
         return  first.concat('; (default: ', array.slice(1).join(', '),')')
     }
-    return array.join('% ')
+    return array.join(', ')
 }
 
 function setReportDate(json, x) {
