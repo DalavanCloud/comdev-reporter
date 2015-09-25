@@ -14,6 +14,7 @@ import re, json, os, sys, urllib, time, email.utils
 from datetime import datetime
 
 SECS_PER_DAY = 86400
+SECS_PER_WEEK = 604800
 
 
 mls = {}
@@ -24,10 +25,15 @@ try:
 except:
     pass
 
-currentMonth = datetime.now().month
-currentYear = datetime.now().year
-after = time.time() - (SECS_PER_DAY*92)
-wayafter = time.time() - (SECS_PER_DAY*92*2)
+
+DTNOW = datetime.now()
+currentMonth = DTNOW.month
+currentYear = DTNOW.year
+
+NOW = time.time()
+after = NOW - (SECS_PER_DAY*92)
+wayafter = NOW - (SECS_PER_DAY*92*2)
+
 months = []
 for i in range(0,7):
     date = "%04u%02u" % (currentYear, currentMonth)
@@ -67,7 +73,7 @@ for mlist in re.finditer(r"<a href='([-a-z0-9]+)/'", data):
                     try:
                         d = email.utils.parsedate(c.group(1))
                         timestamp = int(time.mktime(d))
-                        rounded = timestamp - (timestamp % 604800) + 604800
+                        rounded = timestamp - (timestamp % SECS_PER_WEEK) + SECS_PER_WEEK
                         mls[ml]['weekly'][rounded] = (mls[ml]['weekly'][rounded] if rounded in mls[ml]['weekly'] else 0) + 1
                         if timestamp >= after:
                             mls[ml]['quarterly'][0] += 1
