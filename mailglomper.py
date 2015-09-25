@@ -37,8 +37,6 @@ for i in range(0,7):
         currentYear -= 1
     months.append(date)
 
-    now = int(time.time())
-
 data = urllib.urlopen("http://mail-archives.us.apache.org/mod_mbox/").read()
 print("Fetched %u bytes of main data" % len(data))
 y = 0
