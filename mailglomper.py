@@ -1,6 +1,19 @@
+"""
+   Reads public mailing list data from
+   http://mail-archives.us.apache.org/mod_mbox/
+   - listing of mailboxes
+   and from each:
+   http://mail-archives.us.apache.org/mod_mbox/<list>/yyyymm.mbox
+   - messages per week and per last two rolling quarters (92 days)
+   
+   Updates:
+   data/maildata_extended.json
+"""
 import re, json, os, sys, urllib, time, email.utils
 
 from datetime import datetime
+
+SECS_PER_DAY = 86400
 
 
 mls = {}
@@ -13,8 +26,8 @@ except:
 
 currentMonth = datetime.now().month
 currentYear = datetime.now().year
-after = time.time() - (86400*92)
-wayafter = time.time() - (86400*92*2)
+after = time.time() - (SECS_PER_DAY*92)
+wayafter = time.time() - (SECS_PER_DAY*92*2)
 months = []
 for i in range(0,7):
     date = "%04u%02u" % (currentYear, currentMonth)
