@@ -63,7 +63,7 @@ if (isMember(user) or project in groups)  and jiraname:
        except Exception as err:
            pass
        with open("/var/www/reporter.apache.org/data/releases/%s.json" % project, "w") as f:
-              f.write(json.dumps(rdata, indent=1))
+              json.dump(rdata, f, indent=1)
               f.close()
               
        print("Content-Type: application/json\r\n\r\n")

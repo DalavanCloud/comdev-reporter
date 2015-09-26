@@ -79,7 +79,7 @@ def getJIRAProjects(project):
                 req.add_header("Authorization", "Basic %s" % base64string)
                 x = json.loads(urllib2.urlopen(req).read())
                 with open("/var/www/reporter.apache.org/data/JIRA/projects.json", "w") as f:
-                    f.write(json.dumps(x, indent=1))
+                    json.dump(x, f, indent=1)
                     f.close()
             except:
                 pass
@@ -118,12 +118,12 @@ def getJIRAS(project):
             req.add_header("Authorization", "Basic %s" % base64string)
             rdata = json.loads(urllib2.urlopen(req).read())
             with open("/var/www/reporter.apache.org/data/JIRA/%s.json" % project, "w") as f:
-                f.write(json.dumps([cdata['total'], rdata['total'], project], indent=1))
+                json.dump([cdata['total'], rdata['total'], project], f, indent=1)
                 f.close()
             return cdata['total'], rdata['total'], project
         except Exception as err:
             with open("/var/www/reporter.apache.org/data/JIRA/%s.json" % project, "w") as f:
-                f.write(json.dumps([0,0,None], indent=1))
+                json.dump([0,0,None], f, indent=1)
                 f.close()
             return 0,0, None
 

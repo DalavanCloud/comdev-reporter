@@ -37,5 +37,5 @@ for project in projects:
            print(err)
        
        with open("/var/www/reporter.apache.org/data/releases/%s.json" % project, "w") as f:
-              f.write(json.dumps(rdata, indent=1))
+              json.dump(rdata, f, indent=1)
               f.close()

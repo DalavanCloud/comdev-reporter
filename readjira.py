@@ -29,12 +29,12 @@ def getJIRAS(project):
             req.add_header("Authorization", "Basic %s" % base64string)
             rdata = json.loads(urllib2.urlopen(req).read())
             with open("%s/data/JIRA/%s.json" % (MYHOME, project), "w") as f:
-                f.write(json.dumps([cdata['total'], rdata['total'], project], indent=1))
+                json.dump([cdata['total'], rdata['total'], project], f, indent=1)
                 f.close()
             return cdata['total'], rdata['total'], project
         except Exception as err:
             with open("%s/data/JIRA/%s.json" % (MYHOME, project), "w") as f:
-                f.write(json.dumps([0,0,None], indent=1))
+                json.dump([0,0,None], f, indent=1)
                 f.close()
             return 0,0, None
 

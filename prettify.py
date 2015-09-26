@@ -15,5 +15,5 @@ for arg in sys.argv[1:]:
         out = arg + ".out"
         print("Writing " + out)
         with open(out, "w") as f:
-            f.write(json.dumps(input, indent=1, sort_keys=True))
+            json.dump(input, f, indent=1, sort_keys=True)
             f.close()

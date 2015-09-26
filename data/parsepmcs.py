@@ -91,12 +91,12 @@ for project in pmcs:
     
 print("Writing pmcs.json")
 with open("pmcs.json", "w") as f:
-    f.write(json.dumps(pmcs, sort_keys=True, indent=1))
+    json.dump(pmcs, f, sort_keys=True, indent=1)
     f.close()
 
 print("Writing projects.json")
 with open("projects.json", "w") as f:
-    f.write(json.dumps(projects, sort_keys=True ,indent=1))
+    json.dump(projects, f, sort_keys=True ,indent=1)
     f.close()
     
     
