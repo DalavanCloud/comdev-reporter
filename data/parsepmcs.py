@@ -78,12 +78,14 @@ for project in projects:
     for cid in projects[project]:
         if len(projects[project][cid]) < 3 or projects[project][cid][2] < (time.time() - (86400*3)):
             projects[project][cid] = "!"
+            ret += 1
     projects[project] =  {i:projects[project][i] for i in projects[project] if projects[project][i]!="!"}
 
 for project in pmcs:
     for cid in pmcs[project]:
         if len(pmcs[project][cid]) < 3 or pmcs[project][cid][2] < (time.time() - (86400*3)):
             pmcs[project][cid] = "!"
+            ret += 1
     pmcs[project] =  {i:pmcs[project][i] for i in pmcs[project] if pmcs[project][i]!="!"}
 
     
@@ -99,4 +101,3 @@ with open("projects.json", "w") as f:
     
     
 print("All done! removed %u retired entries" % ret)
-
