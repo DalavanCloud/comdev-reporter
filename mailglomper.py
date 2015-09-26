@@ -58,18 +58,29 @@ Potentially the generated file could use a separator that is not allowed in proj
 but this would require converting the input file and potentially allowing both separators in
 the files that process the output for a short while.
 """
+
+def tsprint(s): # print with timestamp
+    print time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()), s
+
+tsprint("Started")
+
 for mlist in re.finditer(r"<a href='([-a-z0-9]+)/'", data):
     ml = mlist.group(1)
+    start = time.time()
+#     print(ml)
     y += 1
     mls[ml] = {}
     mls[ml]['quarterly'] = [0, 0];
     mls[ml]['weekly'] = {}
-    for date in months:
-            
+    mlct = 0
+    for date in months:            
         try:
-            mldata = urllib.urlopen("http://mail-archives.us.apache.org/mod_mbox/%s/%s.mbox" % (ml, date)).read()
-            if mldata:
-                for c in re.finditer(r"Date: (.+)", mldata):
+            ct = 0
+            mldata = urllib.urlopen("http://mail-archives.us.apache.org/mod_mbox/%s/%s.mbox" % (ml, date))
+            for line in mldata:
+                c = re.match(r"^From \S+ (.+)", line)
+                if c:
+                    ct += 1
                     try:
                         d = email.utils.parsedate(c.group(1))
                         timestamp = int(time.mktime(d))
@@ -79,16 +90,19 @@ for mlist in re.finditer(r"<a href='([-a-z0-9]+)/'", data):
                             mls[ml]['quarterly'][0] += 1
                         elif timestamp >= wayafter:
                             mls[ml]['quarterly'][1] += 1
-                    except:
+                    except Exception as err:
+                        tsprint(err)
                         pass
-                        
+#             tsprint("%s %s: has  %u mails" % (ml, date, ct)) # total for month
+            mlct += ct
         except Exception as err:
-            print(err)
-    print("%s: %u" % (ml, mls[ml]['quarterly'][0]))
+            tsprint(err)
+    tsprint("Info: %s has  %u mails (%u secs)" % (ml, mlct, time.time() - start)) # total for mail group
     if y == 50:
         y = 0
         with open("data/maildata_extended.json",'w+') as f:
             f.write(json.dumps(mls, indent=1))
+tsprint("Completed scanning, writing JSON")
 with open("data/maildata_extended.json",'w+') as f:
     f.write(json.dumps(mls, indent=1))
 print("Dumped JSON")
