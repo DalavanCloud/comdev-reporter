@@ -90,8 +90,6 @@ function everyMonth(s) {
 	return false
 }
 
-// Called by: GetAsyncJSON("reportingcycles.json?" + Math.random(), [pmc, reportdate, json.pdata[pmc].name], setReportDate) 
-
 var m = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
 
 // Format the report month array. Assumes that non-month values appear first
@@ -106,6 +104,8 @@ function formatRm(array) {
     }
     return array.join(', ')
 }
+
+// Called by: GetAsyncJSON("reportingcycles.json?" + Math.random(), [pmc, reportdate, json.pdata[pmc].name], setReportDate) 
 
 function setReportDate(json, x) {
 	var pmc = x[0]
