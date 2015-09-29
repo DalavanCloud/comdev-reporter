@@ -133,19 +133,19 @@ def getProjectData(project):
         with open("/var/www/projects.apache.org/site/json/projects/%s.json" % project, "r") as f:
             x = json.loads(f.read())
             f.close()
-            with open("/var/www/projects.apache.org/site/json/foundation/pmcs.json", "r") as f:
-                p = json.loads(f.read())
-                f.close()
-                for xproject in p:
-                    y.append(xproject)
-                    if xproject == project:
-                        x['name'] = p[project]['name']
-            with open("/var/www/projects.apache.org/site/json/foundation/chairs.json", "r") as f:
-                c = json.loads(f.read())
-                f.close()
-                for xproject in c:
-                    if xproject.lower() == x['name'].lower():
-                        x['chair'] = c[xproject]
+        with open("/var/www/projects.apache.org/site/json/foundation/pmcs.json", "r") as f:
+            p = json.loads(f.read())
+            f.close()
+            for xproject in p:
+                y.append(xproject)
+                if xproject == project:
+                    x['name'] = p[project]['name']
+        with open("/var/www/projects.apache.org/site/json/foundation/chairs.json", "r") as f:
+            c = json.loads(f.read())
+            f.close()
+            for xproject in c:
+                if xproject.lower() == x['name'].lower():
+                    x['chair'] = c[xproject]
         z = {}
         with open("/var/www/reporter.apache.org/data/health.json", "r") as f:
             h = json.loads(f.read())
