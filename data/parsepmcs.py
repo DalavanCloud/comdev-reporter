@@ -3,10 +3,22 @@ import sys
 if sys.hexversion < 0x030000F0:
     raise RuntimeError("This script requires Python3")
 """
-   This script updates:
-   pmcs.json
-   projects.json
+   This script
+   reads: http://people.apache.org/committer-index.html 
+   and updates:
+   pmcs.json - members of pmcs
+   projects.json - committers of projects
    
+   The json files have the format:
+   
+   dict: key=pmc/project,
+         value=dict: key=availid,
+         value=array:
+         [
+         full name,
+         time.time() when entry was added to an existing group
+         time.time() when entry was last seen,
+         ]
 """
 import re
 import urllib.request
@@ -37,58 +49,75 @@ newgroups = []
 
 data = urllib.request.urlopen("http://people.apache.org/committer-index.html").read().decode('utf-8')
 x = 0
+stamp = time.time()
 for committer in re.findall(r"<tr>([\S\s]+?)</tr>", data, re.MULTILINE | re.UNICODE):
     x += 1
 ##    print(committer)
     m = re.search(r"<a id='(.+?)'>[\s\S]+?<td.+?>\s*(.+?)</td>[\s\S]+?>(.+)</td>", committer, re.MULTILINE | re.UNICODE)
     if m:
-        cid = m.group(1)
-        cname = re.sub(r"<.+?>", "", m.group(2), 4)
-        cproj = m.group(3)
+        cid = m.group(1) # committer id / availid
+        cname = re.sub(r"<.+?>", "", m.group(2), 4) # committer name
+        cproj = m.group(3) # list of authgroups to which the person belongs
         isMember = False
         if re.search(r"<b", committer, re.MULTILINE | re.UNICODE):
             isMember = True
-        for project in re.findall(r"#([-a-z0-9._]+)-pmc", cproj):
-            now = time.time()
-            if not project in pmcs:
-                pmcs[project] = {}
-                newgroups.append(project)
-            if project in newgroups:
-                now = 0
-            if not cid in pmcs[project]:
-                pmcs[project][cid] = [cname, now, time.time()]
+        # process the groups
+        for group in re.findall(r"#([-a-z0-9._]+)'", cproj):
+            now = stamp
+            if group.endswith("-pmc"):
+                project = group[0:-4] # drop the "-pmc" suffix
+#                 print("PMC %s %s => %s" % (cid, group, project))
+                if not project in pmcs: # a new project
+                    print("New pmc group %s" % project)
+                    pmcs[project] = {}
+                    newgroups.append(group)
+                if not cid in pmcs[project]: # new to the group
+                    if group in newgroups: # the group is also new
+                        now = 0
+                    print("New pmc entry %s %s %u" % (project, cid, now))
+                    pmcs[project][cid] = [cname, now, stamp]
+                else:
+                    # update the entry last seen time
+                    pmcs[project][cid] = [pmcs[project][cid][0], pmcs[project][cid][1], stamp]
             else:
-                pmcs[project][cid] = [pmcs[project][cid][0], pmcs[project][cid][1], time.time()]
-                
-        for project in re.findall(r"#([-a-z0-9._]+)(?!-pmc)", cproj):
-            now = time.time()
-            if not project in projects:
-                projects[project] = {}
-                newgroups.append(project)
-            elif project in newgroups:
-                now = 0
-            if not cid in projects[project]:
-                projects[project][cid] = [cname, now, time.time()]
-            else:
-                projects[project][cid] = [projects[project][cid][0], projects[project][cid][1], time.time()]
-    
+                project = group
+#                 print("Unx %s %s" % (cid, project))
+                now = stamp
+                if not project in projects:
+                    print("New unx group %s" % project)
+                    projects[project] = {}
+                    newgroups.append(group)
+                if not cid in projects[project]: # new to the group
+                    if group in newgroups: # the group is also new
+                        now = 0
+                    print("New unx entry %s %s %u" % (project,cid,now))
+                    projects[project][cid] = [cname, now, stamp]
+                else:
+                    # update the entry last seen time
+                    projects[project][cid] = [projects[project][cid][0], projects[project][cid][1], stamp]
+
+
 # Delete retired members
 ret = 0
 for project in projects:
     for cid in projects[project]:
         if len(projects[project][cid]) < 3 or projects[project][cid][2] < (time.time() - (86400*3)):
-            projects[project][cid] = "!"
+            if project.endswith("-pmc"): # these were mistaken entries
+                continue
+            print("Dropping project entry %s %s" % (project, cid))
+            projects[project][cid] = "!" # flag for deletion
             ret += 1
     projects[project] =  {i:projects[project][i] for i in projects[project] if projects[project][i]!="!"}
 
 for project in pmcs:
     for cid in pmcs[project]:
         if len(pmcs[project][cid]) < 3 or pmcs[project][cid][2] < (time.time() - (86400*3)):
-            pmcs[project][cid] = "!"
+            print("Dropping pmc entry %s %s" % (project, cid))
+            pmcs[project][cid] = "!" # flag for deletion
             ret += 1
     pmcs[project] =  {i:pmcs[project][i] for i in pmcs[project] if pmcs[project][i]!="!"}
 
-    
+
 print("Writing pmcs.json")
 with open("pmcs.json", "w") as f:
     json.dump(pmcs, f, sort_keys=True, indent=1)
