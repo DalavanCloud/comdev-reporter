@@ -193,25 +193,19 @@ def getReleaseData(project):
         return {}
 
 
-
-pchanges = {}
-cchanges = {}
-
-with open("/var/www/reporter.apache.org/data/pmcs.json", "r") as f:
-    pchanges = json.loads(f.read())
-    f.close()
-
-with open("/var/www/reporter.apache.org/data/projects.json", "r") as f:
-    cchanges = json.loads(f.read())
-    f.close()
-
-
 user = os.environ['HTTP_X_AUTHENTICATED_USER'] if 'HTTP_X_AUTHENTICATED_USER' in os.environ else ""
 m = re.match(r"^([-a-zA-Z0-9_.]+)$", user)
-groups = []
 
-cdata = {}
 if m:
+    pchanges = {}
+    cchanges = {}
+    with open("/var/www/reporter.apache.org/data/pmcs.json", "r") as f:
+        pchanges = json.loads(f.read())
+        f.close()
+    
+    with open("/var/www/reporter.apache.org/data/projects.json", "r") as f:
+        cchanges = json.loads(f.read())
+        f.close()
     uid = m.group(1)
     groups = getPMCs(uid)
     include = os.environ['QUERY_STRING'] if 'QUERY_STRING' in os.environ else None
@@ -246,6 +240,7 @@ if m:
                 emails[tlp] = emails[tlp] if tlp in emails else {}
                 emails[tlp][nentry] = mld[entry]
     jdata = {}
+    cdata = {}
     ddata = {}
     rdata = {}
     allpmcs = []
