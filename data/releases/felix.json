@@ -1,0 +1,15 @@
+{
+ "org.apache.felix.framework-5.2.0": 1440885600, 
+ "org.apache.felix.connect-0.1.0": 1432764000, 
+ "org.apache.felix.framework-4.6.1": 1425769200, 
+ "org.apache.felix.configadmin-1.8.6": 1432854000, 
+ "org.apache.felix.threaddump-1.0.0": 1440716400, 
+ "org.apache.felix.dependencymanager-r2": 1427151600, 
+ "org.apache.felix.dependencymanager-r3": 1432504800, 
+ "org.apache.felix.framework-5.0.0": 1429826400, 
+ "org.apache.felix.dependencymanager-r1": 1425855600, 
+ "org.apache.felix.dependencymanager-r5": 1433800800, 
+ "org.apache.felix.bundlerepository-2.0.6": 1443135600, 
+ "maven-bundle-plugin-3.0.0": 1443135600, 
+ "org.apache.felix.framework-5.0.1": 1434837600
+}
