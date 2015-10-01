@@ -234,9 +234,9 @@ function PMCchanges(json, pmc, after) {
                 npmc++;
             }
         }
-        addLine(pmc, " - Currently " + c + " PMC group members.")
+        addLine(pmc, " - Currently " + c + " PMC members.")
         if (npmc > 1) {
-            addLine(pmc, " - New PMC group members:")
+            addLine(pmc, " - New PMC members:")
         }
 
         for (i in roster) {
@@ -247,21 +247,21 @@ function PMCchanges(json, pmc, after) {
             }
             if (entry[1] > after.getTime() / 1000) {
                 l++;
-                changes.innerHTML += "&rarr; " + entry[0] + " was added to the PMC group on " + new Date(entry[1] * 1000).toDateString() + "<br>";
-                addLine(pmc, (npmc > 1 ? "   " : "") + " - " + entry[0] + " was added to the PMC group on " + new Date(entry[1] * 1000).toDateString())
+                changes.innerHTML += "&rarr; " + entry[0] + " was added to the PMC on " + new Date(entry[1] * 1000).toDateString() + "<br>";
+                addLine(pmc, (npmc > 1 ? "   " : "") + " - " + entry[0] + " was added to the PMC on " + new Date(entry[1] * 1000).toDateString())
             }
         }
         if (l == 0) {
-            addLine(pmc, " - No new PMC group members added in the last 3 months")
-            changes.innerHTML += "&rarr; <font color='red'><b>No new PMC group members in the last 3 months.</b></font><br>";
+            addLine(pmc, " - No new PMC members added in the last 3 months")
+            changes.innerHTML += "&rarr; <font color='red'><b>No new PMC members in the last 3 months.</b></font><br>";
         }
         if (npn) {
             if (np < after.getTime() / 1000) {
-                addLine(pmc, " - Last PMC group addition was " + npn + " at " + new Date(np * 1000).toDateString())
+                addLine(pmc, " - Last PMC addition was " + npn + " at " + new Date(np * 1000).toDateString())
             }
-            changes.innerHTML += "&rarr; " + "<b>Latest PMC group addition: </b>" + new Date(np * 1000).toDateString() + " (" + npn + ")<br>"
+            changes.innerHTML += "&rarr; " + "<b>Latest PMC addition: </b>" + new Date(np * 1000).toDateString() + " (" + npn + ")<br>"
         }
-        changes.innerHTML += "&rarr; " + "<b>Currently " + c + " PMC group members.<br>"
+        changes.innerHTML += "&rarr; " + "<b>Currently " + c + " PMC members.<br>"
         changes.innerHTML += "<br>PMC established: " + json.dates[pmc].pmc[0]
         addLine(pmc)
 }
