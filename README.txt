@@ -60,8 +60,8 @@ Scripts:
   Creates data/health.json
 
 - site/getjson.py
-  Updates data/JIRA/projects.json (from JIRA)
-  Updates data/JIRA/%s.json % project (from JIRA)
+  If stale, re-creates data/JIRA/projects.json (from JIRA)
+  If stale, re-creates data/JIRA/%s.json % project (from JIRA)
   
 - site/jiraversions.py
   Updates data/releases/%s.json % project

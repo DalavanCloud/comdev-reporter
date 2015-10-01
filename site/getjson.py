@@ -86,7 +86,7 @@ def isMember(uid):
     return False
 
 def getJIRAProjects(project):
-    """Reads data/JIRA/projects.json (updating it if it is stale)
+    """Reads data/JIRA/projects.json (re-creating it if it is stale)
        Returns the list of JIRA projects for the project argument
        Assumes that the project names match or the project category matches
        (after trimming "Apache " and spaces and lower-casing)"""
@@ -129,8 +129,8 @@ def getJIRAProjects(project):
     return jiras
 
 def getJIRAS(project):
-    """Reads data/JIRA/%s.json (project), updating it if it is stale
-       with the number of issues created and resolved in the last 91 days
+    """Reads data/JIRA/%s.json % (project), re-creating it if it is stale
+       from the number of issues created and resolved in the last 91 days
        Returns array of [created, resolved, project]
     """
     refresh = True
