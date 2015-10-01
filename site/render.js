@@ -211,6 +211,61 @@ function addLine(pmc, line) {
 	}
 }
 
+function PMCchanges(json, pmc, after) {
+        var changes = buildPanel(pmc, "PMC changes");
+
+        var roster = json.dates[pmc].roster
+        var nc = 0;
+        var np = 0;
+        var ncn = null;
+        var npn = null;
+        addLine(pmc, "## PMC changes:")
+        addLine(pmc)
+        changes.innerHTML += "<h5>Changes within the last 3 months:</h5>"
+        var l = 0;
+
+        // pre-flight check
+        var c = 0;
+        var npmc = 0;
+        for (i in roster) {
+            c++
+            var entry = roster[i];
+            if (entry[1] > after.getTime() / 1000) {
+                npmc++;
+            }
+        }
+        addLine(pmc, " - Currently " + c + " PMC group members.")
+        if (npmc > 1) {
+            addLine(pmc, " - New PMC group members:")
+        }
+
+        for (i in roster) {
+            var entry = roster[i];
+            if (entry[1] > np) {
+                np = entry[1]
+                npn = entry[0];
+            }
+            if (entry[1] > after.getTime() / 1000) {
+                l++;
+                changes.innerHTML += "&rarr; " + entry[0] + " was added to the PMC group on " + new Date(entry[1] * 1000).toDateString() + "<br>";
+                addLine(pmc, (npmc > 1 ? "   " : "") + " - " + entry[0] + " was added to the PMC group on " + new Date(entry[1] * 1000).toDateString())
+            }
+        }
+        if (l == 0) {
+            addLine(pmc, " - No new PMC group members added in the last 3 months")
+            changes.innerHTML += "&rarr; <font color='red'><b>No new PMC group members in the last 3 months.</b></font><br>";
+        }
+        if (npn) {
+            if (np < after.getTime() / 1000) {
+                addLine(pmc, " - Last PMC group addition was " + npn + " at " + new Date(np * 1000).toDateString())
+            }
+            changes.innerHTML += "&rarr; " + "<b>Latest PMC group addition: </b>" + new Date(np * 1000).toDateString() + " (" + npn + ")<br>"
+        }
+        changes.innerHTML += "&rarr; " + "<b>Currently " + c + " PMC group members.<br>"
+        changes.innerHTML += "<br>PMC established: " + json.dates[pmc].pmc[0]
+        addLine(pmc)
+}
+
 function renderFrontPage(json) {
 	jsdata = json
 	var container = document.getElementById('contents')
@@ -296,7 +351,9 @@ function renderFrontPage(json) {
 		var after = new Date();
 		after.setMonth(mo);
 
-		var changes = buildPanel(pmc, "LDAP committee group/Committership changes");
+        PMCchanges(json, pmc, after)
+
+		var changes = buildPanel(pmc, "LDAP changes");
 
 		var c = 0;
 		for (i in json.changes[pmc].committer) c++;
@@ -305,12 +362,12 @@ function renderFrontPage(json) {
 		var np = 0;
 		var ncn = null;
 		var npn = null;
-		addLine(pmc, "## LDAP committee group/Committership changes:")
+		addLine(pmc, "## LDAP changes:")
 		addLine(pmc)
-		addLine(pmc, " - Currently " + json.count[pmc][1] + " committers and " + json.count[pmc][0] + " LDAP committee group members.")
+		addLine(pmc, " - Currently " + json.count[pmc][1] + " committers and " + json.count[pmc][0] + " committee group members.")
 		if (c == 0) {
-			changes.innerHTML += "<font color='red'><b>No new changes to the LDAP committee group or committer base detected - (LDAP error or no changes for &gt;2 years)</b></font>"
-			addLine(pmc, " - No new changes to the LDAP committee group or committership since last report.")
+			changes.innerHTML += "<font color='red'><b>No new changes to the committee group or committer base detected - (LDAP error or no changes for &gt;2 years)</b></font>"
+			addLine(pmc, " - No new changes to the committee group or committership since last report.")
 			addLine(pmc)
 		} else {
 			changes.innerHTML += "<h5>Changes within the last 3 months:</h5>"
@@ -325,9 +382,8 @@ function renderFrontPage(json) {
 				}
 			}
 			if (npmc > 1) {
-				addLine(pmc, " - New LDAP committee group members:")
+				addLine(pmc, " - New committee group members:")
 			}
-
 
 			for (i in json.changes[pmc].pmc) {
 				var entry = json.changes[pmc].pmc[i];
@@ -337,19 +393,19 @@ function renderFrontPage(json) {
 				}
 				if (entry[1] > after.getTime() / 1000) {
 					l++;
-					changes.innerHTML += "&rarr; " + entry[0] + " was added to the LDAP committee group on " + new Date(entry[1] * 1000).toDateString() + "<br>";
-					addLine(pmc, (npmc > 1 ? "   " : "") + " - " + entry[0] + " was added to the LDAP committee group on " + new Date(entry[1] * 1000).toDateString())
+					changes.innerHTML += "&rarr; " + entry[0] + " was added to the committee group on " + new Date(entry[1] * 1000).toDateString() + "<br>";
+					addLine(pmc, (npmc > 1 ? "   " : "") + " - " + entry[0] + " was added to the committee group on " + new Date(entry[1] * 1000).toDateString())
 				}
 			}
 			if (l == 0) {
-				addLine(pmc, " - No new LDAP committee group members added in the last 3 months")
-				changes.innerHTML += "&rarr; <font color='red'><b>No new LDAP committee group members in the last 3 months.</b></font><br>";
+				addLine(pmc, " - No new committee group members added in the last 3 months")
+				changes.innerHTML += "&rarr; <font color='red'><b>No new committee group members in the last 3 months.</b></font><br>";
 			}
 			if (npn) {
 				if (np < after.getTime() / 1000) {
-					addLine(pmc, " - Last LDAP committee group addition was " + npn + " at " + new Date(np * 1000).toDateString())
+					addLine(pmc, " - Last committee group addition was " + npn + " at " + new Date(np * 1000).toDateString())
 				}
-				changes.innerHTML += "&rarr; " + "<b>Latest LDAP committee group addition: </b>" + new Date(np * 1000).toDateString() + " (" + npn + ")<br>"
+				changes.innerHTML += "&rarr; " + "<b>Latest committee group addition: </b>" + new Date(np * 1000).toDateString() + " (" + npn + ")<br>"
 			}
 
 
@@ -390,7 +446,7 @@ function renderFrontPage(json) {
 				addLine(pmc, " - Last committer addition was more than 2 years ago")
 				changes.innerHTML += "&rarr; " + "<b>Latest committer addition: </b><font color='red'>more than two years ago (not in the archive!)</font><br>"
 			}
-			changes.innerHTML += "&rarr; " + "<b>Currently " + json.count[pmc][1] + " committers and " + json.count[pmc][0] + " LDAP committee members."
+			changes.innerHTML += "&rarr; " + "<b>Currently " + json.count[pmc][1] + " committers and " + json.count[pmc][0] + " committee members."
 			addLine(pmc)
 		}
 
@@ -663,7 +719,7 @@ function mergeData(json, pmc) {
 		}
 	}
 
-	var todo = new Array('count', 'mail', 'delivery', 'jira', 'changes', 'pdata', 'releases', 'keys', 'health')
+	var todo = new Array('count', 'mail', 'delivery', 'jira', 'changes', 'dates', 'pdata', 'releases', 'keys', 'health')
 	for (i in todo) {
 		var key = todo[i]
 		jsdata[key][pmc] = json[key][pmc];

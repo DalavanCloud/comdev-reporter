@@ -279,6 +279,10 @@ if m:
             if tlp in groups:
                 emails[tlp] = emails[tlp] if tlp in emails else {}
                 emails[tlp][nentry] = mld[entry]
+    with open("/var/www/reporter.apache.org/data/pmcdates.json", "r") as f:
+        pmcdates = json.loads(f.read())
+        f.close()
+    dates = {}
     jdata = {}
     cdata = {}
     ddata = {}
@@ -333,6 +337,7 @@ if m:
                 for member in cchanges[pmc]:
                     if cchanges[pmc][member][1] > 0:
                         cdata[group]['committer'][member] = cchanges[pmc][member]
+        dates[group] = pmcdates[group] # only send the groups we want
     if not isMember(uid):
         allpmcs = []
     output = {
@@ -343,6 +348,7 @@ if m:
         'delivery': emails,
         'jira': jdata,
         'changes': cdata,
+        'dates': dates,
         'pdata': ddata,
         'releases': rdata,
         'keys': keys,
