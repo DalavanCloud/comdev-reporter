@@ -26,10 +26,21 @@ https://git-wip-us.apache.org/repos/asf?p=infrastructure-puppet.git;a=blob_plain
 There must be other puppet data files for the host; details TBA
 
 Crontab:
+
+crontab root:
+# m h  dom mon dow   command
+20 4 * * * cd /var/www/reporter.apache.org/data/releases && ( svn status | awk '/^\? / {print $2}' | xargs -r svn add )
+20 5 * * * cd /var/www/reporter.apache.org/data/releases && svn ci -m "updating reporter data" --username projects_role --password `cat /root/.rolepwd` --non-interactive
+
+crontab -l -u www-data:
 # m h   dom mon dow   command
-00 4,12,20 * * * cd /var/www/reporter.apache.org/data && python3.4 parsepmcs.py
+00 4,12,20 * * * cd /var/www/reporter.apache.org/data && python3 parsepmcs.py
+10 00      * * * cd /var/www/reporter.apache.org/data && python3 reportingcycles.py
+20 00      * * * cd /var/www/reporter.apache.org/data && python3 pmcdates.py
+
 00 01      * * * cd /var/www/reporter.apache.org/ && python mailglomper.py
 00 09      * * * cd /var/www/reporter.apache.org/ && python readjira.py
+
 00 12      * * * curl -sS "(redacted)" > /var/www/reporter.apache.org/data/mailinglists.json
 
 Scripts:
