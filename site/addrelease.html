@@ -10,6 +10,7 @@
    <script src="render.js"></script>
    <title>Apache Project Report Helper: Add a release</title>
 </head>
+<!-- Note: this relies on an Alias in order to access data/releases/ -->
 <body onload='GetAsyncJSON("/releases/" + committee + ".json?now=" + Math.random(), null, listReleaseData)'>
 
 <div id="contents" class="row-12" style="margin: 0 auto; width: 1000px; ">
