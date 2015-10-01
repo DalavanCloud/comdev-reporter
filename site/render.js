@@ -211,6 +211,10 @@ function addLine(pmc, line) {
 	}
 }
 
+function isNewPMC(json,pmc,after) {
+    return json.dates[pmc].pmc[1] >= (after.getTime() / 1000)
+}
+
 function PMCchanges(json, pmc, after) {
         var changes = buildPanel(pmc, "PMC changes");
 
@@ -366,9 +370,14 @@ function renderFrontPage(json) {
 		addLine(pmc)
 		addLine(pmc, " - Currently " + json.count[pmc][1] + " committers and " + json.count[pmc][0] + " committee group members.")
 		if (c == 0) {
-			changes.innerHTML += "<font color='red'><b>No new changes to the committee group or committer base detected - (LDAP error or no changes for &gt;2 years)</b></font>"
-			addLine(pmc, " - No new changes to the committee group or committership since last report.")
-			addLine(pmc)
+		    if (isNewPMC(json,pmc,after)) {
+                changes.innerHTML += "No changes - the PMC was established in the last 3 months."
+                addLine(pmc, " - No changes (the PMC was established in the last 3 months)")
+		    } else {
+			    changes.innerHTML += "<font color='red'><b>No new changes to the committee group or committer base detected - (LDAP error or no changes for &gt;2 years)</b></font>"
+			    addLine(pmc, " - No new changes to the committee group or committership since last report.")
+			}
+            addLine(pmc)
 		} else {
 			changes.innerHTML += "<h5>Changes within the last 3 months:</h5>"
 			var l = 0;
@@ -397,9 +406,14 @@ function renderFrontPage(json) {
 					addLine(pmc, (npmc > 1 ? "   " : "") + " - " + entry[0] + " was added to the committee group on " + new Date(entry[1] * 1000).toDateString())
 				}
 			}
-			if (l == 0) {
-				addLine(pmc, " - No new committee group members added in the last 3 months")
-				changes.innerHTML += "&rarr; <font color='red'><b>No new committee group members in the last 3 months.</b></font><br>";
+			if (l == 0) { // PMC older than 3 months itself
+			    if (isNewPMC(json,pmc,after)) {
+                    addLine(pmc, " - No new committee group members added in the 3 months since the PMC was established")
+                    changes.innerHTML += "&rarr; No new committee group members in the 3 months since the PMC was established<br>";
+			    } else {
+				    addLine(pmc, " - No new committee group members added in the last 3 months")
+				    changes.innerHTML += "&rarr; <font color='red'><b>No new committee group members in the last 3 months.</b></font><br>";
+				}
 			}
 			if (npn) {
 				if (np < after.getTime() / 1000) {
