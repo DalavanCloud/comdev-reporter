@@ -1,4 +1,32 @@
 #!/usr/bin/env python
+"""
+    CGI script to return data to the Javacript that renders the site (render.js)
+    
+    It also populates various json files from JIRA if they are stale:
+    data/JIRA/projects.json - list of all JIRA projects
+    data/JIRA/%.json - for each JIRA project
+    
+    Usage:
+        getjson.py[?only=pmcname]
+    
+    Reads the following:
+        projects.apache.org/site/json/foundation/pmcs.json
+        projects.apache.org/site/json/foundation/chairs.json
+        projects.apache.org/site/json/projects/%s.json
+        data/JIRA/projects.json
+        data/JIRA/%s.json
+        data/health.json
+        data/releases/%s.json
+        data/pmcs.json
+        data/projects.json
+        data/mailinglists.json
+        data/maildata_extended.json
+        
+    
+    Environment variables:
+    
+"""
+
 import os, sys, re, json, subprocess, time
 import base64, urllib2, cgi
 
@@ -32,19 +60,22 @@ with open("/var/www/reporter.apache.org/data/jirapass.txt", "r") as f:
     jirapass = f.read().strip()
     f.close()
 
+
 def getPMCs(uid):
+    """ Reads LDAP and returns the array of committee groups to which the uid belongs
+    Excludes incubator"""
     groups = []
     ldapdata = subprocess.check_output(['ldapsearch', '-x', '-LLL', '(|(memberUid=%s)(member=uid=%s,ou=people,dc=apache,dc=org))' % (uid, uid), 'cn'])
     picked = {}
     for match in re.finditer(r"dn: cn=([-a-zA-Z0-9]+),ou=pmc,ou=committees,ou=groups,dc=apache,dc=org", ldapdata):
         group = match.group(1)
         if group != "incubator":
-
             groups.append(group)
     return groups
 
 
 def isMember(uid):
+    """Reads LDAP to determine if the uid is a member of the ASF"""
     members = []
     ldapdata = subprocess.check_output(['ldapsearch', '-x', '-LLL', '-b', 'cn=member,ou=groups,dc=apache,dc=org'])
     for match in re.finditer(r"memberUid: ([-a-z0-9_.]+)", ldapdata):
@@ -55,6 +86,10 @@ def isMember(uid):
     return False
 
 def getJIRAProjects(project):
+    """Reads data/JIRA/projects.json (updating it if it is stale)
+       Returns the list of JIRA projects for the project argument
+       Assumes that the project names match or the project category matches
+       (after trimming "Apache " and spaces and lower-casing)"""
     project = project.replace("Apache ", "").strip().lower()
     refresh = True
     x = {}
@@ -94,6 +129,10 @@ def getJIRAProjects(project):
     return jiras
 
 def getJIRAS(project):
+    """Reads data/JIRA/%s.json (project), updating it if it is stale
+       with the number of issues created and resolved in the last 91 days
+       Returns array of [created, resolved, project]
+    """
     refresh = True
     try:
         st=os.stat("/var/www/reporter.apache.org/data/JIRA/%s.json" % project)
@@ -184,6 +223,7 @@ def getProjectData(project):
         return x,y,z
 
 def getReleaseData(project):
+    """Reads data/releases/%s.json and returns the contents"""
     try:
         with open("/var/www/reporter.apache.org/data/releases/%s.json" % project, "r") as f:
             x = json.loads(f.read())
