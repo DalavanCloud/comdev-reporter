@@ -119,13 +119,41 @@ for project in pmcs:
 
 
 print("Writing pmcs.json")
-with open("pmcs.json", "w") as f:
-    json.dump(pmcs, f, sort_keys=True, indent=1)
+with open("pmcs.json", "w", encoding='utf-8') as f:
+    json.dump(pmcs, f, sort_keys=True, indent=1, ensure_ascii=False)
     f.close()
 
 print("Writing projects.json")
-with open("projects.json", "w") as f:
-    json.dump(projects, f, sort_keys=True ,indent=1)
+with open("projects.json", "w", encoding='utf-8') as f:
+    json.dump(projects, f, sort_keys=True ,indent=1, ensure_ascii=False)
+    f.close()
+
+"""
+   We want to keep a history of the file because it's not possible
+   to recreate the files with all the original joining dates should the
+   current files get lost. However the main files contain timestamps that are
+   update each time, which would make for unnecessary differences.
+   Now only the joining dates are non-recoverable, so we can
+   save those separately in the history directory which can then be committed to SVN.
+   
+   Fix up the dicts to drop the timestamp.
+"""
+for pmc in pmcs:
+    for id in pmcs[pmc]:
+        del pmcs[pmc][id][2]
+
+print("Writing history/pmcs.json")
+with open("history/pmcs.json", "w", encoding='utf-8') as f:
+    json.dump(pmcs, f, sort_keys=True, indent=1, ensure_ascii=False)
+    f.close()
+
+for project in projects:
+    for id in projects[project]:
+        del projects[project][id][2]
+
+print("Writing history/projects.json")
+with open("history/projects.json", "w", encoding='utf-8') as f:
+    json.dump(projects, f, sort_keys=True ,indent=1, ensure_ascii=False)
     f.close()
     
     
