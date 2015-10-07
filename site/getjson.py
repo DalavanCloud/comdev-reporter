@@ -40,9 +40,10 @@ jmap = {
     'corinthia': ['COR']
 }
 
-pmap = {
+pmap = {# convert mailing list name to PMC name
     'community': 'comdev',
     'ws': 'webservices',
+    'hc': 'httpcomponents',
     'whimsical': 'whimsy',
     'empire': 'empire-db'
 }
@@ -260,9 +261,9 @@ if m:
     with open("/var/www/reporter.apache.org/data/mailinglists.json", "r") as f:
         ml = json.loads(f.read())
         f.close()
-        for entry in ml:
+        for entry in sorted(ml): # e.g. abdera.apache.org-commits, ws.apache.org-dev
             tlp = entry.split(".")[0]
-            if tlp in pmap:
+            if tlp in pmap: # convert ml prefix to PMC internal name
                 tlp = pmap[tlp]
             if tlp in groups:
                 mlstats[tlp] = mlstats[tlp] if tlp in mlstats else {}
@@ -271,13 +272,13 @@ if m:
     with open("/var/www/reporter.apache.org/data/maildata_extended.json", "r") as f:
         mld = json.loads(f.read())
         f.close()
-        for entry in mld:
+        for entry in mld: # e.g. hc-dev, ant-users, ws-dev
             tlp = entry.split("-")[0]
             nentry = entry
             if tlp == "empire":
                 tlp = "empire-db"
                 nentry = entry.replace("empire-", "empire-db-")
-            if tlp in pmap:
+            if tlp in pmap: # convert ml prefix to PMC internal name
                 tlp = pmap[tlp]
             if tlp in groups:
                 emails[tlp] = emails[tlp] if tlp in emails else {}
