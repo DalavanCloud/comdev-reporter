@@ -20,6 +20,9 @@ echo '>>>'
 echo Starting $SCRIPT at $(date)
 export
 
+# show the process tree
+pstree -slapA $$
+
 python3 -u $SCRIPT 
 
 echo Completed $SCRIPT at $(date)
