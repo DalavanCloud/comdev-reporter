@@ -305,8 +305,7 @@ if m:
         if xgroup in cchanges:
             count[group][1] = len(cchanges[xgroup])
         jdata[group] = [0,0, None]
-        ddata[group], allpmcs, phealth = getProjectData(group)
-        health[group] = phealth
+        ddata[group], allpmcs, health[group] = getProjectData(group)
         rdata[group] = getReleaseData(group)
         jiraname = group.upper()
         if group in jmap:
