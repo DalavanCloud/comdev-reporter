@@ -31,7 +31,7 @@ import os, sys, re, json, subprocess, time
 import base64, urllib2, cgi
 
 form = cgi.FieldStorage();
-oproject = form['only'].value if ('only' in form and len(form['only'].value) > 0) else None
+oproject = form['only'].value if ('only' in form and len(form['only'].value) > 0) else os.environ['ONLY'] if 'ONLY' in os.environ else None
 
 
 jmap = {
