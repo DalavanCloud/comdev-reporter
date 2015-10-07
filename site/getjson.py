@@ -124,9 +124,12 @@ def getJIRAProjects(project):
     for entry in x:
         if entry['name'].replace("Apache ", "").strip().lower() == project:
             jiras.append(entry['key'])
-        elif 'projectCategory' in entry and entry['projectCategory']['name'].replace("Apache ", "").strip().lower() == project:
+        elif 'projectCategory' in entry and fixProjectCategory(entry['projectCategory']['name']) == project:
             jiras.append(entry['key'])
     return jiras
+
+def fixProjectCategory(cat):
+    return cat.replace("Apache ", "").replace(" Framework", "").strip().lower()
 
 def getJIRAS(project):
     """Reads data/JIRA/%s.json % (project), re-creating it if it is stale
