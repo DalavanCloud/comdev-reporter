@@ -332,7 +332,7 @@ function renderFrontPage(json) {
 		var health = document.createElement('p');
 		if (json.health[pmc] && !isNaN(json.health[pmc]['cscore'])) {
 			health.style.marginTop = "10px"
-			health.innerHTML = "<b>Committee Health score:</b> <a href='/chi.py#" + pmc + "'><u><font color='" + hcolors[json.health[pmc]['cscore']] + "'>" + (6.33 + (json.health[pmc]['score'] * -1.00 * (20 / 12.25))).toFixed(2) + " (" + hvalues[json.health[pmc]['cscore']] + ")</u></font></a>"
+			health.innerHTML = "<b>Committee Health score:</b> <a href='chi.py#" + pmc + "'><u><font color='" + hcolors[json.health[pmc]['cscore']] + "'>" + (6.33 + (json.health[pmc]['score'] * -1.00 * (20 / 12.25))).toFixed(2) + " (" + hvalues[json.health[pmc]['cscore']] + ")</u></font></a>"
 			obj.appendChild(health)
 		}
 		pcontainer.appendChild(obj)
