@@ -261,7 +261,7 @@ if m:
     with open("/var/www/reporter.apache.org/data/mailinglists.json", "r") as f:
         ml = json.loads(f.read())
         f.close()
-        for entry in sorted(ml): # e.g. abdera.apache.org-commits, ws.apache.org-dev
+        for entry in ml: # e.g. abdera.apache.org-commits, ws.apache.org-dev
             tlp = entry.split(".")[0]
             if tlp in pmap: # convert ml prefix to PMC internal name
                 tlp = pmap[tlp]
