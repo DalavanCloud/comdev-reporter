@@ -340,7 +340,8 @@ if m:
                 for member in cchanges[pmc]:
                     if cchanges[pmc][member][1] > 0:
                         cdata[group]['committer'][member] = cchanges[pmc][member]
-        dates[group] = pmcdates[group] # only send the groups we want
+        if group in pmcdates: # Make sure we have this PMC in the JSON, so as to not bork
+            dates[group] = pmcdates[group] # only send the groups we want
     if not isMember(uid):
         allpmcs = []
     output = {
