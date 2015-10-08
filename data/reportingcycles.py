@@ -7,14 +7,14 @@ import json
 Reads committee-info.json via committee_info module
 
 Creates:
-reportingcycles.json
+../site/reportingcycles.json
 
 """
 
 cycles = committee_info.cycles()
 
-print("Writing reportingcycles.json")
-with open("reportingcycles.json", "w", encoding='utf-8') as f:
+print("Writing ../site/reportingcycles.json")
+with open("../site/reportingcycles.json", "w", encoding='utf-8') as f:
     json.dump(cycles, f, sort_keys = True, indent=1, ensure_ascii=False)
     f.close()
 
