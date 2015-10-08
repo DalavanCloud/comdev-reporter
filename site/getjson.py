@@ -269,6 +269,7 @@ if m:
                 mlstats[tlp] = mlstats[tlp] if tlp in mlstats else {}
                 mlstats[tlp][entry] = ml[entry]
     emails = {}
+    pmcdates = {}
     with open("/var/www/reporter.apache.org/data/maildata_extended.json", "r") as f:
         mld = json.loads(f.read())
         f.close()
