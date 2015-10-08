@@ -140,6 +140,10 @@
    "Christopher Tubbs",
    0
   ],
+  "dhutchis": [
+   "Dylan Hutchison",
+   1444244401.973627
+  ],
   "dlmarion": [
    "Dave Marion",
    0
@@ -175,6 +179,10 @@
   "medined": [
    "David Medinets",
    0
+  ],
+  "rweeks": [
+   "Russ Weeks",
+   1444244401.973627
   ],
   "shickey": [
    "Sean Hickey",
@@ -1051,6 +1059,10 @@
   "fbarca": [
    "Florian Barca",
    1418415234
+  ],
+  "gautam": [
+   "Gautam Borad",
+   1444071602.2715263
   ],
   "hitesh": [
    "Hitesh Shah",
@@ -11841,56 +11853,7 @@
    0
   ]
  },
- "directmemory": {
-  "antelder": [
-   "Anthony Elder",
-   0
-  ],
-  "bperroud": [
-   "Benoit Perroud",
-   0
-  ],
-  "iocanel": [
-   "Ioannis Canellos",
-   0
-  ],
-  "mcucchiara": [
-   "Maurizio Cucchiara",
-   0
-  ],
-  "noctarius": [
-   "Christoph Engelbert",
-   0
-  ],
-  "olamy": [
-   "Olivier Lamy",
-   0
-  ],
-  "raffaeleguidi": [
-   "Raffaele P. Guidi",
-   0
-  ],
-  "simoneg": [
-   "Simone Gianni",
-   0
-  ],
-  "simonetripodi": [
-   "Simone Tripodi",
-   0
-  ],
-  "sylvain": [
-   "Sylvain Wallez",
-   0
-  ],
-  "tommaso": [
-   "Tommaso Teofili",
-   0
-  ],
-  "twilliams": [
-   "Tim Williams",
-   0
-  ]
- },
+ "directmemory": {},
  "directmemory-pmc": {
   "antelder": [
    "Anthony Elder",
@@ -12426,6 +12389,10 @@
    "Martijn Dashorst",
    0
   ],
+  "derjan": [
+   "Jan Glaubitz",
+   1444071602.2715263
+  ],
   "doebele": [
    "Rainer Doebele",
    0
@@ -12437,6 +12404,10 @@
   "francisdb": [
    "Francis De Brabandere",
    0
+  ],
+  "inemeth": [
+   "Ivan Nemeth",
+   1444071602.2715263
   ],
   "reiher": [
    "Joerg Reiher",
@@ -22722,6 +22693,10 @@
    "Pablo Fernandez",
    0
   ],
+  "paeng": [
+   "Paeng",
+   1444244401.973627
+  ],
   "panjie": [
    "Jie Pan",
    0
@@ -22881,6 +22856,10 @@
   "ploikith": [
    "Paul C. Loikith",
    0
+  ],
+  "pluradj": [
+   "Jason Plurad",
+   1444071602.2715263
   ],
   "pmalik": [
    "Prashant Malik",
@@ -24085,6 +24064,10 @@
   "srivas": [
    "Srivas",
    0
+  ],
+  "ssa": [
+   "Sergey Soldatov",
+   1444071602.2715263
   ],
   "ssc": [
    "Sebastian Schelter",
@@ -27277,6 +27260,10 @@
    "Alan Cabrera",
    0
   ],
+  "aduprat": [
+   "Antoine Duprat",
+   1444158002.1028526
+  ],
   "andrzej": [
    "Andrzej Rusin",
    0
@@ -27356,6 +27343,10 @@
   "manolo": [
    "Manuel Carrasco Monino",
    0
+  ],
+  "matthieu": [
+   "Matthieu Baechler",
+   1444158002.1028526
   ],
   "mheath": [
    "Mike Heath",
@@ -34772,6 +34763,10 @@
   "taher": [
    "Taher A. Alkhateeb",
    1431975602.2145052
+  ],
+  "zhangwei": [
+   "Wei Zhang",
+   1444071602.2715263
   ]
  },
  "ofbiz-pmc": {
@@ -35304,6 +35299,10 @@
   "pzimdars": [
    "Paul Zimdars",
    0
+  ],
+  "radumanole": [
+   "Radu Manole",
+   1444158002.1028526
   ],
   "rickdn": [
    "Ricky Nguyen",
@@ -39706,6 +39705,10 @@
   "dongjoon": [
    "Dongjoon Hyun",
    0
+  ],
+  "gwkim": [
+   "Geon Woo Kim",
+   1444071602.2715263
   ],
   "gwlee": [
    "Gyewon Lee",

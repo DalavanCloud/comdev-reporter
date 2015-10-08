@@ -78,6 +78,10 @@
    "Christopher Tubbs",
    0
   ],
+  "dhutchis": [
+   "Dylan Hutchison",
+   1444244401.973627
+  ],
   "dlmarion": [
    "Dave Marion",
    0
@@ -113,6 +117,10 @@
   "medined": [
    "David Medinets",
    0
+  ],
+  "rweeks": [
+   "Russ Weeks",
+   1444244401.973627
   ],
   "shickey": [
    "Sean Hickey",
@@ -3867,56 +3875,7 @@
    0
   ]
  },
- "directmemory": {
-  "antelder": [
-   "Anthony Elder",
-   0
-  ],
-  "bperroud": [
-   "Benoit Perroud",
-   0
-  ],
-  "iocanel": [
-   "Ioannis Canellos",
-   0
-  ],
-  "mcucchiara": [
-   "Maurizio Cucchiara",
-   0
-  ],
-  "noctarius": [
-   "Christoph Engelbert",
-   0
-  ],
-  "olamy": [
-   "Olivier Lamy",
-   0
-  ],
-  "raffaeleguidi": [
-   "Raffaele P. Guidi",
-   0
-  ],
-  "simoneg": [
-   "Simone Gianni",
-   0
-  ],
-  "simonetripodi": [
-   "Simone Tripodi",
-   0
-  ],
-  "sylvain": [
-   "Sylvain Wallez",
-   0
-  ],
-  "tommaso": [
-   "Tommaso Teofili",
-   0
-  ],
-  "twilliams": [
-   "Tim Williams",
-   0
-  ]
- },
+ "directmemory": {},
  "directory": {
   "akarasulu": [
    "Alex Karasulu",
@@ -8769,6 +8728,10 @@
   "mibo": [
    "Michael Bolz",
    0
+  ],
+  "rareddy": [
+   "Ramesh Reddy",
+   1444302001.7483013
   ],
   "sklevenz": [
    "Stephan Klevenz",
