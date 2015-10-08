@@ -250,6 +250,13 @@ if m:
     with open("/var/www/reporter.apache.org/data/projects.json", "r") as f:
         cchanges = json.loads(f.read())
         f.close()
+    bugzillastats = {}
+    try:
+        with open("/var/www/reporter.apache.org/data/bugzillastats.json", "r") as f:
+            bugzillastats = json.loads(f.read())
+            f.close()
+    except:
+        pass
     uid = m.group(1)
     groups = getPMCs(uid)
     include = os.environ['QUERY_STRING'] if 'QUERY_STRING' in os.environ else None
@@ -288,6 +295,7 @@ if m:
         pmcdates = json.loads(f.read())
         f.close()
     dates = {}
+    bdata = {} # bugzilla data
     jdata = {}
     cdata = {}
     ddata = {}
@@ -309,6 +317,10 @@ if m:
         jdata[group] = [0,0, None]
         ddata[group], allpmcs, health[group] = getProjectData(group)
         rdata[group] = getReleaseData(group)
+        if group in bugzillastats:
+            bdata[group] = bugzillastats[group]
+        else:
+            bdata[group] = [0,0,{}]
         jiraname = group.upper()
         if group in jmap:
             for jiraname in jmap[group]:
@@ -352,6 +364,7 @@ if m:
         'mail': mlstats,
         'delivery': emails,
         'jira': jdata,
+        'bugzilla': bdata,
         'changes': cdata,
         'dates': dates,
         'pdata': ddata,

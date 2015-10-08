@@ -646,6 +646,10 @@ function renderFrontPage(json) {
 
 
 
+        if (json.bugzilla[pmc][0] || json.bugzilla[pmc][1] > 0) {
+            renderBZ(pmc)
+        }
+
 		if (json.jira[pmc][0] > 0 || json.jira[pmc][1] > 0) {
 			renderJIRA(pmc)
 		}
@@ -737,7 +741,7 @@ function mergeData(json, pmc) {
 		}
 	}
 
-	var todo = new Array('count', 'mail', 'delivery', 'jira', 'changes', 'dates', 'pdata', 'releases', 'keys', 'health')
+	var todo = new Array('count', 'mail', 'delivery', 'bugzilla', 'jira', 'changes', 'dates', 'pdata', 'releases', 'keys', 'health')
 	for (i in todo) {
 		var key = todo[i]
 		jsdata[key][pmc] = json[key][pmc];
@@ -764,6 +768,19 @@ function renderJIRA(pmc) {
 
 }
 
+
+function renderBZ(pmc) {
+    var obj = buildPanel(pmc, "Bugzilla Statistics")
+
+    addLine(pmc, "## Bugzilla Statistics:")
+    addLine(pmc)
+    addLine(pmc, " - " + jsdata.bugzilla[pmc][0] + " Bugzilla tickets created in the last 3 months");
+    addLine(pmc, " - " + jsdata.bugzilla[pmc][1] + " Bugzilla tickets resolved in the last 3 months");
+    addLine(pmc)
+    obj.innerHTML += jsdata.bugzilla[pmc][0] + " Bugzilla tickets created in the last 3 months<br>";
+    obj.innerHTML += jsdata.bugzilla[pmc][1] + " Bugzilla tickets resolved in the last 3 months<br>";
+    obj.innerHTML += "Tickets were found for the following products:<br><kbd>" + Object.keys(jsdata.bugzilla[pmc][2]).sort().join(", ") + "</kbd>"
+}
 
 function renderChart(json, name, container, delivery) {
 
