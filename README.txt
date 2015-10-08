@@ -34,18 +34,24 @@ crontab root:
 
 crontab -l -u www-data:
 # m h   dom mon dow   command
-00 4,12,20 * * * cd /var/www/reporter.apache.org/data && python3 parsepmcs.py
-10 00      * * * cd /var/www/reporter.apache.org/data && python3 reportingcycles.py
-20 00      * * * cd /var/www/reporter.apache.org/data && python3 pmcdates.py
+00 4,12,20 * * * cd /var/www/reporter.apache.org/data && ./python3logger.sh parsepmcs.py
+10 00      * * * cd /var/www/reporter.apache.org/data && ./python3logger.sh reportingcycles.py
+20 00      * * * cd /var/www/reporter.apache.org/data && ./python3logger.sh pmcdates.py
 
-00 01      * * * cd /var/www/reporter.apache.org/ && python mailglomper.py
-00 09      * * * cd /var/www/reporter.apache.org/ && python readjira.py
+00 01      * * * cd /var/www/reporter.apache.org/ && ./pythonlogger.sh mailglomper.py
+00 09      * * * cd /var/www/reporter.apache.org/ && ./pythonlogger.sh readjira.py
 
 00 12      * * * curl -sS "(redacted)" > /var/www/reporter.apache.org/data/mailinglists.json
 
 Scripts:
 - data/parsepmcs.py
   Updates data/pmcs.json and data/projects.json (currently from http://people.apache.org/committer-index.html)
+
+-data/pmcdates.py
+  Creates data/pmcdates.json from committee_info.json
+
+-data/reportingcycles.py
+  Creates site/reportingcycles.json from committee_info.json
 
 - mailglomper.py
   Updates data/maildata_extended.json from http://mail-archives.us.apache.org/mod_mbox/<list>/<date>.mbox
@@ -97,6 +103,7 @@ Note: the prefix ~pao means that the file is held under the projects.apache.org 
   data/mailinglists.json
   data/pmcs.json
   data/projects.json
+  data/pmcdates.json
   data/releases/%s.json % project
   data/JIRA/projects.json
   data/JIRA/%s.json % project
@@ -110,9 +117,6 @@ Note: the prefix ~pao means that the file is held under the projects.apache.org 
   site/jiraversions.py?project=<pmc>&jiraname=<project>&prepend=<prepend>
   site/addrelease.py?json=true&committee=xxx&version=xxx&date=xxx
 
-NOTE
-  The file site/reportingcycles.json is updated by the reportingcycles.sh script
-  which is run under projects.a.o.
 
 TODO
 
