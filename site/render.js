@@ -298,8 +298,12 @@ function renderFrontPage(json) {
 	var hcolors = ["#000070", "#007000", "#407000", "#70500", "#700000", "#A00000"]
 	var hvalues = ["Super Healthy", "Healthy", "Mostly Okay", "Unhealthy", "Action required!", "URGENT ACTION REQUIRED!"]
 	for (i in json.pmcs) {
-
 		var pmc = json.pmcs[i]
+		
+		// Stuff has broken, check that we have dates!
+		if (!json.dates[pmc]) {
+			continue
+		}
 		templates[pmc] = "Report from the " + (json.pdata[pmc].name ? json.pdata[pmc].name : pmc) + " committee [" + (json.pdata[pmc].chair ? json.pdata[pmc].chair : "Put your name here") + "]\n\n"
 
 		addLine(pmc, "## Description:")
