@@ -37,6 +37,7 @@ crontab -l -u www-data:
 00 4,12,20 * * * cd /var/www/reporter.apache.org/data && ./python3logger.sh parsepmcs.py
 10 00      * * * cd /var/www/reporter.apache.org/data && ./python3logger.sh reportingcycles.py
 20 00      * * * cd /var/www/reporter.apache.org/data && ./python3logger.sh pmcdates.py
+30 00      * * * cd /var/www/reporter.apache.org/data && ./python3logger.sh bugzillastats.py
 
 00 01      * * * cd /var/www/reporter.apache.org/ && ./pythonlogger.sh mailglomper.py
 00 09      * * * cd /var/www/reporter.apache.org/ && ./pythonlogger.sh readjira.py
