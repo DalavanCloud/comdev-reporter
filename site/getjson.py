@@ -165,9 +165,13 @@ def getJIRAS(project):
                 f.close()
             return cdata['total'], rdata['total'], project
         except Exception as err:
-            with open("/var/www/reporter.apache.org/data/JIRA/%s.json" % project, "w") as f:
-                json.dump([0,0,None], f, indent=1)
-                f.close()
+            # Don't create an empty file if the request fails. The likely cause is that the project does not use JIRA,
+            # or getjson has been invoked with an invalid pmc name. Invalid files will cause the refresh script to
+            # retry the requests unnecessarily. 
+            # Furthermore, if there is a temporary issue, creating an empty file will prevent a retry for 48hours.
+#             with open("/var/www/reporter.apache.org/data/JIRA/%s.json" % project, "w") as f:
+#                 json.dump([0,0,None], f, indent=1)
+#                 f.close()
             return 0,0, None
 
 def getProjectData(project):
