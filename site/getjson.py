@@ -325,27 +325,27 @@ if m:
             bdata[group] = bugzillastats[group]
         else:
             bdata[group] = [0,0,{}]
-            # only update the JIRA data if the project is *not* in bugzilla
-            jiraname = group.upper()
-            if group in jmap:
-                for jiraname in jmap[group]:
-                    x,y, p = getJIRAS(jiraname)
-                    jdata[group][0] += x
-                    jdata[group][1] += y
-                    jdata[group][2] = p
-            elif group in ddata and 'name' in ddata[group]:
-                jiras = getJIRAProjects(ddata[group]['name'])
-                keys[group] = jiras
-                for jiraname in jiras:
-                    x,y, p= getJIRAS(jiraname)
-                    jdata[group][0] += x
-                    jdata[group][1] += y
-                    jdata[group][2] = p
-            elif jiraname:
+        # a PMC may have projects using Bugzilla *and* JIRA - e.g. Tomcat - (or neither)
+        jiraname = group.upper()
+        if group in jmap:
+            for jiraname in jmap[group]:
+                x,y, p = getJIRAS(jiraname)
+                jdata[group][0] += x
+                jdata[group][1] += y
+                jdata[group][2] = p
+        elif group in ddata and 'name' in ddata[group]:
+            jiras = getJIRAProjects(ddata[group]['name'])
+            keys[group] = jiras
+            for jiraname in jiras:
                 x,y, p= getJIRAS(jiraname)
                 jdata[group][0] += x
                 jdata[group][1] += y
                 jdata[group][2] = p
+        elif jiraname:
+            x,y, p= getJIRAS(jiraname)
+            jdata[group][0] += x
+            jdata[group][1] += y
+            jdata[group][2] = p
 
         cdata[group] = cdata[xgroup] if xgroup in cdata else {'pmc': {}, 'committer': {}}
         for pmc in pchanges:
