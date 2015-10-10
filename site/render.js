@@ -505,7 +505,8 @@ function renderFrontPage(json) {
 			}
 		}
 		releases.innerHTML += "<i>(A total of " + (tr - nr) + " older release(s) were found for " + pmc + " in our db)</i><br>"
-		releases.innerHTML += "<br><a href='javascript:void(0);' onclick=\"$('#rdialog_" + pmc + "').dialog({minWidth: 450, minHeight: 240});\">Add a release</a> - <a href='javascript:void(0);' onclick=\"$('#dialog_" + pmc + "').dialog({minWidth: 450, minHeight: 240});\">Fetch releases from JIRA</a>"
+		releases.innerHTML += "<br><a href='javascript:void(0);' onclick=\"$('#rdialog_" + pmc + "').dialog({minWidth: 450, minHeight: 240});\">Add a release</a>"
+		releases.innerHTML += " - <a href='javascript:void(0);' onclick=\"$('#dialog_" + pmc + "').dialog({minWidth: 450, minHeight: 240});\">Fetch releases from JIRA</a>"
 		releases.innerHTML += " - <a href='addrelease.html?" + pmc + "'>Manage release versions</a><br>"
 
 		if (tr > 0) {
