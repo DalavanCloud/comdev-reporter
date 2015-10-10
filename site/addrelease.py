@@ -50,7 +50,7 @@ if date != None and version and committee:
             if version in rdata:
                 del rdata[version]
         with open("/var/www/reporter.apache.org/data/releases/%s.json" % committee, "w") as f:
-            json.dump(rdata, f, indent=1)
+            json.dump(rdata, f, indent=1, sort_keys=True)
             f.close()
             saved = True
             if dojson:
