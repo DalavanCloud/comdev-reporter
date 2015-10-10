@@ -983,6 +983,10 @@ function fetchJIRA(pmc, project, prepend) {
 				alert("Fetched " + n + " releases from JIRA!")
 				renderFrontPage(jsdata)
 
+            } else if (json && json.status){
+                alert(json.status)
+            } else if (json) {
+                alert(JSON.stringify(json))
 			} else {
 				alert("Couldn't find any release data :(")
 			}
@@ -1008,6 +1012,10 @@ function addRelease(pmc, version, date) {
 				alert("Release added!")
 				renderFrontPage(jsdata)
 
+            } else if (json && json.status){
+                alert(json.status)
+            } else if (json) {
+                alert(JSON.stringify(json))
 			} else {
 				alert("Couldn't add release data :(")
 			}
