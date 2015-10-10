@@ -29,6 +29,11 @@
 
 import os, sys, re, json, subprocess, time
 import base64, urllib2, cgi
+from symbol import except_clause
+
+# Relative path to home directory from here (site)
+RAOHOME = '../'
+PAOHOME = '../../projects.apache.org/'
 
 form = cgi.FieldStorage();
 oproject = form['only'].value if ('only' in form and len(form['only'].value) > 0) else os.environ['ONLY'] if 'ONLY' in os.environ else None
@@ -57,9 +62,23 @@ ldapmap = {
 }
 
 jirapass = ""
-with open("/var/www/reporter.apache.org/data/jirapass.txt", "r") as f:
+with open(RAOHOME+"data/jirapass.txt", "r") as f:
     jirapass = f.read().strip()
     f.close()
+
+def readJson(filename, *default):
+    """Read a JSON file. If the read fails, return the default (if any) otherwise return the exception"""
+    data = {}
+    try:
+        with open(filename, "r") as f:
+            data = json.load(f)
+            f.close()
+    except:
+        if default == None:
+            raise
+        else:
+            return default
+    return data
 
 
 def getPMCs(uid):
@@ -98,15 +117,13 @@ def getJIRAProjects(project):
     try:
         mtime = 0
         try:
-            st=os.stat("/var/www/reporter.apache.org/data/JIRA/projects.json")
+            st=os.stat(RAOHOME+"data/JIRA/projects.json")
             mtime=st.st_mtime
         except:
             pass
         if mtime >= (time.time() - 86400):
             refresh = False
-            with open("/var/www/reporter.apache.org/data/JIRA/projects.json", "r") as f:
-                x = json.loads(f.read())
-                f.close()
+            x = readJson(RAOHOME+"data/JIRA/projects.json")
         else:
             base64string = base64.encodestring('%s:%s' % ('githubbot', jirapass))[:-1]
     
@@ -114,7 +131,7 @@ def getJIRAProjects(project):
                 req = urllib2.Request("https://issues.apache.org/jira/rest/api/2/project.json")
                 req.add_header("Authorization", "Basic %s" % base64string)
                 x = json.loads(urllib2.urlopen(req).read())
-                with open("/var/www/reporter.apache.org/data/JIRA/projects.json", "w") as f:
+                with open(RAOHOME+"data/JIRA/projects.json", "w") as f:
                     json.dump(x, f, indent=1)
                     f.close()
             except:
@@ -139,14 +156,12 @@ def getJIRAS(project):
     """
     refresh = True
     try:
-        st=os.stat("/var/www/reporter.apache.org/data/JIRA/%s.json" % project)
+        st=os.stat(RAOHOME+"data/JIRA/%s.json" % project)
         mtime=st.st_mtime
         if mtime >= (time.time() - (2*86400)):
             refresh = False
-            with open("/var/www/reporter.apache.org/data/JIRA/%s.json" % project, "r") as f:
-                x = json.loads(f.read())
-                f.close()
-                return x[0], x[1], x[2]
+            x = readJson(RAOHOME+"data/JIRA/%s.json" % project)
+            return x[0], x[1], x[2]
     except:
         pass
 
@@ -160,7 +175,7 @@ def getJIRAS(project):
             req = urllib2.Request("""https://issues.apache.org/jira/rest/api/2/search?jql=project%20=%20'""" + project + """'%20AND%20resolved%20%3E=%20-91d""")
             req.add_header("Authorization", "Basic %s" % base64string)
             rdata = json.loads(urllib2.urlopen(req).read())
-            with open("/var/www/reporter.apache.org/data/JIRA/%s.json" % project, "w") as f:
+            with open(RAOHOME+"data/JIRA/%s.json" % project, "w") as f:
                 json.dump([cdata['total'], rdata['total'], project], f, indent=1)
                 f.close()
             return cdata['total'], rdata['total'], project
@@ -169,7 +184,7 @@ def getJIRAS(project):
             # or getjson has been invoked with an invalid pmc name. Invalid files will cause the refresh script to
             # retry the requests unnecessarily. 
             # Furthermore, if there is a temporary issue, creating an empty file will prevent a retry for 48hours.
-#             with open("/var/www/reporter.apache.org/data/JIRA/%s.json" % project, "w") as f:
+#             with open(RAOHOME+"data/JIRA/%s.json" % project, "w") as f:
 #                 json.dump([0,0,None], f, indent=1)
 #                 f.close()
             return 0,0, None
@@ -177,68 +192,48 @@ def getJIRAS(project):
 def getProjectData(project):
     try:
         y = []
-        with open("/var/www/projects.apache.org/site/json/projects/%s.json" % project, "r") as f:
-            x = json.loads(f.read())
-            f.close()
-        with open("/var/www/projects.apache.org/site/json/foundation/pmcs.json", "r") as f:
-            p = json.loads(f.read())
-            f.close()
-            for xproject in p:
-                y.append(xproject)
-                if xproject == project:
-                    x['name'] = p[project]['name']
-        with open("/var/www/projects.apache.org/site/json/foundation/chairs.json", "r") as f:
-            c = json.loads(f.read())
-            f.close()
-            for xproject in c:
-                if xproject.lower() == x['name'].lower():
-                    x['chair'] = c[xproject]
+        x = readJson(PAOHOME+"site/json/projects/%s.json" % project)
+        p = readJson(PAOHOME+"site/json/foundation/pmcs.json")
+        for xproject in p:
+            y.append(xproject)
+            if xproject == project:
+                x['name'] = p[project]['name']
+        c = readJson(PAOHOME+"site/json/foundation/chairs.json")
+        for xproject in c:
+            if xproject.lower() == x['name'].lower():
+                x['chair'] = c[xproject]
         z = {}
-        with open("/var/www/reporter.apache.org/data/health.json", "r") as f:
-            h = json.loads(f.read())
-            f.close()
-            z = {}
-            for entry in h:
-                if entry['group'] == project:
-                    z = entry
+        h = readJson(RAOHOME+"data/health.json")
+        z = {}
+        for entry in h:
+            if entry['group'] == project:
+                z = entry
                     
         return x, y, z;
     except:
         x = {}
         y = []
-        with open("/var/www/projects.apache.org/site/json/foundation/pmcs.json", "r") as f:
-            p = json.loads(f.read())
-            f.close()
-            for xproject in p:
-                y.append(xproject)
-                if xproject == project:
-                    x['name'] = p[project]['name']
+        p = readJson(PAOHOME+"site/json/foundation/pmcs.json")
+        for xproject in p:
+            y.append(xproject)
+            if xproject == project:
+                x['name'] = p[project]['name']
 
-        with open("/var/www/projects.apache.org/site/json/foundation/chairs.json", "r") as f:
-            c = json.loads(f.read())
-            f.close()
-            for xproject in c:
-                if 'name' in x and xproject == x['name']:
-                    x['chair'] = c[xproject]
+        c = readJson(PAOHOME+"site/json/foundation/chairs.json")
+        for xproject in c:
+            if 'name' in x and xproject == x['name']:
+                x['chair'] = c[xproject]
         z = {}
-        with open("/var/www/reporter.apache.org/data/health.json", "r") as f:
-            h = json.loads(f.read())
-            f.close()
-            z = {}
-            for entry in h:
-                if entry['group'] == project:
-                    z = entry
+        h = readJson(RAOHOME+"data/health.json")
+        z = {}
+        for entry in h:
+            if entry['group'] == project:
+                z = entry
         return x,y,z
 
 def getReleaseData(project):
     """Reads data/releases/%s.json and returns the contents"""
-    try:
-        with open("/var/www/reporter.apache.org/data/releases/%s.json" % project, "r") as f:
-            x = json.loads(f.read())
-            f.close()
-        return x;
-    except:
-        return {}
+    return readJson(RAOHOME+"data/releases/%s.json" % project, {})
 
 
 user = os.environ['HTTP_X_AUTHENTICATED_USER'] if 'HTTP_X_AUTHENTICATED_USER' in os.environ else ""
@@ -247,20 +242,10 @@ m = re.match(r"^([-a-zA-Z0-9_.]+)$", user)
 if m:
     pchanges = {}
     cchanges = {}
-    with open("/var/www/reporter.apache.org/data/pmcs.json", "r") as f:
-        pchanges = json.loads(f.read())
-        f.close()
-    
-    with open("/var/www/reporter.apache.org/data/projects.json", "r") as f:
-        cchanges = json.loads(f.read())
-        f.close()
-    bugzillastats = {}
-    try:
-        with open("/var/www/reporter.apache.org/data/bugzillastats.json", "r") as f:
-            bugzillastats = json.loads(f.read())
-            f.close()
-    except:
-        pass
+    pchanges = readJson(RAOHOME+"data/pmcs.json")
+    cchanges = readJson(RAOHOME+"data/projects.json")
+    bugzillastats = readJson(RAOHOME+"data/bugzillastats.json", {})
+
     uid = m.group(1)
     groups = getPMCs(uid)
     include = os.environ['QUERY_STRING'] if 'QUERY_STRING' in os.environ else None
@@ -269,35 +254,28 @@ if m:
     if oproject and len(oproject) > 0 and isMember(uid):
         groups = [oproject]
     mlstats = {}
-    with open("/var/www/reporter.apache.org/data/mailinglists.json", "r") as f:
-        ml = json.loads(f.read())
-        f.close()
-        for entry in ml: # e.g. abdera.apache.org-commits, ws.apache.org-dev
-            tlp = entry.split(".")[0]
-            if tlp in pmap: # convert ml prefix to PMC internal name
-                tlp = pmap[tlp]
-            if tlp in groups:
-                mlstats[tlp] = mlstats[tlp] if tlp in mlstats else {}
-                mlstats[tlp][entry] = ml[entry]
+    ml = readJson(RAOHOME+"data/mailinglists.json")
+    for entry in ml: # e.g. abdera.apache.org-commits, ws.apache.org-dev
+        tlp = entry.split(".")[0]
+        if tlp in pmap: # convert ml prefix to PMC internal name
+            tlp = pmap[tlp]
+        if tlp in groups:
+            mlstats[tlp] = mlstats[tlp] if tlp in mlstats else {}
+            mlstats[tlp][entry] = ml[entry]
     emails = {}
-    pmcdates = {}
-    with open("/var/www/reporter.apache.org/data/maildata_extended.json", "r") as f:
-        mld = json.loads(f.read())
-        f.close()
-        for entry in mld: # e.g. hc-dev, ant-users, ws-dev
-            tlp = entry.split("-")[0]
-            nentry = entry
-            if tlp == "empire":
-                tlp = "empire-db"
-                nentry = entry.replace("empire-", "empire-db-")
-            if tlp in pmap: # convert ml prefix to PMC internal name
-                tlp = pmap[tlp]
-            if tlp in groups:
-                emails[tlp] = emails[tlp] if tlp in emails else {}
-                emails[tlp][nentry] = mld[entry]
-    with open("/var/www/reporter.apache.org/data/pmcdates.json", "r") as f:
-        pmcdates = json.loads(f.read())
-        f.close()
+    mld = readJson(RAOHOME+"data/maildata_extended.json")
+    for entry in mld: # e.g. hc-dev, ant-users, ws-dev
+        tlp = entry.split("-")[0]
+        nentry = entry
+        if tlp == "empire":
+            tlp = "empire-db"
+            nentry = entry.replace("empire-", "empire-db-")
+        if tlp in pmap: # convert ml prefix to PMC internal name
+            tlp = pmap[tlp]
+        if tlp in groups:
+            emails[tlp] = emails[tlp] if tlp in emails else {}
+            emails[tlp][nentry] = mld[entry]
+    pmcdates = readJson(RAOHOME+"data/pmcdates.json")
     dates = {}
     bdata = {} # bugzilla data
     jdata = {}
