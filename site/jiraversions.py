@@ -61,12 +61,16 @@ if (isMember(user) or project in groups)  and jiraname:
                 rdata[entry['name']] = date
     except Exception as err:
         pass
-    with open("/var/www/reporter.apache.org/data/releases/%s.json" % project, "w") as f:
-        json.dump(rdata, f, indent=1, sort_keys=True)
-        f.close()
-          
-    print("Content-Type: application/json\r\n\r\n")
-    print(json.dumps({'status': 'Fetched', 'versions': rdata}, indent=1))
-    
+    try:
+        with open("/var/www/reporter.apache.org/data/releases/%s.json" % project, "w") as f:
+            json.dump(rdata, f, indent=1, sort_keys=True)
+            f.close()
+    except Exception as e:
+        # Use json.dumps to ensure that quotes are handled correctly
+        print("Content-Type: application/json\r\n\r\n%s\r\n" % json.dumps({"status": str(e)}))
+    else:
+        print("Content-Type: application/json\r\n\r\n")
+        print(json.dumps({'status': 'Fetched', 'versions': rdata}, indent=1))
+
 else:
     print("Content-Type: application/json\r\n\r\n{\"status\": \"Data missing\"}\r\n")
