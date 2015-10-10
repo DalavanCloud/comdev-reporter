@@ -24,7 +24,9 @@
         
     
     Environment variables:
-    
+    HTTP_X_AUTHENTICATED_USER - set by Apache webserver
+    QUERY_STRING - additional group to include
+    ONLY - equivalent to ?only CGI param
 """
 
 import os, sys, re, json, subprocess, time
@@ -35,8 +37,12 @@ from symbol import except_clause
 RAOHOME = '../'
 PAOHOME = '../../projects.apache.org/'
 
+# Pick up environment settings
 form = cgi.FieldStorage();
 oproject = form['only'].value if ('only' in form and len(form['only'].value) > 0) else os.environ['ONLY'] if 'ONLY' in os.environ else None
+
+user = os.environ['HTTP_X_AUTHENTICATED_USER'] if 'HTTP_X_AUTHENTICATED_USER' in os.environ else ""
+include = os.environ['QUERY_STRING'] if 'QUERY_STRING' in os.environ else None
 
 
 jmap = {
@@ -236,22 +242,15 @@ def getReleaseData(project):
     return readJson(RAOHOME+"data/releases/%s.json" % project, {})
 
 
-user = os.environ['HTTP_X_AUTHENTICATED_USER'] if 'HTTP_X_AUTHENTICATED_USER' in os.environ else ""
-m = re.match(r"^([-a-zA-Z0-9_.]+)$", user)
-
-if m:
-    pchanges = {}
-    cchanges = {}
+if re.match(r"^[-a-zA-Z0-9_.]+$", user):
     pchanges = readJson(RAOHOME+"data/pmcs.json")
     cchanges = readJson(RAOHOME+"data/projects.json")
     bugzillastats = readJson(RAOHOME+"data/bugzillastats.json", {})
 
-    uid = m.group(1)
-    groups = getPMCs(uid)
-    include = os.environ['QUERY_STRING'] if 'QUERY_STRING' in os.environ else None
-    if include and isMember(uid) and not include in groups and len(include) > 1:
+    groups = getPMCs(user)
+    if include and isMember(user) and not include in groups and len(include) > 1:
         groups.append(include)
-    if oproject and len(oproject) > 0 and isMember(uid):
+    if oproject and len(oproject) > 0 and isMember(user):
         groups = [oproject]
     mlstats = {}
     ml = readJson(RAOHOME+"data/mailinglists.json")
@@ -338,7 +337,7 @@ if m:
                         cdata[group]['committer'][member] = cchanges[pmc][member]
         if group in pmcdates: # Make sure we have this PMC in the JSON, so as to not bork
             dates[group] = pmcdates[group] # only send the groups we want
-    if not isMember(uid):
+    if not isMember(user):
         allpmcs = []
     output = {
         'count': count,
