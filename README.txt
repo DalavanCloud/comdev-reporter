@@ -29,8 +29,9 @@ Crontab:
 
 crontab root:
 # m h  dom mon dow   command
-20 4 * * * cd /var/www/reporter.apache.org/data/releases && ( svn status | awk '/^\? / {print $2}' | xargs -r svn add )
-20 5 * * * cd /var/www/reporter.apache.org/data/releases && svn ci -m "updating reporter data" --username projects_role --password `cat /root/.rolepwd` --non-interactive
+# TODO:
+40 * * * * cd /var/www/reporter.apache.org/data/history  && svn ci -m "updating reporter data" --username projects_role --password `cat /root/.rolepwd` --non-interactive
+45 * * * * cd /var/www/reporter.apache.org/data/releases && svn ci -m "updating reporter data" --username projects_role --password `cat /root/.rolepwd` --non-interactive
 
 crontab -l -u www-data:
 # m h   dom mon dow   command
@@ -38,6 +39,10 @@ crontab -l -u www-data:
 10 00      * * * cd /var/www/reporter.apache.org/data && ./python3logger.sh reportingcycles.py
 20 00      * * * cd /var/www/reporter.apache.org/data && ./python3logger.sh pmcdates.py
 30 00      * * * cd /var/www/reporter.apache.org/data && ./python3logger.sh bugzillastats.py
+
+# ensure that any new data files get picked up by the commit (which must be done by root)
+# TODO: either discard the output or work out how to log it (with timestamps) if there is any output
+40 * * * *      cd /var/www/reporter.apache.org/data/releases && ( svn status | awk '/^\? / {print $2}' | xargs -r svn add )
 
 00 01      * * * cd /var/www/reporter.apache.org/ && ./pythonlogger.sh mailglomper.py
 00 09      * * * cd /var/www/reporter.apache.org/ && ./pythonlogger.sh readjira.py
