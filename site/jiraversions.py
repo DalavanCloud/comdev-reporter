@@ -46,27 +46,27 @@ with open("/var/www/reporter.apache.org/data/jirapass.txt", "r") as f:
 
 groups = getPMCs(user)
 if (isMember(user) or project in groups)  and jiraname:
-        jiraname = jiraname.upper()
-        base64string = base64.encodestring('%s:%s' % ('githubbot', jirapass))[:-1]
-        rdata = getReleaseData(project)
-        try:
-            req = urllib2.Request("https://issues.apache.org/jira/rest/api/2/project/%s/versions" % jiraname)
-            req.add_header("Authorization", "Basic %s" % base64string)
-            cdata = json.loads(urllib2.urlopen(req).read())
-            for entry in cdata:
-                if ('name' in entry and 'releaseDate' in entry and 'released' in entry and entry['released']):
-                    date = time.mktime(time.strptime(entry['releaseDate'], "%Y-%m-%d"))
-                    if prepend:
-                        entry['name'] = "%s-%s" % (prepend, entry['name'])
-                    rdata[entry['name']] = date
-        except Exception as err:
-            pass
-        with open("/var/www/reporter.apache.org/data/releases/%s.json" % project, "w") as f:
-            json.dump(rdata, f, indent=1, sort_keys=True)
-            f.close()
-              
-        print("Content-Type: application/json\r\n\r\n")
-        print(json.dumps({'status': 'Fetched', 'versions': rdata}, indent=1))
+    jiraname = jiraname.upper()
+    base64string = base64.encodestring('%s:%s' % ('githubbot', jirapass))[:-1]
+    rdata = getReleaseData(project)
+    try:
+        req = urllib2.Request("https://issues.apache.org/jira/rest/api/2/project/%s/versions" % jiraname)
+        req.add_header("Authorization", "Basic %s" % base64string)
+        cdata = json.loads(urllib2.urlopen(req).read())
+        for entry in cdata:
+            if ('name' in entry and 'releaseDate' in entry and 'released' in entry and entry['released']):
+                date = time.mktime(time.strptime(entry['releaseDate'], "%Y-%m-%d"))
+                if prepend:
+                    entry['name'] = "%s-%s" % (prepend, entry['name'])
+                rdata[entry['name']] = date
+    except Exception as err:
+        pass
+    with open("/var/www/reporter.apache.org/data/releases/%s.json" % project, "w") as f:
+        json.dump(rdata, f, indent=1, sort_keys=True)
+        f.close()
+          
+    print("Content-Type: application/json\r\n\r\n")
+    print(json.dumps({'status': 'Fetched', 'versions': rdata}, indent=1))
     
 else:
-        print("Content-Type: application/json\r\n\r\n{\"status\": \"Data missing\"}\r\n")
+    print("Content-Type: application/json\r\n\r\n{\"status\": \"Data missing\"}\r\n")
