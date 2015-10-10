@@ -665,7 +665,9 @@ function renderFrontPage(json) {
 		dialog.setAttribute("id", "dialog_" + pmc);
 		dialog.setAttribute("title", "Fetch data from JIRA")
 		dialog.setAttribute("style", "display: none;")
-		dialog.innerHTML = "<form><b>JIRA Project:</b><input type='text' name='jira' placeholder='FOO'><br><b>Optional prepend:</b> <input name='prepend' type='text' placeholder='Foo'/><br><input type='button' value='Fetch from JIRA' onclick='fetchJIRA(\"" + pmc + "\", this.form[\"jira\"].value, this.form[\"prepend\"].value);'></form><p>If you have multiple JIRA projects and they only have the version number in their release versions, please enter the component name in the 'prepend' field.</p>"
+		dialog.innerHTML = "<form><b>JIRA Project:</b><input type='text' name='jira' placeholder='FOO'><br><b>Optional prepend:</b> <input name='prepend' type='text' placeholder='Foo'/><br>"+
+		                   "<input type='button' value='Fetch from JIRA' onclick='fetchJIRA(\"" + pmc + "\", this.form[\"jira\"].value, this.form[\"prepend\"].value);'></form>"+
+		                   "<p>If you have multiple JIRA projects and they only have the version number in their release versions, please enter the component name in the 'prepend' field.</p>"
 		document.getElementById('tab_' + pmc).appendChild(dialog)
 
 		// Manually add release dialog
@@ -673,7 +675,9 @@ function renderFrontPage(json) {
 		rdialog.setAttribute("id", "rdialog_" + pmc);
 		rdialog.setAttribute("title", "Add a release")
 		rdialog.setAttribute("style", "display: none;")
-		rdialog.innerHTML = "<form><b>Version:</b><input type='text' name='version' placeholder='1.2.3'><br><b>Date:</b> <input name='date' type='text' placeholder='YYYY-MM-DD'/><br><input type='button' value='Add release' onclick='addRelease(\"" + pmc + "\", this.form[\"version\"].value, this.form[\"date\"].value);'></form>"
+		rdialog.innerHTML = "<form><b>Version:</b><input type='text' name='version' placeholder='1.2.3'><br>"+
+		                    "<b>Date:</b> <input name='date' type='text' placeholder='YYYY-MM-DD'/><br>"+
+		                    "<input type='button' value='Add release' onclick='addRelease(\"" + pmc + "\", this.form[\"version\"].value, this.form[\"date\"].value);'></form>"
 		document.getElementById('tab_' + pmc).appendChild(rdialog)
 
 	}
