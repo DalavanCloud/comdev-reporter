@@ -6,7 +6,7 @@ user = os.environ['HTTP_X_AUTHENTICATED_USER'] if 'HTTP_X_AUTHENTICATED_USER' in
 project = form['project'].value if ('project' in form and len(form['project'].value) > 0) else None
 jiraname = form['jiraname'].value if ('jiraname' in form and len(form['jiraname'].value) > 0) else None
 prepend = form['prepend'].value if ('prepend' in form and len(form['prepend'].value) > 0) else None
-    
+
 def getPMCs(uid):
     groups = []
     ldapdata = subprocess.check_output(['ldapsearch', '-x', '-LLL', '(|(memberUid=%s)(member=uid=%s,ou=people,dc=apache,dc=org))' % (uid, uid), 'cn'])
@@ -55,10 +55,10 @@ if (isMember(user) or project in groups)  and jiraname:
             cdata = json.loads(urllib2.urlopen(req).read())
             for entry in cdata:
                 if ('name' in entry and 'releaseDate' in entry and 'released' in entry and entry['released']):
-                     date = time.mktime(time.strptime(entry['releaseDate'], "%Y-%m-%d"))
-                     if prepend:
+                    date = time.mktime(time.strptime(entry['releaseDate'], "%Y-%m-%d"))
+                    if prepend:
                         entry['name'] = "%s-%s" % (prepend, entry['name'])
-                     rdata[entry['name']] = date
+                    rdata[entry['name']] = date
         except Exception as err:
             pass
         with open("/var/www/reporter.apache.org/data/releases/%s.json" % project, "w") as f:
