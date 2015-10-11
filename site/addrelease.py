@@ -40,6 +40,7 @@ def getReleaseData(committee):
         return {}
 
 saved = False
+err = None
 committees = getPMCs(user)
 if date != None and version and committee:
     if committee in committees or isMember(user):
@@ -49,18 +50,25 @@ if date != None and version and committee:
         else: # it's 1970-01-01
             if version in rdata:
                 del rdata[version]
-        with open("/var/www/reporter.apache.org/data/releases/%s.json" % committee, "w") as f:
-            json.dump(rdata, f, indent=1, sort_keys=True)
-            f.close()
-            saved = True
-            if dojson:
-                print("Content-Type: application/json\r\n\r\n")
-                print(json.dumps({'versions': rdata}, indent=1))
-            else:
-                print("Content-Type: text/html\r\n\r\n<h3>Data submitted!</h3>You may see the updated committee data at: <a href='https://reporter.apache.org/?%s'>https://reporter.apache.org/?%s</a>." % (committee, committee))
+        try:
+            with open("/var/www/reporter.apache.org/data/releases/%s.json" % committee, "w") as f:
+                json.dump(rdata, f, indent=1, sort_keys=True)
+                f.close()
+                saved = True
+                if dojson:
+                    print("Content-Type: application/json\r\n\r\n")
+                    print(json.dumps({'versions': rdata}, indent=1))
+                else:
+                    print("Content-Type: text/html\r\n\r\n<h3>Data submitted!</h3>You may see the updated committee data at: <a href='https://reporter.apache.org/?%s'>https://reporter.apache.org/?%s</a>." % (committee, committee))
+        except Exception as e:
+            err = e
 
 if not saved:
     if dojson:
-        print("Content-Type: application/json\r\n\r\n{\"error\": \"Not saved\"}")
+        print("Content-Type: application/json\r\n\r\n")
+        print(json.dumps({'status': str(err)}))
     else:
-        print("Content-Type: text/plain\r\n\r\nCould not save. Make sure you have filled out all fields and have access to this committee data! For further inquiries, please contact dev@community.apache.org")
+        print("Content-Type: text/plain\r\n\r\n")
+        print("Could not save. Make sure you have filled out all fields and have access to this committee data! For further inquiries, please contact dev@community.apache.org")
+        if not err == None:
+            print("Error: %s " % str(err))
