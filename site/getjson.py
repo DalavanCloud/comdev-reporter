@@ -83,7 +83,7 @@ def readJson(filename, *default):
         if default == None:
             raise
         else:
-            return default
+            return default[0] # only want first arg
     return data
 
 
