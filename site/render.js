@@ -973,14 +973,12 @@ function fetchJIRA(pmc, project, prepend) {
 	if (project && project.length > 1) {
 		GetAsyncJSON("jiraversions.py?project=" + pmc + "&jiraname=" + project + "&prepend=" + prepend, null, function(json) {
 			if (json && json.versions) {
-				var n = 0;
 				for (version in json.versions) {
-					n++;
 					jsdata.releases[pmc][version] = json.versions[version]
 				}
 				$('#dialog_' + pmc).dialog("close")
 				nproject = pmc
-				alert("Fetched " + n + " releases from JIRA!")
+				alert("Fetched " + json.added + " releases from JIRA!")
 				renderFrontPage(jsdata)
 
             } else if (json && json.status){

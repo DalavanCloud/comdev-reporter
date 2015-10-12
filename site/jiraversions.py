@@ -49,6 +49,7 @@ if jiraname and user and (isMember(user) or project in getPMCs(user)):
     jiraname = jiraname.upper()
     base64string = base64.encodestring('%s:%s' % ('githubbot', jirapass))[:-1]
     rdata = getReleaseData(project)
+    added = 0
     try:
         req = urllib2.Request("https://issues.apache.org/jira/rest/api/2/project/%s/versions" % jiraname)
         req.add_header("Authorization", "Basic %s" % base64string)
@@ -59,6 +60,7 @@ if jiraname and user and (isMember(user) or project in getPMCs(user)):
                 if prepend:
                     entry['name'] = "%s-%s" % (prepend, entry['name'])
                 rdata[entry['name']] = date
+                added += 1
     except Exception as err:
         pass
     try:
@@ -70,7 +72,7 @@ if jiraname and user and (isMember(user) or project in getPMCs(user)):
         print("Content-Type: application/json\r\n\r\n%s\r\n" % json.dumps({"status": str(e)}))
     else:
         print("Content-Type: application/json\r\n\r\n")
-        print(json.dumps({'status': 'Fetched', 'versions': rdata}, indent=1))
+        print(json.dumps({'status': 'Fetched', 'versions': rdata, 'added': added}, indent=1))
 
 else:
     if jiraname and user:
