@@ -69,7 +69,8 @@ if jiraname and user and (isMember(user) or project in getPMCs(user)):
             f.close()
     except Exception as e:
         # Use json.dumps to ensure that quotes are handled correctly
-        print("Content-Type: application/json\r\n\r\n%s\r\n" % json.dumps({"status": str(e)}))
+        print("Content-Type: application/json\r\n\r\n")
+        print(json.dumps({"status": str(e)}))
     else:
         print("Content-Type: application/json\r\n\r\n")
         print(json.dumps({'status': 'Fetched', 'versions': rdata, 'added': added}, indent=1))
