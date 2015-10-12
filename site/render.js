@@ -979,7 +979,7 @@ function fetchJIRA(pmc, project, prepend) {
 					jsdata.releases[pmc][version] = json.versions[version]
 				}
 				$('#dialog_' + pmc).dialog("close")
-				var nproject = pmc
+				nproject = pmc
 				alert("Fetched " + n + " releases from JIRA!")
 				renderFrontPage(jsdata)
 
@@ -1008,7 +1008,7 @@ function addRelease(pmc, version, date) {
 					jsdata.releases[pmc][version] = json.versions[version]
 				}
 				$('#rdialog_' + pmc).dialog("close")
-				var nproject = pmc
+				nproject = pmc
 				alert("Release added!")
 				renderFrontPage(jsdata)
 
