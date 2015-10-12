@@ -2,7 +2,7 @@
 import os, sys, json, urllib2, re, time, base64, cgi, subprocess
 
 form = cgi.FieldStorage();
-user = os.environ['HTTP_X_AUTHENTICATED_USER'] if 'HTTP_X_AUTHENTICATED_USER' in os.environ else "nobody"
+user = os.environ['HTTP_X_AUTHENTICATED_USER'] if 'HTTP_X_AUTHENTICATED_USER' in os.environ else None
 project = form['project'].value if ('project' in form and len(form['project'].value) > 0) else None
 jiraname = form['jiraname'].value if ('jiraname' in form and len(form['jiraname'].value) > 0) else None
 prepend = form['prepend'].value if ('prepend' in form and len(form['prepend'].value) > 0) else None
@@ -44,8 +44,8 @@ with open("/var/www/reporter.apache.org/data/jirapass.txt", "r") as f:
     jirapass = f.read().strip()
     f.close()
 
-groups = getPMCs(user)
-if (isMember(user) or project in groups)  and jiraname:
+# Do the cheapest checks first
+if jiraname and user and (isMember(user) or project in getPMCs(user)):
     jiraname = jiraname.upper()
     base64string = base64.encodestring('%s:%s' % ('githubbot', jirapass))[:-1]
     rdata = getReleaseData(project)
@@ -73,4 +73,9 @@ if (isMember(user) or project in groups)  and jiraname:
         print(json.dumps({'status': 'Fetched', 'versions': rdata}, indent=1))
 
 else:
-    print("Content-Type: application/json\r\n\r\n{\"status\": \"Data missing\"}\r\n")
+    if jiraname and user:
+        print("Content-Type: application/json\r\n\r\n")
+        print(json.dumps({'status': "user '%s' is not a member of the group '%s' (and is not an ASF member)" % (user, project)}))
+    else:
+        print("Content-Type: application/json\r\n\r\n")
+        print(json.dumps({'status': 'Data missing'}))
