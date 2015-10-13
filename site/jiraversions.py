@@ -48,12 +48,13 @@ with open("/var/www/reporter.apache.org/data/jirapass.txt", "r") as f:
 if jiraname and user and (isMember(user) or project in getPMCs(user)):
     jiraname = jiraname.upper()
     base64string = base64.encodestring('%s:%s' % ('githubbot', jirapass))[:-1]
-    rdata = getReleaseData(project)
-    added = 0
     try:
         req = urllib2.Request("https://issues.apache.org/jira/rest/api/2/project/%s/versions" % jiraname)
         req.add_header("Authorization", "Basic %s" % base64string)
         cdata = json.loads(urllib2.urlopen(req).read())
+        added = 0
+        # Don't read the file until we actually need it (to reduce potential update window)
+        rdata = getReleaseData(project)
         for entry in cdata:
             if ('name' in entry and 'releaseDate' in entry and 'released' in entry and entry['released']):
                 date = time.mktime(time.strptime(entry['releaseDate'], "%Y-%m-%d"))
@@ -61,19 +62,30 @@ if jiraname and user and (isMember(user) or project in getPMCs(user)):
                     entry['name'] = "%s-%s" % (prepend, entry['name'])
                 rdata[entry['name']] = date
                 added += 1
+        # Only update the file if there was an addition:
+        if added > 0:
+            try:
+                with open("/var/www/reporter.apache.org/data/releases/%s.json" % project, "w") as f:
+                    json.dump(rdata, f, indent=1, sort_keys=True)
+                    f.close()
+                print("Content-Type: application/json\r\n\r\n")
+                print(json.dumps({'status': 'Fetched', 'versions': rdata, 'added': added}, indent=1, sort_keys=True))
+            except Exception as e:
+                # Use json.dumps to ensure that quotes are handled correctly
+                print("Content-Type: application/json\r\n\r\n")
+                print(json.dumps({"status": str(e)}))
+        else:
+            print("Content-Type: application/json\r\n\r\n")
+            print(json.dumps({'status': "No releases found in JIRA for '%s'" % jiraname}))
+    except urllib2.HTTPError as err:
+        print("Content-Type: application/json\r\n\r\n")
+        if err.getcode() == 404:
+            print(json.dumps({'status': "JIRA project '%s' does not exist" % jiraname}))      
+        else:      
+            print(json.dumps({"status": str(err)}))
     except Exception as err:
-        pass
-    try:
-        with open("/var/www/reporter.apache.org/data/releases/%s.json" % project, "w") as f:
-            json.dump(rdata, f, indent=1, sort_keys=True)
-            f.close()
-    except Exception as e:
-        # Use json.dumps to ensure that quotes are handled correctly
         print("Content-Type: application/json\r\n\r\n")
-        print(json.dumps({"status": str(e)}))
-    else:
-        print("Content-Type: application/json\r\n\r\n")
-        print(json.dumps({'status': 'Fetched', 'versions': rdata, 'added': added}, indent=1))
+        print(json.dumps({"status": str(err)}))
 
 else:
     if jiraname and user:
