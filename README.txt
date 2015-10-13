@@ -27,11 +27,11 @@ There must be other puppet data files for the host; details TBA
 
 Crontab:
 
-crontab root:
+crontab -l -u root (in puppet, part of projects-vm.apache.org.yaml):
 # m h  dom mon dow   command
-# TODO:
-10 4,12,20 * * * cd /var/www/reporter.apache.org/data/history  && svn ci -m "updating reporter data" --username projects_role --password `cat /root/.rolepwd` --non-interactive
-45 * * * * cd /var/www/reporter.apache.org/data/releases && svn ci -m "updating reporter data" --username projects_role --password `cat /root/.rolepwd` --non-interactive
+
+10 4,12,20   * * * cd /var/www/reporter.apache.org/data/history  && svn ci -m "updating reporter data" --username projects_role --password `cat /root/.rolepwd` --non-interactive
+45 0,6,12,18 * * * cd /var/www/reporter.apache.org/data/releases && svn ci -m "updating reporter data" --username projects_role --password `cat /root/.rolepwd` --non-interactive
 
 crontab -l -u www-data:
 # m h   dom mon dow   command
