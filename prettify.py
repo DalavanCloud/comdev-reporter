@@ -25,13 +25,10 @@ for arg in args.file:
     try:
         with open(arg, "r") as f:
             input = json.loads(f.read())
-            f.close()
-    except Exception as ex:
-        print(ex)
-        pass
-    else:
         out = arg if args.clobber else arg + ".out"
         print("Writing " + out)
         with open(out, "w") as f:
             json.dump(input, f, indent=args.indent, sort_keys=sort_keys)
-            f.close()
+     # we catch exception so can continue to process other files
+    except Exception as ex:
+        print(ex)
