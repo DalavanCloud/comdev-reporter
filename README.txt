@@ -30,7 +30,7 @@ Crontab:
 crontab root:
 # m h  dom mon dow   command
 # TODO:
-40 * * * * cd /var/www/reporter.apache.org/data/history  && svn ci -m "updating reporter data" --username projects_role --password `cat /root/.rolepwd` --non-interactive
+10 4,12,20 * * * cd /var/www/reporter.apache.org/data/history  && svn ci -m "updating reporter data" --username projects_role --password `cat /root/.rolepwd` --non-interactive
 45 * * * * cd /var/www/reporter.apache.org/data/releases && svn ci -m "updating reporter data" --username projects_role --password `cat /root/.rolepwd` --non-interactive
 
 crontab -l -u www-data:
@@ -52,6 +52,7 @@ crontab -l -u www-data:
 Scripts:
 - data/parsepmcs.py
   Updates data/pmcs.json and data/projects.json (currently from http://people.apache.org/committer-index.html)
+  Also updates historic copies (without the last seen timestamp) in data/history
 
 -data/pmcdates.py
   Creates data/pmcdates.json from committee_info.json
