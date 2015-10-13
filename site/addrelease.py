@@ -41,9 +41,8 @@ def getReleaseData(committee):
 
 saved = False
 err = None
-committees = getPMCs(user)
 if date != None and version and committee:
-    if committee in committees or isMember(user):
+    if committee in getPMCs(user) or isMember(user):
         rdata = getReleaseData(committee)
         if date > 0:
             rdata[version] = date
