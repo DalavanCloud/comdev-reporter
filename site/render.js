@@ -353,7 +353,7 @@ function renderFrontPage(json) {
 		GetAsyncJSON("reportingcycles.json?" + Math.random(), [pmc, reportdate, json.pdata[pmc].name], setReportDate)
 
 
-		// LDAP committee + Committer changes
+		// PMC + Committer changes
 
 		var mo = new Date().getMonth() - 3;
 		var after = new Date();
@@ -361,7 +361,7 @@ function renderFrontPage(json) {
 
         PMCchanges(json, pmc, after)
 
-		var changes = buildPanel(pmc, "LDAP changes");
+		var changes = buildPanel(pmc, "PMC changes");
 
 		var c = 0;
 		for (i in json.changes[pmc].committer) c++;
@@ -370,16 +370,16 @@ function renderFrontPage(json) {
 		var np = 0;
 		var ncn = null;
 		var npn = null;
-		addLine(pmc, "## LDAP changes:")
+		// addLine(pmc, "## LDAP changes:")
 		addLine(pmc)
-		addLine(pmc, " - Currently " + json.count[pmc][1] + " committers and " + json.count[pmc][0] + " committee group members.")
+		addLine(pmc, " - Currently " + json.count[pmc][1] + " committers and " + json.count[pmc][0] + " PMC members.")
 		if (c == 0) {
 		    if (isNewPMC(json,pmc,after)) {
                 changes.innerHTML += "No changes - the PMC was established in the last 3 months."
                 addLine(pmc, " - No changes (the PMC was established in the last 3 months)")
 		    } else {
-			    changes.innerHTML += "<font color='red'><b>No new changes to the committee group or committer base detected - (LDAP error or no changes for &gt;2 years)</b></font>"
-			    addLine(pmc, " - No new changes to the committee group or committership since last report.")
+			    changes.innerHTML += "<font color='red'><b>No new changes to the PMC or committer base detected - (LDAP error or no changes for &gt;2 years)</b></font>"
+			    addLine(pmc, " - No new changes to the PMC or committership since last report.")
 			}
             addLine(pmc)
 		} else {
@@ -395,7 +395,7 @@ function renderFrontPage(json) {
 				}
 			}
 			if (npmc > 1) {
-				addLine(pmc, " - New committee group members:")
+				addLine(pmc, " - New PMC members:")
 			}
 
 			for (i in json.changes[pmc].pmc) {
@@ -406,24 +406,24 @@ function renderFrontPage(json) {
 				}
 				if (entry[1] > after.getTime() / 1000) {
 					l++;
-					changes.innerHTML += "&rarr; " + entry[0] + " was added to the committee group on " + new Date(entry[1] * 1000).toDateString() + "<br>";
-					addLine(pmc, (npmc > 1 ? "   " : "") + " - " + entry[0] + " was added to the committee group on " + new Date(entry[1] * 1000).toDateString())
+					changes.innerHTML += "&rarr; " + entry[0] + " was added to the PMC on " + new Date(entry[1] * 1000).toDateString() + "<br>";
+					addLine(pmc, (npmc > 1 ? "   " : "") + " - " + entry[0] + " was added to the PMC on " + new Date(entry[1] * 1000).toDateString())
 				}
 			}
 			if (l == 0) { // PMC older than 3 months itself
 			    if (isNewPMC(json,pmc,after)) {
-                    addLine(pmc, " - No new committee group members added in the 3 months since the PMC was established")
-                    changes.innerHTML += "&rarr; No new committee group members in the 3 months since the PMC was established<br>";
+                    addLine(pmc, " - No new PMC members added in the 3 months since the PMC was established")
+                    changes.innerHTML += "&rarr; No new PMC members in the 3 months since the PMC was established<br>";
 			    } else {
-				    addLine(pmc, " - No new committee group members added in the last 3 months")
-				    changes.innerHTML += "&rarr; <font color='red'><b>No new committee group members in the last 3 months.</b></font><br>";
+				    addLine(pmc, " - No new PMC members added in the last 3 months")
+				    changes.innerHTML += "&rarr; <font color='red'><b>No new PMC members in the last 3 months.</b></font><br>";
 				}
 			}
 			if (npn) {
 				if (np < after.getTime() / 1000) {
-					addLine(pmc, " - Last committee group addition was " + npn + " at " + new Date(np * 1000).toDateString())
+					addLine(pmc, " - Last PMC addition was " + npn + " at " + new Date(np * 1000).toDateString())
 				}
-				changes.innerHTML += "&rarr; " + "<b>Latest committee group addition: </b>" + new Date(np * 1000).toDateString() + " (" + npn + ")<br>"
+				changes.innerHTML += "&rarr; " + "<b>Latest PMC addition: </b>" + new Date(np * 1000).toDateString() + " (" + npn + ")<br>"
 			}
 
 
@@ -464,7 +464,7 @@ function renderFrontPage(json) {
 				addLine(pmc, " - Last committer addition was more than 2 years ago")
 				changes.innerHTML += "&rarr; " + "<b>Latest committer addition: </b><font color='red'>more than two years ago (not in the archive!)</font><br>"
 			}
-			changes.innerHTML += "&rarr; " + "<b>Currently " + json.count[pmc][1] + " committers and " + json.count[pmc][0] + " committee members."
+			changes.innerHTML += "&rarr; " + "<b>Currently " + json.count[pmc][1] + " committers and " + json.count[pmc][0] + " PMC members."
 			addLine(pmc)
 		}
 
