@@ -223,7 +223,7 @@ function PMCchanges(json, pmc, after) {
         var np = 0;
         var ncn = null;
         var npn = null;
-        addLine(pmc, "## PMC changes (From committee-info):")
+        addLine(pmc, "## PMC changes:")
         addLine(pmc)
         changes.innerHTML += "<h5>Changes within the last 3 months:</h5>"
         var l = 0;
