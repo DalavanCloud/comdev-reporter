@@ -216,14 +216,14 @@ function isNewPMC(json,pmc,after) {
 }
 
 function PMCchanges(json, pmc, after) {
-        var changes = buildPanel(pmc, "PMC changes");
+        var changes = buildPanel(pmc, "PMC changes (From committee-info)");
 
         var roster = json.dates[pmc].roster
         var nc = 0;
         var np = 0;
         var ncn = null;
         var npn = null;
-        addLine(pmc, "## PMC changes:")
+        addLine(pmc, "## PMC changes (From committee-info):")
         addLine(pmc)
         changes.innerHTML += "<h5>Changes within the last 3 months:</h5>"
         var l = 0;
@@ -361,7 +361,7 @@ function renderFrontPage(json) {
 
         PMCchanges(json, pmc, after)
 
-		var changes = buildPanel(pmc, "PMC changes");
+		var changes = buildPanel(pmc, "PMC changes (From LDAP)");
 
 		var c = 0;
 		for (i in json.changes[pmc].committer) c++;
