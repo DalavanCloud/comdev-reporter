@@ -68,7 +68,7 @@ for committer in re.findall(r"<tr>([\S\s]+?)</tr>", data, re.MULTILINE | re.UNIC
         cid = m.group(1) # committer id / availid
         cname = re.sub(r"<.+?>", "", m.group(2), 4) # committer name (dropping HTML markup)
         cname = re.sub(r"\|.*", "", cname) # drop additional URL entry names
-        print(cid,cname)
+#         print(cid,cname)
         cproj = m.group(3) # list of authgroups to which the person belongs
         isMember = False
         if re.search(r"<b", committer, re.MULTILINE | re.UNICODE):
