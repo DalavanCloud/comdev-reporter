@@ -28,20 +28,13 @@ import os
 import datetime
 import time
 pmcs = {}
-try:
-    with open("pmcs.json", "r") as f:
-        pmcs = json.loads(f.read())
-        f.close()
-except:
-    pass
+
+with open("pmcs.json", "r", encoding='utf-8') as f:
+    pmcs = json.loads(f.read())
 
 projects = {}
-try:
-    with open("projects.json", "r") as f:
-        projects = json.loads(f.read())
-        f.close()
-except:
-    pass
+with open("projects.json", "r", encoding='utf-8') as f:
+    projects = json.loads(f.read())
 
 
 people = {}
