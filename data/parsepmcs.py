@@ -68,6 +68,7 @@ for committer in re.findall(r"<tr>([\S\s]+?)</tr>", data, re.MULTILINE | re.UNIC
         cid = m.group(1) # committer id / availid
         cname = re.sub(r"<.+?>", "", m.group(2), 4) # committer name (dropping HTML markup)
         cname = re.sub(r"\|.*", "", cname) # drop additional URL entry names
+        print(cid,cname)
         cproj = m.group(3) # list of authgroups to which the person belongs
         isMember = False
         if re.search(r"<b", committer, re.MULTILINE | re.UNICODE):
@@ -85,11 +86,11 @@ for committer in re.findall(r"<tr>([\S\s]+?)</tr>", data, re.MULTILINE | re.UNIC
                 if not cid in pmcs[project]: # new to the group
                     if group in newgroups: # the group is also new
                         now = 0
-                    print("New pmc entry %s %s %u" % (project, cid, now))
+                    print("New pmc entry %s %s %s %u" % (project, cid, cname, now))
                     pmcs[project][cid] = [cname, now, stamp]
                 else:
-                    # update the entry last seen time
-                    pmcs[project][cid] = [pmcs[project][cid][0], pmcs[project][cid][1], stamp]
+                    # update the entry last seen time (and the public name, which may have changed)
+                    pmcs[project][cid] = [cname, pmcs[project][cid][1], stamp]
             else:
                 project = group
 #                 print("Unx %s %s" % (cid, project))
@@ -101,11 +102,11 @@ for committer in re.findall(r"<tr>([\S\s]+?)</tr>", data, re.MULTILINE | re.UNIC
                 if not cid in projects[project]: # new to the group
                     if group in newgroups: # the group is also new
                         now = 0
-                    print("New unx entry %s %s %u" % (project,cid,now))
+                    print("New unx entry %s %s %s %u" % (project, cid, cname, now))
                     projects[project][cid] = [cname, now, stamp]
                 else:
-                    # update the entry last seen time
-                    projects[project][cid] = [projects[project][cid][0], projects[project][cid][1], stamp]
+                    # update the entry last seen time (and the public name, which may have changed)
+                    projects[project][cid] = [cname, projects[project][cid][1], stamp]
 
 
 # Delete retired members
