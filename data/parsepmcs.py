@@ -53,10 +53,28 @@ stamp = time.time()
 for committer in re.findall(r"<tr>([\S\s]+?)</tr>", data, re.MULTILINE | re.UNICODE):
     x += 1
 ##    print(committer)
+    """
+        <!-- sample with single home URL -->
+        <td bgcolor="#a0ddf0"><a id='cwelton'></a>cwelton</td>
+        <td bgcolor="#a0ddf0">
+        <a href="http://hawq.incubator.apache.org/">Caleb Welton</a></td>        <td bgcolor="#a0ddf0"> <a href='committers-by-project.html#incubator'>incubator</a></td>
+        
+        <!-- sample with more than one home URL -->
+        <td bgcolor="#a0ddf0"><a id='deki'></a>deki</td>
+        <td bgcolor="#a0ddf0">
+        <a href="https://github.com/deki/">Dennis Kieselhorst</a>|<a href="http://www.dekies.de">+</a></td>
+                <td bgcolor="#a0ddf0"> <a href='committers-by-project.html#myfaces'>myfaces</a></td>
+        
+        <!-- sample with no URL -->
+        <td bgcolor="#a0ddf0"><a id='delafran'></a>delafran</td>
+        <td bgcolor="#a0ddf0">
+        Mark DeLaFranier</td>        <td bgcolor="#a0ddf0"> <a href='committers-by-project.html#geronimo'>geronimo</a></td>
+    """
     m = re.search(r"<a id='(.+?)'>[\s\S]+?<td.+?>\s*(.+?)</td>[\s\S]+?>(.+)</td>", committer, re.MULTILINE | re.UNICODE)
     if m:
         cid = m.group(1) # committer id / availid
-        cname = re.sub(r"<.+?>", "", m.group(2), 4) # committer name
+        cname = re.sub(r"<.+?>", "", m.group(2), 4) # committer name (dropping HTML markup)
+        cname = re.sub(r"\|.*", "", cname) # drop additional URL entry names
         cproj = m.group(3) # list of authgroups to which the person belongs
         isMember = False
         if re.search(r"<b", committer, re.MULTILINE | re.UNICODE):
