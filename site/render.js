@@ -212,13 +212,13 @@ function addLine(pmc, line) {
 }
 
 function isNewPMC(json,pmc,after) {
-    return json.dates[pmc].pmc[1] >= (after.getTime() / 1000)
+    return json.pmcdates[pmc].pmc[1] >= (after.getTime() / 1000)
 }
 
 function PMCchanges(json, pmc, after) {
         var changes = buildPanel(pmc, "PMC changes (From committee-info)");
 
-        var roster = json.dates[pmc].roster
+        var roster = json.pmcdates[pmc].roster
         var nc = 0;
         var np = 0;
         var ncn = null;
@@ -266,7 +266,7 @@ function PMCchanges(json, pmc, after) {
             changes.innerHTML += "&rarr; " + "<b>Latest PMC addition: </b>" + new Date(np * 1000).toDateString() + " (" + npn + ")<br>"
         }
         changes.innerHTML += "&rarr; " + "<b>Currently " + c + " PMC members.<br>"
-        changes.innerHTML += "<br>PMC established: " + json.dates[pmc].pmc[0]
+        changes.innerHTML += "<br>PMC established: " + json.pmcdates[pmc].pmc[0]
         addLine(pmc)
 }
 
@@ -301,7 +301,7 @@ function renderFrontPage(json) {
 		var pmc = json.pmcs[i]
 		
 		// Stuff has broken, check that we have dates!
-		if (!json.dates[pmc]) {
+		if (!json.pmcdates[pmc]) {
 			continue
 		}
 		templates[pmc] = "Report from the " + (json.pdata[pmc].name ? json.pdata[pmc].name : pmc) + " committee [" + (json.pdata[pmc].chair ? json.pdata[pmc].chair : "Put your name here") + "]\n\n"
@@ -746,7 +746,7 @@ function mergeData(json, pmc) {
 		}
 	}
 
-	var todo = new Array('count', 'mail', 'delivery', 'bugzilla', 'jira', 'changes', 'dates', 'pdata', 'releases', 'keys', 'health')
+	var todo = new Array('count', 'mail', 'delivery', 'bugzilla', 'jira', 'changes', 'pmcdates', 'pdata', 'releases', 'keys', 'health')
 	for (i in todo) {
 		var key = todo[i]
 		jsdata[key][pmc] = json[key][pmc];

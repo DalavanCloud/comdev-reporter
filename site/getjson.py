@@ -348,7 +348,7 @@ if re.match(r"^[-a-zA-Z0-9_.]+$", user):
         'jira': jdata,
         'bugzilla': bdata,
         'changes': cdata,
-        'dates': dates,
+        'pmcdates': dates,
         'pdata': ddata,
         'releases': rdata,
         'keys': keys,
