@@ -36,6 +36,11 @@ projects = {}
 with open("projects.json", "r", encoding='utf-8') as f:
     projects = json.loads(f.read())
 
+# Delete mistaken entries
+for key in sorted(projects.keys()):
+    if key.endswith("-pmc"):
+        print("Dropping mistaken entry %s" % key)
+        del projects[key]
 
 people = {}
 newgroups = []
@@ -114,8 +119,6 @@ ret = 0
 for project in projects:
     for cid in projects[project]:
         if len(projects[project][cid]) < 3 or projects[project][cid][2] < (time.time() - (86400*3)):
-            if project.endswith("-pmc"): # these were mistaken entries
-                continue
             print("Dropping project entry %s %s" % (project, cid))
             projects[project][cid] = "!" # flag for deletion
             ret += 1
