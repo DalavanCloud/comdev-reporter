@@ -223,9 +223,17 @@ function PMCchanges(json, pmc, after) {
         var np = 0;
         var ncn = null;
         var npn = null;
+        var afterTime = after.getTime() / 1000
+        var pmcStartTime = json.pmcdates[pmc].pmc[2]
+
         addLine(pmc, "## PMC changes:")
         addLine(pmc)
-        changes.innerHTML += "<h5>Changes within the last 3 months:</h5>"
+        if (pmcStartTime > afterTime) {
+            afterTime = pmcStartTime
+            changes.innerHTML += "<h5>Changes since PMC creation:</h5>"
+        } else {
+            changes.innerHTML += "<h5>Changes within the last 3 months:</h5>"
+        }
         var l = 0;
 
         // pre-flight check
@@ -234,7 +242,7 @@ function PMCchanges(json, pmc, after) {
         for (i in roster) {
             c++
             var entry = roster[i];
-            if (entry[1] > after.getTime() / 1000) {
+            if (entry[1] > afterTime) {
                 npmc++;
             }
         }
@@ -249,7 +257,7 @@ function PMCchanges(json, pmc, after) {
                 np = entry[1]
                 npn = entry[0];
             }
-            if (entry[1] > after.getTime() / 1000) {
+            if (entry[1] > afterTime) {
                 l++;
                 changes.innerHTML += "&rarr; " + entry[0] + " was added to the PMC on " + new Date(entry[1] * 1000).toDateString() + "<br>";
                 addLine(pmc, (npmc > 1 ? "   " : "") + " - " + entry[0] + " was added to the PMC on " + new Date(entry[1] * 1000).toDateString())
@@ -260,14 +268,19 @@ function PMCchanges(json, pmc, after) {
             changes.innerHTML += "&rarr; <font color='red'><b>No new PMC members in the last 3 months.</b></font><br>";
         }
         if (npn) {
-            if (np < after.getTime() / 1000) {
+            if (np < afterTime) {
                 addLine(pmc, " - Last PMC addition was " + npn + " at " + new Date(np * 1000).toDateString())
             }
             changes.innerHTML += "&rarr; " + "<b>Latest PMC addition: </b>" + new Date(np * 1000).toDateString() + " (" + npn + ")<br>"
         }
         changes.innerHTML += "&rarr; " + "<b>Currently " + c + " PMC members.<br>"
         changes.innerHTML += "<br>PMC established: " + json.pmcdates[pmc].pmc[0]
+        changes.innerHTML += " (assumed actual date: " + epochSecsYYYYMMDD(pmcStartTime) + ")"
         addLine(pmc)
+}
+
+function epochSecsYYYYMMDD(t) {
+    return new Date(t * 1000).toISOString().slice(0, 10)
 }
 
 function renderFrontPage(json) {
