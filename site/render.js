@@ -451,6 +451,7 @@ function renderFrontPage(json) {
 			if (ncom > 1) {
 				addLine(pmc, " - New commmitters:")
 			}
+			l = 0; // reset count for committers
 			for (i in json.changes[pmc].committer) {
 				var entry = json.changes[pmc].committer[i];
 				if (entry[1] > nc) {
