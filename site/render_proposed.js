@@ -392,7 +392,7 @@ function renderFrontPage(json) {
                 addLine(pmc, " - No changes (the PMC was established in the last 3 months)")
 		    } else {
 			    changes.innerHTML += "<font color='red'><b>No new changes to the committee group or committer base detected - (LDAP error or no changes for &gt;2 years)</b></font>"
-			    addLine(pmc, " - No new changes to the committership since last report.")
+			    addLine(pmc, " - No new changes to the committer base since last report.")
 			}
             addLine(pmc)
 		} else {
