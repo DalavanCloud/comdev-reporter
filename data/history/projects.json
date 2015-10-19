@@ -11787,6 +11787,10 @@
    "Aditya Kishore",
    0
   ],
+  "adina": [
+   "Adina Crainiceanu",
+   1445223604.0497763
+  ],
   "aditya": [
    "Aditya Agarwal",
    0
@@ -13559,6 +13563,10 @@
    "David Nelson Hutchins Jr.",
    0
   ],
+  "dnrapp": [
+   "David Rapp",
+   1445223604.0497763
+  ],
   "doc": [
    "David Charles Johnson",
    0
@@ -14786,6 +14794,10 @@
   "jboulon": [
    "Jerome Boulon",
    0
+  ],
+  "jbrown": [
+   "Jennifer Brown",
+   1445223604.0497763
   ],
   "jburwell": [
    "John Burwell",
@@ -16307,6 +16319,10 @@
    "Michael G. Noll",
    0
   ],
+  "mihalik": [
+   "Aaron Mihalik",
+   1445223604.0497763
+  ],
   "mijordan": [
    "Michael Jordan",
    0
@@ -17131,6 +17147,10 @@
    "Patrick Taylor Ramsey",
    0
   ],
+  "pujav65": [
+   "Puja Valiyil",
+   1445223604.0497763
+  ],
   "purplecabbage": [
    "Jesse MacFadyen",
    0
@@ -17530,6 +17550,10 @@
   "rooneg": [
    "Garrett Rooney",
    0
+  ],
+  "roshanp": [
+   "Roshan Punnoose",
+   1445223604.0497763
   ],
   "rostafiychuk": [
    "Ruslan Ostafiychuk",
@@ -29701,6 +29725,32 @@
   ],
   "snoopdave": [
    "David M. Johnson",
+   0
+  ]
+ },
+ "rya": {
+  "afuchs": [
+   "Adam Fuchs",
+   0
+  ],
+  "busbey": [
+   "Sean Busbey",
+   0
+  ],
+  "edwardyoon": [
+   "Edward J. Yoon",
+   0
+  ],
+  "elserj": [
+   "Josh Elser",
+   0
+  ],
+  "swagner": [
+   "Steve R Wagner",
+   0
+  ],
+  "venkatesh": [
+   "Venkatesh Seetharam",
    0
   ]
  },
