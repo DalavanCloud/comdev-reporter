@@ -219,10 +219,10 @@ function PMCchanges(json, pmc, after) {
         var changes = buildPanel(pmc, "PMC changes (from committee-info.txt)");
 
         var roster = json.pmcdates[pmc].roster
-        var nc = 0;
-        var np = 0;
-        var ncn = null;
-        var npn = null;
+        var nc = 0; // newest committer start date
+        var np = 0; // newest pmc member start date
+        var ncn = null; // newest committer name
+        var npn = null; // newest pmc name
         var afterTime = after.getTime() / 1000
         var pmcStartTime = json.pmcdates[pmc].pmc[2]
 
@@ -234,11 +234,11 @@ function PMCchanges(json, pmc, after) {
         } else {
             changes.innerHTML += "<h5>Changes within the last 3 months:</h5>"
         }
-        var l = 0;
+        var l = 0; // number of recent additions found
 
         // pre-flight check
-        var c = 0;
-        var npmc = 0;
+        var c = 0; // total number of pmc members
+        var npmc = 0; // number of recent pmc members
         for (i in roster) {
             c++
             var entry = roster[i];
@@ -253,9 +253,9 @@ function PMCchanges(json, pmc, after) {
 
         for (i in roster) {
             var entry = roster[i];
-            if (entry[1] > np) {
-                np = entry[1]
-                npn = entry[0];
+            if (entry[1] > np) { // find most recent member
+                np = entry[1]    // start date
+                npn = entry[0];  // full name
             }
             if (entry[1] > afterTime) {
                 l++;
@@ -269,7 +269,7 @@ function PMCchanges(json, pmc, after) {
         }
         if (npn) {
             if (np < afterTime) {
-                addLine(pmc, " - Last PMC addition was " + npn + " at " + new Date(np * 1000).toDateString())
+                addLine(pmc, " - Last PMC addition was " + npn + " on " + new Date(np * 1000).toDateString())
             }
             changes.innerHTML += "&rarr; " + "<b>Latest PMC addition: </b>" + new Date(np * 1000).toDateString() + " (" + npn + ")<br>"
         }
@@ -358,11 +358,11 @@ function renderFrontPage(json) {
 
 		// Report date
 
-		var mo = new Date().getMonth();
 		var reportdate = buildPanel(pmc, "Report date")
 		if (json.pdata[pmc].chair) {
 			reportdate.innerHTML += "<b>Committee Chair: </b>" + json.pdata[pmc].chair + "<br>"
 		}
+
 		GetAsyncJSON("reportingcycles.json?" + Math.random(), [pmc, reportdate, json.pdata[pmc].name], setReportDate)
 
 
@@ -370,101 +370,95 @@ function renderFrontPage(json) {
 
 		var mo = new Date().getMonth() - 3;
 		var after = new Date();
-		after.setMonth(mo);
+		after.setMonth(mo); // This also works if mo is negative
 
         PMCchanges(json, pmc, after)
 
 		var changes = buildPanel(pmc, "LDAP changes");
 
-		var c = 0;
-		for (i in json.changes[pmc].committer) c++;
+		var c = 0; // total number of committer + pmc changes since establishment
+		var cu = 0; // total number of committer (user) changes
+		for (i in json.changes[pmc].committer) {cu++; c++;}
 		for (i in json.changes[pmc].pmc) c++;
-		var nc = 0;
-		var np = 0;
-		var ncn = null;
-		var npn = null;
+		var nc = 0; // newest committer date
+		var np = 0; // newest pmc date
+		var ncn = null; // newest committer name
+		var npn = null; // newest pmc name
+
 		addLine(pmc, "## Committer base changes:")
 		addLine(pmc)
 		addLine(pmc, " - Currently " + json.count[pmc][1] + " committers.")
-		if (c == 0) {
+		if (cu == 0) { // no new committers
+            if (isNewPMC(json,pmc,after)) {
+                addLine(pmc, " - No changes (the PMC was established in the last 3 months)")
+            } else {
+                addLine(pmc, " - No new changes to the committer base since last report.")
+            }
+            addLine(pmc)
+		}
+		if (c == 0) { // no changes at all
 		    if (isNewPMC(json,pmc,after)) {
                 changes.innerHTML += "No changes - the PMC was established in the last 3 months."
-                addLine(pmc, " - No changes (the PMC was established in the last 3 months)")
 		    } else {
 			    changes.innerHTML += "<font color='red'><b>No new changes to the committee group or committer base detected - (LDAP error or no changes for &gt;2 years)</b></font>"
-			    addLine(pmc, " - No new changes to the committer base since last report.")
 			}
-            addLine(pmc)
 		} else {
 			changes.innerHTML += "<h5>Changes within the last 3 months:</h5>"
-			var l = 0;
 
 			// pre-flight check
-			var npmc = 0;
+			var npmc = 0; // recent committee group additions
 			for (i in json.changes[pmc].pmc) {
 				var entry = json.changes[pmc].pmc[i];
 				if (entry[1] > after.getTime() / 1000) {
 					npmc++;
 				}
 			}
-			if (npmc > 1) {
-//				addLine(pmc, " - New committee group members:")
-			}
 
 			for (i in json.changes[pmc].pmc) {
 				var entry = json.changes[pmc].pmc[i];
-				if (entry[1] > np) {
+				if (entry[1] > np) { // latest pmc member date
 					np = entry[1]
-					npn = entry[0];
+					npn = entry[0]; // latest pmc member name
 				}
 				if (entry[1] > after.getTime() / 1000) {
-					l++;
 					changes.innerHTML += "&rarr; " + entry[0] + " was added to the committee group on " + new Date(entry[1] * 1000).toDateString() + "<br>";
-//					addLine(pmc, (npmc > 1 ? "   " : "") + " - " + entry[0] + " was added to the committee group on " + new Date(entry[1] * 1000).toDateString())
 				}
 			}
-			if (l == 0) { // PMC older than 3 months itself
+			if (npmc == 0) { // PMC older than 3 months itself
 			    if (isNewPMC(json,pmc,after)) {
-//                    addLine(pmc, " - No new committee group members added in the 3 months since the PMC was established")
                     changes.innerHTML += "&rarr; No new committee group members in the 3 months since the PMC was established<br>";
 			    } else {
-//				    addLine(pmc, " - No new committee group members added in the last 3 months")
 				    changes.innerHTML += "&rarr; <font color='red'><b>No new committee group members in the last 3 months.</b></font><br>";
 				}
 			}
 			if (npn) {
-				if (np < after.getTime() / 1000) {
-//					addLine(pmc, " - Last committee group addition was " + npn + " at " + new Date(np * 1000).toDateString())
-				}
 				changes.innerHTML += "&rarr; " + "<b>Latest committee group addition: </b>" + new Date(np * 1000).toDateString() + " (" + npn + ")<br>"
 			}
 
 
 			// pre-flight check
-			var ncom = 0;
+			var ncom = 0; // number of new committers
 			for (i in json.changes[pmc].committer) {
 				var entry = json.changes[pmc].committer[i];
-				if (entry[1] > after.getTime() / 1000) {
+				if (entry[1] > after.getTime() / 1000) { // entry[1] is the first seen timestamp
 					ncom++;
 				}
 			}
 			if (ncom > 1) {
 				addLine(pmc, " - New commmitters:")
 			}
-			l = 0; // reset count for committers
 			for (i in json.changes[pmc].committer) {
 				var entry = json.changes[pmc].committer[i];
-				if (entry[1] > nc) {
-					nc = entry[1]
-					ncn = entry[0];
+				if (entry[1] > nc) { // find the most recent entry
+					nc = entry[1]    // the timestamp
+					ncn = entry[0];  // full name
 				}
 				if (entry[1] > after.getTime() / 1000) {
-					l++;
 					changes.innerHTML += "&rarr; " + entry[0] + " was added as a committer on " + new Date(entry[1] * 1000).toDateString() + "<br>";
 					addLine(pmc, (ncom > 1 ? "   " : "") + " - " + entry[0] + " was added as a committer on " + new Date(entry[1] * 1000).toDateString())
 				}
 			}
-			if (l == 0) {
+			if (ncom == 0) {
 				changes.innerHTML += "&rarr; <font color='red'><b>No new committers in the last 3 months.</b></font><br>";
 				addLine(pmc, " - No new committers added in the last 3 months")
 			}
