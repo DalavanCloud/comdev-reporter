@@ -270,8 +270,8 @@ function PMCchanges(json, pmc, after) {
         if (npn) {
             if (np < afterTime) {
                 addLine(pmc, " - Last PMC addition was " + npn + " on " + new Date(np * 1000).toDateString())
+                changes.innerHTML += "&rarr; " + "<b>Last PMC addition: </b>" + new Date(np * 1000).toDateString() + " (" + npn + ")<br>"
             }
-            changes.innerHTML += "&rarr; " + "<b>Latest PMC addition: </b>" + new Date(np * 1000).toDateString() + " (" + npn + ")<br>"
         }
         changes.innerHTML += "&rarr; " + "<b>Currently " + c + " PMC members.<br>"
         changes.innerHTML += "<br>PMC established: " + json.pmcdates[pmc].pmc[0]
@@ -431,9 +431,9 @@ function renderFrontPage(json) {
 			    } else {
 				    changes.innerHTML += "&rarr; <font color='red'><b>No new committee group members in the last 3 months.</b></font><br>";
 				}
-			}
-			if (npn) {
-				changes.innerHTML += "&rarr; " + "<b>Latest committee group addition: </b>" + new Date(np * 1000).toDateString() + " (" + npn + ")<br>"
+                if (npn) {
+                    changes.innerHTML += "&rarr; " + "<b>Last committee group addition: </b>" + new Date(np * 1000).toDateString() + " (" + npn + ")<br>"
+                }
 			}
 
 
@@ -467,11 +467,11 @@ function renderFrontPage(json) {
 			if (ncn) {
 				if (nc < after.getTime() / 1000) {
 					addLine(pmc, " - Last committer addition was " + ncn + " at " + new Date(nc * 1000).toDateString())
+                    changes.innerHTML += "&rarr; " + "<b>Last committer addition: </b>" + new Date(nc * 1000).toDateString() + " (" + ncn + ")<br>"
 				}
-				changes.innerHTML += "&rarr; " + "<b>Latest committer addition: </b>" + new Date(nc * 1000).toDateString() + " (" + ncn + ")<br>"
 			} else {
 				addLine(pmc, " - Last committer addition was more than 2 years ago")
-				changes.innerHTML += "&rarr; " + "<b>Latest committer addition: </b><font color='red'>more than two years ago (not in the archive!)</font><br>"
+				changes.innerHTML += "&rarr; " + "<b>Last committer addition: </b><font color='red'>more than two years ago (not in the archive!)</font><br>"
 			}
 			changes.innerHTML += "&rarr; " + "<b>Currently " + json.count[pmc][1] + " committers and " + json.count[pmc][0] + " committee members.<br>"
 			var addLink = false
