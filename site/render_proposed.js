@@ -488,8 +488,8 @@ function renderFrontPage(json) {
             if (addLink) {
                 changes.innerHTML += '&rarr; See <a href="https://whimsy.apache.org/roster/committee/' + pmc + '" target="_blank">Whimsy PMC roster <a> for detailed differences<br>'
             }
-			changes.innerHTML += "<br>Use modify_committee.pl to update the LDAP committee (PMC) group"
-			changes.innerHTML += "<br>Use modify_unix_group.pl to update the committer list"
+			changes.innerHTML += "<br>The LDAP committee group enables PMC members to update the SVN dist/release directory and access the PMC-private SVN area"
+			changes.innerHTML += "<br>The LDAP unix group gives committers karma, e.g. for commits to project SVN areas"
 			addLine(pmc)
 		}
 
