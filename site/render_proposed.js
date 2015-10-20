@@ -277,6 +277,7 @@ function PMCchanges(json, pmc, after) {
         changes.innerHTML += "<br>PMC established: " + json.pmcdates[pmc].pmc[0]
         changes.innerHTML += " (assumed actual date: " + epochSecsYYYYMMDD(pmcStartTime) + ")"
         addLine(pmc)
+        return c; // count of PMC members
 }
 
 function epochSecsYYYYMMDD(t) {
@@ -372,7 +373,7 @@ function renderFrontPage(json) {
 		var after = new Date();
 		after.setMonth(mo); // This also works if mo is negative
 
-        PMCchanges(json, pmc, after)
+        var totPMC = PMCchanges(json, pmc, after)
 
 		var changes = buildPanel(pmc, "LDAP changes");
 
@@ -473,6 +474,18 @@ function renderFrontPage(json) {
 				changes.innerHTML += "&rarr; " + "<b>Latest committer addition: </b><font color='red'>more than two years ago (not in the archive!)</font><br>"
 			}
 			changes.innerHTML += "&rarr; " + "<b>Currently " + json.count[pmc][1] + " committers and " + json.count[pmc][0] + " committee members.<br>"
+			var addLink = false
+            if (totPMC != json.count[pmc][0]) {
+                addLink = true
+                changes.innerHTML += "&rarr; <font color='red'><b>Count of members in committee-info.txt (" + totPMC + ") does not agree with above </b></font><br>";
+            }
+            if (json.count[pmc][1] < json.count[pmc][0]) {
+                addLink = true
+                changes.innerHTML += "&rarr; <font color='red'><b>Not all committee members are in the committer group </b></font><br>";
+            }
+            if (addLink) {
+                changes.innerHTML += '&rarr; See <a href="https://whimsy.apache.org/roster/committee/' + pmc + '" target="_blank">Whimsy PMC roster <a> for detailed differences<br>'
+            }
 			changes.innerHTML += "<br>Use modify_committee.pl to update the LDAP committee (PMC) group"
 			changes.innerHTML += "<br>Use modify_unix_group.pl to update the committer list"
 			addLine(pmc)
