@@ -10,7 +10,6 @@ prepend = form['prepend'].value if ('prepend' in form and len(form['prepend'].va
 def getPMCs(uid):
     groups = []
     ldapdata = subprocess.check_output(['ldapsearch', '-x', '-LLL', '(|(memberUid=%s)(member=uid=%s,ou=people,dc=apache,dc=org))' % (uid, uid), 'cn'])
-    picked = {}
     for match in re.finditer(r"dn: cn=([a-zA-Z0-9]+),ou=pmc,ou=committees,ou=groups,dc=apache,dc=org", ldapdata):
         group = match.group(1)
         if group != "incubator":
