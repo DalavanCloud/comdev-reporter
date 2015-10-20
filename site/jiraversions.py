@@ -1,4 +1,11 @@
 #!/usr/bin/env python
+"""
+   Read release info from JIRA if the user is a project member or ASF member
+   (Uses LDAP to determine if the user is entitled to update the project)
+   Update data/releases/%s.json % project
+   TODO: cache the LDAP query responses or use the appropriate json files instead
+"""
+
 import os, sys, json, urllib2, re, time, base64, cgi, subprocess
 
 form = cgi.FieldStorage();
@@ -7,6 +14,17 @@ project = form['project'].value if ('project' in form and len(form['project'].va
 jiraname = form['jiraname'].value if ('jiraname' in form and len(form['jiraname'].value) > 0) else None
 prepend = form['prepend'].value if ('prepend' in form and len(form['prepend'].value) > 0) else None
 
+"""
+Note: to test this script interactively, use a command-line of the form:
+
+HTTP_X_AUTHENTICATED_USER=xyz QUERY_STRING="project=proj&jiraname=xyz[&prepend=pre]" ./jiraversions.py
+
+If a valid JIRA name is used, the project json file will be updated.
+
+"""
+
+# find groups to which the UID belongs
+# TODO only needs to determine if the user belongs to a single group; so could simplify the LDAP search
 def getPMCs(uid):
     groups = []
     ldapdata = subprocess.check_output(['ldapsearch', '-x', '-LLL', '(|(memberUid=%s)(member=uid=%s,ou=people,dc=apache,dc=org))' % (uid, uid), 'cn'])
@@ -17,16 +35,15 @@ def getPMCs(uid):
     return groups
 
 
+# Get the existing release data
 def getReleaseData(project):
     try:
         with open("/var/www/reporter.apache.org/data/releases/%s.json" % project, "r") as f:
-            x = json.loads(f.read())
-            f.close()
-        return x;
+            return json.loads(f.read())
     except:
         return {}
 
-
+# is the user an ASF member?
 def isMember(uid):
     members = []
     ldapdata = subprocess.check_output(['ldapsearch', '-x', '-LLL', '-b', 'cn=member,ou=groups,dc=apache,dc=org'])
@@ -41,7 +58,6 @@ def isMember(uid):
 jirapass = ""
 with open("/var/www/reporter.apache.org/data/jirapass.txt", "r") as f:
     jirapass = f.read().strip()
-    f.close()
 
 # Do the cheapest checks first
 if jiraname and user and (isMember(user) or project in getPMCs(user)):
@@ -66,7 +82,6 @@ if jiraname and user and (isMember(user) or project in getPMCs(user)):
             try:
                 with open("/var/www/reporter.apache.org/data/releases/%s.json" % project, "w") as f:
                     json.dump(rdata, f, indent=1, sort_keys=True)
-                    f.close()
                 print("Content-Type: application/json\r\n\r\n")
                 print(json.dumps({'status': 'Fetched', 'versions': rdata, 'added': added}, indent=1, sort_keys=True))
             except Exception as e:
