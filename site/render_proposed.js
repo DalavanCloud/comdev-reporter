@@ -404,7 +404,7 @@ function renderFrontPage(json) {
 			    changes.innerHTML += "<font color='red'><b>No new changes to the committee group or committer base detected - (LDAP error or no changes for &gt;2 years)</b></font>"
 			}
 		} else {
-			changes.innerHTML += "<h5>Changes within the last 3 months:</h5>"
+			changes.innerHTML += "<h5>Changes to the LDAP committee group (modify_committee.pl) within the last 3 months:</h5>"
 
 			// pre-flight check
 			var npmc = 0; // recent committee group additions
@@ -435,6 +435,8 @@ function renderFrontPage(json) {
                     changes.innerHTML += "&rarr; " + "<b>Last committee group addition: </b>" + new Date(np * 1000).toDateString() + " (" + npn + ")<br>"
                 }
 			}
+
+            changes.innerHTML += "<br><h5>Changes to the LDAP unix group (modify_unix_group.pl) within the last 3 months:</h5>"
 
 
 			// pre-flight check
@@ -473,7 +475,7 @@ function renderFrontPage(json) {
 				addLine(pmc, " - Last committer addition was more than 2 years ago")
 				changes.innerHTML += "&rarr; " + "<b>Last committer addition: </b><font color='red'>more than two years ago (not in the archive!)</font><br>"
 			}
-			changes.innerHTML += "&rarr; " + "<b>Currently " + json.count[pmc][1] + " committers and " + json.count[pmc][0] + " committee members.<br>"
+			changes.innerHTML += "&rarr; " + "<b>Currently " + json.count[pmc][1] + " LDAP committers and " + json.count[pmc][0] + " LDAP committee members.<br>"
 			var addLink = false
             if (totPMC != json.count[pmc][0]) {
                 addLink = true
