@@ -226,7 +226,7 @@ function PMCchanges(json, pmc, after) {
         var afterTime = after.getTime() / 1000
         var pmcStartTime = json.pmcdates[pmc].pmc[2]
 
-        addLine(pmc, "## PMC changes (from committee-info.txt):")
+        addLine(pmc, "## PMC changes:")
         addLine(pmc)
         if (pmcStartTime > afterTime) {
             afterTime = pmcStartTime
@@ -318,7 +318,7 @@ function renderFrontPage(json) {
 		if (!json.pmcdates[pmc]) {
 			continue
 		}
-		templates[pmc] = "Report from the " + (json.pdata[pmc].name ? json.pdata[pmc].name : pmc) + " committee [" + (json.pdata[pmc].chair ? json.pdata[pmc].chair : "Put your name here") + "]\n\n"
+		templates[pmc] = ""
 
 		addLine(pmc, "## Description:")
 		if (json.pdata[pmc].shortdesc) {
