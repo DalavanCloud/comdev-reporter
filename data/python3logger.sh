@@ -23,7 +23,7 @@ export
 # show the process tree
 #pstree -slapA $$
 
-python3 -u $SCRIPT 
+ERRTEE=1 python3 -u $SCRIPT 
 
 echo Completed $SCRIPT at $(date)
 echo '<<<'

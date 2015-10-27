@@ -20,6 +20,7 @@ if sys.hexversion < 0x030000F0:
          time.time() when entry was last seen,
          ]
 """
+import errtee
 import re
 import urllib.request
 import csv
