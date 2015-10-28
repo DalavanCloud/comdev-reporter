@@ -1735,6 +1735,60 @@
    0
   ]
  },
+ "calcite": {
+  "amansinha": [
+   "Aman Sinha",
+   0
+  ],
+  "gates": [
+   "Alan Gates",
+   0
+  ],
+  "hashutosh": [
+   "Ashutosh Chauhan",
+   0
+  ],
+  "jacques": [
+   "Jacques Nadeau",
+   0
+  ],
+  "jamestaylor": [
+   "James R. Taylor",
+   0
+  ],
+  "jcamacho": [
+   "Jesús Camacho Rodríguez",
+   0
+  ],
+  "jhyde": [
+   "Julian Hyde",
+   0
+  ],
+  "jni": [
+   "Jinfeng Ni",
+   0
+  ],
+  "jpullokk": [
+   "John Pullokkaran",
+   0
+  ],
+  "ndimiduk": [
+   "Nick Dimiduk",
+   0
+  ],
+  "stevenn": [
+   "Steven Noels",
+   0
+  ],
+  "tdunning": [
+   "Ted Dunning",
+   0
+  ],
+  "vladimirsitnikov": [
+   "Vladimir Sitnikov",
+   0
+  ]
+ },
  "camel": {
   "acosentino": [
    "Andrea Cosentino",
@@ -3145,6 +3199,10 @@
   "tranter": [
    "Jeff Tranter",
    0
+  ],
+  "tripod": [
+   "Tobias Bocanegra",
+   1446001202.4395072
   ],
   "victorsh": [
    "Victor Sosa",
