@@ -49,6 +49,12 @@ crontab -l -u www-data:
 
 00 12      * * * curl -sS "(redacted)" > /var/www/reporter.apache.org/data/mailinglists.json
 
+# Run pubsubber
+@reboot         cd /var/www/projects.apache.org/scripts/cronjobs && ./pubsubber.sh
+
+# Run scandist
+@reboot         cd /var/www/reporter.apache.org && ./restart_scandisk.sh
+
 Scripts:
 - data/parsepmcs.py
   Updates data/pmcs.json and data/projects.json (currently from http://people.apache.org/committer-index.html)
@@ -123,19 +129,3 @@ Note: the prefix ~pao means that the file is held under the projects.apache.org 
   site/getjson.py?only=project
   site/jiraversions.py?project=<pmc>&jiraname=<project>&prepend=<prepend>
   site/addrelease.py?json=true&committee=xxx&version=xxx&date=xxx
-
-
-TODO
-
- - ensure that pubsubber.py is started on reboot, using a command of the form:
-cd /var/www/projects.apache.org/scripts/cronjobs &&\
- python pubsubber.py start \
-   comdev/projects.apache.org /var/www/projects.apache.org/ \
-   comdev/reporter.apache.org /var/www/reporter.apache.org/
-
-- ensure that scandist.py is started, for example
-cd /var/www/reporter.apache.org/ &&\
- nohup python -u scandist.py forground &
-(The '-u' flag ensures output is unbuffered)
-
-Running as a daemon is also possible, but then the output is lost.
