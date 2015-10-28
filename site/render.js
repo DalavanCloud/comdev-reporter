@@ -372,24 +372,31 @@ function renderFrontPage(json) {
 		var changes = buildPanel(pmc, "PMC changes (From LDAP)");
 
 		var c = 0; // total number of committer + pmc changes since establishment
-		for (i in json.changes[pmc].committer) c++;
+		var cu = 0; // total number of committer (user) changes
+		for (i in json.changes[pmc].committer) {cu++; c++;}
 		for (i in json.changes[pmc].pmc) c++;
 		var nc = 0; // newest committer date
 		var np = 0; // newest pmc date
 		var ncn = null; // newest committer name
 		var npn = null; // newest pmc name
-		// addLine(pmc, "## LDAP changes:")
+
+		addLine(pmc, "## Committer base changes:")
 		addLine(pmc)
-		addLine(pmc, " - Currently " + json.count[pmc][1] + " committers and " + json.count[pmc][0] + " PMC members.")
-		if (c == 0) {
+		addLine(pmc, " - Currently " + json.count[pmc][1] + " committers.")
+		if (cu == 0) { // no new committers
+            if (isNewPMC(json,pmc,after)) {
+                addLine(pmc, " - No changes (the PMC was established in the last 3 months)")
+            } else {
+                addLine(pmc, " - No new changes to the committer base since last report.")
+            }
+            addLine(pmc)
+		}
+		if (c == 0) { // no changes at all
 		    if (isNewPMC(json,pmc,after)) {
                 changes.innerHTML += "No changes - the PMC was established in the last 3 months."
-                addLine(pmc, " - No changes (the PMC was established in the last 3 months)")
 		    } else {
 			    changes.innerHTML += "<font color='red'><b>No new changes to the PMC or committer base detected - (LDAP error or no changes for &gt;2 years)</b></font>"
-			    addLine(pmc, " - No new changes to the PMC or committership since last report.")
 			}
-            addLine(pmc)
 		} else {
 			changes.innerHTML += "<h5>Changes within the last 3 months:</h5>"
 
@@ -401,9 +408,6 @@ function renderFrontPage(json) {
 					npmc++;
 				}
 			}
-			if (npmc > 1) {
-				addLine(pmc, " - New PMC members:")
-			}
 
 			for (i in json.changes[pmc].pmc) {
 				var entry = json.changes[pmc].pmc[i];
@@ -413,22 +417,16 @@ function renderFrontPage(json) {
 				}
 				if (entry[1] > after.getTime() / 1000) {
 					changes.innerHTML += "&rarr; " + entry[0] + " was added to the PMC on " + new Date(entry[1] * 1000).toDateString() + "<br>";
-					addLine(pmc, (npmc > 1 ? "   " : "") + " - " + entry[0] + " was added to the PMC on " + new Date(entry[1] * 1000).toDateString())
 				}
 			}
 			if (npmc == 0) { // PMC older than 3 months itself
 			    if (isNewPMC(json,pmc,after)) {
-                    addLine(pmc, " - No new PMC members added in the 3 months since the PMC was established")
                     changes.innerHTML += "&rarr; No new PMC members in the 3 months since the PMC was established<br>";
 			    } else {
-				    addLine(pmc, " - No new PMC members added in the last 3 months")
 				    changes.innerHTML += "&rarr; <font color='red'><b>No new PMC members in the last 3 months.</b></font><br>";
 				}
 			}
 			if (npn) {
-				if (np < after.getTime() / 1000) {
-					addLine(pmc, " - Last PMC addition was " + npn + " at " + new Date(np * 1000).toDateString())
-				}
 				changes.innerHTML += "&rarr; " + "<b>Latest PMC addition: </b>" + new Date(np * 1000).toDateString() + " (" + npn + ")<br>"
 			}
 
