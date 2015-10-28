@@ -231,7 +231,6 @@ function PMCchanges(json, pmc, after) {
         } else {
             changes.innerHTML += "<h5>Changes within the last 3 months:</h5>"
         }
-        var l = 0; // number of recent additions found
 
         // pre-flight check
         var c = 0; // total number of pmc members
@@ -255,12 +254,11 @@ function PMCchanges(json, pmc, after) {
                 npn = entry[0];  // full name
             }
             if (entry[1] > afterTime) {
-                l++;
                 changes.innerHTML += "&rarr; " + entry[0] + " was added to the PMC on " + new Date(entry[1] * 1000).toDateString() + "<br>";
                 addLine(pmc, (npmc > 1 ? "   " : "") + " - " + entry[0] + " was added to the PMC on " + new Date(entry[1] * 1000).toDateString())
             }
         }
-        if (l == 0) {
+        if (npmc == 0) {
             addLine(pmc, " - No new PMC members added in the last 3 months")
             changes.innerHTML += "&rarr; <font color='red'><b>No new PMC members in the last 3 months.</b></font><br>";
         }
@@ -394,7 +392,6 @@ function renderFrontPage(json) {
             addLine(pmc)
 		} else {
 			changes.innerHTML += "<h5>Changes within the last 3 months:</h5>"
-			var l = 0;
 
 			// pre-flight check
 			var npmc = 0; // recent committee group additions
@@ -415,12 +412,11 @@ function renderFrontPage(json) {
 					npn = entry[0]; // latest pmc member name
 				}
 				if (entry[1] > after.getTime() / 1000) {
-					l++;
 					changes.innerHTML += "&rarr; " + entry[0] + " was added to the PMC on " + new Date(entry[1] * 1000).toDateString() + "<br>";
 					addLine(pmc, (npmc > 1 ? "   " : "") + " - " + entry[0] + " was added to the PMC on " + new Date(entry[1] * 1000).toDateString())
 				}
 			}
-			if (l == 0) { // PMC older than 3 months itself
+			if (npmc == 0) { // PMC older than 3 months itself
 			    if (isNewPMC(json,pmc,after)) {
                     addLine(pmc, " - No new PMC members added in the 3 months since the PMC was established")
                     changes.innerHTML += "&rarr; No new PMC members in the 3 months since the PMC was established<br>";
@@ -448,7 +444,6 @@ function renderFrontPage(json) {
 			if (ncom > 1) {
 				addLine(pmc, " - New commmitters:")
 			}
-			l = 0; // reset count for committers
 			for (i in json.changes[pmc].committer) {
 				var entry = json.changes[pmc].committer[i];
 				if (entry[1] > nc) { // find the most recent entry
@@ -456,12 +451,11 @@ function renderFrontPage(json) {
 					ncn = entry[0];  // full name
 				}
 				if (entry[1] > after.getTime() / 1000) {
-					l++;
 					changes.innerHTML += "&rarr; " + entry[0] + " was added as a committer on " + new Date(entry[1] * 1000).toDateString() + "<br>";
 					addLine(pmc, (ncom > 1 ? "   " : "") + " - " + entry[0] + " was added as a committer on " + new Date(entry[1] * 1000).toDateString())
 				}
 			}
-			if (l == 0) {
+			if (ncom == 0) {
 				changes.innerHTML += "&rarr; <font color='red'><b>No new committers in the last 3 months.</b></font><br>";
 				addLine(pmc, " - No new committers added in the last 3 months")
 			}
