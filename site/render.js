@@ -374,10 +374,10 @@ function renderFrontPage(json) {
 		var c = 0; // total number of committer + pmc changes since establishment
 		for (i in json.changes[pmc].committer) c++;
 		for (i in json.changes[pmc].pmc) c++;
-		var nc = 0;
-		var np = 0;
-		var ncn = null;
-		var npn = null;
+		var nc = 0; // newest committer date
+		var np = 0; // newest pmc date
+		var ncn = null; // newest committer name
+		var npn = null; // newest pmc name
 		// addLine(pmc, "## LDAP changes:")
 		addLine(pmc)
 		addLine(pmc, " - Currently " + json.count[pmc][1] + " committers and " + json.count[pmc][0] + " PMC members.")
