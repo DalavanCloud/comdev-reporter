@@ -219,10 +219,10 @@ function PMCchanges(json, pmc, after) {
         var changes = buildPanel(pmc, "PMC changes (From committee-info)");
 
         var roster = json.pmcdates[pmc].roster
-        var nc = 0;
-        var np = 0;
-        var ncn = null;
-        var npn = null;
+        var nc = 0; // newest committer start date
+        var np = 0; // newest pmc member start date
+        var ncn = null; // newest committer name
+        var npn = null; // newest pmc name
         var afterTime = after.getTime() / 1000
         var pmcStartTime = json.pmcdates[pmc].pmc[2]
 
@@ -234,11 +234,11 @@ function PMCchanges(json, pmc, after) {
         } else {
             changes.innerHTML += "<h5>Changes within the last 3 months:</h5>"
         }
-        var l = 0;
+        var l = 0; // number of recent additions found
 
         // pre-flight check
-        var c = 0;
-        var npmc = 0;
+        var c = 0; // total number of pmc members
+        var npmc = 0; // number of recent pmc members
         for (i in roster) {
             c++
             var entry = roster[i];
@@ -253,9 +253,9 @@ function PMCchanges(json, pmc, after) {
 
         for (i in roster) {
             var entry = roster[i];
-            if (entry[1] > np) {
-                np = entry[1]
-                npn = entry[0];
+            if (entry[1] > np) { // find most recent member
+                np = entry[1]    // start date
+                npn = entry[0];  // full name
             }
             if (entry[1] > afterTime) {
                 l++;
@@ -363,20 +363,21 @@ function renderFrontPage(json) {
 		if (json.pdata[pmc].chair) {
 			reportdate.innerHTML += "<b>Committee Chair: </b>" + json.pdata[pmc].chair + "<br>"
 		}
+
 		GetAsyncJSON("reportingcycles.json?" + Math.random(), [pmc, reportdate, json.pdata[pmc].name], setReportDate)
 
 
-		// PMC + Committer changes
+		// LDAP committee + Committer changes
 
 		var mo = new Date().getMonth() - 3;
 		var after = new Date();
-		after.setMonth(mo);
+		after.setMonth(mo); // This also works if mo is negative
 
         PMCchanges(json, pmc, after)
 
 		var changes = buildPanel(pmc, "PMC changes (From LDAP)");
 
-		var c = 0;
+		var c = 0; // total number of committer + pmc changes since establishment
 		for (i in json.changes[pmc].committer) c++;
 		for (i in json.changes[pmc].pmc) c++;
 		var nc = 0;
@@ -400,7 +401,7 @@ function renderFrontPage(json) {
 			var l = 0;
 
 			// pre-flight check
-			var npmc = 0;
+			var npmc = 0; // recent committee group additions
 			for (i in json.changes[pmc].pmc) {
 				var entry = json.changes[pmc].pmc[i];
 				if (entry[1] > after.getTime() / 1000) {
@@ -413,9 +414,9 @@ function renderFrontPage(json) {
 
 			for (i in json.changes[pmc].pmc) {
 				var entry = json.changes[pmc].pmc[i];
-				if (entry[1] > np) {
+				if (entry[1] > np) { // latest pmc member date
 					np = entry[1]
-					npn = entry[0];
+					npn = entry[0]; // latest pmc member name
 				}
 				if (entry[1] > after.getTime() / 1000) {
 					l++;
@@ -441,10 +442,10 @@ function renderFrontPage(json) {
 
 
 			// pre-flight check
-			var ncom = 0;
+			var ncom = 0; // number of new committers
 			for (i in json.changes[pmc].committer) {
 				var entry = json.changes[pmc].committer[i];
-				if (entry[1] > after.getTime() / 1000) {
+				if (entry[1] > after.getTime() / 1000) { // entry[1] is the first seen timestamp
 					ncom++;
 				}
 			}
@@ -454,9 +455,9 @@ function renderFrontPage(json) {
 			l = 0; // reset count for committers
 			for (i in json.changes[pmc].committer) {
 				var entry = json.changes[pmc].committer[i];
-				if (entry[1] > nc) {
-					nc = entry[1]
-					ncn = entry[0];
+				if (entry[1] > nc) { // find the most recent entry
+					nc = entry[1]    // the timestamp
+					ncn = entry[0];  // full name
 				}
 				if (entry[1] > after.getTime() / 1000) {
 					l++;
