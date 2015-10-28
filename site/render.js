@@ -317,7 +317,7 @@ function renderFrontPage(json) {
 		if (!json.pmcdates[pmc]) {
 			continue
 		}
-		templates[pmc] = "Report from the " + (json.pdata[pmc].name ? json.pdata[pmc].name : pmc) + " committee [" + (json.pdata[pmc].chair ? json.pdata[pmc].chair : "Put your name here") + "]\n\n"
+		templates[pmc] = ""
 
 		addLine(pmc, "## Description:")
 		if (json.pdata[pmc].shortdesc) {
