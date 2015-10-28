@@ -358,7 +358,6 @@ function renderFrontPage(json) {
 
 		// Report date
 
-		var mo = new Date().getMonth();
 		var reportdate = buildPanel(pmc, "Report date")
 		if (json.pdata[pmc].chair) {
 			reportdate.innerHTML += "<b>Committee Chair: </b>" + json.pdata[pmc].chair + "<br>"
