@@ -84,10 +84,7 @@ function everyMonth(s) {
 	if (s.indexOf('Next month') == 0) {
 		return true
 	}
-	if (s == 'Every month') {
-		return true
-	}
-	return false
+	return s == 'Every month'
 }
 
 var m = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
@@ -234,7 +231,6 @@ function PMCchanges(json, pmc, after) {
         } else {
             changes.innerHTML += "<h5>Changes within the last 3 months:</h5>"
         }
-        var l = 0; // number of recent additions found
 
         // pre-flight check
         var c = 0; // total number of pmc members
@@ -258,12 +254,11 @@ function PMCchanges(json, pmc, after) {
                 npn = entry[0];  // full name
             }
             if (entry[1] > afterTime) {
-                l++;
                 changes.innerHTML += "&rarr; " + entry[0] + " was added to the PMC on " + new Date(entry[1] * 1000).toDateString() + "<br>";
                 addLine(pmc, (npmc > 1 ? "   " : "") + " - " + entry[0] + " was added to the PMC on " + new Date(entry[1] * 1000).toDateString())
             }
         }
-        if (l == 0) {
+        if (npmc == 0) {
             addLine(pmc, " - No new PMC members added in the last 3 months")
             changes.innerHTML += "&rarr; <font color='red'><b>No new PMC members in the last 3 months.</b></font><br>";
         }
