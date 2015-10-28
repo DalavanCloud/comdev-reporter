@@ -84,10 +84,7 @@ function everyMonth(s) {
 	if (s.indexOf('Next month') == 0) {
 		return true
 	}
-	if (s == 'Every month') {
-		return true
-	}
-	return false
+	return s == 'Every month'
 }
 
 var m = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
