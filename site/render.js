@@ -269,7 +269,7 @@ function PMCchanges(json, pmc, after) {
         }
         if (npn) {
             if (np < afterTime) {
-                addLine(pmc, " - Last PMC addition was " + npn + " at " + new Date(np * 1000).toDateString())
+                addLine(pmc, " - Last PMC addition was " + npn + " on " + new Date(np * 1000).toDateString())
             }
             changes.innerHTML += "&rarr; " + "<b>Latest PMC addition: </b>" + new Date(np * 1000).toDateString() + " (" + npn + ")<br>"
         }
