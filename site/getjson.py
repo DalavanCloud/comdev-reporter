@@ -194,6 +194,18 @@ def getJIRAS(project):
 #                 json.dump([0,0,None], f, indent=1)
 #                 f.close()
             return 0,0, None
+"""
+Reads:
+ - PAOHOME+"site/json/projects/%s.json" % project
+ - PAOHOME+"site/json/foundation/pmcs.json"
+ - PAOHOME+"site/json/foundation/chairs.json"
+
+@return:
+ - contents of projects/%.json % project if it exists
+   in any case, dict contains pmc name & chair extracted from pmcs.json/chairs.json 
+ - list of project names in pmcs.json
+ - health entry from data/health.json
+"""
 
 def getProjectData(project):
     try:
@@ -235,7 +247,7 @@ def getProjectData(project):
         for entry in h:
             if entry['group'] == project:
                 z = entry
-        return x,y,z
+        return x, y, z;
 
 def getReleaseData(project):
     """Reads data/releases/%s.json and returns the contents"""
