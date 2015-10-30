@@ -60,7 +60,7 @@ the files that process the output for a short while.
 """
 
 def tsprint(s): # print with timestamp
-    print time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()), s
+    print("%s %s" % (time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()), s))
 
 tsprint("Started")
 
