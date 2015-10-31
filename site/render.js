@@ -213,7 +213,7 @@ function isNewPMC(json,pmc,after) {
 }
 
 function PMCchanges(json, pmc, after) {
-        var changes = buildPanel(pmc, "PMC changes (From committee-info)");
+        var changes = buildPanel(pmc, "PMC changes (from committee-info)");
 
         var roster = json.pmcdates[pmc].roster
         var nc = 0; // newest committer start date
@@ -266,7 +266,7 @@ function PMCchanges(json, pmc, after) {
             if (np < afterTime) {
                 addLine(pmc, " - Last PMC addition was " + npn + " on " + new Date(np * 1000).toDateString())
             }
-            changes.innerHTML += "&rarr; " + "<b>Latest PMC addition: </b>" + new Date(np * 1000).toDateString() + " (" + npn + ")<br>"
+            changes.innerHTML += "&rarr; " + "<b>Last PMC addition: </b>" + new Date(np * 1000).toDateString() + " (" + npn + ")<br>"
         }
         changes.innerHTML += "&rarr; " + "<b>Currently " + c + " PMC members.<br>"
         changes.innerHTML += "<br>PMC established: " + json.pmcdates[pmc].pmc[0]
@@ -427,7 +427,7 @@ function renderFrontPage(json) {
 				}
 			}
 			if (npn) {
-				changes.innerHTML += "&rarr; " + "<b>Latest PMC addition: </b>" + new Date(np * 1000).toDateString() + " (" + npn + ")<br>"
+				changes.innerHTML += "&rarr; " + "<b>Last PMC addition: </b>" + new Date(np * 1000).toDateString() + " (" + npn + ")<br>"
 			}
 
 
@@ -462,10 +462,10 @@ function renderFrontPage(json) {
 				if (nc < after.getTime() / 1000) {
 					addLine(pmc, " - Last committer addition was " + ncn + " at " + new Date(nc * 1000).toDateString())
 				}
-				changes.innerHTML += "&rarr; " + "<b>Latest committer addition: </b>" + new Date(nc * 1000).toDateString() + " (" + ncn + ")<br>"
+				changes.innerHTML += "&rarr; " + "<b>Last committer addition: </b>" + new Date(nc * 1000).toDateString() + " (" + ncn + ")<br>"
 			} else {
 				addLine(pmc, " - Last committer addition was more than 2 years ago")
-				changes.innerHTML += "&rarr; " + "<b>Latest committer addition: </b><font color='red'>more than two years ago (not in the archive!)</font><br>"
+				changes.innerHTML += "&rarr; " + "<b>Last committer addition: </b><font color='red'>more than two years ago (not in the archive!)</font><br>"
 			}
 			changes.innerHTML += "&rarr; " + "<b>Currently " + json.count[pmc][1] + " committers and " + json.count[pmc][0] + " PMC members."
 			addLine(pmc)
@@ -500,7 +500,7 @@ function renderFrontPage(json) {
 
 		if (nr == 0) {
 			if (lr) {
-				releases.innerHTML += "&rarr; " + "<b>Latest release was " + lr + ", released on </b>" + new Date(lrn * 1000).toDateString() + "<br>"
+				releases.innerHTML += "&rarr; " + "<b>Last release was " + lr + ", released on </b>" + new Date(lrn * 1000).toDateString() + "<br>"
 				addLine(pmc, " - Last release was " + lr + " on " + new Date(lrn * 1000).toDateString())
 			} else {
 				releases.innerHTML += "No release data could be found.<br>"
