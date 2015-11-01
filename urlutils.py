@@ -16,26 +16,26 @@ import calendar
 # time format used in Last-Modified/If-Modified-Since HTTP headers
 _HTTP_TIME_FORMAT = '%a, %d %b %Y %H:%M:%S GMT'
 
-"""
-   get file mod date in suitable format for If-Modified-Since
-   
-"""
 def mod_date(t):
+    """
+        get file mod date in suitable format for If-Modified-Since
+    """
     return time.strftime(_HTTP_TIME_FORMAT, time.gmtime(t))
 
-"""
-   Get a URL if it is not newer
-
-   @param url: the url to fetch
-   @param sinceTime: the most recent Last-Modified string
-   @param encoding: the encoding to use (default 'None')
-   @param errors: If encoding is provided, this specifies the on-error action (e.g. 'ignore')
-   @return: (lastMod, response)
-   - lastMod: the Last-Modified string
-   - response: the HTTPResponse (encoding == None) or TextIOBase object.
-    'None' if the URL is not newer
-"""
 def getIfNewer(url, sinceTime, encoding=None, errors=None):
+    """
+        Get a URL if it is not newer
+    
+        @param url: the url to fetch
+        @param sinceTime: the most recent Last-Modified string
+        @param encoding: the encoding to use (default 'None')
+        @param errors: If encoding is provided, this specifies the on-error action (e.g. 'ignore')
+        @return: (lastMod, response)
+        - lastMod: the Last-Modified string (from sinceTime if the URL is not later)
+        - response: the HTTPResponse (encoding == None) or TextIOBase object.
+         'None' if the URL is not newer
+        @raise urllib.error.HTTPError: if URL not found or other error
+    """
     if sinceTime:
         headers = {"If-Modified-Since" : sinceTime}
     else:
@@ -56,15 +56,15 @@ def getIfNewer(url, sinceTime, encoding=None, errors=None):
             raise
     return lastMod, response
 
-"""
-    Creates a cache for URLs
-    @param cachedir: the cache directory to use 
-        (default data/cache; this is assumed to be at the current directory, its parent or grandparent)
-    @param interval: minimum interval between checks for updates to the URL (default 300 secs)
-        if set to -1, never checks (intended for testing only)  
-    @return: the instance to use with the get() method
-"""
 class UrlCache(object):
+    """
+        Creates a cache for URLs
+        @param cachedir: the cache directory to use 
+            (default data/cache; this is assumed to be at the current directory, its parent or grandparent)
+        @param interval: minimum interval between checks for updates to the URL (default 300 secs)
+            if set to -1, never checks (intended for testing only)  
+        @return: the instance to use with the get() method
+    """
     # get file mod_date
     def __file_mtime(self, filename):
         try:
