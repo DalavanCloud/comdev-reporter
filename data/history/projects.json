@@ -8332,6 +8332,32 @@
    0
   ]
  },
+ "eagle": {
+  "amareshwari": [
+   "Amareshwari Sriramadasu",
+   0
+  ],
+  "hsaputra": [
+   "Henry Saputra",
+   0
+  ],
+  "jhyde": [
+   "Julian Hyde",
+   0
+  ],
+  "lukehan": [
+   "Luke Han",
+   0
+  ],
+  "omalley": [
+   "Owen O'Malley",
+   0
+  ],
+  "ptgoetz": [
+   "P. Taylor Goetz",
+   0
+  ]
+ },
  "easyant": {
   "antelder": [
    "Anthony Elder",
@@ -12183,6 +12209,10 @@
    "Peter Ansell",
    0
   ],
+  "ansharma": [
+   "Anoop Sharma",
+   1446264002.383699
+  ],
   "antelder": [
    "Anthony Elder",
    0
@@ -12870,6 +12900,10 @@
   "cchampeau": [
    "Cédric Champeau",
    1427425216.6771548
+  ],
+  "ccollins": [
+   "Christopher Collins",
+   1446264002.383699
   ],
   "ccristal": [
    "Carmine Cristallo",
@@ -14375,6 +14409,10 @@
    "Paul Hammant",
    0
   ],
+  "hao": [
+   "Hao Chen",
+   1446264002.383699
+  ],
   "haoyuan": [
    "Haoyuan Li",
    0
@@ -15062,6 +15100,10 @@
   "jihoonson": [
    "Jihoon Son",
    0
+  ],
+  "jilin": [
+   "Jilin Jiang",
+   1446264002.383699
   ],
   "jim": [
    "Jim Jagielski",
@@ -15858,6 +15900,10 @@
   "lhazlewood": [
    "Les Hazlewood",
    0
+  ],
+  "libsun": [
+   "Libin Sun",
+   1446264002.383699
   ],
   "lightguardjp": [
    "Jason Porter",
@@ -17238,6 +17284,10 @@
   "qihong": [
    "Qihong Chen",
    1431025203.928012
+  ],
+  "qingwzhao": [
+   "Qingwen Zhao",
+   1446264002.383699
   ],
   "quetwo": [
    "Nicholas Kwiatkowski",
@@ -19082,6 +19132,10 @@
   "vozerov": [
    "Vladimir Ozerov",
    0
+  ],
+  "vraghavan78": [
+   "Venkatesh Raghavan",
+   1446264002.383699
   ],
   "vrozov": [
    "Vlad Rozov",
@@ -21299,6 +21353,10 @@
   "jdhok": [
    "Jaideep Dhok",
    0
+  ],
+  "pranav": [
+   "Pranav Agarwal",
+   1446264002.383699
   ],
   "prongs": [
    "Rajat Khandelwal",
@@ -34583,9 +34641,37 @@
   ]
  },
  "whimsy": {
+  "brett": [
+   "Brett Porter",
+   1446264002.383699
+  ],
+  "curcuru": [
+   "Shane Curcuru",
+   1446264002.383699
+  ],
+  "jcarman": [
+   "James W. Carman",
+   1446264002.383699
+  ],
+  "jfarrell": [
+   "Jake Farrell",
+   1446264002.383699
+  ],
+  "jim": [
+   "Jim Jagielski",
+   1446264002.383699
+  ],
+  "mattmann": [
+   "Chris Mattmann",
+   1446264002.383699
+  ],
   "rgardler": [
    "Ross Gardler",
    1439953202.1196897
+  ],
+  "rubys": [
+   "Sam Ruby",
+   1446264002.383699
   ]
  },
  "whirr": {},
