@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 """
    Refreshes the data/JSON/*.json files
@@ -14,13 +14,21 @@
    It is assumed that the job is run as frequently as necessary to keep the files updated
 """
 
-import re, os, json, urllib2, base64, time
+import re, os, json, base64, time
+from idlelib.IOBinding import encoding
+try:
+    from urllib.request import urlopen, Request
+    py3 = True
+except:
+    from urllib2 import urlopen,Request
+    py3 = False
 from os import listdir
 from os.path import isfile, join, dirname, abspath
 from inspect import getsourcefile
 
 # MYHOME = "/var/www/reporter.apache.org"
-MYHOME = dirname(abspath(getsourcefile(lambda:0))) # automatically work out home location so can run the code anywhere
+# Assume we are one directory below RAO (scripts)
+MYHOME = dirname(dirname(abspath(getsourcefile(lambda:0)))) # automatically work out home location so can run the code anywhere
 mypath = "%s/data/JIRA" % MYHOME
 print("Scanning mypath=%s" % mypath)
 myfiles = [ f for f in listdir(mypath) if f.endswith(".json") and isfile(join(mypath,f)) ]
@@ -30,7 +38,11 @@ with open("%s/data/jirapass.txt" % MYHOME, "r") as f:
     jirapass = f.read().strip()
     f.close()
 
-base64string = base64.encodestring('%s:%s' % ('githubbot', jirapass))[:-1]
+__AUTHSTRING = '%s:%s' % ('githubbot', jirapass)
+if py3:
+    base64string = base64.b64encode(__AUTHSTRING.encode(encoding='utf-8')).decode(encoding='utf-8')
+else:
+    base64string = base64.encodestring(__AUTHSTRING)[:-1] # python2 adds a trailing eol
 
 def getProjects():
     """Update the list of projects in data/JIRA/projects.json"""
@@ -40,9 +52,9 @@ def getProjects():
     mtime = 0
     print("Refresh %s" % PROJECT_JSON)
     try:
-        req = urllib2.Request("https://issues.apache.org/jira/rest/api/2/project.json")
+        req = Request("https://issues.apache.org/jira/rest/api/2/project.json")
         req.add_header("Authorization", "Basic %s" % base64string)
-        x = json.load(urllib2.urlopen(req))
+        x = json.loads(urlopen(req).read().decode('utf-8'))
         with open(PROJECT_JSON, "w") as f:
             json.dump(x, f, indent=1)
             f.close()
@@ -53,12 +65,12 @@ def getProjects():
 
 def getJIRAS(project):
     try:
-        req = urllib2.Request("""https://issues.apache.org/jira/rest/api/2/search?jql=project%20=%20'""" + project + """'%20AND%20created%20%3E=%20-91d""")
+        req = Request("""https://issues.apache.org/jira/rest/api/2/search?jql=project%20=%20'""" + project + """'%20AND%20created%20%3E=%20-91d""")
         req.add_header("Authorization", "Basic %s" % base64string)
-        cdata = json.loads(urllib2.urlopen(req).read())
-        req = urllib2.Request("""https://issues.apache.org/jira/rest/api/2/search?jql=project%20=%20'""" + project + """'%20AND%20resolved%20%3E=%20-91d""")
+        cdata = json.loads(urlopen(req).read().decode('utf-8'))
+        req = Request("""https://issues.apache.org/jira/rest/api/2/search?jql=project%20=%20'""" + project + """'%20AND%20resolved%20%3E=%20-91d""")
         req.add_header("Authorization", "Basic %s" % base64string)
-        rdata = json.loads(urllib2.urlopen(req).read())
+        rdata = json.loads(urlopen(req).read().decode('utf-8'))
         with open("%s/data/JIRA/%s.json" % (MYHOME, project), "w") as f:
             json.dump([cdata['total'], rdata['total'], project], f, indent=1)
             f.close()
@@ -69,7 +81,6 @@ def getJIRAS(project):
             json.dump([0,0,None], f, indent=1)
             f.close()
         return 0,0, None
-
 
 getProjects()
 
