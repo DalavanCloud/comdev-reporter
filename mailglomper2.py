@@ -15,6 +15,7 @@ if sys.hexversion < 0x03000000:
 import re, json, os, time, email.utils
 from datetime import datetime
 import urlutils
+import urllib.error
 import traceback
 import data.errtee
 
@@ -100,7 +101,7 @@ mldcachenew={}
 def weekly_stats(ml, date):
     fname = "%s-%s" % (ml, date)
     stamp = None
-    if fname+"x" in mldcacheold:
+    if fname in mldcacheold:
         tsprint("Have json cache for: " + fname)
         entry = mldcacheold[fname]
         ct = entry['ct']
@@ -173,6 +174,11 @@ for mlist in re.finditer(r"<a href='([-a-z0-9]+)/'", data):
                     mls[ml]['quarterly'][1] += weeks[week]
             tsprint("Debug: %s %s: has %u mails" % (ml, date, ct)) # total for month
             mlct += ct
+        except urllib.error.HTTPError as err:
+            if err.code == 404:
+                tsprint("Warn: could not open %s-%s - %s" % (ml, date, err.reason))
+            else:
+                tsprint(err)
         except Exception as err:
             tsprint(err)
 
