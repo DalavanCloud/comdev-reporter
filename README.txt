@@ -44,8 +44,8 @@ crontab -l -u www-data:
 # TODO: either discard the output or work out how to log it (with timestamps) if there is any output
 40 * * * *      cd /var/www/reporter.apache.org/data/releases && ( svn status | awk '/^\? / {print $2}' | xargs -r svn add )
 
-00 01      * * * cd /var/www/reporter.apache.org/ && ./pythonlogger.sh mailglomper.py
-00 09      * * * cd /var/www/reporter.apache.org/ && ./pythonlogger.sh readjira.py
+00 01      * * * cd /var/www/reporter.apache.org/scripts && ./python3logger.sh mailglomper2.py
+00 09      * * * cd /var/www/reporter.apache.org/scripts && ./python3logger.sh readjira.py
 
 00 12      * * * curl -sS "(redacted)" > /var/www/reporter.apache.org/data/mailinglists.json
 
