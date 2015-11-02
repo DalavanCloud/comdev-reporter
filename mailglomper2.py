@@ -200,7 +200,7 @@ for mlist in re.finditer(r"<a href='([-a-z0-9]+)/'", data):
 
     tsprint("Info: %s has %u mails (%u secs)" % (ml, mlct, time.time() - start)) # total for mail group
     now = time.time()
-    if now - lastCheckpoint - 600: # checkpoint every 10 minutes
+    if now - lastCheckpoint > 600: # checkpoint every 10 minutes
         lastCheckpoint = now
         tsprint("Creating checkpoint of JSON files")
         with open(__MAILDATA_EXTENDED,'w+') as f:
