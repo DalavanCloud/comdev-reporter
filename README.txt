@@ -85,9 +85,6 @@ Scripts:
 - site/jiraversions.py
   Updates data/releases/%s.json % project
 
-- parseversions.py - is this used anywhere?
-  Updates data/releases/%s.json project from JIRA
-
 Data file consumers:
 Note: the prefix ~pao means that the file is held under the projects.apache.org workspace
 - chi.py
