@@ -7,7 +7,8 @@
    - messages per week and per last two rolling quarters (92 days)
    
    Updates:
-   data/maildata_extended.json
+   data/maildata_extended.json - output data for display
+   data/cache/maildata_weekly.json - cache of weekly email stats
 """
 import sys
 if sys.hexversion < 0x03000000:
