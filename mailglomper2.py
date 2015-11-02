@@ -12,7 +12,7 @@
 import sys
 if sys.hexversion < 0x03000000:
     raise ImportError("This script requires Python 3")
-import re, json, os, time, email.utils
+import re, json, os, time, email.utils, signal
 from datetime import datetime
 import urlutils
 import urllib.error
@@ -31,6 +31,13 @@ def tsprint(s): # print with timestamp
     else:
         print(msg)
 
+interrupted = False
+
+def handle(signum, frame):
+    global interrupted # otherwise handler does not set the same variable
+    interrupted = True
+    tsprint("Interrupted with %d" % signum)
+
 tsprint("Start")
 
 __MAILDATA_EXTENDED = "data/maildata_extended2.json" # TODO change to normal name
@@ -46,11 +53,11 @@ except:
 
 try:
     with open(__MAILDATA_CACHE,'r') as f:
-        mldcacheold = json.loads(f.read())
+        mldcache = json.loads(f.read())
     tsprint("Read maildata cache successfully")
 except:
     tsprint("Created empty maildata cache")
-    mldcacheold = {}
+    mldcache = {}
 
 DTNOW = datetime.now()
 currentMonth = DTNOW.month
@@ -69,6 +76,16 @@ for i in range(0,7):
         currentYear -= 1
     months.append(date)
 
+# Remove any stale entries
+obsolete = [] # list of keys to remove (cannot do it while iterating)
+for mld in mldcache.keys():
+    yyyymm = mld[-6:]
+    if yyyymm not in months:
+        obsolete.append(mld)
+
+for key in obsolete:
+    tsprint("Dropping obsolete cache entry: " + key)
+    del mldcache[key]
 
 fc = urlutils.UrlCache(interval=30)
 
@@ -76,7 +93,6 @@ fc = urlutils.UrlCache(interval=30)
 # Not strictly necessary to cache this, but it makes testing easier
 data = fc.get("http://mail-archives.us.apache.org/mod_mbox/", "mod_mbox.html", encoding='utf-8').read()
 tsprint("Fetched %u bytes of main data" % len(data))
-y = 0
 
 """
 N.B. The project name empire-db is truncated to empire in the main list
@@ -91,34 +107,29 @@ but this would require converting the input file and potentially allowing both s
 the files that process the output for a short while.
 """
 
- # These are the entries we actually used, so we write this copy
- # This ensures that entries are dropped when no longer needed
-mldcachenew={}
-
-"""
-   Read the weekly stats from a mbox file, caching the counts.
-"""
 def weekly_stats(ml, date):
+    """
+       Read the weekly stats from a mbox file, caching the counts.
+    """
     fname = "%s-%s" % (ml, date)
-    stamp = None
-    if fname in mldcacheold:
+    stampold = None
+    if fname in mldcache:
         tsprint("Have json cache for: " + fname)
-        entry = mldcacheold[fname]
+        entry = mldcache[fname]
         ct = entry['ct']
-        stamp = entry['stamp']
+        stampold = entry['stamp']
         weekly = {}
         # JSON keys are always stored as strings; fix these up for main code
         for w in entry['weekly']:
             weekly[int(w)] = entry['weekly'][w]
-        mldcachenew[fname] = entry # copy the entry for later storage
     else:
         tsprint("Not cached: " + fname)
 
     url = "http://mail-archives.us.apache.org/mod_mbox/%s/%s.mbox" % (ml, date)
-    stamp, mldata = urlutils.getIfNewer(url, stamp) # read binary URL
+    stamp, mldata = urlutils.getIfNewer(url, stampold) # read binary URL
 
     if mldata: # we have a new/updated file to process
-        tsprint("Processing new/updated version of %s" % fname)
+        tsprint("Processing new/updated version of %s (%s > %s)" % (fname, stamp, stampold))
         ct = 0
         weekly = {}
         l = 0
@@ -135,10 +146,11 @@ def weekly_stats(ml, date):
                 except Exception as err:
                     tsprint(err)
         # create the cache entry        
-        mldcachenew[fname] = {}
-        mldcachenew[fname]['ct'] = ct
-        mldcachenew[fname]['weekly'] = weekly
-        mldcachenew[fname]['stamp'] = stamp
+        mldcache[fname] = {
+                              'ct': ct,
+                              'weekly': weekly,
+                              'stamp': stamp
+                            }
     else:
         tsprint("Returning cache for: " + fname)
     # return the new or cached values
@@ -152,12 +164,14 @@ def add_weeks(total, add):
             total[e] = add[e]
 
 tsprint("Started")
+signal.signal(signal.SIGINT, handle)
+signal.signal(signal.SIGTERM, handle)
 
+lastCheckpoint = time.time() # when output files were last saved
 for mlist in re.finditer(r"<a href='([-a-z0-9]+)/'", data):
     ml = mlist.group(1)
     tsprint("Processing: " + ml)
     start = time.time()
-    y += 1
     mls[ml] = {}
     mls[ml]['quarterly'] = [0, 0];
     mls[ml]['weekly'] = {}
@@ -181,19 +195,25 @@ for mlist in re.finditer(r"<a href='([-a-z0-9]+)/'", data):
                 tsprint(err)
         except Exception as err:
             tsprint(err)
+        if interrupted:
+            break
 
     tsprint("Info: %s has %u mails (%u secs)" % (ml, mlct, time.time() - start)) # total for mail group
-    if y == 50: # write data as we go to avoid losing it
-        y = 0
+    now = time.time()
+    if now - lastCheckpoint - 600: # checkpoint every 10 minutes
+        lastCheckpoint = now
         tsprint("Creating checkpoint of JSON files")
         with open(__MAILDATA_EXTENDED,'w+') as f:
             json.dump(mls, f, indent=1) # sort_keys is expensive
         with open(__MAILDATA_CACHE,"w") as f:
-            json.dump(mldcachenew, f, indent=1) # sort_keys is expensive
+            json.dump(mldcache, f, indent=1) # sort_keys is expensive
 
-tsprint("Completed scanning, writing JSON files")
+    if interrupted:
+        break
+
+tsprint("Completed scanning, writing JSON files (%s)" % str(interrupted))
 with open(__MAILDATA_EXTENDED,'w+') as f:
     json.dump(mls, f, indent=1, sort_keys=True)
 with open(__MAILDATA_CACHE,"w") as f:
-    json.dump(mldcachenew, f, indent=1, sort_keys=True)
+    json.dump(mldcache, f, indent=1, sort_keys=True)
 tsprint("Dumped JSON files")
