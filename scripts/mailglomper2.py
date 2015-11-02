@@ -17,10 +17,18 @@ from datetime import datetime
 import urlutils
 import urllib.error
 import traceback
-import data.errtee
+import errtee
 
 SECS_PER_DAY = 86400
 SECS_PER_WEEK = 604800
+
+# We assume that the script is run from the scripts subdirectory
+
+__RAO_HOME = "../"
+
+__MAILDATA_EXTENDED = __RAO_HOME + "data/maildata_extended.json"
+
+__MAILDATA_CACHE    = __RAO_HOME + "data/cache/maildata_weekly.json"
 
 def tsprint(s): # print with timestamp
     msg = "%s %s" % (time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()), s)
@@ -48,10 +56,6 @@ def handle(signum, frame):
     interrupted = True
 
 tsprint("Start")
-
-__MAILDATA_EXTENDED = "data/maildata_extended2.json" # TODO change to normal name
-
-__MAILDATA_CACHE    = "data/cache/maildata_weekly.json"
 
 try:
     with open(__MAILDATA_EXTENDED,'r') as f:
