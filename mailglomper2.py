@@ -114,7 +114,7 @@ def weekly_stats(ml, date):
     fname = "%s-%s" % (ml, date)
     stampold = None
     if fname in mldcache:
-        tsprint("Have json cache for: " + fname)
+#         tsprint("Have json cache for: " + fname)
         entry = mldcache[fname]
         ct = entry['ct']
         stampold = entry['stamp']
@@ -123,7 +123,8 @@ def weekly_stats(ml, date):
         for w in entry['weekly']:
             weekly[int(w)] = entry['weekly'][w]
     else:
-        tsprint("Not cached: " + fname)
+#         tsprint("Not cached: " + fname)
+        pass
 
     url = "http://mail-archives.us.apache.org/mod_mbox/%s/%s.mbox" % (ml, date)
     stamp, mldata = urlutils.getIfNewer(url, stampold) # read binary URL
@@ -152,7 +153,8 @@ def weekly_stats(ml, date):
                               'stamp': stamp
                             }
     else:
-        tsprint("Returning cache for: " + fname)
+#         tsprint("Returning cache for: " + fname)
+        pass
     # return the new or cached values
     return ct, weekly
 
