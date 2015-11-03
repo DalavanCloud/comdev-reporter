@@ -14,6 +14,7 @@
    It is assumed that the job is run as frequently as necessary to keep the files updated
 """
 
+import errtee
 import re, os, json, base64, time
 try:
     from urllib.request import urlopen, Request
