@@ -15,7 +15,6 @@
 """
 
 import re, os, json, base64, time
-from idlelib.IOBinding import encoding
 try:
     from urllib.request import urlopen, Request
     py3 = True
