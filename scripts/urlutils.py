@@ -1,15 +1,22 @@
 """
    Some utilities for working with URLs
+   Works with Python2 and Python3
 """
 
-import sys
-if sys.hexversion < 0x03000000:
-    raise ImportError("This script requires Python 3")
 import os
 from os.path import dirname, abspath, join, getmtime
 import shutil
 import io
-import urllib.request
+# Allow for Python2/3 differences
+try:
+    from urllib.request import urlopen, Request
+    from urllib.error import HTTPError
+    _PY3 = True
+except:
+    from urllib2 import urlopen, Request
+    from urllib2 import HTTPError
+    _PY3 = False
+
 import time
 import calendar
 
@@ -32,7 +39,7 @@ def getIfNewer(url, sinceTime, encoding=None, errors=None):
         @param encoding: the encoding to use (default 'None')
         @param errors: If encoding is provided, this specifies the on-error action (e.g. 'ignore')
         @return: (lastMod, response)
-        - lastMod: the Last-Modified string (from sinceTime if the URL is not later)
+        - lastMod: the Last-Modified string (from sinceTime if the URL is not later) may be None
         - response: the HTTPResponse (encoding == None) or TextIOBase object.
          'None' if the URL is not newer
         @raise urllib.error.HTTPError: if URL not found or other error
@@ -43,16 +50,19 @@ def getIfNewer(url, sinceTime, encoding=None, errors=None):
         headers = {}
     response = None
     try:
-        req = urllib.request.Request(url, headers=headers)
-        resp = urllib.request.urlopen(req)
-        lastMod = resp.headers['Last-Modified']
-        if not lastMod: # e.g. responses to git blob-plain URLs don't seem to have dates
+        req = Request(url, headers=headers)
+        resp = urlopen(req)
+        try:
+            lastMod = resp.headers['Last-Modified']
+            if not lastMod: # e.g. responses to git blob-plain URLs don't seem to have dates
+                lastMod = None
+        except KeyError: # python2 raises this for missing headers
             lastMod = None
         if encoding:
             response = io.TextIOWrapper(resp, encoding=encoding, errors=errors)
         else:
             response = resp
-    except urllib.error.HTTPError as err:
+    except HTTPError as err:
         if err.code == 304:
             lastMod = sinceTime # preserve timestamp
         else:
@@ -157,7 +167,10 @@ class UrlCache(object):
                 with open(tmpFile,'wb') as f:
                     shutil.copyfileobj(response, f)
                 # store the last mod time as the time of the file
-                os.utime(tmpFile, times=(lastModT, lastModT))
+                if _PY3:
+                    os.utime(tmpFile, times=(lastModT, lastModT))
+                else:
+                    os.utime(tmpFile, (lastModT, lastModT))
                 os.rename(tmpFile, target) # seems to preserve file mod time
                 if lastMod:
                     if fileTime > 0:
@@ -167,7 +180,7 @@ class UrlCache(object):
                 else:
                     print("Downloaded new version of %s (undated)" % (name))
             else:
-                print("Cached copy of %s is up to date" % name)
+                print("Cached copy of %s is up to date (%s)" % (name, lastMod))
 
     
             if self.__interval > 0: # no point creating a marker file if we won't be using it
