@@ -12,6 +12,7 @@ if sys.hexversion < 0x030000F0:
    }
    
 """
+import errtee
 import re
 import urllib.request
 import json
