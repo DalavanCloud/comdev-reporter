@@ -50,10 +50,10 @@ people = {}
 newgroups = []
 
 data = urllib.request.urlopen("http://people.apache.org/committer-index.html").read().decode('utf-8')
-x = 0
+
 stamp = time.time()
 for committer in re.findall(r"<tr>([\S\s]+?)</tr>", data, re.MULTILINE | re.UNICODE):
-    x += 1
+
 ##    print(committer)
     """
         <!-- sample with single home URL -->
