@@ -6,8 +6,8 @@ if sys.hexversion < 0x030000F0:
    This script
    reads: http://people.apache.org/committer-index.html 
    and updates:
-   pmcs.json - members of pmcs
-   projects.json - committers of projects
+   data/pmcs.json - members of pmcs
+   data/projects.json - committers of projects
    
    The json files have the format:
    
