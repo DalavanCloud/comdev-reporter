@@ -28,13 +28,16 @@ import json
 import os
 import datetime
 import time
+
+__HOME = '../data/'
+
 pmcs = {}
 
-with open("pmcs.json", "r", encoding='utf-8') as f:
+with open(__HOME + "pmcs.json", "r", encoding='utf-8') as f:
     pmcs = json.loads(f.read())
 
 projects = {}
-with open("projects.json", "r", encoding='utf-8') as f:
+with open(__HOME + "projects.json", "r", encoding='utf-8') as f:
     projects = json.loads(f.read())
 
 # Delete mistaken entries
@@ -135,12 +138,12 @@ for project in pmcs:
 
 
 print("Writing pmcs.json")
-with open("pmcs.json", "w", encoding='utf-8') as f:
+with open(__HOME + "pmcs.json", "w", encoding='utf-8') as f:
     json.dump(pmcs, f, sort_keys=True, indent=1, ensure_ascii=False)
     f.close()
 
 print("Writing projects.json")
-with open("projects.json", "w", encoding='utf-8') as f:
+with open(__HOME + "projects.json", "w", encoding='utf-8') as f:
     json.dump(projects, f, sort_keys=True ,indent=1, ensure_ascii=False)
     f.close()
 
@@ -159,7 +162,7 @@ for pmc in pmcs:
         del pmcs[pmc][id][2]
 
 print("Writing history/pmcs.json")
-with open("history/pmcs.json", "w", encoding='utf-8') as f:
+with open(__HOME + "history/pmcs.json", "w", encoding='utf-8') as f:
     json.dump(pmcs, f, sort_keys=True, indent=1, ensure_ascii=False)
     f.close()
 
@@ -168,9 +171,9 @@ for project in projects:
         del projects[project][id][2]
 
 print("Writing history/projects.json")
-with open("history/projects.json", "w", encoding='utf-8') as f:
+with open(__HOME + "history/projects.json", "w", encoding='utf-8') as f:
     json.dump(projects, f, sort_keys=True ,indent=1, ensure_ascii=False)
     f.close()
     
-    
+
 print("All done! removed %u retired entries" % ret)
