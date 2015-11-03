@@ -210,7 +210,7 @@ for mlist in re.finditer(r"<a href='([-a-z0-9]+)/'", data):
                         mls[ml]['quarterly'][0] += weeks[week]
                     elif week >= wayafter:
                         mls[ml]['quarterly'][1] += weeks[week]
-                tsprint("Debug: %s has %u mails (%u)" % (key, ct, time.time() - begin)) # total for month
+#                 tsprint("Debug: %s has %u mails (%u)" % (key, ct, time.time() - begin)) # total for month
                 mlct += ct
             except urllib.error.HTTPError as err:
                 if err.code == 404: # Can happen for new lists
