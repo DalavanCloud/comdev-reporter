@@ -20,6 +20,8 @@ BASE = "https://bz.apache.org/bugzilla/report.cgi?y_axis_field=product&ctype=csv
 CREATED = "&f1=creation_ts&o1=greaterthaneq&v1=-3m"
 RESOLVED = "&chfield=bug_status&chfieldvalue=RESOLVED&chfieldfrom=-3m&chfieldto=Now"
 
+__BUGZILLA_STATS = "../data/bugzillastats.json"
+
 def getCSV(url):
     csv = {}
     with urllib.request.urlopen(url) as f:
@@ -79,8 +81,8 @@ for product in created:
 
 for product in resolved:
     addCount(product, 1, resolved[product])
-print("Writing bugzillastats.json")
-with open("bugzillastats.json","w") as f:
+print("Writing " + __BUGZILLA_STATS)
+with open(__BUGZILLA_STATS,"w") as f:
     json.dump(stats, f, indent=1, sort_keys=True)
     f.close()
 print("All done")

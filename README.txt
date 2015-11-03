@@ -36,9 +36,9 @@ crontab -l -u root (in puppet, part of projects-vm.apache.org.yaml):
 crontab -l -u www-data:
 # m h   dom mon dow   command
 00 4,12,20 * * * cd /var/www/reporter.apache.org/data && ./python3logger.sh parsepmcs.py
-10 00      * * * cd /var/www/reporter.apache.org/data && ./python3logger.sh reportingcycles.py
+10 00      * * * cd /var/www/reporter.apache.org/scripts && ./python3logger.sh reportingcycles.py
 20 00      * * * cd /var/www/reporter.apache.org/data && ./python3logger.sh pmcdates.py
-30 00      * * * cd /var/www/reporter.apache.org/data && ./python3logger.sh bugzillastats.py
+30 00      * * * cd /var/www/reporter.apache.org/scripts && ./python3logger.sh bugzillastats.py
 
 # ensure that any new data files get picked up by the commit (which must be done by root)
 # TODO: either discard the output or work out how to log it (with timestamps) if there is any output
