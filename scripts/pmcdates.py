@@ -30,6 +30,8 @@ or the PMC was restarted (apr, xalan)
 
 """
 
+__PMCDATES = "../data/pmcdates.json"
+
 pmcdates = committee_info.pmcdates()
 
 for pmc in sorted(pmcdates):
@@ -47,8 +49,8 @@ for pmc in sorted(pmcdates):
         pmcdates[pmc]['pmc'].insert(2, 0)
         print(time.strftime('%Y-%m-%d = %m/%Y',time.gmtime(earliest)),startdate, pmc)
     
-print("Writing pmcdates.json")
-with open("pmcdates.json", "w", encoding='utf-8') as f:
+print("Writing " + __PMCDATES)
+with open(__PMCDATES, "w", encoding='utf-8') as f:
     json.dump(pmcdates, f, sort_keys = True, indent=1, ensure_ascii=False)
 
 print("All done!")
