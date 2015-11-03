@@ -15,6 +15,7 @@ try:
 except:
     from urllib2 import urlopen, Request
     from urllib2 import HTTPError
+    from io import open # needed for encoding
     _PY3 = False
 
 import time
@@ -193,12 +194,12 @@ class UrlCache(object):
             return open(target, 'rb')
 
 if __name__ == '__main__':
+    fc2 = UrlCache(cachedir=None,interval=0)
+    fc2.get("https://svn.apache.org/repos/asf/subversion/README","README", encoding='utf-8')
     fc = UrlCache(cachedir=None,interval=10)
     GIT='https://git-wip-us.apache.org/repos/asf?p=infrastructure-puppet.git;hb=refs/heads/deployment;a=blob_plain;f=modules/subversion_server/files/authorization/'
     ASF='asf-authorization-template'
     fc.get(GIT+ASF,ASF)
     fc.get("https://svn.apache.org/repos/asf/subversion/README","README")
-    fc2 = UrlCache(cachedir=None,interval=0)
-    fc2.get("https://svn.apache.org/repos/asf/subversion/README","README")
     print("Done")
     
