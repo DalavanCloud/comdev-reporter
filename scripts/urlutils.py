@@ -19,6 +19,7 @@ _HTTP_TIME_FORMAT = '%a, %d %b %Y %H:%M:%S GMT'
 def mod_date(t):
     """
         get file mod date in suitable format for If-Modified-Since
+        e.g. Thu, 15 Nov 2012 16:38:51 GMT
     """
     return time.strftime(_HTTP_TIME_FORMAT, time.gmtime(t))
 
@@ -26,8 +27,8 @@ def getIfNewer(url, sinceTime, encoding=None, errors=None):
     """
         Get a URL if it is not newer
     
-        @param url: the url to fetch
-        @param sinceTime: the most recent Last-Modified string
+        @param url: the url to fetch (required)
+        @param sinceTime: the most recent Last-Modified string (required, format as per mod_date())
         @param encoding: the encoding to use (default 'None')
         @param errors: If encoding is provided, this specifies the on-error action (e.g. 'ignore')
         @return: (lastMod, response)
@@ -45,6 +46,8 @@ def getIfNewer(url, sinceTime, encoding=None, errors=None):
         req = urllib.request.Request(url, headers=headers)
         resp = urllib.request.urlopen(req)
         lastMod = resp.headers['Last-Modified']
+        if not lastMod: # e.g. responses to git blob-plain URLs don't seem to have dates
+            lastMod = None
         if encoding:
             response = io.TextIOWrapper(resp, encoding=encoding, errors=errors)
         else:
@@ -63,6 +66,7 @@ class UrlCache(object):
             (default data/cache; this is assumed to be at the current directory, its parent or grandparent)
         @param interval: minimum interval between checks for updates to the URL (default 300 secs)
             if set to -1, never checks (intended for testing only)  
+            if set to 0, always checks (primarily intended for testing)
         @return: the instance to use with the get() method
     """
     # get file mod_date
@@ -120,6 +124,8 @@ class UrlCache(object):
             if self.__interval == -1:
                 print("File %s exists and URL check has been disabled" % name)
                 upToDate = True
+            elif self.__interval == 0:
+                print("File %s exists and check interval is zero" % name)
             else:
                 checkTime = self.__file_mtime(check)
                 now = time.time()
@@ -128,17 +134,23 @@ class UrlCache(object):
                     print("Recently checked: %d < %d, skip check" % (diff, self.__interval))
                     upToDate = True
                 else:
-                    print("Not recently checked: %d > %d" % (diff, self.__interval))
+                    if checkTime >= 0:
+                        print("Not recently checked: %d > %d" % (diff, self.__interval))
+                    else:
+                        print("Not recently checked")
         else:
-            print("Not found %s " % target)
+            print("Not found %s " % name)
 
         if not upToDate:
             sinceTime = mod_date(fileTime)
             lastMod, response = getIfNewer(url, sinceTime)
             if response: # we have a new version
-                try:
-                    lastModT = calendar.timegm(time.strptime(lastMod, _HTTP_TIME_FORMAT))
-                except ValueError:
+                if lastMod:
+                    try:
+                        lastModT = calendar.timegm(time.strptime(lastMod, _HTTP_TIME_FORMAT))
+                    except ValueError:
+                        lastModT = 0
+                else:
                     lastModT = 0
                 
                 tmpFile = target + ".tmp"
@@ -147,13 +159,20 @@ class UrlCache(object):
                 # store the last mod time as the time of the file
                 os.utime(tmpFile, times=(lastModT, lastModT))
                 os.rename(tmpFile, target) # seems to preserve file mod time
-                print("Downloaded new version of %s " % target)
+                if lastMod:
+                    if fileTime > 0:
+                        print("Downloaded new version of %s (%s > %s)" % (name, lastMod, sinceTime))
+                    else:
+                        print("Downloaded new version of %s" % (name))
+                else:
+                    print("Downloaded new version of %s (undated)" % (name))
             else:
-                print("Cached copy of %s is up to date" % target)
+                print("Cached copy of %s is up to date" % name)
 
     
-            with open(check,'a'):
-                os.utime(check, None) # touch the marker file
+            if self.__interval > 0: # no point creating a marker file if we won't be using it
+                with open(check,'a'):
+                    os.utime(check, None) # touch the marker file
 
         if encoding:
             return open(target, 'r', encoding=encoding, errors=errors)
@@ -161,6 +180,12 @@ class UrlCache(object):
             return open(target, 'rb')
 
 if __name__ == '__main__':
-    fc = UrlCache(cachedir=None,interval=30)
+    fc = UrlCache(cachedir=None,interval=10)
+    GIT='https://git-wip-us.apache.org/repos/asf?p=infrastructure-puppet.git;hb=refs/heads/deployment;a=blob_plain;f=modules/subversion_server/files/authorization/'
+    ASF='asf-authorization-template'
+    fc.get(GIT+ASF,ASF)
+    fc.get("https://svn.apache.org/repos/asf/subversion/README","README")
+    fc2 = UrlCache(cachedir=None,interval=0)
+    fc2.get("https://svn.apache.org/repos/asf/subversion/README","README")
     print("Done")
     
