@@ -24,6 +24,12 @@ import calendar
 # time format used in Last-Modified/If-Modified-Since HTTP headers
 _HTTP_TIME_FORMAT = '%a, %d %b %Y %H:%M:%S GMT'
 
+def touchFile(f, t):
+    if _PY3:
+        os.utime(f, times=(t, t))
+    else:
+        os.utime(f, (t, t))
+
 def mod_date(t):
     """
         get file mod date in suitable format for If-Modified-Since
@@ -168,10 +174,7 @@ class UrlCache(object):
                 with open(tmpFile,'wb') as f:
                     shutil.copyfileobj(response, f)
                 # store the last mod time as the time of the file
-                if _PY3:
-                    os.utime(tmpFile, times=(lastModT, lastModT))
-                else:
-                    os.utime(tmpFile, (lastModT, lastModT))
+                touchFile(tmpFile, lastModT)
                 os.rename(tmpFile, target) # seems to preserve file mod time
                 if lastMod:
                     if fileTime > 0:
