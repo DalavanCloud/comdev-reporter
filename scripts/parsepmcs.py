@@ -29,8 +29,6 @@ import errtee
 import re
 from urlutils import UrlCache
 import json
-import os
-import datetime
 import time
 
 __HOME = '../data/'
