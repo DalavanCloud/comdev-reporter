@@ -19,11 +19,15 @@ if sys.hexversion < 0x030000F0:
          time.time() when entry was added to an existing group
          time.time() when entry was last seen,
          ]
+    N.B. The timestamps are now saved as an int (the fractional part is not useful)
+    However existing entry times have not (yet) been trimmed.
+    This would cause a large change to the historical files,
+    so to avoid mixing this with a genuine change, it needs to be planned, and
+    done between normal updates.
 """
 import errtee
 import re
-import urllib.request
-import csv
+from urlutils import UrlCache
 import json
 import os
 import datetime
@@ -33,10 +37,12 @@ __HOME = '../data/'
 
 pmcs = {}
 
+print("Reading pmcs.json")
 with open(__HOME + "pmcs.json", "r", encoding='utf-8') as f:
     pmcs = json.loads(f.read())
 
 projects = {}
+print("Reading projects.json")
 with open(__HOME + "projects.json", "r", encoding='utf-8') as f:
     projects = json.loads(f.read())
 
@@ -49,9 +55,44 @@ for key in sorted(projects.keys()):
 people = {}
 newgroups = []
 
-data = urllib.request.urlopen("http://people.apache.org/committer-index.html").read().decode('utf-8')
+def updateProjects(stamp, group, cid, cname):
+    now = stamp
+    if not group in projects:
+        print("New unx group %s" % group)
+        projects[group] = {}
+        newgroups.append(group)
+    if not cid in projects[group]: # new to the group
+        if group in newgroups: # the group is also new
+            now = 0
+        print("New unx entry %s %s %s %u" % (group, cid, cname, now))
+        projects[group][cid] = [cname, now, stamp]
+    else:
+        # update the entry last seen time (and the public name, which may have changed)
+        projects[group][cid] = [cname, projects[group][cid][1], stamp]
 
-stamp = time.time()
+def updatePmcs(stamp, group, cid, cname):
+    now = stamp
+    project = group[0:-4] # drop the "-pmc" suffix
+    if not project in pmcs: # a new project
+        print("New pmc group %s" % project)
+        pmcs[project] = {}
+        newgroups.append(group)
+    if not cid in pmcs[project]: # new to the group
+        if group in newgroups: # the group is also new
+            now = 0
+        print("New pmc entry %s %s %s %u" % (project, cid, cname, now))
+        pmcs[project][cid] = [cname, now, stamp]
+    else:
+        # update the entry last seen time (and the public name, which may have changed)
+        pmcs[project][cid] = [cname, pmcs[project][cid][1], stamp]
+    
+print("Reading committer-index.html")
+uc = UrlCache()
+data = uc.get("http://people.apache.org/committer-index.html","committer-index.html").read().decode('utf-8')
+
+stamp = int(time.time())
+
+print("Scanning committer-index.html")
 for committer in re.findall(r"<tr>([\S\s]+?)</tr>", data, re.MULTILINE | re.UNICODE):
 
 ##    print(committer)
@@ -84,38 +125,10 @@ for committer in re.findall(r"<tr>([\S\s]+?)</tr>", data, re.MULTILINE | re.UNIC
             isMember = True
         # process the groups
         for group in re.findall(r"#([-a-z0-9._]+)'", cproj):
-            now = stamp
             if group.endswith("-pmc"):
-                project = group[0:-4] # drop the "-pmc" suffix
-#                 print("PMC %s %s => %s" % (cid, group, project))
-                if not project in pmcs: # a new project
-                    print("New pmc group %s" % project)
-                    pmcs[project] = {}
-                    newgroups.append(group)
-                if not cid in pmcs[project]: # new to the group
-                    if group in newgroups: # the group is also new
-                        now = 0
-                    print("New pmc entry %s %s %s %u" % (project, cid, cname, now))
-                    pmcs[project][cid] = [cname, now, stamp]
-                else:
-                    # update the entry last seen time (and the public name, which may have changed)
-                    pmcs[project][cid] = [cname, pmcs[project][cid][1], stamp]
+                updatePmcs(stamp, group, cid, cname)
             else:
-                project = group
-#                 print("Unx %s %s" % (cid, project))
-                now = stamp
-                if not project in projects:
-                    print("New unx group %s" % project)
-                    projects[project] = {}
-                    newgroups.append(group)
-                if not cid in projects[project]: # new to the group
-                    if group in newgroups: # the group is also new
-                        now = 0
-                    print("New unx entry %s %s %s %u" % (project, cid, cname, now))
-                    projects[project][cid] = [cname, now, stamp]
-                else:
-                    # update the entry last seen time (and the public name, which may have changed)
-                    projects[project][cid] = [cname, projects[project][cid][1], stamp]
+                updateProjects(stamp, group, cid, cname)
 
 
 # Delete retired members
