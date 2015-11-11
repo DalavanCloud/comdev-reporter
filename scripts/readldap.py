@@ -3,7 +3,12 @@
    Read auth groups from LDAP
    
 """
-
+import sys
+if sys.hexversion < 0x03000000:
+    _PY3 = False
+    from io import open
+else:
+    _PY3 = True
 from os.path import getmtime
 import json
 import time, calendar
@@ -92,7 +97,7 @@ def getLDAPjson(key, unix=True):
             if diff < 300:
                 print("Recently checked " + filename + ' ' + str(diff))
                 return old
-    except FileNotFoundError:
+    except IOError:
         print("No file found " + filename)
         old = {}
     try:
