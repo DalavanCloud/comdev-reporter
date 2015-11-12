@@ -44,9 +44,7 @@ crontab -l -u www-data:
 00 09      * * * cd /var/www/reporter.apache.org/scripts && ./python3logger.sh readjira.py
 
 # ensure that any new data files get picked up by the commit (which must be done by root)
-# TODO: either discard the output or work out how to log it (with timestamps) if there is any output
-40 * * * *      cd /var/www/reporter.apache.org/data/releases && ( svn status | awk '/^\? / {print $2}' | xargs -r svn add )
-
+40 * * * *      cd /var/www/reporter.apache.org/scripts          && ./svnadd.sh ../data/releases
 
 00 12      * * * curl -sS "(redacted)" > /var/www/reporter.apache.org/data/mailinglists.json
 
