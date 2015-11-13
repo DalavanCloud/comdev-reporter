@@ -17,7 +17,7 @@ BASE=$(basename $SVNDIR)
 
 YYMM=$(date '+%Y-%m')
 
-echo "exec  >>${LOGDIR}/${BASE}_${YYMM}.log"
+exec  >>${LOGDIR}/${BASE}_${YYMM}.log
 
 svn status $SVNDIR | awk '/^\? / {print $2}' | xargs -r svn add | \
 {
