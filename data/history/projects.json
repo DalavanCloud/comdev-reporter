@@ -8353,6 +8353,22 @@
    "Amareshwari Sriramadasu",
    0
   ],
+  "arunmanoharan": [
+   "Arun Manoharan",
+   1447905601
+  ],
+  "cgupta": [
+   "Chaitali Gupta",
+   1447905601
+  ],
+  "hao": [
+   "Hao Chen",
+   1447905601
+  ],
+  "hdendukuri": [
+   "Hemanth Dendukuri",
+   1447905601
+  ],
   "hsaputra": [
    "Henry Saputra",
    0
@@ -8360,6 +8376,14 @@
   "jhyde": [
    "Julian Hyde",
    0
+  ],
+  "jilin": [
+   "Jilin Jiang",
+   1447905601
+  ],
+  "libsun": [
+   "Libin Sun",
+   1447905601
   ],
   "lukehan": [
    "Luke Han",
@@ -8372,6 +8396,14 @@
   "ptgoetz": [
    "P. Taylor Goetz",
    0
+  ],
+  "qingwzhao": [
+   "Qingwen Zhao",
+   1447905601
+  ],
+  "yonzhang2012": [
+   "Edward Zhang",
+   1447905601
   ]
  },
  "easyant": {
@@ -28653,6 +28685,10 @@
    "Dmitriy Setrakyan",
    1440356402.4695709
   ],
+  "edwardyoon": [
+   "Edward J. Yoon",
+   1447905601
+  ],
   "eric": [
    "Eric Charles",
    0
@@ -28680,6 +28716,10 @@
   "gjm": [
    "Gary Martin",
    0
+  ],
+  "glaforge": [
+   "Guillaume Laforge",
+   1447905601
   ],
   "gozer": [
    "Philippe Chiasson",
@@ -28865,6 +28905,10 @@
    "Luciano Resende",
    0
   ],
+  "lukehan": [
+   "Luke Han",
+   1447905601
+  ],
   "magicaltrout": [
    "Tom Barber",
    0
@@ -28989,9 +29033,17 @@
    "René Gielen",
    0
   ],
+  "rgoers": [
+   "Ralph Goers",
+   1447905601
+  ],
   "rhuijben": [
    "Bert Huijben",
    1440356402.5358977
+  ],
+  "richard": [
+   "Richard Downer",
+   1447905601
   ],
   "rkanter": [
    "Robert Kanter",
@@ -29124,6 +29176,10 @@
   "veithm": [
    "Martin Veith",
    0
+  ],
+  "weimer": [
+   "Markus Weimer",
+   1447905601
   ],
   "wfarner": [
    "Bill Farner",
