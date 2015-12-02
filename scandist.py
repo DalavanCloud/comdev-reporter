@@ -385,8 +385,12 @@ While this is not a requirement, we ask that you still add this data to the
 reporter database, so that people using the Apache Reporter Service will be
 able to see the latest release data for this project.
 
+Also, please ensure that you remove [1] any older releases.
+
 With regards,
 The Apache Reporter Service.
+
+[1] http://www.apache.org/dev/release.html#when-to-archive
                 """ % tmpdict;
                 
                 if not sendEmail:
