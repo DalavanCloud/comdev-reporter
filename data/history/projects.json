@@ -3783,6 +3783,12 @@
    0
   ]
  },
+ "brooklyn": {
+  "richard": [
+   "Richard Downer",
+   0
+  ]
+ },
  "buildr": {
   "assaf": [
    "Assaf Arkin",
@@ -6321,6 +6327,10 @@
   "daserge": [
    "Sergey Shakhnazarov",
    1443553233.0091853
+  ],
+  "dbarth": [
+   "David Barth",
+   1449028802
   ],
   "dblotsky": [
    "Dmitry Blotsky",
@@ -36749,6 +36759,10 @@
   "ndimiduk": [
    "Nick Dimiduk",
    1442545202.1046948
+  ],
+  "sekikn": [
+   "Kengo Seki",
+   1449028802
   ]
  },
  "zest": {
