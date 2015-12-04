@@ -58,7 +58,7 @@ function getWednesdays(mo, y) {
 		d.setMonth(mo);
 	}
 	if (y) {
-		d.setFullYear(y, d.getMonth(), d.getDay())
+		d.setFullYear(y, d.getMonth(), d.getDate())
 	}
 	var month = d.getMonth(),
 		wednesdays = [];
