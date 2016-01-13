@@ -2,6 +2,7 @@ var jsdata = {}
 
 var templates = {}
 var nproject = null;
+var animals = ['hedgehogs', 'cows', 'geese', 'pigs', 'fluffy kittens', 'puppies', 'rabid dogs', 'ponies', 'weevils']
 
 // Function for async fetching of a single JSON file with JS callback
 // Parses Url as JSON and calls callback(JSON, xstate)
@@ -323,16 +324,19 @@ function renderFrontPage(json) {
 		}
 		addLine(pmc)
 
+		var a = animals[Math.floor(Math.random()*animals.length*0.999)]
 		addLine(pmc, "## Issues:")
-		addLine(pmc, " - <font color='red'>TODO - list any issues that require board attention, \n  or say \"there are no issues requiring board attention at this time\"</font>")
+		addLine(pmc, " - <font color='red'>TODO - list any issues that require board attention, \n  or say \"there are no issues requiring board attention at this time\" - if not, the " + a + " will get you.</font>")
 		addLine(pmc)
 
 		addLine(pmc, "## Activity:")
 		addLine(pmc, " - <font color='red'>TODO - the PMC <b><u>MUST</u></b> provide this information</font>")
 		addLine(pmc)
 
+		
+		a = animals[Math.floor(Math.random()*animals.length*0.999)]
 		addLine(pmc, "## Health report:")
-		addLine(pmc, " - <font color='red'>TODO - Please use this paragraph to elaborate on why the current project activity (mails, commits, bugs etc) is at its current level.</font>")
+		addLine(pmc, " - <font color='red'>TODO - Please use this paragraph to elaborate on why the current project activity (mails, commits, bugs etc) is at its current level - Maybe " + a + " took over and are now controlling the project?</font>")
 		addLine(pmc)
 
 		var obj = document.createElement('div');
