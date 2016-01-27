@@ -56,7 +56,7 @@ crontab -l -u www-data:
 
 Scripts:
 - data/parsepmcs.py
-  Updates data/pmcs.json and data/projects.json (currently from http://people.apache.org/committer-index.html)
+  Updates data/pmcs.json and data/projects.json (from Whimsy public data)
   Also updates historic copies (without the last seen timestamp) in data/history
 
 -data/pmcdates.py

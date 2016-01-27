@@ -1,10 +1,14 @@
 import sys
-# The code uses urllib.request which is Python3
+# The code uses open(..., encoding=enc) which is Python3
 if sys.hexversion < 0x030000F0:
     raise RuntimeError("This script requires Python3")
 """
-   This script
-   reads: http://people.apache.org/committer-index.html 
+   This script reads: 
+   https://whimsy.apache.org/public/committee-info.json
+   https://whimsy.apache.org/public/public_ldap_people.json
+   https://whimsy.apache.org/public/public_ldap_groups.json
+   https://whimsy.apache.org/public/public_ldap_committees.json
+   https://whimsy.apache.org/public/public_nonldap_groups.json
    and updates:
    data/pmcs.json - members of pmcs
    data/projects.json - committers of projects
@@ -26,10 +30,18 @@ if sys.hexversion < 0x030000F0:
     done between normal updates.
 """
 import errtee
-import re
 from urlutils import UrlCache
 import json
 import time
+
+uc = UrlCache(interval=0)
+
+def loadJson(url):
+    print("Reading " + url)
+    resp = uc.get(url, name=None, encoding='utf-8', errors=None)
+    j = json.load(resp)
+    resp.close()
+    return j
 
 __HOME = '../data/'
 
@@ -44,14 +56,8 @@ print("Reading projects.json")
 with open(__HOME + "projects.json", "r", encoding='utf-8') as f:
     projects = json.loads(f.read())
 
-# Delete mistaken entries
-for key in sorted(projects.keys()):
-    if key.endswith("-pmc"):
-        print("Dropping mistaken entry %s" % key)
-        del projects[key]
-
-people = {}
 newgroups = []
+newpmcs = []
 
 def updateProjects(stamp, group, cid, cname):
     now = stamp
@@ -68,66 +74,40 @@ def updateProjects(stamp, group, cid, cname):
         # update the entry last seen time (and the public name, which may have changed)
         projects[group][cid] = [cname, projects[group][cid][1], stamp]
 
-def updatePmcs(stamp, group, cid, cname):
+def updateCommittees(stamp, group, cid, cname):
     now = stamp
-    project = group[0:-4] # drop the "-pmc" suffix
-    if not project in pmcs: # a new project
-        print("New pmc group %s" % project)
-        pmcs[project] = {}
-        newgroups.append(group)
-    if not cid in pmcs[project]: # new to the group
-        if group in newgroups: # the group is also new
+    if not group in pmcs: # a new project
+        print("New pmc group %s" % group)
+        pmcs[group] = {}
+        newpmcs.append(group)
+    if not cid in pmcs[group]: # new to the group
+        if group in newpmcs: # the group is also new
             now = 0
-        print("New pmc entry %s %s %s %u" % (project, cid, cname, now))
-        pmcs[project][cid] = [cname, now, stamp]
+        print("New pmc entry %s %s %s %u" % (group, cid, cname, now))
+        pmcs[group][cid] = [cname, now, stamp]
     else:
         # update the entry last seen time (and the public name, which may have changed)
-        pmcs[project][cid] = [cname, pmcs[project][cid][1], stamp]
+        pmcs[group][cid] = [cname, pmcs[group][cid][1], stamp]
     
-print("Reading committer-index.html")
-uc = UrlCache()
-data = uc.get("http://people.apache.org/committer-index.html","committer-index.html").read().decode('utf-8')
-
 stamp = int(time.time())
 
-print("Scanning committer-index.html")
-for committer in re.findall(r"<tr>([\S\s]+?)</tr>", data, re.MULTILINE | re.UNICODE):
+c_info = loadJson('https://whimsy.apache.org/public/committee-info.json')['committees']
+ldappeople = loadJson('https://whimsy.apache.org/public/public_ldap_people.json')['people']
+ldapgroups = loadJson('https://whimsy.apache.org/public/public_ldap_groups.json')['groups']
+ldapcttees = loadJson('https://whimsy.apache.org/public/public_ldap_committees.json')['committees']
+nonldapgroups = loadJson('https://whimsy.apache.org/public/public_nonldap_groups.json')['groups']
 
-##    print(committer)
-    """
-        <!-- sample with single home URL -->
-        <td bgcolor="#a0ddf0"><a id='cwelton'></a>cwelton</td>
-        <td bgcolor="#a0ddf0">
-        <a href="http://hawq.incubator.apache.org/">Caleb Welton</a></td>        <td bgcolor="#a0ddf0"> <a href='committers-by-project.html#incubator'>incubator</a></td>
-        
-        <!-- sample with more than one home URL -->
-        <td bgcolor="#a0ddf0"><a id='deki'></a>deki</td>
-        <td bgcolor="#a0ddf0">
-        <a href="https://github.com/deki/">Dennis Kieselhorst</a>|<a href="http://www.dekies.de">+</a></td>
-                <td bgcolor="#a0ddf0"> <a href='committers-by-project.html#myfaces'>myfaces</a></td>
-        
-        <!-- sample with no URL -->
-        <td bgcolor="#a0ddf0"><a id='delafran'></a>delafran</td>
-        <td bgcolor="#a0ddf0">
-        Mark DeLaFranier</td>        <td bgcolor="#a0ddf0"> <a href='committers-by-project.html#geronimo'>geronimo</a></td>
-    """
-    m = re.search(r"<a id='(.+?)'>[\s\S]+?<td.+?>\s*(.+?)</td>[\s\S]+?>(.+)</td>", committer, re.MULTILINE | re.UNICODE)
-    if m:
-        cid = m.group(1) # committer id / availid
-        cname = re.sub(r"<.+?>", "", m.group(2), 4) # committer name (dropping HTML markup)
-        cname = re.sub(r"\|.*", "", cname) # drop additional URL entry names
-#         print(cid,cname)
-        cproj = m.group(3) # list of authgroups to which the person belongs
-        isMember = False
-        if re.search(r"<b", committer, re.MULTILINE | re.UNICODE):
-            isMember = True
-        # process the groups
-        for group in re.findall(r"#([-a-z0-9._]+)'", cproj):
-            if group.endswith("-pmc"):
-                updatePmcs(stamp, group, cid, cname)
-            else:
-                updateProjects(stamp, group, cid, cname)
-
+for group in ldapcttees:
+    if group in c_info:
+        for cid in ldapcttees[group]['roster']:
+            updateCommittees(stamp, group, cid, ldappeople[cid]['name'])
+for group in ldapgroups:
+    if group != 'committers' and group in c_info:
+        for cid in ldapgroups[group]['roster']:
+            updateProjects(stamp, group, cid, ldappeople[cid]['name'])
+for group in nonldapgroups:# mainly podlings
+    for cid in nonldapgroups[group]:
+        updateProjects(stamp, group, cid, ldappeople[cid]['name'])
 
 # Delete retired members
 ret = 0
