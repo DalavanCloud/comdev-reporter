@@ -106,7 +106,7 @@ for group in ldapgroups:
         for cid in ldapgroups[group]['roster']:
             updateProjects(stamp, group, cid, ldappeople[cid]['name'])
 for group in nonldapgroups:# mainly podlings
-    for cid in nonldapgroups[group]:
+    for cid in nonldapgroups[group]['roster']:
         updateProjects(stamp, group, cid, ldappeople[cid]['name'])
 
 # Delete retired members
