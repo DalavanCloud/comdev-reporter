@@ -30,7 +30,7 @@ if 'ERRTEE' in os.environ:
 
 if __name__ == '__main__': # simple test
     print("STDOUT1")
-    print("STDERR2", file=sys.stderr)
+    sys.stderr.write("STDERR2\n")
     sys.stderr=ErrTee() # enable for testing
-    print("STDERR3", file=sys.stderr)
-    raise Exception("STDERR4")
+    sys.stderr.write("STDERR3 (should also appear on STDOUT)\n")
+    raise Exception("STDERR4 (should also appear on STDOUT)")
