@@ -26,6 +26,10 @@ import calendar
 # time format used in Last-Modified/If-Modified-Since HTTP headers
 _HTTP_TIME_FORMAT = '%a, %d %b %Y %H:%M:%S GMT'
 
+# Allow callers to check HTTP code from Python2 and 3
+def isHTTPNotFound(e):
+    return type(e) == HTTPError and e.code == 404
+
 def touchFile(f, t):
     if _PY3:
         os.utime(f, times=(t, t))
@@ -78,9 +82,20 @@ def getIfNewer(url, sinceTime, encoding=None, errors=None):
             raise
     return lastMod, response
 
+def findRelPath(relpath):
+    for d in ['./','../','../../']: # we may located at same level or 1 or 2 below
+        dir = join(d,relpath)
+        if os.path.isdir(dir):
+            return dir
+    raise OSError("Cannot find path " + path)
+
 class UrlCache(object):
     """
-        Creates a cache for URLs
+        Creates a cache for URLs.
+        The file modification time is set to the Last-Modified header of the URL (if any)
+        If a check interval is specified (>0),
+        a hidden marker file is used to record the last check time (unless useFileModTime==True)
+
         @param cachedir: the cache directory to use 
             (default data/cache; this is assumed to be at the current directory, its parent or grandparent)
         @param interval: minimum interval between checks for updates to the URL (default 300 secs)
@@ -100,15 +115,11 @@ class UrlCache(object):
         __CACHE = 'data/cache'
         self.__interval = interval
         self.__cachedir = None
-        if cachedir:
+        if cachedir: # assumed to be correct
             self.__cachedir = cachedir
         else:
             self.__cachedir = __CACHE # will be overwritten if actually found
-            for d in ['./','../','../../']: # we may located at same level or 1 or 2 below
-                dir = d + __CACHE
-                if os.path.isdir(dir):
-                    self.__cachedir = dir
-                    break
+            self.__cachedir = findRelPath(__CACHE)
         
         if os.path.isdir(self.__cachedir):
             print("Cachedir: %s" % self.__cachedir)
@@ -118,7 +129,19 @@ class UrlCache(object):
     def __getname(self, name):
         return join(self.__cachedir, name)
 
-    def get(self, url, name, encoding=None, errors=None):
+    def _deleteCacheFile(self, name):# intended mainly for debug use
+        path = self.__getname(name)
+        try:
+            os.remove(path)
+        except FileNotFoundError:
+            pass
+        dotpath = self.__getname('.'+name)
+        try:
+            os.remove(dotpath)
+        except FileNotFoundError:
+            pass
+
+    def get(self, url, name, encoding=None, errors=None, useFileModTime=False):
         """
             Check if the filename exists in the cache.
             If it does not, or if it does and the URL has not been checked recently,
@@ -129,19 +152,23 @@ class UrlCache(object):
             (this is mainly intended to avoid excess URL requests in unit testing).
             If this is set to -1, then the URL will only be downloaded once. 
             @param url: the url to fetch (required)
-            @param name: the name to use in the cache (required). 
-                         If specified as None, the code uses the URL to create the name
-                         Beware: the name must be unique for the cache
+            @param name: the name to use in the cache (required)
             @param encoding: the encoding to use (default None)
             @param errors: If encoding is provided, this specifies the on-error action (e.g. 'ignore')
                         (default None)
+            @param useFileModTime: whether to use the file modification time as the last check time
+            If not, a hidden marker file is used (default false). Set this to true for URLs that don't
+            provide a Last-Modified header
             @return: the opened stream, using the encoding if specified. Otherwise opened in binary mode. 
         """
         if name == None:
             name = basename(urlparse(url).path)
         target=self.__getname(name)
         fileTime = self.__file_mtime(target)
-        check = self.__getname("."+name)
+        if useFileModTime:
+            check = self.__getname(name)
+        else:
+            check = self.__getname("."+name)
         upToDate = False
         if fileTime >= 0:
             if self.__interval == -1:
@@ -154,13 +181,13 @@ class UrlCache(object):
                 now = time.time()
                 diff = now - checkTime
                 if diff < self.__interval:
-                    print("Recently checked: %d < %d, skip check" % (diff, self.__interval))
+                    print("Recently checked: %d < %d, skip check for %s" % (diff, self.__interval, name))
                     upToDate = True
                 else:
                     if checkTime >= 0:
-                        print("Not recently checked: %d > %d" % (diff, self.__interval))
+                        print("Not recently checked: %d > %d (%s)" % (diff, self.__interval, name))
                     else:
-                        print("Not recently checked")
+                        print("Not recently checked (%s)" % name)
         else:
             print("Not found %s " % name)
 
@@ -179,8 +206,9 @@ class UrlCache(object):
                 tmpFile = target + ".tmp"
                 with open(tmpFile,'wb') as f:
                     shutil.copyfileobj(response, f)
-                # store the last mod time as the time of the file
-                touchFile(tmpFile, lastModT)
+                if not useFileModTime:
+                    # store the last mod time as the time of the file
+                    touchFile(tmpFile, lastModT)
                 os.rename(tmpFile, target) # seems to preserve file mod time
                 if lastMod:
                     if fileTime > 0:
@@ -194,8 +222,11 @@ class UrlCache(object):
 
     
             if self.__interval > 0: # no point creating a marker file if we won't be using it
-                with open(check,'a'):
+                if useFileModTime:
                     os.utime(check, None) # touch the marker file
+                else:
+                    with open(check,'a'):
+                        os.utime(check, None) # touch the marker file
 
         if encoding:
             return open(target, 'r', encoding=encoding, errors=errors)
