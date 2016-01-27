@@ -4,17 +4,19 @@
 """
 
 import os
-from os.path import dirname, abspath, join, getmtime
+from os.path import dirname, abspath, join, getmtime, basename
 import shutil
 import io
 # Allow for Python2/3 differences
 try:
     from urllib.request import urlopen, Request
     from urllib.error import HTTPError
+    from urllib.parse import urlparse
     _PY3 = True
 except:
     from urllib2 import urlopen, Request
     from urllib2 import HTTPError
+    from urlparse import urlparse
     from io import open # needed for encoding
     _PY3 = False
 
@@ -83,7 +85,7 @@ class UrlCache(object):
             (default data/cache; this is assumed to be at the current directory, its parent or grandparent)
         @param interval: minimum interval between checks for updates to the URL (default 300 secs)
             if set to -1, never checks (intended for testing only)  
-            if set to 0, always checks (primarily intended for testing)
+            if set to 0, always checks (primarily intended for testing, also useful where URLs support If-Modified-Since)
         @return: the instance to use with the get() method
     """
     # get file mod_date
@@ -127,12 +129,16 @@ class UrlCache(object):
             (this is mainly intended to avoid excess URL requests in unit testing).
             If this is set to -1, then the URL will only be downloaded once. 
             @param url: the url to fetch (required)
-            @param name: the name to use in the cache (required)
+            @param name: the name to use in the cache (required). 
+                         If specified as None, the code uses the URL to create the name
+                         Beware: the name must be unique for the cache
             @param encoding: the encoding to use (default None)
             @param errors: If encoding is provided, this specifies the on-error action (e.g. 'ignore')
                         (default None)
             @return: the opened stream, using the encoding if specified. Otherwise opened in binary mode. 
         """
+        if name == None:
+            name = basename(urlparse(url).path)
         target=self.__getname(name)
         fileTime = self.__file_mtime(target)
         check = self.__getname("."+name)
