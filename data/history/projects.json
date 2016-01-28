@@ -2997,6 +2997,12 @@
    0
   ]
  },
+ "arrow": {
+  "jacques": [
+   "Jacques Nadeau",
+   0
+  ]
+ },
  "attic": {
   "bayard": [
    "Henri Yandell",
@@ -9949,6 +9955,72 @@
   ],
   "woollard": [
    "David Woollard",
+   0
+  ]
+ },
+ "groovy": {
+  "aalmiray": [
+   "Andres Almiray",
+   0
+  ],
+  "abayer": [
+   "Andrew Bayer",
+   0
+  ],
+  "blackdrag": [
+   "Jochen Theodorou",
+   0
+  ],
+  "cchampeau": [
+   "Cédric Champeau",
+   0
+  ],
+  "cos": [
+   "Konstantin I Boudnik",
+   0
+  ],
+  "glaforge": [
+   "Guillaume Laforge",
+   0
+  ],
+  "grocher": [
+   "Graeme Rocher",
+   0
+  ],
+  "jim": [
+   "Jim Jagielski",
+   0
+  ],
+  "jwagenleitner": [
+   "John Wagenleitner",
+   0
+  ],
+  "keegan": [
+   "Keegan Witt",
+   0
+  ],
+  "koenig": [
+   "Dierk Koenig",
+   0
+  ],
+  "pascalschumacher": [
+   "Pascal Schumacher",
+   0
+  ],
+  "paulk": [
+   "Paul King",
+   0
+  ],
+  "russel": [
+   "Dr. Russel Winder",
+   0
+  ],
+  "rvs": [
+   "Roman Shaposhnik",
+   0
+  ],
+  "shils": [
+   "Shil Sinha",
    0
   ]
  },
