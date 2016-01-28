@@ -271,7 +271,9 @@ function PMCchanges(json, pmc, after) {
         }
         changes.innerHTML += "&rarr; " + "<b>Currently " + c + " PMC members.<br>"
         changes.innerHTML += "<br>PMC established: " + json.pmcdates[pmc].pmc[0]
-        changes.innerHTML += " (assumed actual date: " + epochSecsYYYYMMDD(pmcStartTime) + ")"
+        if (pmcStartTime > 0) { // don't use missing time
+            changes.innerHTML += " (assumed actual date: " + epochSecsYYYYMMDD(pmcStartTime) + ")"
+        }
         addLine(pmc)
 }
 
