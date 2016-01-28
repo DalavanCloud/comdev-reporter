@@ -104,6 +104,26 @@ for group in ldapgroups:
         for cid in ldapgroups[group]['roster']:
             updateProjects(stamp, group, cid, ldappeople[cid]['name'])
 
+
+"""
+   The old code used people.apache.org which included podling groups.
+   We don't want these, and we need to remove any existing ones.
+   Otherwise we cannot determine when a podling graduates.
+   Proactively remove the nonldap groups. 
+   [This code can be removed in due course]
+"""
+
+nonldapgroups = loadJson('https://whimsy.apache.org/public/public_nonldap_groups.json')['groups']
+for nongroup in sorted(nonldapgroups):
+    if nongroup not in ldapgroups: # should not happen, but check anyway
+        if nongroup in projects:
+            print("Dropping non-ldap group %s" % nongroup)
+            del projects[nongroup]
+#        else:
+#            print("Not found non-ldap group %s" % nongroup)
+    else:
+        print("Unexpected non-ldap group %s in projects list " % nongroup)
+
 # Delete retired members
 ret = 0
 for project in projects:
