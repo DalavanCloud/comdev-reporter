@@ -8,7 +8,6 @@ if sys.hexversion < 0x030000F0:
    https://whimsy.apache.org/public/public_ldap_people.json
    https://whimsy.apache.org/public/public_ldap_groups.json
    https://whimsy.apache.org/public/public_ldap_committees.json
-   https://whimsy.apache.org/public/public_nonldap_groups.json
    and updates:
    data/pmcs.json - members of pmcs
    data/projects.json - committers of projects
@@ -95,7 +94,6 @@ c_info = loadJson('https://whimsy.apache.org/public/committee-info.json')['commi
 ldappeople = loadJson('https://whimsy.apache.org/public/public_ldap_people.json')['people']
 ldapgroups = loadJson('https://whimsy.apache.org/public/public_ldap_groups.json')['groups']
 ldapcttees = loadJson('https://whimsy.apache.org/public/public_ldap_committees.json')['committees']
-nonldapgroups = loadJson('https://whimsy.apache.org/public/public_nonldap_groups.json')['groups']
 
 for group in ldapcttees:
     if group in c_info:
@@ -105,9 +103,6 @@ for group in ldapgroups:
     if group != 'committers' and group in c_info:
         for cid in ldapgroups[group]['roster']:
             updateProjects(stamp, group, cid, ldappeople[cid]['name'])
-for group in nonldapgroups:# mainly podlings
-    for cid in nonldapgroups[group]['roster']:
-        updateProjects(stamp, group, cid, ldappeople[cid]['name'])
 
 # Delete retired members
 ret = 0
