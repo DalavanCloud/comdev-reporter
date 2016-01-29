@@ -7,6 +7,8 @@ import os
 from os.path import dirname, abspath, join, getmtime, basename
 import shutil
 import io
+import errno
+
 # Allow for Python2/3 differences
 try:
     from urllib.request import urlopen, Request
@@ -40,7 +42,11 @@ def mod_date(t):
     """
         get file mod date in suitable format for If-Modified-Since
         e.g. Thu, 15 Nov 2012 16:38:51 GMT
+        @param t: the time in seconds
+        @return:  None if t < 0
     """
+    if t < 0:
+        return None
     return time.strftime(_HTTP_TIME_FORMAT, time.gmtime(t))
 
 def getIfNewer(url, sinceTime, encoding=None, errors=None):
@@ -63,8 +69,12 @@ def getIfNewer(url, sinceTime, encoding=None, errors=None):
         headers = {}
     response = None
     try:
+        print("%s %s" % (url, headers))
         req = Request(url, headers=headers)
         resp = urlopen(req)
+        # Debug - detect why json sometimes returned as HTML but no error code
+        print("STATUS %s" % resp.getcode()) # Works for Py2/3
+        print(resp.headers)
         try:
             lastMod = resp.headers['Last-Modified']
             if not lastMod: # e.g. responses to git blob-plain URLs don't seem to have dates
@@ -107,7 +117,9 @@ class UrlCache(object):
     def __file_mtime(self, filename):
         try:
             t = getmtime(filename)
-        except FileNotFoundError:
+        except OSError as e:
+            if not e.errno == errno.ENOENT:
+                raise e
             t = -1 # so cannot be confused with a valid mtime
         return t
 
@@ -133,13 +145,15 @@ class UrlCache(object):
         path = self.__getname(name)
         try:
             os.remove(path)
-        except FileNotFoundError:
-            pass
+        except OSError as e:
+            if not e.errno == errno.ENOENT:
+                raise e
         dotpath = self.__getname('.'+name)
         try:
             os.remove(dotpath)
-        except FileNotFoundError:
-            pass
+        except OSError as e:
+            if not e.errno == errno.ENOENT:
+                raise e
 
     def get(self, url, name, encoding=None, errors=None, useFileModTime=False):
         """
@@ -214,7 +228,7 @@ class UrlCache(object):
                     if fileTime > 0:
                         print("Downloaded new version of %s (%s > %s)" % (name, lastMod, sinceTime))
                     else:
-                        print("Downloaded new version of %s" % (name))
+                        print("Downloaded new version of %s (%s)" % (name, lastMod))
                 else:
                     print("Downloaded new version of %s (undated)" % (name))
             else:
