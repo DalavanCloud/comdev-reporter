@@ -1560,6 +1560,10 @@
   "jacques": [
    "Jacques Nadeau",
    0
+  ],
+  "wesm": [
+   "Wes McKinney",
+   1454356802
   ]
  },
  "attic": {
@@ -2329,9 +2333,49 @@
   ]
  },
  "brooklyn": {
+  "aledsage": [
+   "Aled Sage",
+   1454356802
+  ],
+  "andreaturli": [
+   "Andrea Turli",
+   1454356802
+  ],
+  "cipi": [
+   "Ciprian Ciubotariu",
+   1454356802
+  ],
+  "grkvlt": [
+   "Andrew Donald Kennedy",
+   1454356802
+  ],
+  "hadrian": [
+   "Hadrian Zbarcea",
+   1454356802
+  ],
+  "heneveld": [
+   "Alex Heneveld",
+   1454356802
+  ],
+  "jbonofre": [
+   "Jean-Baptiste Onofré",
+   1454356802
+  ],
+  "olamy": [
+   "Olivier Lamy",
+   1454356802
+  ],
   "richard": [
    "Richard Downer",
    0
+  ],
+  "sjcorbett": [
+   "Samuel James Corbett",
+   1454356802
+  ],
+  "svet": [
+   "Svetoslav Neykov",
+   1454356802
   ]
  },
  "buildr": {
@@ -22118,10 +22162,6 @@
    "Liu Zhe",
    0
   ],
-  "louis": [
-   "Louis Suarez-Potts",
-   0
-  ],
   "lrosen": [
    "Lawrence Rosen",
    0
@@ -22762,6 +22802,10 @@
   ]
  },
  "phoenix": {
+  "ankit": [
+   "Ankit Singhal",
+   1454356802
+  ],
   "anoopsamjohn": [
    "Anoop Sam John",
    1401670555
@@ -26477,6 +26521,10 @@
   "roger": [
    "Roger Meier",
    0
+  ],
+  "simonsouth": [
+   "Simon South",
+   1454356802
   ],
   "todd": [
    "Todd Lipcon",
