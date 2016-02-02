@@ -509,6 +509,10 @@ function renderFrontPage(json) {
 			if (lr) {
 				releases.innerHTML += "&rarr; " + "<b>Last release was " + lr + ", released on </b>" + new Date(lrn * 1000).toDateString() + "<br>"
 				addLine(pmc, " - Last release was " + lr + " on " + new Date(lrn * 1000).toDateString())
+				if (lr.match("incubat") && !isNewPMC(json,pmc,after)) {
+				    releases.innerHTML += "<br><font color='red'><b>No release since graduation</b></font><br><br>"
+				    addLine(pmc, " - <font color='red'><b>No release since graduation??? [FIX!]</b></font>")
+				}
 			} else {
 				releases.innerHTML += "No release data could be found.<br>"
 				addLine(pmc, " - <font color='red'>No release data could be found [FIX!]</font>")
