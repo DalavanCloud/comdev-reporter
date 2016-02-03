@@ -58,7 +58,8 @@ with open(__HOME + "projects.json", "r", encoding='utf-8') as f:
 newgroups = []
 newpmcs = []
 
-def updateProjects(stamp, group, cid, cname):
+def updateProjects(stamp, group, cid):
+    cname = ldappeople[cid]['name']
     now = stamp
     if not group in projects:
         print("New unx group %s" % group)
@@ -73,7 +74,8 @@ def updateProjects(stamp, group, cid, cname):
         # update the entry last seen time (and the public name, which may have changed)
         projects[group][cid] = [cname, projects[group][cid][1], stamp]
 
-def updateCommittees(stamp, group, cid, cname):
+def updateCommittees(stamp, group, cid):
+    cname = ldappeople[cid]['name']
     now = stamp
     if not group in pmcs: # a new project
         print("New pmc group %s" % group)
@@ -98,11 +100,11 @@ ldapcttees = loadJson('https://whimsy.apache.org/public/public_ldap_committees.j
 for group in ldapcttees:
     if group in c_info:
         for cid in ldapcttees[group]['roster']:
-            updateCommittees(stamp, group, cid, ldappeople[cid]['name'])
+            updateCommittees(stamp, group, cid)
 for group in ldapgroups:
     if group != 'committers' and group in c_info:
         for cid in ldapgroups[group]['roster']:
-            updateProjects(stamp, group, cid, ldappeople[cid]['name'])
+            updateProjects(stamp, group, cid)
 
 
 """
