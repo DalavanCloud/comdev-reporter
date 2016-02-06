@@ -49,7 +49,7 @@ def mod_date(t):
         return None
     return time.strftime(_HTTP_TIME_FORMAT, time.gmtime(t))
 
-def getIfNewer(url, sinceTime, encoding=None, errors=None):
+def getIfNewer(url, sinceTime, encoding=None, errors=None, silent=False):
     """
         Get a URL if it is not newer
     
@@ -69,12 +69,12 @@ def getIfNewer(url, sinceTime, encoding=None, errors=None):
         headers = {}
     response = None
     try:
-        print("%s %s" % (url, headers))
+        if not silent: print("%s %s" % (url, headers))
         req = Request(url, headers=headers)
         resp = urlopen(req)
         # Debug - detect why json sometimes returned as HTML but no error code
-        print("STATUS %s" % resp.getcode()) # Works for Py2/3
-        print(resp.headers)
+        if not silent: print("STATUS %s" % resp.getcode()) # Works for Py2/3
+        if not silent: print(resp.headers)
         try:
             lastMod = resp.headers['Last-Modified']
             if not lastMod: # e.g. responses to git blob-plain URLs don't seem to have dates
@@ -123,10 +123,11 @@ class UrlCache(object):
             t = -1 # so cannot be confused with a valid mtime
         return t
 
-    def __init__(self, cachedir=None, interval=300):
+    def __init__(self, cachedir=None, interval=300, silent=False):
         __CACHE = 'data/cache'
         self.__interval = interval
         self.__cachedir = None
+        self.__silent = silent
         if cachedir: # assumed to be correct
             self.__cachedir = cachedir
         else:
@@ -134,7 +135,7 @@ class UrlCache(object):
             self.__cachedir = findRelPath(__CACHE)
         
         if os.path.isdir(self.__cachedir):
-            print("Cachedir: %s" % self.__cachedir)
+            if not self.__silent: print("Cachedir: %s" % self.__cachedir)
         else:
             raise OSError("Could not find cache directory '%s'" % self.__cachedir)
 
@@ -186,28 +187,28 @@ class UrlCache(object):
         upToDate = False
         if fileTime >= 0:
             if self.__interval == -1:
-                print("File %s exists and URL check has been disabled" % name)
+                if not self.__silent: print("File %s exists and URL check has been disabled" % name)
                 upToDate = True
             elif self.__interval == 0:
-                print("File %s exists and check interval is zero" % name)
+                if not self.__silent: print("File %s exists and check interval is zero" % name)
             else:
                 checkTime = self.__file_mtime(check)
                 now = time.time()
                 diff = now - checkTime
                 if diff < self.__interval:
-                    print("Recently checked: %d < %d, skip check for %s" % (diff, self.__interval, name))
+                    if not self.__silent: print("Recently checked: %d < %d, skip check for %s" % (diff, self.__interval, name))
                     upToDate = True
                 else:
                     if checkTime >= 0:
-                        print("Not recently checked: %d > %d (%s)" % (diff, self.__interval, name))
+                        if not self.__silent: print("Not recently checked: %d > %d (%s)" % (diff, self.__interval, name))
                     else:
-                        print("Not recently checked (%s)" % name)
+                        if not self.__silent: print("Not recently checked (%s)" % name)
         else:
-            print("Not found %s " % name)
+            if not self.__silent: print("Not found %s " % name)
 
         if not upToDate:
             sinceTime = mod_date(fileTime)
-            lastMod, response = getIfNewer(url, sinceTime)
+            lastMod, response = getIfNewer(url, sinceTime, silent=self.__silent)
             if response: # we have a new version
                 if lastMod:
                     try:
@@ -226,13 +227,13 @@ class UrlCache(object):
                 os.rename(tmpFile, target) # seems to preserve file mod time
                 if lastMod:
                     if fileTime > 0:
-                        print("Downloaded new version of %s (%s > %s)" % (name, lastMod, sinceTime))
+                        if not self.__silent: print("Downloaded new version of %s (%s > %s)" % (name, lastMod, sinceTime))
                     else:
-                        print("Downloaded new version of %s (%s)" % (name, lastMod))
+                        if not self.__silent: print("Downloaded new version of %s (%s)" % (name, lastMod))
                 else:
-                    print("Downloaded new version of %s (undated)" % (name))
+                    if not self.__silent: print("Downloaded new version of %s (undated)" % (name))
             else:
-                print("Cached copy of %s is up to date (%s)" % (name, lastMod))
+                if not self.__silent: print("Cached copy of %s is up to date (%s)" % (name, lastMod))
 
     
             if self.__interval > 0: # no point creating a marker file if we won't be using it
