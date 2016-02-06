@@ -1,16 +1,9 @@
 #!/usr/bin/env python
-import os, sys, re, json, subprocess, urllib, time
-import base64, urllib2, cgi
+import os, re, json, subprocess, time
+import urllib2, cgi
 
 form = cgi.FieldStorage();
 oproject = form['only'].value if ('only' in form and len(form['only'].value) > 0) else None
-
-
-jmap = {
-    'trafficserver': ['TS'],
-    'cordova': ['CB'],
-    'corinthia': ['COR']
-}
 
 pmap = {
     'community': 'comdev',
