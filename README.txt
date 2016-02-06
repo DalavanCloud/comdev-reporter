@@ -96,16 +96,6 @@ Note: the prefix ~pao means that the file is held under the projects.apache.org 
   ~pao/site/json/foundation/chairs.json
   ~pao/site/json/projects/%s.json % project
 
-- deathnote.py
-  data/maildata_extended.json
-  data/mailinglists.json
-  data/pmcs.json
-  data/projects.json
-  data/releases/%s.json % project
-  ~pao/site/json/foundation/pmcs.json
-  ~pao/site/json/foundation/chairs.json
-  ~pao/site/json/projects/%s.json % project
-
 - getjson.py
   data/health.json
   data/maildata_extended.json
