@@ -92,9 +92,7 @@ Note: the prefix ~pao means that the file is held under the projects.apache.org 
   data/pmcs.json
   data/projects.json
   data/releases/%s.json % project
-  ~pao/site/json/foundation/pmcs.json
-  ~pao/site/json/foundation/chairs.json
-  ~pao/site/json/projects/%s.json % project
+  https://whimsy.apache.org/public/committee-info.json
 
 - getjson.py
   data/health.json

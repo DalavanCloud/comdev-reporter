@@ -2,6 +2,26 @@
 import os, re, json, subprocess, time
 import urllib2, cgi
 
+import sys
+sys.path.append("../scripts") # module is in sibling directory
+from urlutils import UrlCache
+
+uc = UrlCache(interval=0, silent=True)
+
+def loadJson(url):
+    resp = uc.get(url, name=None, encoding='utf-8', errors=None)
+    try:
+        content = resp.read() # json.load() does this anyway
+        try:
+            j = json.loads(content)
+        except Exception as e:
+            # The Proxy error response is around 4800 bytes
+            print("Error parsing response:\n%s" % content[0:4800])
+            raise e
+    finally:
+        resp.close()
+    return j
+
 form = cgi.FieldStorage();
 oproject = form['only'].value if ('only' in form and len(form['only'].value) > 0) else None
 
@@ -16,35 +36,6 @@ pmap = {
 ldapmap = {
     'webservices': 'ws'
 }
-
-
-def getProjectData(project):
-    try:
-        y = []
-        with open("/var/www/projects.apache.org/site/json/projects/%s.json" % project, "r") as f:
-            x = json.loads(f.read())
-            f.close()
-            with open("/var/www/projects.apache.org/site/json/foundation/pmcs.json", "r") as f:
-                p = json.loads(f.read())
-                f.close()
-                for xproject in p:
-                    y.append(xproject)
-                    if xproject == project:
-                        x['name'] = p[project]['name']
-
-        return x, y;
-    except:
-        x = {}
-        y = []
-        with open("/var/www/projects.apache.org/site/json/foundation/pmcs.json", "r") as f:
-            p = json.loads(f.read())
-            f.close()
-            for xproject in p:
-                y.append(xproject)
-                if xproject == project:
-                    x['name'] = p[project]['name']
-
-        return x,y
 
 def getReleaseData(project):
     try:
@@ -112,7 +103,15 @@ if m:
         allpmcs = []
         keys = {}
         count = {}
-        foo, allpmcs = getProjectData('httpd')
+        c_info = loadJson('https://whimsy.apache.org/public/committee-info.json')['committees']
+        allpmcs = []
+        for ctte in c_info.keys():
+            if c_info[ctte]['pmc']:
+                if ctte == 'ws': 
+                    ctte = 'webservices'
+                    # hack
+                    c_info['webservices'] = c_info['ws']
+                allpmcs.append(ctte)
         npmcs = {}
         ncoms = {}
         names = {}
@@ -127,8 +126,8 @@ if m:
                 count[group][0] = len(pchanges[xgroup])
             if xgroup in cchanges:
                 count[group][1] = len(cchanges[xgroup])
-            ddata, bleh = getProjectData(group)
-            names[group] = ddata['name'] if 'name' in ddata else group
+            ddata = c_info[group]
+            names[group] = 'Apache ' + ddata['display_name'] if 'display_name' in ddata else group
             rdata[group] = getReleaseData(group) 
             cdata[group] = cdata[xgroup] if xgroup in cdata else {'pmc': {}, 'committer': {}}
             
