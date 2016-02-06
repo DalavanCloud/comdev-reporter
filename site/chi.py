@@ -31,12 +31,6 @@ def getProjectData(project):
                     y.append(xproject)
                     if xproject == project:
                         x['name'] = p[project]['name']
-            with open("/var/www/projects.apache.org/site/json/foundation/chairs.json", "r") as f:
-                c = json.loads(f.read())
-                f.close()
-                for xproject in c:
-                    if xproject.lower() == x['name'].lower():
-                        x['chair'] = c[xproject]
 
         return x, y;
     except:
@@ -50,12 +44,6 @@ def getProjectData(project):
                 if xproject == project:
                     x['name'] = p[project]['name']
 
-        with open("/var/www/projects.apache.org/site/json/foundation/chairs.json", "r") as f:
-            c = json.loads(f.read())
-            f.close()
-            for xproject in c:
-                if 'name' in x and xproject == x['name']:
-                    x['chair'] = c[xproject]
         return x,y
 
 def getReleaseData(project):
