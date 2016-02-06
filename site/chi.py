@@ -4,23 +4,7 @@ import urllib2, cgi
 
 import sys
 sys.path.append("../scripts") # module is in sibling directory
-from urlutils import UrlCache
-
-uc = UrlCache(interval=0, silent=True)
-
-def loadJson(url):
-    resp = uc.get(url, name=None, encoding='utf-8', errors=None)
-    try:
-        content = resp.read() # json.load() does this anyway
-        try:
-            j = json.loads(content)
-        except Exception as e:
-            # The Proxy error response is around 4800 bytes
-            print("Error parsing response:\n%s" % content[0:4800])
-            raise e
-    finally:
-        resp.close()
-    return j
+import committee_info
 
 form = cgi.FieldStorage();
 oproject = form['only'].value if ('only' in form and len(form['only'].value) > 0) else None
@@ -98,25 +82,15 @@ if m:
                     emails[tlp] = emails[tlp] if tlp in emails else {}
                     emails[tlp][nentry] = mld[entry]
         jdata = {}
-        ddata = {}
         rdata = {}
-        allpmcs = []
         keys = {}
         count = {}
-        c_info = loadJson('https://whimsy.apache.org/public/committee-info.json')['committees']
-        allpmcs = []
-        for ctte in c_info.keys():
-            if c_info[ctte]['pmc']:
-                if ctte == 'ws': 
-                    ctte = 'webservices'
-                    # hack
-                    c_info['webservices'] = c_info['ws']
-                allpmcs.append(ctte)
+        pmcnames = committee_info.PMCnames()
         npmcs = {}
         ncoms = {}
         names = {}
         
-        for group in allpmcs:
+        for group in pmcnames:
             jiras = []
             count[group] = [0,0]
             xgroup = group
@@ -126,8 +100,7 @@ if m:
                 count[group][0] = len(pchanges[xgroup])
             if xgroup in cchanges:
                 count[group][1] = len(cchanges[xgroup])
-            ddata = c_info[group]
-            names[group] = 'Apache ' + ddata['display_name'] if 'display_name' in ddata else group
+            names[group] = pmcnames[group]
             rdata[group] = getReleaseData(group) 
             cdata[group] = cdata[xgroup] if xgroup in cdata else {'pmc': {}, 'committer': {}}
             
@@ -146,7 +119,7 @@ if m:
         
         notes = []
         status = [0,0,0,0,0,0]
-        for group in allpmcs:
+        for group in pmcnames:
             if group == "xmlbeans":
                 continue
             x = 0
