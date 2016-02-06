@@ -225,8 +225,8 @@ if m:
             if s > 3:
                 s = 3
             print("<font color='%s'>" % colors[s])
-            print "<b>%s: %s</b><br/>\n" % (entry['pmc'], values[s] )
-            print "<blockquote><b>Health score:</b> %u<br>" % (-1 * entry['score'])
+            print( "<b>%s: %s</b><br/>\n" % (entry['pmc'], values[s] ))
+            print("<blockquote><b>Health score:</b> %u<br>" % (-1 * entry['score']))
             for l in entry['notes']:
                 print("<b>Problem: </b>%s<br/>" % l)
             print("</blockquote></font><hr/>\n")
