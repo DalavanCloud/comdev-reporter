@@ -362,9 +362,12 @@ if re.match(r"^[-a-zA-Z0-9_.]+$", user):
         'keys': keys,
         'health': health
     }
-    dump = json.dumps(output, indent=1)
-    print ("Content-Type: application/json\r\nContent-Length: %u\r\n\r\n" % (len(dump)+1))
-    print(dump)
+
+    # AFAICT dumps always uses \n for EOL
+    # Use write rather than print so we don't get any trailing EOL added
+    dump = json.dumps(output, indent=1).replace('\n', '\r\n')
+    sys.stdout.write("Content-Type: application/json\r\nContent-Length: %u\r\n\r\n" % (len(dump)))
+    sys.stdout.write(dump)
 else:
-    print ("Content-Type: text/html\r\n\r\n")
-    print("Unknown or invalid user id presented")
+    sys.stdout.write("Content-Type: text/html\r\n\r\n")
+    sys.stdout.write("Unknown or invalid user id presented")
