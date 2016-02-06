@@ -322,8 +322,8 @@ if m:
                 s = 0
             status[s] += 1;
             print("<font color='%s'>" % colors[s])
-            print "<b id='%s'>%s%s: %s%s</b><br/>\n" % (entry['group'], "<u>" if s >= 4 else "", entry['pmc'], values[s],"</u>" if s >= 4 else "",  )
-            print "<blockquote><b>Health score:</b> %0.2f<br>" % (6.33+((-1 * entry['score'])* (20/12.25)))
+            print( "<b id='%s'>%s%s: %s%s</b><br/>\n" % (entry['group'], "<u>" if s >= 4 else "", entry['pmc'], values[s],"</u>" if s >= 4 else "",  ))
+            print( "<blockquote><b>Health score:</b> %0.2f<br>" % (6.33+((-1 * entry['score'])* (20/12.25))))
             for l in entry['notes']:
                 print("<b>Score note: </b>%s<br/>" % l)
             print("</blockquote></font><hr/>\n")
