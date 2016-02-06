@@ -24,21 +24,6 @@ ldapmap = {
     'webservices': 'ws'
 }
 
-jirapass = ""
-with open("/var/www/reporter.apache.org/data/jirapass.txt", "r") as f:
-    jirapass = f.read().strip()
-    f.close()
-
-def isMember(uid):
-    members = []
-    ldapdata = subprocess.check_output(['ldapsearch', '-x', '-LLL', '-b', 'cn=member,ou=groups,dc=apache,dc=org'])
-    for match in re.finditer(r"memberUid: ([-a-z0-9_.]+)", ldapdata):
-        group = match.group(1)
-        members.append(group)
-    if uid in members:
-        return True
-    return False
-
 
 def getProjectData(project):
     try:
