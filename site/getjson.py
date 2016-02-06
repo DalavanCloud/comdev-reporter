@@ -350,7 +350,7 @@ if re.match(r"^[-a-zA-Z0-9_.]+$", user):
     output = {
         'count': count,
         'pmcs': groups,
-        'all': allpmcs,
+        'all': sorted(allpmcs),
         'mail': mlstats,
         'delivery': emails,
         'jira': jdata,
@@ -365,7 +365,7 @@ if re.match(r"^[-a-zA-Z0-9_.]+$", user):
 
     # AFAICT dumps always uses \n for EOL
     # Use write rather than print so we don't get any trailing EOL added
-    dump = json.dumps(output, indent=1).replace('\n', '\r\n')
+    dump = json.dumps(output, indent=1, sort_keys=True).replace('\n', '\r\n')
     sys.stdout.write("Content-Type: application/json\r\nContent-Length: %u\r\n\r\n" % (len(dump)))
     sys.stdout.write(dump)
 else:
