@@ -290,6 +290,7 @@ if m:
                 'group': group,
                 'cscore': s
             })
+        os.remove("/var/www/reporter.apache.org/data/health.json") # just in case
         with open("/var/www/reporter.apache.org/data/health.json", "w") as f:
             json.dump(notes, f, indent=1)
             f.close()
@@ -313,7 +314,7 @@ if m:
             y += 1
         print('<img src="https://chart.googleapis.com/chart?cht=p&amp;chs=640x260&amp;chd=t:%s&amp;chl=%s&amp;chco=0000A0|00A000|A0D000|F0D000|F08500|A00000"/><br/><br/>' % ( ",".join(str(x) for x in status), "|".join(xvalues)))
               
-        for entry in sorted(notes, key=lambda x: x['score'], reverse=True):
+        for entry in sorted(sorted(notes, key=lambda x: x['group']), key=lambda x: x['score'], reverse=True):
             s = int(entry['score']/1.80)
             if s > 4:
                 s = 4
@@ -321,12 +322,12 @@ if m:
             if s < 0:
                 s = 0
             status[s] += 1;
-            print("<font color='%s'>" % colors[s])
-            print( "<b id='%s'>%s%s: %s%s</b><br/>\n" % (entry['group'], "<u>" if s >= 4 else "", entry['pmc'], values[s],"</u>" if s >= 4 else "",  ))
-            print( "<blockquote><b>Health score:</b> %0.2f<br>" % (6.33+((-1 * entry['score'])* (20/12.25))))
+            print("<font color='%s'>\r" % colors[s])
+            print( "<b id='%s'>%s%s: %s%s</b><br/>\r" % (entry['group'], "<u>" if s >= 4 else "", entry['pmc'], values[s],"</u>" if s >= 4 else "",  ))
+            print( "<blockquote><b>Health score:</b> %0.2f<br>\r" % (6.33+((-1 * entry['score'])* (20/12.25))))
             for l in entry['notes']:
-                print("<b>Score note: </b>%s<br/>" % l)
-            print("</blockquote></font><hr/>\n")
+                print("<b>Score note: </b>%s<br/>\r" % l)
+            print("</blockquote></font><hr/>\r")
             
     else:
         print ("Content-Type: text/html\r\n\r\n")
