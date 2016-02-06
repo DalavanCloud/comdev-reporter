@@ -59,10 +59,6 @@ pmap = {# convert mailing list name to PMC name
     'empire': 'empire-db'
 }
 
-mboxmap = {
-    'empire-db': 'empire'
-}
-
 ldapmap = {
     'webservices': 'ws'
 }
