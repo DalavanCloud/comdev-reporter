@@ -142,6 +142,9 @@ class UrlCache(object):
     def __getname(self, name):
         return join(self.__cachedir, name)
 
+    def __getMarker(self, name):
+        return join(self.__cachedir, '.' + name)
+
     def _deleteCacheFile(self, name):# intended mainly for debug use
         path = self.__getname(name)
         try:
@@ -149,7 +152,7 @@ class UrlCache(object):
         except OSError as e:
             if not e.errno == errno.ENOENT:
                 raise e
-        dotpath = self.__getname('.'+name)
+        dotpath = self.__getMarker(name)
         try:
             os.remove(dotpath)
         except OSError as e:
@@ -183,7 +186,7 @@ class UrlCache(object):
         if useFileModTime:
             check = self.__getname(name)
         else:
-            check = self.__getname("."+name)
+            check = self.__getMarker(name)
         upToDate = False
         if fileTime >= 0:
             if self.__interval == -1:
