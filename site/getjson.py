@@ -217,7 +217,7 @@ def getProjectData(project):
             if xproject.lower() == x['name'].lower():
                 x['chair'] = c[xproject]
         z = {}
-        h = readJson(RAOHOME+"data/health.json")
+        h = readJson(RAOHOME+"data/health.json", [])
         z = {}
         for entry in h:
             if entry['group'] == project:
@@ -238,7 +238,7 @@ def getProjectData(project):
             if 'name' in x and xproject == x['name']:
                 x['chair'] = c[xproject]
         z = {}
-        h = readJson(RAOHOME+"data/health.json")
+        h = readJson(RAOHOME+"data/health.json", [])
         z = {}
         for entry in h:
             if entry['group'] == project:
