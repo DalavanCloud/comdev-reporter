@@ -4,6 +4,11 @@ var templates = {}
 var nproject = null;
 var animals = ['hedgehogs', 'cows', 'geese', 'pigs', 'fluffy kittens', 'puppies', 'rabid dogs', 'ponies', 'weevils']
 
+// This is faster than parseInt, and it's more obvious what is being done
+function toInt(number) {
+    return number | 0 //
+}
+
 // Function for async fetching of a single JSON file with JS callback
 // Parses Url as JSON and calls callback(JSON, xstate)
 
@@ -282,6 +287,7 @@ function epochSecsYYYYMMDD(t) {
 }
 
 function renderFrontPage(json) {
+    var thisHour = toInt(new Date().getTime() / (3600*1000)) // this changes once per hour
 	jsdata = json
 	var container = document.getElementById('contents')
 	container.innerHTML = "<h2 style='text-align: center; margin-bottom: 10px;' class='hide-for-small-only'>Apache Committee Report Helper</h2>Click on a committee name to view statistics:"
@@ -365,7 +371,7 @@ function renderFrontPage(json) {
 			reportdate.innerHTML += "<b>Committee Chair: </b>" + json.pdata[pmc].chair + "<br>"
 		}
 
-		GetAsyncJSON("reportingcycles.json?" + Math.random(), [pmc, reportdate, json.pdata[pmc].name], setReportDate)
+		GetAsyncJSON("reportingcycles.json?" + thisHour, [pmc, reportdate, json.pdata[pmc].name], setReportDate)
 
 
 		// LDAP committee + Committer changes
