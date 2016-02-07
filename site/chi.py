@@ -228,7 +228,6 @@ if m:
                 'group': group,
                 'cscore': s
             })
-        os.remove("/var/www/reporter.apache.org/data/health.json") # just in case
         with open("/var/www/reporter.apache.org/data/health.json", "w") as f:
             json.dump(notes, f, indent=1)
             f.close()
