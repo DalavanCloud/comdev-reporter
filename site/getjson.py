@@ -28,7 +28,7 @@
 
 import os, sys, re, json, subprocess, time
 import base64, urllib2, cgi
-from symbol import except_clause
+
 sys.path.append("../scripts") # module is in sibling directory
 import committee_info
 
