@@ -15,7 +15,8 @@ from urlutils import UrlCache
 URL='https://whimsy.apache.org/public/committee-info.json'
 
 
-uc = UrlCache(interval=0, silent=True)
+# Don't check more often than every minute (used by webapp as well as cronjobs)
+uc = UrlCache(interval=60, silent=True)
 
 def loadJson(url):
     resp = uc.get(url, name=None, encoding='utf-8', errors=None)
