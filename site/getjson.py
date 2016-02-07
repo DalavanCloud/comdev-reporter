@@ -7,7 +7,7 @@
     data/JIRA/%.json - for each JIRA project
     
     Usage:
-        getjson.py[?only=pmcname]
+        getjson.py[?only=pmcname|pmcname-to-include]
     
     Reads the following:
         data/JIRA/projects.json
@@ -18,6 +18,8 @@
         data/projects.json
         data/mailinglists.json
         data/maildata_extended.json
+        https://whimsy.apache.org/public/member-info.json
+        https://whimsy.apache.org/public/public_ldap_committees.json
         
     
     Environment variables:
@@ -31,9 +33,16 @@ import base64, urllib2, cgi
 
 sys.path.append("../scripts") # module is in sibling directory
 import committee_info
+from urlutils import UrlCache
+
+# This script may be called frequently, so don't just rely on IfNewer checks
+uc = UrlCache(interval=60, silent=False)
 
 # Relative path to home directory from here (site)
 RAOHOME = '../'
+
+MEMBER_INFO = 'https://whimsy.apache.org/public/member-info.json'
+COMMITTEES = 'https://whimsy.apache.org/public/public_ldap_committees.json'
 
 # Pick up environment settings
 form = cgi.FieldStorage();
@@ -80,30 +89,29 @@ def readJson(filename, *default):
             return default[0] # only want first arg
     return data
 
+def loadJson(url):
+    print("Reading " + url)
+    resp = uc.get(url, name=None, encoding='utf-8', errors=None)
+    j = json.load(resp)
+    resp.close()
+    return j
+
+committees = loadJson(COMMITTEES)['committees']
+members = loadJson(MEMBER_INFO)['members']
 
 def getPMCs(uid):
-    """ Reads LDAP and returns the array of committee groups to which the uid belongs
-    Excludes incubator"""
+    """Returns the array of LDAP committee groups to which the uid belongs. Excludes incubator"""
     groups = []
-    ldapdata = subprocess.check_output(['ldapsearch', '-x', '-LLL', '(|(memberUid=%s)(member=uid=%s,ou=people,dc=apache,dc=org))' % (uid, uid), 'cn'])
-    picked = {}
-    for match in re.finditer(r"dn: cn=([-a-zA-Z0-9]+),ou=pmc,ou=committees,ou=groups,dc=apache,dc=org", ldapdata):
-        group = match.group(1)
+    for group in committees:
         if group != "incubator":
-            groups.append(group)
+            if uid in committees[group]['roster']:
+                groups.append(group)
     return groups
 
 
 def isMember(uid):
-    """Reads LDAP to determine if the uid is a member of the ASF"""
-    members = []
-    ldapdata = subprocess.check_output(['ldapsearch', '-x', '-LLL', '-b', 'cn=member,ou=groups,dc=apache,dc=org'])
-    for match in re.finditer(r"memberUid: ([-a-z0-9_.]+)", ldapdata):
-        group = match.group(1)
-        members.append(group)
-    if uid in members:
-        return True
-    return False
+    """Determine if the uid is a member of the ASF"""
+    return uid in members
 
 def getJIRAProjects(project):
     """Reads data/JIRA/projects.json (re-creating it if it is stale)
