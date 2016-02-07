@@ -10,9 +10,6 @@
         getjson.py[?only=pmcname]
     
     Reads the following:
-        projects.apache.org/site/json/foundation/pmcs.json
-        projects.apache.org/site/json/foundation/chairs.json
-        projects.apache.org/site/json/projects/%s.json
         data/JIRA/projects.json
         data/JIRA/%s.json
         data/health.json
@@ -32,10 +29,11 @@
 import os, sys, re, json, subprocess, time
 import base64, urllib2, cgi
 from symbol import except_clause
+sys.path.append("../scripts") # module is in sibling directory
+import committee_info
 
 # Relative path to home directory from here (site)
 RAOHOME = '../'
-PAOHOME = '../../projects.apache.org/'
 
 # Pick up environment settings
 form = cgi.FieldStorage();
@@ -192,55 +190,25 @@ def getJIRAS(project):
             return 0,0, None
 """
 Reads:
- - PAOHOME+"site/json/projects/%s.json" % project
- - PAOHOME+"site/json/foundation/pmcs.json"
- - PAOHOME+"site/json/foundation/chairs.json"
+ - committee_info.PMCsummary()
+ - data/health.json
 
 @return:
- - contents of projects/%.json % project if it exists
-   in any case, dict contains pmc name & chair extracted from pmcs.json/chairs.json 
- - list of project names in pmcs.json
+ - dict contains pmc name & chair extracted from committee_info.PMCsummary()
+ - list of project names
  - health entry from data/health.json
 """
 
 def getProjectData(project):
-    try:
-        y = []
-        x = readJson(PAOHOME+"site/json/projects/%s.json" % project)
-        p = readJson(PAOHOME+"site/json/foundation/pmcs.json")
-        for xproject in p:
-            y.append(xproject)
-            if xproject == project:
-                x['name'] = p[project]['name']
-        c = readJson(PAOHOME+"site/json/foundation/chairs.json")
-        for xproject in c:
-            if xproject.lower() == x['name'].lower():
-                x['chair'] = c[xproject]
-        z = {}
-        h = readJson(RAOHOME+"data/health.json", [])
-        z = {}
-        for entry in h:
-            if entry['group'] == project:
-                z = entry
-                    
-        return x, y, z;
-    except:
         x = {}
         y = []
-        p = readJson(PAOHOME+"site/json/foundation/pmcs.json")
-        for xproject in p:
+        z = {}
+        for xproject in pmcSummary:
             y.append(xproject)
             if xproject == project:
-                x['name'] = p[project]['name']
-
-        c = readJson(PAOHOME+"site/json/foundation/chairs.json")
-        for xproject in c:
-            if 'name' in x and xproject == x['name']:
-                x['chair'] = c[xproject]
-        z = {}
-        h = readJson(RAOHOME+"data/health.json", [])
-        z = {}
-        for entry in h:
+                x['name'] = pmcSummary[project]['name']
+                x['chair'] = pmcSummary[project]['chair']
+        for entry in dataHealth:
             if entry['group'] == project:
                 z = entry
         return x, y, z;
@@ -251,6 +219,8 @@ def getReleaseData(project):
 
 
 if re.match(r"^[-a-zA-Z0-9_.]+$", user):
+    pmcSummary = committee_info.PMCsummary()
+    dataHealth = readJson(RAOHOME+"data/health.json", [])
     pchanges = readJson(RAOHOME+"data/pmcs.json")
     cchanges = readJson(RAOHOME+"data/projects.json")
     bugzillastats = readJson(RAOHOME+"data/bugzillastats.json", {})

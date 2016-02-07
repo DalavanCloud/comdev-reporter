@@ -85,7 +85,6 @@ Scripts:
   Updates data/releases/%s.json % project
 
 Data file consumers:
-Note: the prefix ~pao means that the file is held under the projects.apache.org workspace
 - chi.py
   data/maildata_extended.json
   data/mailinglists.json
@@ -104,9 +103,6 @@ Note: the prefix ~pao means that the file is held under the projects.apache.org 
   data/releases/%s.json % project
   data/JIRA/projects.json
   data/JIRA/%s.json % project
-  ~pao/site/json/foundation/pmcs.json
-  ~pao/site/json/foundation/chairs.json
-  ~pao/site/json/projects/%s.json % project
 
 - render.js
   site/reportingcycles.json
