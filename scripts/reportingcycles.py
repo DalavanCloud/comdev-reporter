@@ -1,6 +1,5 @@
 import errtee
 import sys
-sys.path.append("../../projects.apache.org/scripts") # module committee_info is in p.a.o
 import committee_info
 import json
 

@@ -147,8 +147,26 @@ def pmcdates():
             dates['webservices'] = dates[ent]
     return dates
 
+def cycles():
+
+    committees = cidata['committees']
+
+    cycles={}
+    for ctte in committees:
+        c = committees[ctte]
+        if not c['pmc']:
+            continue
+        cycles[ctte] = c['report']
+        # Duplicate some entries for now so the code can find them (the existing json has the duplicates)
+        if ctte == 'ws': # Special processing
+            cycles['webservices'] = cycles[ctte]
+        if ctte == 'httpd': # Special processing
+            cycles['http server'] = cycles[ctte]
+    return cycles
+
 if __name__ == '__main__':
     import sys
     json.dump(PMCnames(), sys.stdout, indent=1, sort_keys=True)
     json.dump(PMCsummary(), sys.stdout, indent=1, sort_keys=True)
     json.dump(pmcdates(), sys.stdout, indent=1, sort_keys=True)
+    json.dump(cycles(), sys.stdout, indent=1, sort_keys=True)
