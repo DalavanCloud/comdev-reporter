@@ -36,7 +36,7 @@ import committee_info
 from urlutils import UrlCache
 
 # This script may be called frequently, so don't just rely on IfNewer checks
-uc = UrlCache(interval=60, silent=False)
+uc = UrlCache(interval=60, silent=True)
 
 # Relative path to home directory from here (site)
 RAOHOME = '../'
@@ -90,7 +90,6 @@ def readJson(filename, *default):
     return data
 
 def loadJson(url):
-    print("Reading " + url)
     resp = uc.get(url, name=None, encoding='utf-8', errors=None)
     j = json.load(resp)
     resp.close()
@@ -232,11 +231,12 @@ if re.match(r"^[-a-zA-Z0-9_.]+$", user):
     pchanges = readJson(RAOHOME+"data/pmcs.json")
     cchanges = readJson(RAOHOME+"data/projects.json")
     bugzillastats = readJson(RAOHOME+"data/bugzillastats.json", {})
+    isMember = isMember(user)
 
     groups = getPMCs(user)
-    if include and isMember(user) and not include in groups and len(include) > 1:
+    if include and isMember and not include in groups and len(include) > 1:
         groups.append(include)
-    if oproject and len(oproject) > 0 and isMember(user):
+    if oproject and len(oproject) > 0 and isMember:
         groups = [oproject]
     mlstats = {}
     ml = readJson(RAOHOME+"data/mailinglists.json")
@@ -323,7 +323,7 @@ if re.match(r"^[-a-zA-Z0-9_.]+$", user):
                         cdata[group]['committer'][member] = cchanges[pmc][member]
         if group in pmcdates: # Make sure we have this PMC in the JSON, so as to not bork
             dates[group] = pmcdates[group] # only send the groups we want
-    if not isMember(user):
+    if not isMember:
         allpmcs = []
     output = {
         'count': count,
