@@ -114,7 +114,41 @@ def PMCsummary():
     return namejson
 
 
+def pmcdates():
+    dates = {}
+    
+    cttes = cidata['committees']
+    for ent in cttes:
+        ctte = cttes[ent]
+        if not ctte['pmc']:
+            continue
+        roster = ctte['roster']
+        est = ctte['established']
+        date = 0
+        if not est == None:
+            # convert mm/yyyy to date (drop any subsequent text)
+            try:
+                date = calendar.timegm(time.strptime(est[0:7], '%m/%Y'))
+            except Exception as e:
+                print("Date parse error for %s: %s %s" % (ent, est, e))
+                pass
+        dates[ent] = {'pmc': [est, date], 'roster': {} }
+        ids = {}
+        for id in roster:
+            rid = roster[id]
+            try:
+                date = calendar.timegm(time.strptime(rid['date'], '%Y-%m-%d'))
+            except:
+                date = 0
+            ids[id] = [rid['name'], date]
+        dates[ent]['roster'] = ids
+        # The 'CI' internal name for Web Services is 'ws' but reporter code originally used 'webservices'
+        if ent == 'ws':
+            dates['webservices'] = dates[ent]
+    return dates
+
 if __name__ == '__main__':
     import sys
     json.dump(PMCnames(), sys.stdout, indent=1, sort_keys=True)
     json.dump(PMCsummary(), sys.stdout, indent=1, sort_keys=True)
+    json.dump(pmcdates(), sys.stdout, indent=1, sort_keys=True)
