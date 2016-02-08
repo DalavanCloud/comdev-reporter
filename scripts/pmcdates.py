@@ -48,7 +48,7 @@ for pmc in sorted(pmcdates):
         pmcdates[pmc]['pmc'].insert(2, earliest)
     else:
         pmcdates[pmc]['pmc'].insert(2, 0)
-        print(time.strftime('%Y-%m-%d = %m/%Y',time.gmtime(earliest)),startdate, pmc)
+        print(time.strftime('Earliest date seen: %Y-%m-%d (i.e. %m/%Y)',time.gmtime(earliest)),'<=>', startdate, pmc)
     
 print("Writing " + __PMCDATES)
 with open(__PMCDATES, "w", encoding='utf-8') as f:
