@@ -120,7 +120,6 @@ for group in pmcnames:
                     ncoms[group] = ncoms[group] if (group in ncoms and ncoms[group] > cchanges[pmc][member][1]) else cchanges[pmc][member][1]
 
 notes = []
-status = [0,0,0,0,0,0]
 for group in sorted(pmcnames):
     if group == "xmlbeans":
         continue
