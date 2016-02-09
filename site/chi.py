@@ -1,6 +1,6 @@
 #!/usr/bin/env python
-import os, re, json, subprocess, time
-import urllib2, cgi
+import os, re, json, time
+import cgi
 
 import sys
 sys.path.append("../scripts") # module is in sibling directory
