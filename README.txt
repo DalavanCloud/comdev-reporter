@@ -39,6 +39,7 @@ crontab -l -u www-data:
 10 00      * * * cd /var/www/reporter.apache.org/scripts && ./python3logger.sh reportingcycles.py
 20 00      * * * cd /var/www/reporter.apache.org/scripts && ./python3logger.sh pmcdates.py
 30 00      * * * cd /var/www/reporter.apache.org/scripts && ./python3logger.sh bugzillastats.py
+50 00      * * * cd /var/www/reporter.apache.org/scripts && ./python3logger.sh health.py
 
 00 01      * * * cd /var/www/reporter.apache.org/scripts && ./python3logger.sh mailglomper2.py
 00 09      * * * cd /var/www/reporter.apache.org/scripts && ./python3logger.sh readjira.py
@@ -55,23 +56,26 @@ crontab -l -u www-data:
 @reboot         cd /var/www/reporter.apache.org && ./restart_scandisk.sh
 
 Scripts:
-- data/parsepmcs.py
+- scripts/health.py
+  Creates data/health.json
+
+- scripts/parsepmcs.py
   Updates data/pmcs.json and data/projects.json (from Whimsy public data)
   Also updates historic copies (without the last seen timestamp) in data/history
 
--data/pmcdates.py
+-scripts/pmcdates.py
   Creates data/pmcdates.json from committee_info.json
 
--data/reportingcycles.py
+-scripts/reportingcycles.py
   Creates site/reportingcycles.json from committee_info.json
 
-- mailglomper.py
+- scripts/mailglomper.py
   Updates data/maildata_extended.json from http://mail-archives.us.apache.org/mod_mbox/<list>/<date>.mbox
 
-- readjira.py
+- scripts/readjira.py
   Creates JSON files under data/JIRA
 
-- addrelease.py
+- site/addrelease.py
   Updates data/releases/%s.json % committee from form data
 
 - site/chi.py
@@ -103,6 +107,14 @@ Data file consumers:
   data/releases/%s.json % project
   data/JIRA/projects.json
   data/JIRA/%s.json % project
+
+- health.py
+  data/maildata_extended.json
+  data/mailinglists.json
+  data/pmcs.json
+  data/projects.json
+  data/releases/%s.json % project
+  https://whimsy.apache.org/public/committee-info.json
 
 - render.js
   site/reportingcycles.json
