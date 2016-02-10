@@ -101,7 +101,7 @@ for key in obsolete:
     tsprint("Dropping obsolete cache entry: " + key)
     del mldcache[key]
 
-fc = urlutils.UrlCache(interval=30)
+fc = urlutils.UrlCache(interval=30, silent=True) # generates too much output if not silent
 
 # Get the index of mailing lists
 # Not strictly necessary to cache this, but it makes testing easier
