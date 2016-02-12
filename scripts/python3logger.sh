@@ -14,16 +14,27 @@ BASE=$(basename $SCRIPT .py)
 
 YYMM=$(date '+%Y-%m')
 
-exec  >>${LOGDIR}/${BASE}_${YYMM}.log
+# Create the cumulative log dir if necessary
+ARCHIVE_DIR=${LOGDIR}/${YYMM}
+test -d ${ARCHIVE_DIR} || mkdir ${ARCHIVE_DIR}
+
+ARCHIVE_NAME=${BASE}_${YYMM}.log
+
+# Move any existing cumulative log to the correct place:
+test -f ${LOGDIR}/${ARCHIVE_NAME} && mv ${LOGDIR}/${ARCHIVE_NAME} ${ARCHIVE_DIR}/${ARCHIVE_NAME}
+
+# Create cumulative log in subdirectory
+exec  >>${ARCHIVE_DIR}/${ARCHIVE_NAME}
+{
 echo
 echo '>>>'
-echo Starting $SCRIPT at $(date)
+START=$(date)
+echo "Starting $SCRIPT ($$) at $START"
 export
 
-# show the process tree
-#pstree -slapA $$
+ERRTEE=1 python3 -u $SCRIPT
 
-ERRTEE=1 python3 -u $SCRIPT 
-
-echo Completed $SCRIPT at $(date)
+echo "Completed $SCRIPT ($$) at $(date) (START $START)"
 echo '<<<'
+}  | tee ${LOGDIR}/${BASE}.log
+# and last log in main directory
