@@ -32,6 +32,7 @@ import errtee
 from urlutils import UrlCache
 import json
 import time
+import re
 
 uc = UrlCache(interval=0)
 
@@ -182,6 +183,31 @@ print("Writing history/projects.json")
 with open(__HOME + "history/projects.json", "w", encoding='utf-8') as f:
     json.dump(projects, f, sort_keys=True ,indent=1, ensure_ascii=False)
     f.close()
-    
+
+print("Checking index.mdtext against list of chairs")
+chairs={}
+for e in c_info:
+    if c_info[e]['pmc']:
+        v = c_info[e]
+        chairs[v['display_name']] = list(v['chair'].values())[0]['name']
+
+chairIndex = 'https://svn.apache.org/repos/asf/infrastructure/site/trunk/content/foundation/index.mdtext'
+resp = uc.get(chairIndex, name=None, encoding='utf-8', errors=None)
+web={}
+for line in resp:
+    m = re.match("^\| V.P., \[?Apache (.+?)(\]\(.+?\))? \| (.+?) \|", line)
+    if m:
+#         print(m.group(1),m.group(3))
+        web[m.group(1)] = m.group(3)
+for w in web:
+    if not w in chairs:
+        print("Missing from cttee %s " % w)
+for c in sorted(chairs):
+    if not c in web:
+        print("Missing from web page \n| V.P., Apache %s | %s |" % (c, chairs[c]))
+    else:
+        if not chairs[c] == web[c]:
+            print("Mismatch: Apache %s ctte %s web %s" % (c, chairs[c], web[c]))
+        
 
 print("All done! removed %u retired entries" % ret)
