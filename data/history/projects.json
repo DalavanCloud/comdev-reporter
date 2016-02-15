@@ -1561,9 +1561,73 @@
   ]
  },
  "arrow": {
+  "adeneche": [
+   "Abdel Hakim Deneche",
+   1455566402
+  ],
+  "alexlevenson": [
+   "Alex Levenson",
+   1455566402
+  ],
+  "hg": [
+   "Hanifi Gunes",
+   1455566402
+  ],
   "jacques": [
    "Jacques Nadeau",
    0
+  ],
+  "jake": [
+   "T Jake Luciani",
+   1455566402
+  ],
+  "jamestaylor": [
+   "James R. Taylor",
+   1455566402
+  ],
+  "jhyde": [
+   "Julian Hyde",
+   1455566402
+  ],
+  "json": [
+   "Jason Altekruse",
+   1455566402
+  ],
+  "julien": [
+   "Julien Le Dem",
+   1455566402
+  ],
+  "marcel": [
+   "Marcel Kornacker",
+   1455566402
+  ],
+  "parthc": [
+   "parthc",
+   1455566402
+  ],
+  "ptgoetz": [
+   "P. Taylor Goetz",
+   1455566402
+  ],
+  "rxin": [
+   "Reynold Xin",
+   1455566402
+  ],
+  "smp": [
+   "Steven Phillips",
+   1455566402
+  ],
+  "stack": [
+   "Michael Stack",
+   1455566402
+  ],
+  "tdunning": [
+   "Ted Dunning",
+   1455566402
+  ],
+  "todd": [
+   "Todd Lipcon",
+   1455566402
   ],
   "wesm": [
    "Wes McKinney",
@@ -15808,6 +15872,10 @@
    "Reto Gmür",
    0
   ],
+  "rezahajebi": [
+   "Reza Hajebi",
+   1455566402
+  ],
   "rezan": [
    "Reza Naghibi",
    0
@@ -17563,6 +17631,10 @@
   "vmassol": [
    "Vincent Massol",
    0
+  ],
+  "vmitov": [
+   "Vladislav Mitov",
+   1455566402
   ],
   "vouk": [
    "Mladen A. Vouk",
@@ -20926,6 +20998,10 @@
   "jpercivall": [
    "Joe Percivall",
    1450123202
+  ],
+  "jskora": [
+   "Joe Skora",
+   1455566402
   ],
   "markap14": [
    "Mark Payne",
