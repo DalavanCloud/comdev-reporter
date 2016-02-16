@@ -49,7 +49,7 @@ def mod_date(t):
         return None
     return time.strftime(_HTTP_TIME_FORMAT, time.gmtime(t))
 
-def getIfNewer(url, sinceTime, encoding=None, errors=None, silent=False):
+def getIfNewer(url, sinceTime, encoding=None, errors=None, silent=False, debug=False):
     """
         Get a URL if it is not newer
     
@@ -73,8 +73,8 @@ def getIfNewer(url, sinceTime, encoding=None, errors=None, silent=False):
         req = Request(url, headers=headers)
         resp = urlopen(req)
         # Debug - detect why json sometimes returned as HTML but no error code
-        if not silent: print("STATUS %s" % resp.getcode()) # Works for Py2/3
-        if not silent: print(resp.headers)
+        if debug and not silent: print("STATUS %s" % resp.getcode()) # Works for Py2/3
+        if debug and not silent: print(resp.headers)
         try:
             lastMod = resp.headers['Last-Modified']
             if not lastMod: # e.g. responses to git blob-plain URLs don't seem to have dates
@@ -123,11 +123,12 @@ class UrlCache(object):
             t = -1 # so cannot be confused with a valid mtime
         return t
 
-    def __init__(self, cachedir=None, interval=300, silent=False):
+    def __init__(self, cachedir=None, interval=300, silent=False, debug=False):
         __CACHE = 'data/cache'
         self.__interval = interval
         self.__cachedir = None
         self.__silent = silent
+        self.__debug = debug and not silent # don't allow debug if silent
         if cachedir: # assumed to be correct
             self.__cachedir = cachedir
         else:
@@ -211,7 +212,7 @@ class UrlCache(object):
 
         if not upToDate:
             sinceTime = mod_date(fileTime)
-            lastMod, response = getIfNewer(url, sinceTime, silent=self.__silent)
+            lastMod, response = getIfNewer(url, sinceTime, silent=self.__silent, debug=self.__debug)
             if response: # we have a new version
                 if lastMod:
                     try:
@@ -252,9 +253,9 @@ class UrlCache(object):
             return open(target, 'rb')
 
 if __name__ == '__main__':
-    fc2 = UrlCache(cachedir=None,interval=0)
+    fc2 = UrlCache(cachedir=None,interval=0, debug=True)
     fc2.get("https://svn.apache.org/repos/asf/subversion/README","README", encoding='utf-8')
-    fc = UrlCache(cachedir=None,interval=10)
+    fc = UrlCache(cachedir=None,interval=10, silent=True, debug=True)
     GIT='https://git-wip-us.apache.org/repos/asf?p=infrastructure-puppet.git;hb=refs/heads/deployment;a=blob_plain;f=modules/subversion_server/files/authorization/'
     ASF='asf-authorization-template'
     fc.get(GIT+ASF,ASF)
