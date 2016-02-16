@@ -141,7 +141,7 @@ def weekly_stats(ml, date):
         pass
 
     url = "http://mail-archives.us.apache.org/mod_mbox/%s/%s.mbox" % (ml, date)
-    stamp, mldata = urlutils.getIfNewer(url, stampold) # read binary URL
+    stamp, mldata = urlutils.getIfNewer(url, stampold, silent=True) # read binary URL
 
     if mldata: # we have a new/updated file to process
         try:
