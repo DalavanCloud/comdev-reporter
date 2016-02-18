@@ -546,6 +546,10 @@ function renderFrontPage(json) {
 		var f = 0
 		addLine(pmc, "## Mailing list activity:")
 		addLine(pmc)
+		addLine(pmc, " - <font color='red'>TODO Please explain what the following statistics mean for the project." +
+				" If there is nothing significant in the figures, omit this section.</font>")
+		addLine(pmc)
+
 		var first = ['users', 'dev', 'commits', 'private', 'bugs', 'modules-dev'];
 
 
