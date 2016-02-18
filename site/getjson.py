@@ -238,6 +238,7 @@ if re.match(r"^[-a-zA-Z0-9_.]+$", user):
         groups.append(include)
     if oproject and len(oproject) > 0 and isMember:
         groups = [oproject]
+    groups.sort() # so tabs appear in order
     mlstats = {}
     ml = readJson(RAOHOME+"data/mailinglists.json")
     for entry in ml: # e.g. abdera.apache.org-commits, ws.apache.org-dev
