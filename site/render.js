@@ -45,7 +45,7 @@ function GetAsyncJSON(theUrl, xstate, callback) {
 }
 
 
-function makeSelect(name, arr, sarr) {
+function makeSelect(name, arr) {
 	var sel = document.createElement('select');
 	sel.setAttribute("name", name)
 	for (i in arr) {
@@ -738,7 +738,7 @@ function renderFrontPage(json) {
 			json.all.unshift("Members-only Quick-nav:")
 		}
 
-		var sel = makeSelect("project", json.all, [])
+		var sel = makeSelect("project", json.all)
 		sel.setAttribute("style", "height: 32px !important; padding: 0px !important; margin: 0px !important; margin-left: 32px !important;")
 		sel.style = "break-before: never; break-after: never; float: left"
 		sel.setAttribute("onchange", "GetAsyncJSON('getjson.py?only='+ this.value, this.value, mergeData);")
