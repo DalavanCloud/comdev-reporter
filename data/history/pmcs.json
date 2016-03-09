@@ -7344,9 +7344,17 @@
   ]
  },
  "james": {
+  "aduprat": [
+   "Antoine Duprat",
+   1457524802
+  ],
   "bago": [
    "Stefano Bagnara",
    0
+  ],
+  "btellier": [
+   "Benoit Tellier",
+   1457524802
   ],
   "danny": [
    "Danny Angus",
@@ -7371,6 +7379,10 @@
   "manolo": [
    "Manuel Carrasco Monino",
    0
+  ],
+  "matthieu": [
+   "Matthieu Baechler",
+   1457524802
   ],
   "niklas": [
    "Niklas Therning",
