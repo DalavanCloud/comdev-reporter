@@ -44,6 +44,14 @@ if py3:
 else:
     base64string = base64.encodestring(__AUTHSTRING)[:-1] # python2 adds a trailing eol
 
+JIRATIMEOUT=90 # This may need to be adjusted
+jiraerrors = 0 # count how many errors occurred
+def handleError():
+    global jiraerrors
+    jiraerrors += 1
+    if jiraerrors > 5:
+        raise Exception("Too many errors - quitting")
+
 def getProjects():
     """Update the list of projects in data/JIRA/projects.json"""
     PROJECT_JSON = "%s/data/JIRA/projects.json" % MYHOME
@@ -54,23 +62,23 @@ def getProjects():
     try:
         req = Request("https://issues.apache.org/jira/rest/api/2/project.json")
         req.add_header("Authorization", "Basic %s" % base64string)
-        x = json.loads(urlopen(req).read().decode('utf-8'))
+        x = json.loads(urlopen(req, timeout=JIRATIMEOUT).read().decode('utf-8'))
         with open(PROJECT_JSON, "w") as f:
             json.dump(x, f, indent=1)
             f.close()
             print("Created %s" % PROJECT_JSON)
     except Exception as e:
         print("Err: could not refresh %s: %s" % (PROJECT_JSON, e))
-        pass
+        handleError()
 
 def getJIRAS(project):
     try:
         req = Request("""https://issues.apache.org/jira/rest/api/2/search?jql=project%20=%20'""" + project + """'%20AND%20created%20%3E=%20-91d""")
         req.add_header("Authorization", "Basic %s" % base64string)
-        cdata = json.loads(urlopen(req).read().decode('utf-8'))
+        cdata = json.loads(urlopen(req, timeout=JIRATIMEOUT).read().decode('utf-8'))
         req = Request("""https://issues.apache.org/jira/rest/api/2/search?jql=project%20=%20'""" + project + """'%20AND%20resolved%20%3E=%20-91d""")
         req.add_header("Authorization", "Basic %s" % base64string)
-        rdata = json.loads(urlopen(req).read().decode('utf-8'))
+        rdata = json.loads(urlopen(req, timeout=JIRATIMEOUT).read().decode('utf-8'))
         with open("%s/data/JIRA/%s.json" % (MYHOME, project), "w") as f:
             json.dump([cdata['total'], rdata['total'], project], f, indent=1)
             f.close()
@@ -80,6 +88,7 @@ def getJIRAS(project):
         with open("%s/data/JIRA/%s.json" % (MYHOME, project), "w") as f:
             json.dump([0,0,None], f, indent=1)
             f.close()
+        handleError()
         return 0,0, None
 
 getProjects()
