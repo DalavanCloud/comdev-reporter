@@ -23,6 +23,7 @@
  "cordova-cli@6.0.0": 1453968000, 
  "cordova-common@1.0.0": 1446411600, 
  "cordova-common@1.1.0": 1455742800, 
+ "cordova-common@1.1.1": 1458716400, 
  "cordova-firefoxos@3.7.0": 1427871600, 
  "cordova-ios@3.9.0": 1438585200, 
  "cordova-ios@3.9.1": 1439449200, 
@@ -36,6 +37,7 @@
  "cordova-js@4.1.1": 1441263600, 
  "cordova-js@4.1.2": 1446796800, 
  "cordova-js@4.1.3": 1453968000, 
+ "cordova-js@4.1.4": 1458716400, 
  "cordova-lib@4.3.1": 1433401200, 
  "cordova-lib@5.0.0": 1429599600, 
  "cordova-lib@5.1.1": 1433833200, 
@@ -45,6 +47,7 @@
  "cordova-lib@5.4.0": 1446796800, 
  "cordova-lib@5.4.1": 1448352000, 
  "cordova-lib@6.0.0": 1453968000, 
+ "cordova-lib@6.1.0": 1458716400, 
  "cordova-osx@4.0.0": 1455609600, 
  "cordova-osx@4.0.1": 1457424000, 
  "cordova-plugin file@4.1.1": 1455004800, 
@@ -158,6 +161,7 @@
  "cordova-plugman@1.0.4": 1442905200, 
  "cordova-plugman@1.0.5": 1446796800, 
  "cordova-plugman@1.1.0": 1453968000, 
+ "cordova-plugman@1.2.0": 1458716400, 
  "cordova-serve@0.1.2": 1434438000, 
  "cordova-serve@0.1.3": 1440572400, 
  "cordova-ubuntu@4.3.2": 1452034800, 
@@ -172,5 +176,6 @@
  "cordova-windows@4.3.0": 1453104000, 
  "cordova-windows@4.3.1": 1454533200, 
  "cordova-wp8@3.8.1": 1431414000, 
- "cordova@5.0.0": 1429599600
+ "cordova@5.0.0": 1429599600, 
+ "cordova@6.1.0": 1458716400
 }
