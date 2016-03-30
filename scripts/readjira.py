@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 """
-   Refreshes the data/JSON/*.json files
+   Refreshes the data/JIRA/*.json files
 
    For each .json file found under data/JSON (apart from projects.json) it recreates the file.
    Also refreshes data/JIRA/projects.json
@@ -73,10 +73,10 @@ def getProjects():
 
 def getJIRAS(project):
     try:
-        req = Request("""https://issues.apache.org/jira/rest/api/2/search?jql=project%20=%20'""" + project + """'%20AND%20created%20%3E=%20-91d""")
+        req = Request("""https://issues.apache.org/jira/rest/api/2/search?jql=project='""" + project + """'+AND+created%3E=-91d""") # >=
         req.add_header("Authorization", "Basic %s" % base64string)
         cdata = json.loads(urlopen(req, timeout=JIRATIMEOUT).read().decode('utf-8'))
-        req = Request("""https://issues.apache.org/jira/rest/api/2/search?jql=project%20=%20'""" + project + """'%20AND%20resolved%20%3E=%20-91d""")
+        req = Request("""https://issues.apache.org/jira/rest/api/2/search?jql=project='""" + project + """'+AND+resolved%3E=-91d""") # >=
         req.add_header("Authorization", "Basic %s" % base64string)
         rdata = json.loads(urlopen(req, timeout=JIRATIMEOUT).read().decode('utf-8'))
         with open("%s/data/JIRA/%s.json" % (MYHOME, project), "w") as f:
