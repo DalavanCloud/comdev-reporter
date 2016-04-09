@@ -37,6 +37,8 @@ sendEmail = True # Allow e-mails to be disabled for testing
 debug = False
 trace = False # More detailed debug
 
+logger = None # initial setting
+
 ############################################################
 # Daemon class, courtesy of an anonymous good-hearted soul #
 ############################################################
@@ -45,7 +47,12 @@ class daemon:
 
         Usage: subclass the daemon class and override the run() method."""
 
-        def __init__(self, pidfile): self.pidfile = pidfile
+        def __init__(self, pidfile, logfile = None):
+            self.pidfile = pidfile
+            if logfile == None:
+                self.logfile = os.devnull
+            else:
+                self.logfile = logfile
         
         def daemonize(self):
                 """Daemonize class. UNIX double fork mechanism."""
@@ -79,8 +86,8 @@ class daemon:
                 sys.stdout.flush()
                 sys.stderr.flush()
                 si = open(os.devnull, 'r')
-                so = open(os.devnull, 'a+')
-                se = open(os.devnull, 'a+')
+                so = open(self.logfile, 'a+')
+                se = open(self.logfile, 'a+')
 
                 os.dup2(si.fileno(), sys.stdin.fileno())
                 os.dup2(so.fileno(), sys.stdout.fileno())
@@ -92,6 +99,7 @@ class daemon:
                 pid = str(os.getpid())
                 with open(self.pidfile,'w+') as f:
                         f.write(pid + '\n')
+                logger.info("Created %s", self.pidfile)
         
         def delpid(self):
                 os.remove(self.pidfile)
@@ -135,6 +143,9 @@ class daemon:
 
                 # Try killing the daemon process        
                 try:
+                        # Try gentle stop first
+                        os.kill(pid, signal.SIGINT)
+                        time.sleep(0.2)
                         while 1:
                                 os.kill(pid, signal.SIGTERM)
                                 time.sleep(0.1)
@@ -326,10 +337,15 @@ def main():
     svn_thread.start()
     
     while True:
-        if debug:
-           time.sleep(20)
-        else:
-           time.sleep(600)
+        try:
+            if debug:
+               time.sleep(20)
+            else:
+               time.sleep(600)
+        except KeyboardInterrupt:
+            logger.info("Detected shutdown interrupt")
+            pass
+           
         processTargets()
 
 def processTargets():
@@ -424,7 +440,15 @@ class MyDaemon(daemon):
         main()
  
 if __name__ == "__main__":
-        daemon = MyDaemon('/tmp/scandist.pid')
+        logger = logging.getLogger('scandist')
+        logger.setLevel(logging.INFO)
+        formatter = logging.Formatter('%(asctime)s %(levelname)s: %(message)s')
+        ch = logging.StreamHandler()
+        ch.setFormatter(formatter)
+        logger.addHandler(ch)
+        logfile = os.environ.get('LOGFILE')
+        logger.info("LOGFILE=%s", logfile)
+        daemon = MyDaemon('/tmp/scandist.pid', logfile)
         if len(sys.argv) >= 2:
                 if 'start' == sys.argv[1]:
                     daemon.start()
