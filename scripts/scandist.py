@@ -8,7 +8,13 @@ from threading import Thread
 from datetime import datetime
 import os
 import sys
-
+import logging
+import atexit
+import signal
+import json
+import re
+import time
+import subprocess
 
 # SMTP Lib
 import smtplib
@@ -18,12 +24,12 @@ from email.mime.multipart import MIMEMultipart
 version = 2
 if sys.hexversion < 0x03000000:
     print("Using Python 2...")
-    import json, httplib, urllib, urllib2, ConfigParser as configparser, re, base64, sys, os, time, atexit, signal, logging, socket, subprocess
+    import httplib, urllib, urllib2, ConfigParser as configparser, socket
     socket._fileobject.default_bufsize = 0
 else:
     print("Using Python 3")
     version = 3
-    import json, http.client, urllib.request, urllib.parse, configparser, re, base64, sys, os, time, atexit, signal, logging, subprocess
+    import http.client, urllib.request, urllib.parse, configparser
 
 targets = {} # dict: key = project name, value = {dict: key = committer, value = list of commits by the committer for the project}
 
@@ -31,9 +37,9 @@ sendEmail = True # Allow e-mails to be disabled for testing
 debug = False
 trace = False # More detailed debug
 
-###########################################################
-# Daemon class, curtesy of an anonymous good-hearted soul #
-###########################################################
+############################################################
+# Daemon class, courtesy of an anonymous good-hearted soul #
+############################################################
 class daemon:
         """A generic daemon class.
 
