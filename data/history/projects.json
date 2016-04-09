@@ -4363,6 +4363,10 @@
    "Ate Douma",
    1381680782
   ],
+  "atm": [
+   "Aaron Myers",
+   1460232001
+  ],
   "bayard": [
    "Henri Yandell",
    0
@@ -4402,6 +4406,10 @@
   "cmchen": [
    "Charles Chen",
    0
+  ],
+  "cnauroth": [
+   "Chris Nauroth",
+   1460232001
   ],
   "craigmcc": [
    "Craig R. McClanahan",
@@ -4443,6 +4451,10 @@
    "Daniel Savarese",
    0
   ],
+  "dianfu": [
+   "Dian Fu",
+   1460232001
+  ],
   "dimpbx": [
    "Dimitri Pourbaix",
    0
@@ -4466,6 +4478,10 @@
   "dmitri": [
    "Dmitri Plotnikov",
    0
+  ],
+  "dongc": [
+   "Dong Chen",
+   1460232001
   ],
   "ebourg": [
    "Emmanuel Bourg",
@@ -4514,6 +4530,10 @@
   "grobmeier": [
    "Christian Grobmeier",
    0
+  ],
+  "haifengchen": [
+   "Haifeng Chen",
+   1460232001
   ],
   "hchar": [
    "Hanson Char",
@@ -4759,6 +4779,10 @@
    "Stephen Colebourne",
    0
   ],
+  "sdp": [
+   "Dapeng Sun",
+   1460232001
+  ],
   "seade": [
    "Scott Eade",
    0
@@ -4815,13 +4839,25 @@
    "Thomas Vandahl",
    0
   ],
+  "umamahesh": [
+   "Uma Maheswara Rao G",
+   1460232001
+  ],
   "upayavira": [
    "Upayavira",
    0
   ],
+  "vanzin": [
+   "Marcelo Masiero Vanzin",
+   1460232001
+  ],
   "vgritsenko": [
    "Vadim Gritsenko",
    0
+  ],
+  "wang": [
+   "Andrew Wang",
+   1460232001
   ],
   "woonsan": [
    "Woonsan Ko",
@@ -4830,6 +4866,14 @@
   "wspeirs": [
    "Bill Speirs",
    0
+  ],
+  "xuf": [
+   "Ferdinand Xu",
+   1460232001
+  ],
+  "yliu": [
+   "Yi Liu",
+   1460232001
   ],
   "yonik": [
    "Yonik Seeley",
