@@ -213,7 +213,7 @@ def processCommit(commit):
     # "changed": {"comdev/reporter.apache.org/trunk/scandist.py": {"flags": "U  "}}, 
     # "date": "2015-07-13 13:38:33 +0000 (Mon, 13 Jul 2015)", "type": "svn", "id": 1690668}
     #
-    print("%(id)s %(date)s %(log)s" % commit)
+    logger.info("%(id)s %(date)s %(log)s" % commit)
     # Note: a single commit can change multiple paths
     paths = commit['changed']
     for path in paths:
@@ -383,7 +383,7 @@ def processTargets():
                 email = committer + "@apache.org"
                 tmpdict.update({'email' : email})
                 receivers = [email]
-                print("Notifying '%(committer)s' of new data pushed to '%(project)s' in r%(id)s" % tmpdict)
+                logger.info("Notifying '%(committer)s' of new data pushed to '%(project)s' in r%(id)s" % tmpdict)
                 message = """From: Apache Reporter Service <no-reply@reporter.apache.org>
 To: %(committer)s <%(email)s>
 Reply-To: dev@community.apache.org
@@ -427,9 +427,9 @@ The Apache Reporter Service.
                    smtpObj = smtplib.SMTP('localhost')
                    smtpObj.sendmail(sender, receivers, message)  
                    #print message       
-                   print("Successfully sent email")
-                except Exception as ex:
-                   print("Error: unable to send email", ex)
+                   logger.info("Successfully sent email")
+                except Exception:
+                   logger.exception("Error: unable to send email")
 
 
 ##############
