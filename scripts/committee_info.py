@@ -41,6 +41,22 @@ def update_cache():
 
 update_cache() # done when loading
 
+def PMCmails():
+
+    """
+        Returns output of the form:
+        ['ace',...'whimsical',...]
+    """
+    committees = cidata['committees']
+    mails=[]
+    for ctte in committees:
+        c = committees[ctte]
+        if not c['pmc']:
+            continue
+        mails.append(c['mail_list'])
+
+    return mails
+
 def PMCnames():
 
     """
@@ -165,6 +181,10 @@ def cycles():
     return cycles
 
 if __name__ == '__main__':
+    mails=PMCmails()
+    print(mails)
+    print("Expect false: "+str('whimsy' in mails))
+    print("Expect true: "+str('whimsical' in mails))
     import sys
     json.dump(PMCnames(), sys.stdout, indent=1, sort_keys=True)
     json.dump(PMCsummary(), sys.stdout, indent=1, sort_keys=True)
