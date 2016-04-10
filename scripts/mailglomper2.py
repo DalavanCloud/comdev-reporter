@@ -19,6 +19,7 @@ import urlutils
 import urllib.error
 import traceback
 import errtee
+import committee_info
 
 SECS_PER_DAY = 86400
 SECS_PER_WEEK = 604800
@@ -188,12 +189,18 @@ tsprint("Started")
 signal.signal(signal.SIGINT, handle) # This stops Python from raising KeyboardInterrupt
 signal.signal(signal.SIGTERM, handle)
 
+pmcmails = committee_info.PMCmails()
+if 'empire-db' in pmcmails: # append entry
+    pmcmails.append('empire')
+
 lastCheckpoint = time.time() # when output files were last saved
 for mlist in re.finditer(r"<a href='([-a-z0-9]+)/'", data):
     ml = mlist.group(1)
-    # TODO reject all but current projects, meanwhile we don't want these:
-    if ml.startswith('www-'):
-        continue # don't want ASF mailing lists
+    pfx = ml.split('-')[0]
+    # skip all but current projects
+    if not pfx in pmcmails:
+        tsprint("Skipping " + ml) # temporary for checking
+        continue
     
     tsprint("Processing: " + ml)
     start = time.time()
