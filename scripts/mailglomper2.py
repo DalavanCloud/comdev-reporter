@@ -191,6 +191,10 @@ signal.signal(signal.SIGTERM, handle)
 lastCheckpoint = time.time() # when output files were last saved
 for mlist in re.finditer(r"<a href='([-a-z0-9]+)/'", data):
     ml = mlist.group(1)
+    # TODO reject all but current projects, meanwhile we don't want these:
+    if ml.startswith('www-'):
+        continue # don't want ASF mailing lists
+    
     tsprint("Processing: " + ml)
     start = time.time()
     mls[ml] = {}
