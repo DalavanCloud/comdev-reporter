@@ -184,7 +184,7 @@ with open(__HOME + "history/projects.json", "w", encoding='utf-8') as f:
     json.dump(projects, f, sort_keys=True ,indent=1, ensure_ascii=False)
     f.close()
 
-print("Checking index.mdtext against list of chairs")
+print("Checking foundation/index.mdtext against list of chairs from committee-info")
 chairs={}
 for e in c_info:
     if c_info[e]['pmc']:
@@ -199,15 +199,34 @@ for line in resp:
     if m:
 #         print(m.group(1),m.group(3))
         web[m.group(1)] = m.group(3)
+chairDiffs = []
 for w in web:
     if not w in chairs:
-        print("Missing from cttee %s " % w)
+        chairDiffs.append("Missing from cttee %s " % w)
 for c in sorted(chairs):
     if not c in web:
-        print("Missing from web page \n| V.P., Apache %s | %s |" % (c, chairs[c]))
+        chairDiffs.append("Missing from web page \n| V.P., Apache %s | %s |" % (c, chairs[c]))
     else:
         if not chairs[c] == web[c]:
-            print("Mismatch: Apache %s ctte %s web %s" % (c, chairs[c], web[c]))
+            chairDiffs.append("Mismatch: Apache %s ctte %s web %s" % (c, chairs[c], web[c]))
         
+DEST='sebbaz@gmail.com' # TODO proper destination Temporary for testing
+BODY='Comparison of foundation/index.mdtext list of chairs with committee-info'
+import sendmail
+if len(chairDiffs) == 0:
+    print("foundation/index.mdtext list of chairs agrees with committee-info")
+    try:
+        sendmail.sendMail("List of chairs agrees", BODY, DEST)
+    except Exception as e:
+        print("Error: unable to send email", e)
+else:
+    print("foundation/index.mdtext list of chairs disagrees with committee-info:")
+    for m in chairDiffs:
+        print(m)
+    try:
+        errs = "\n".join(chairDiffs)
+        sendmail.sendMail("List of chairs disagrees", BODY+"\n"+errs, DEST)
+    except Exception as e:
+        print("Error: unable to send email", e)
 
 print("All done! removed %u retired entries" % ret)
