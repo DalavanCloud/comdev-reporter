@@ -58,6 +58,7 @@ def handle(signum, frame):
     interrupted = True
 
 tsprint("Start")
+startTime = time.time()
 
 try:
     with open(__MAILDATA_EXTENDED,'r') as f:
@@ -128,17 +129,28 @@ def weekly_stats(ml, date):
     """
     fname = "%s-%s" % (ml, date)
     stampold = None
+    lengthold = None
+    etagold = None
     if fname in mldcache:
 #         tsprint("Have json cache for: " + fname)
         entry = mldcache[fname]
         ct = entry['ct']
         stampold = entry['stamp']
+        try:
+            lengthold = entry['length']
+        except:
+            lengthold = 'N/A'
+        try:
+            etagold = entry['etag']
+        except:
+            etagold = 'N/A'
         weekly = {}
         # JSON keys are always stored as strings; fix these up for main code
         for w in entry['weekly']:
             weekly[int(w)] = entry['weekly'][w]
     else:
 #         tsprint("Not cached: " + fname)
+        ct = None
         pass
 
     url = "http://mail-archives.us.apache.org/mod_mbox/%s/%s.mbox" % (ml, date)
@@ -149,7 +161,17 @@ def weekly_stats(ml, date):
             length = mldata.headers['Content-Length']
         except:
             length = 'unknown'
-        tsprint("Processing %s (%s > %s) Length: %s" % (fname, stamp, stampold, length))
+        try:
+            etag = mldata.headers['Etag']
+        except:
+            etag = 'unknown'
+        tsprint("Processing %s (%s > %s) Length: %s (%s) Etag: %s (%s)" % (fname, stamp, stampold, length, lengthold, etag, etagold))
+        # INFRA-11661 - spurious date changes so we check the length
+        if ct != None and length == lengthold:
+            tsprint("Unchanged length, using cached data (%d)" % ct)
+            mldata.close()
+            return ct, weekly
+
         ct = 0
         weekly = {}
         l = 0
@@ -169,7 +191,9 @@ def weekly_stats(ml, date):
         mldcache[fname] = {
                               'ct': ct,
                               'weekly': weekly,
-                              'stamp': stamp
+                              'stamp': stamp,
+                              'length': length,
+                              'etag': etag
                             }
     else:
 #         tsprint("Returning cache for: " + fname)
@@ -258,3 +282,5 @@ with open(__MAILDATA_EXTENDED,'w+') as f:
 with open(__MAILDATA_CACHE,"w") as f:
     json.dump(mldcache, f, indent=1, sort_keys=True)
 tsprint("Dumped JSON files")
+elapsed = time.time()-startTime
+tsprint("Completed in %d seconds" % elapsed)
