@@ -140,10 +140,10 @@ def weekly_stats(ml, date):
             lengthold = entry['length']
         except:
             lengthold = 'N/A'
-        try:
-            etagold = entry['etag']
-        except:
-            etagold = 'N/A'
+#         try:
+#             etagold = entry['etag']
+#         except:
+#             etagold = 'N/A'
         weekly = {}
         # JSON keys are always stored as strings; fix these up for main code
         for w in entry['weekly']:
@@ -161,11 +161,11 @@ def weekly_stats(ml, date):
             length = mldata.headers['Content-Length']
         except:
             length = 'unknown'
-        try:
-            etag = mldata.headers['Etag']
-        except:
-            etag = 'unknown'
-        tsprint("Processing %s (%s > %s) Length: %s (%s) Etag: %s (%s)" % (fname, stamp, stampold, length, lengthold, etag, etagold))
+#         try:
+#             etag = mldata.headers['Etag']
+#         except:
+#             etag = 'unknown'
+        tsprint("Processing %s (%s > %s) Length: %s (%s)" % (fname, stamp, stampold, length, lengthold))
         # INFRA-11661 - spurious date changes so we check the length
         if ct != None and length == lengthold:
             tsprint("Unchanged length, using cached data (%d)" % ct)
@@ -192,8 +192,8 @@ def weekly_stats(ml, date):
                               'ct': ct,
                               'weekly': weekly,
                               'stamp': stamp,
-                              'length': length,
-                              'etag': etag
+                              'length': length
+#                               'etag': etag
                             }
     else:
 #         tsprint("Returning cache for: " + fname)
@@ -223,7 +223,7 @@ for mlist in re.finditer(r"<a href='([-a-z0-9]+)/'", data):
     pfx = ml.split('-')[0]
     # skip all but current projects
     if not pfx in pmcmails:
-        tsprint("Skipping " + ml) # temporary for checking
+#         tsprint("Skipping " + ml) # temporary for checking
         continue
     
     tsprint("Processing: " + ml)
