@@ -210,22 +210,19 @@ for c in sorted(chairs):
         if not chairs[c] == web[c]:
             chairDiffs.append("Mismatch: Apache %s ctte %s web %s" % (c, chairs[c], web[c]))
         
-DEST='sebbaz@gmail.com' # TODO proper destination Temporary for testing
-BODY='Comparison of foundation/index.mdtext list of chairs with committee-info'
-import sendmail
+DEST='Site Development <site-dev@apache.org>'
+
 if len(chairDiffs) == 0:
     print("foundation/index.mdtext list of chairs agrees with committee-info")
-    try:
-        sendmail.sendMail("List of chairs agrees", BODY, DEST)
-    except Exception as e:
-        print("Error: unable to send email", e)
 else:
+    import sendmail
     print("foundation/index.mdtext list of chairs disagrees with committee-info:")
     for m in chairDiffs:
         print(m)
     try:
+        BODY="Comparison of foundation/index.mdtext list of chairs with committee-info\n"
         errs = "\n".join(chairDiffs)
-        sendmail.sendMail("List of chairs disagrees", BODY+"\n"+errs, DEST)
+        sendmail.sendMail("foundattion/index list of chairs disagrees with committee-info", BODY+"\n"+errs, DEST)
     except Exception as e:
         print("Error: unable to send email", e)
 
