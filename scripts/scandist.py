@@ -1,5 +1,3 @@
-#!/usr/bin/env python
-
 #################################################
 # scandist.py: a minimalistic svnwcsub program  #
 #################################################
@@ -102,6 +100,7 @@ class daemon:
                 logger.info("Created %s", self.pidfile)
         
         def delpid(self):
+                logger.info("Removing %s", self.pidfile)
                 os.remove(self.pidfile)
 
         def start(self):
