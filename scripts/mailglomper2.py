@@ -130,7 +130,7 @@ def weekly_stats(ml, date):
     fname = "%s-%s" % (ml, date)
     stampold = None
     lengthold = None
-    etagold = None
+#     etagold = None
     if fname in mldcache:
 #         tsprint("Have json cache for: " + fname)
         entry = mldcache[fname]
