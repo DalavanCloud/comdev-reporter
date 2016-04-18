@@ -82,7 +82,7 @@ Scripts:
   Creates data/health.json
 
 - site/getjson.py
-  If stale, re-creates data/JIRA/projects.json (from JIRA)
+  If stale, re-creates data/JIRA/jira_projects.json (from JIRA)
   If stale, re-creates data/JIRA/%s.json % project (from JIRA)
   
 - site/jiraversions.py
@@ -105,7 +105,7 @@ Data file consumers:
   data/projects.json
   data/pmcdates.json
   data/releases/%s.json % project
-  data/JIRA/projects.json
+  data/JIRA/jira_projects.json
   data/JIRA/%s.json % project
 
 - health.py

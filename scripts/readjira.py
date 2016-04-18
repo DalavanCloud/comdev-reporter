@@ -3,9 +3,9 @@
 """
    Refreshes the data/JIRA/*.json files
 
-   For each .json file found under data/JSON (apart from projects.json) it recreates the file.
-   Also refreshes data/JIRA/projects.json
-   It does not use the contents of projects.json to refresh the files, because not all of the entries are needed.
+   For each .json file found under data/JSON (apart from jira_projects.json) it recreates the file.
+   Also refreshes data/JIRA/jira_projects.json
+   It does not use the contents of jira_projects.json to refresh the files, because not all of the entries are needed.
    However, once a file has been added to the directory, it will be kept up to date.
 
    It sleeps(2) between fetches.
@@ -53,8 +53,8 @@ def handleError():
         raise Exception("Too many errors - quitting")
 
 def getProjects():
-    """Update the list of projects in data/JIRA/projects.json"""
-    PROJECT_JSON = "%s/data/JIRA/projects.json" % MYHOME
+    """Update the list of projects in data/JIRA/jira_projects.json"""
+    PROJECT_JSON = "%s/data/JIRA/jira_projects.json" % MYHOME
     x = {}
     jiras = []
     mtime = 0
@@ -95,7 +95,7 @@ getProjects()
 
 for project in myfiles:
     jiraname = project.replace(".json", "")
-    if jiraname != "projects":
+    if jiraname != "jira_projects":
         print("Refreshing JIRA stats for " + jiraname)
         getJIRAS(jiraname)
         time.sleep(2)

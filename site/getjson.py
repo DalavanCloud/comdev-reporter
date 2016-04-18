@@ -3,14 +3,14 @@
     CGI script to return data to the Javacript that renders the site (render.js)
     
     It also populates various json files from JIRA if they are stale:
-    data/JIRA/projects.json - list of all JIRA projects
+    data/JIRA/jira_projects.json - list of all JIRA projects
     data/JIRA/%.json - for each JIRA project
     
     Usage:
         getjson.py[?only=pmcname|pmcname-to-include]
     
     Reads the following:
-        data/JIRA/projects.json
+        data/JIRA/jira_projects.json
         data/JIRA/%s.json
         data/health.json
         data/releases/%s.json
@@ -113,7 +113,7 @@ def isMember(uid):
     return uid in members
 
 def getJIRAProjects(project):
-    """Reads data/JIRA/projects.json (re-creating it if it is stale)
+    """Reads data/JIRA/jira_projects.json (re-creating it if it is stale)
        Returns the list of JIRA projects for the project argument
        Assumes that the project names match or the project category matches
        (after trimming "Apache " and spaces and lower-casing)"""
@@ -124,13 +124,13 @@ def getJIRAProjects(project):
     try:
         mtime = 0
         try:
-            st=os.stat(RAOHOME+"data/JIRA/projects.json")
+            st=os.stat(RAOHOME+"data/JIRA/jira_projects.json")
             mtime=st.st_mtime
         except:
             pass
         if mtime >= (time.time() - 86400):
             refresh = False
-            x = readJson(RAOHOME+"data/JIRA/projects.json")
+            x = readJson(RAOHOME+"data/JIRA/jira_projects.json")
         else:
             base64string = base64.encodestring('%s:%s' % ('githubbot', jirapass))[:-1]
     
@@ -138,7 +138,7 @@ def getJIRAProjects(project):
                 req = urllib2.Request("https://issues.apache.org/jira/rest/api/2/project.json")
                 req.add_header("Authorization", "Basic %s" % base64string)
                 x = json.loads(urllib2.urlopen(req).read())
-                with open(RAOHOME+"data/JIRA/projects.json", "w") as f:
+                with open(RAOHOME+"data/JIRA/jira_projects.json", "w") as f:
                     json.dump(x, f, indent=1)
                     f.close()
             except:
