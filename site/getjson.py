@@ -292,11 +292,13 @@ if re.match(r"^[-a-zA-Z0-9_.]+$", user):
         # a PMC may have projects using Bugzilla *and* JIRA - e.g. Tomcat - (or neither)
         jiraname = group.upper()
         if group in jmap:
+            keys[group] = []
             for jiraname in jmap[group]:
                 x,y, p = getJIRAS(jiraname)
                 jdata[group][0] += x
                 jdata[group][1] += y
                 jdata[group][2] = p
+                keys[group].append(jiraname)
         elif group in ddata and 'name' in ddata[group]:
             jiras = getJIRAProjects(ddata[group]['name'])
             keys[group] = jiras
@@ -306,6 +308,7 @@ if re.match(r"^[-a-zA-Z0-9_.]+$", user):
                 jdata[group][1] += y
                 jdata[group][2] = p
         elif jiraname:
+            keys[group]=[jiraname]
             x,y, p= getJIRAS(jiraname)
             jdata[group][0] += x
             jdata[group][1] += y
