@@ -222,7 +222,7 @@ else:
     try:
         BODY="Comparison of foundation/index.mdtext list of chairs with committee-info\n"
         errs = "\n".join(chairDiffs)
-        sendmail.sendMail("foundattion/index list of chairs disagrees with committee-info", BODY+"\n"+errs, DEST)
+        sendmail.sendMail("foundation/index list of chairs disagrees with committee-info", BODY+"\n"+errs, DEST)
     except Exception as e:
         print("Error: unable to send email", e)
 
