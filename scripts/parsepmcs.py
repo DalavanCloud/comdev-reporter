@@ -125,7 +125,7 @@ for nongroup in sorted(nonldapgroups):
 #        else:
 #            print("Not found non-ldap group %s" % nongroup)
     else:
-        print("Unexpected non-ldap group %s in projects list " % nongroup)
+        print("WARN: unexpected non-ldap group %s in projects list " % nongroup)
 
 # Delete retired members
 ret = 0
@@ -216,7 +216,7 @@ if len(chairDiffs) == 0:
     print("foundation/index.mdtext list of chairs agrees with committee-info")
 else:
     import sendmail
-    print("foundation/index.mdtext list of chairs disagrees with committee-info:")
+    print("WARN: foundation/index.mdtext list of chairs disagrees with committee-info:")
     for m in chairDiffs:
         print(m)
     try:
@@ -224,6 +224,6 @@ else:
         errs = "\n".join(chairDiffs)
         sendmail.sendMail("foundation/index list of chairs disagrees with committee-info", BODY+"\n"+errs, DEST)
     except Exception as e:
-        print("Error: unable to send email", e)
+        print("ERROR: unable to send email", e)
 
 print("All done! removed %u retired entries" % ret)
