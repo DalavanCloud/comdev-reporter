@@ -27,6 +27,11 @@ if sys.hexversion < 0x030000F0:
     This would cause a large change to the historical files,
     so to avoid mixing this with a genuine change, it needs to be planned, and
     done between normal updates.
+    
+    It also reads
+    https://svn.apache.org/repos/asf/infrastructure/site/trunk/content/foundation/index.mdtext
+    and compares the chair names against committee-info.json.
+    Discrepancies are reported and also mailed to site-dev@apache.org
 """
 import errtee
 from urlutils import UrlCache
