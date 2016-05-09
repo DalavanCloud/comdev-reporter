@@ -38,6 +38,15 @@ from urlutils import UrlCache
 import json
 import time
 import re
+import sendmail
+
+# Print to log and send an email (intended for WARN messages)
+def printMail(msg, file=sys.stdout):
+    print(msg, file=file)
+    try:
+        sendmail.sendMail(msg)
+    except ConnectionRefusedError:
+        print("*** Failed to send the email")
 
 uc = UrlCache(interval=0)
 
@@ -130,7 +139,7 @@ for nongroup in sorted(nonldapgroups):
 #        else:
 #            print("Not found non-ldap group %s" % nongroup)
     else:
-        print("WARN: unexpected non-ldap group %s in projects list " % nongroup)
+        printMail("WARN: unexpected non-ldap group '%s' in projects list " % nongroup)
 
 # Delete retired members
 ret = 0
@@ -220,7 +229,6 @@ DEST='Site Development <site-dev@apache.org>'
 if len(chairDiffs) == 0:
     print("foundation/index.mdtext list of chairs agrees with committee-info")
 else:
-    import sendmail
     print("WARN: foundation/index.mdtext list of chairs disagrees with committee-info:")
     for m in chairDiffs:
         print(m)
