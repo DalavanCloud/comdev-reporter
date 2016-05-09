@@ -1,1 +1,14 @@
-{"PortalsApplicationsWebContent2-2.0": 1431068400, "PortalsVelocityBridge-2.1": 1429858800, "PortalsApplicationsRSS-1.3": 1431068400, "PortalsApplicationsLogging-1.1": 1431068400, "PortalsCommonsBridge-2.1": 1429426800, "PortalsApplicationsDemo-1.3": 1432969200, "Jetspeed-2.3.0": 1437980400, "portals-pom-1.4": 1428044400, "JetspeedAdmin-2.3.0": 1438066800, "ApachePortalsJSFBridge-1.1": 1429858800, "PortalsApplicationsGems-1.2": 1431068400}
+{
+ "ApachePortalsJSFBridge-1.1": 1429858800, 
+ "Jetspeed-2.3.0": 1437980400, 
+ "Jetspeed-2.3.1": 1462690800, 
+ "JetspeedAdmin-2.3.0": 1438066800, 
+ "PortalsApplicationsDemo-1.3": 1432969200, 
+ "PortalsApplicationsGems-1.2": 1431068400, 
+ "PortalsApplicationsLogging-1.1": 1431068400, 
+ "PortalsApplicationsRSS-1.3": 1431068400, 
+ "PortalsApplicationsWebContent2-2.0": 1431068400, 
+ "PortalsCommonsBridge-2.1": 1429426800, 
+ "PortalsVelocityBridge-2.1": 1429858800, 
+ "portals-pom-1.4": 1428044400
+}
