@@ -123,23 +123,19 @@ for group in ldapgroups:
 
 
 """
-   The old code used people.apache.org which included podling groups.
-   We don't want these, and we need to remove any existing ones.
-   Otherwise we cannot determine when a podling graduates.
-   Proactively remove the nonldap groups. 
-   [This code can be removed in due course]
+    Check for inconsistencies in non-ldap groups
 """
 
 nonldapgroups = loadJson('https://whimsy.apache.org/public/public_nonldap_groups.json')['groups']
 for nongroup in sorted(nonldapgroups):
-    if nongroup not in ldapgroups: # should not happen, but check anyway
+    if nongroup in ldapgroups:
+        printMail("WARN: non-ldap group '%s' also present in unix group - should not happen" % nongroup)
+    else:
         if nongroup in projects:
             print("Dropping non-ldap group %s" % nongroup)
             del projects[nongroup]
-#        else:
-#            print("Not found non-ldap group %s" % nongroup)
-    else:
-        printMail("WARN: unexpected non-ldap group '%s' in projects list " % nongroup)
+#         else: # e.g. podling or special interest group
+#             print("Not found non-ldap group %s" % nongroup)
 
 # Delete retired members
 ret = 0
