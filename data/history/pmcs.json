@@ -1183,6 +1183,120 @@
    0
   ]
  },
+ "asterixdb": {
+  "amoudi": [
+   "Abdullah Alamoudi",
+   0
+  ],
+  "ate": [
+   "Ate Douma",
+   0
+  ],
+  "buyingyi": [
+   "Yingyi Bu",
+   0
+  ],
+  "ceej": [
+   "Chris Hillery",
+   0
+  ],
+  "chenli": [
+   "Chen Li",
+   0
+  ],
+  "csamak": [
+   "Cameron Samak",
+   0
+  ],
+  "dtabass": [
+   "Michael J. Carey",
+   0
+  ],
+  "heri": [
+   "Heri Ramampiaro",
+   0
+  ],
+  "ildar": [
+   "Ildar Absalyamov",
+   0
+  ],
+  "imaxon": [
+   "Ian Maxon",
+   0
+  ],
+  "jianfeng": [
+   "Jianfeng Jia",
+   0
+  ],
+  "jochen": [
+   "Jochen Wiedmann",
+   0
+  ],
+  "kereno": [
+   "Keren Ouaknine",
+   0
+  ],
+  "kisskys": [
+   "Young-Seok Kim",
+   0
+  ],
+  "mattmann": [
+   "Chris Mattmann",
+   0
+  ],
+  "mblow": [
+   "Michael Blow",
+   0
+  ],
+  "mhubail": [
+   "Murtadha Makki Al Hubail",
+   0
+  ],
+  "pouria": [
+   "Pouria Pirzadeh",
+   0
+  ],
+  "prestonc": [
+   "Preston Carman",
+   0
+  ],
+  "raman": [
+   "Raman Grover",
+   0
+  ],
+  "salsubaiee": [
+   "Sattam Alsubaiee",
+   0
+  ],
+  "sjaco002": [
+   "Steven Jacobs",
+   0
+  ],
+  "tdunning": [
+   "Ted Dunning",
+   0
+  ],
+  "tillw": [
+   "Till Westmann",
+   0
+  ],
+  "tsotras": [
+   "Vassilis Tsotras",
+   0
+  ],
+  "vinayakb": [
+   "Vinayak Borkar",
+   0
+  ],
+  "wangsaeu": [
+   "Taewoo Kim",
+   0
+  ],
+  "zheilbron": [
+   "Zachary Heilbron",
+   0
+  ]
+ },
  "attic": {
   "bayard": [
    "Henri Yandell",
@@ -8088,6 +8202,10 @@
    "Eric Johnson",
    0
   ],
+  "jdunham": [
+   "Jeff Dunham",
+   1463832002
+  ],
   "jerry": [
    "Jerry Chen",
    0
@@ -9128,6 +9246,10 @@
   "joyce": [
    "Michael James Joyce",
    1447012802
+  ],
+  "karanjeet": [
+   "Karanjeet Singh",
+   1463832002
   ],
   "kiranch": [
    "Kiran",

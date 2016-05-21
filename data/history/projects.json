@@ -1744,6 +1744,120 @@
    1454356802
   ]
  },
+ "asterixdb": {
+  "amoudi": [
+   "Abdullah Alamoudi",
+   0
+  ],
+  "ate": [
+   "Ate Douma",
+   0
+  ],
+  "buyingyi": [
+   "Yingyi Bu",
+   0
+  ],
+  "ceej": [
+   "Chris Hillery",
+   0
+  ],
+  "chenli": [
+   "Chen Li",
+   0
+  ],
+  "csamak": [
+   "Cameron Samak",
+   0
+  ],
+  "dtabass": [
+   "Michael J. Carey",
+   0
+  ],
+  "heri": [
+   "Heri Ramampiaro",
+   0
+  ],
+  "ildar": [
+   "Ildar Absalyamov",
+   0
+  ],
+  "imaxon": [
+   "Ian Maxon",
+   0
+  ],
+  "jianfeng": [
+   "Jianfeng Jia",
+   0
+  ],
+  "jochen": [
+   "Jochen Wiedmann",
+   0
+  ],
+  "kereno": [
+   "Keren Ouaknine",
+   0
+  ],
+  "kisskys": [
+   "Young-Seok Kim",
+   0
+  ],
+  "mattmann": [
+   "Chris Mattmann",
+   0
+  ],
+  "mblow": [
+   "Michael Blow",
+   0
+  ],
+  "mhubail": [
+   "Murtadha Makki Al Hubail",
+   0
+  ],
+  "pouria": [
+   "Pouria Pirzadeh",
+   0
+  ],
+  "prestonc": [
+   "Preston Carman",
+   0
+  ],
+  "raman": [
+   "Raman Grover",
+   0
+  ],
+  "salsubaiee": [
+   "Sattam Alsubaiee",
+   0
+  ],
+  "sjaco002": [
+   "Steven Jacobs",
+   0
+  ],
+  "tdunning": [
+   "Ted Dunning",
+   0
+  ],
+  "tillw": [
+   "Till Westmann",
+   0
+  ],
+  "tsotras": [
+   "Vassilis Tsotras",
+   0
+  ],
+  "vinayakb": [
+   "Vinayak Borkar",
+   0
+  ],
+  "wangsaeu": [
+   "Taewoo Kim",
+   0
+  ],
+  "zheilbron": [
+   "Zachary Heilbron",
+   0
+  ]
+ },
  "attic": {
   "bayard": [
    "Henri Yandell",
@@ -3148,6 +3262,10 @@
   "ejansman": [
    "Erik Jansman",
    1405642280
+  ],
+  "gricciardi": [
+   "Gabriele Ricciardi",
+   1463832002
   ],
   "lresende": [
    "Luciano Resende",
@@ -8088,6 +8206,10 @@
    "Chris Mattmann",
    0
   ],
+  "otrack": [
+   "Pierre Sutra",
+   1463832002
+  ],
   "rherget": [
    "Roland von Herget",
    0
@@ -11810,6 +11932,10 @@
    "Daryn Sharp",
    1403483261
   ],
+  "dash": [
+   "David Ash",
+   1463832002
+  ],
   "dashorst": [
    "Martijn Dashorst",
    0
@@ -14230,6 +14356,10 @@
    "Kathleen Ting",
    0
   ],
+  "kathyssaunders": [
+   "Kathy Saunders",
+   1463832002
+  ],
   "kayousterhout": [
    "Kay Ousterhout",
    0
@@ -15482,6 +15612,10 @@
    "Vinesh Prasanna",
    1433185202.5479877
   ],
+  "mwalch": [
+   "Mike Walch",
+   1463832002
+  ],
   "mwbrooks": [
    "Michael William Brooks",
    0
@@ -16182,6 +16316,10 @@
    "Quentin Lamerand",
    1447272003
   ],
+  "queeniema": [
+   "Queenie Ma",
+   1463832002
+  ],
   "quetwo": [
    "Nicholas Kwiatkowski",
    0
@@ -16641,6 +16779,10 @@
   "rubys": [
    "Sam Ruby",
    0
+  ],
+  "rurcioli": [
+   "Ray Sting",
+   1463832002
   ],
   "russel": [
    "Dr. Russel Winder",
@@ -19901,6 +20043,10 @@
    "Amruth Sampath",
    1445569202.6060877
   ],
+  "archanah": [
+   "Archana H",
+   1463832002
+  ],
   "arshadmatin": [
    "Arshad Matin",
    1432062002.7623568
@@ -20008,6 +20154,10 @@
   "ilgiz": [
    "Ilgiz Islamgulov",
    0
+  ],
+  "jdunham": [
+   "Jeff Dunham",
+   1463832002
   ],
   "jed": [
    "Jedidiah Smith",
@@ -21683,6 +21833,10 @@
   "joyce": [
    "Michael James Joyce",
    1447012802
+  ],
+  "karanjeet": [
+   "Karanjeet Singh",
+   1463832002
   ],
   "kiranch": [
    "Kiran",
@@ -27652,6 +27806,10 @@
   "thaichat04": [
    "Hong-Thai Nguyen",
    1389880333
+  ],
+  "thammegowda": [
+   "Thamme Gowda",
+   1463832002
   ],
   "totaro": [
    "Giuseppe Totaro",
