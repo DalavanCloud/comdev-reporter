@@ -2370,6 +2370,40 @@
    0
   ]
  },
+ "bahir": {
+  "jbonofre": [
+   "Jean-Baptiste Onofré",
+   0
+  ],
+  "lresende": [
+   "Luciano Resende",
+   0
+  ],
+  "mattmann": [
+   "Chris Mattmann",
+   0
+  ],
+  "mridulm80": [
+   "Mridul Muralidharan",
+   0
+  ],
+  "rxin": [
+   "Reynold Xin",
+   0
+  ],
+  "srowen": [
+   "Sean R. Owen",
+   0
+  ],
+  "stevel": [
+   "Steve Loughran",
+   0
+  ],
+  "vanzin": [
+   "Marcelo Masiero Vanzin",
+   0
+  ]
+ },
  "bigtop": {
   "abayer": [
    "Andrew Bayer",
@@ -18336,6 +18370,10 @@
    "Vivek Bhaskar",
    1431025203.9551237
   ],
+  "vj": [
+   "Vladisav Jelisavcic",
+   1464062402
+  ],
   "vjrj": [
    "Vicente J. Ruiz Jurado",
    0
@@ -20756,6 +20794,10 @@
   "pranjan": [
    "Paritosh Ranjan",
    0
+  ],
+  "rawkintrevo": [
+   "Trevor Grant",
+   1464062402
   ],
   "robinanil": [
    "Robin Anil",
@@ -30334,6 +30376,10 @@
   "cnauroth": [
    "Chris Nauroth",
    1442545202.047382
+  ],
+  "mzuehlke": [
+   "Marco Zühlke",
+   1464062402
   ],
   "ndimiduk": [
    "Nick Dimiduk",
