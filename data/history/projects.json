@@ -2371,25 +2371,113 @@
   ]
  },
  "bahir": {
+  "andrew": [
+   "Andy Konwinski",
+   1464379201
+  ],
+  "andrewor14": [
+   "Andrew Or",
+   1464379201
+  ],
+  "ankurdave": [
+   "Ankur Dave",
+   1464379201
+  ],
+  "davies": [
+   "Davies Liu",
+   1464379201
+  ],
+  "dbtsai": [
+   "DB Tsai",
+   1464379201
+  ],
+  "haoyuan": [
+   "Haoyuan Li",
+   1464379201
+  ],
+  "harsha": [
+   "Ram Sriharsha",
+   1464379201
+  ],
+  "hvanhovell": [
+   "Herman van Hövell",
+   1464379201
+  ],
+  "irashid": [
+   "Imran Rashid",
+   1464379201
+  ],
   "jbonofre": [
    "Jean-Baptiste Onofré",
    0
+  ],
+  "jkbradley": [
+   "Joseph Kurata Bradley",
+   1464379201
+  ],
+  "joshrosen": [
+   "Josh Rosen",
+   1464379201
+  ],
+  "kayousterhout": [
+   "Kay Ousterhout",
+   1464379201
+  ],
+  "lian": [
+   "Cheng Lian",
+   1464379201
   ],
   "lresende": [
    "Luciano Resende",
    0
   ],
+  "markhamstra": [
+   "Mark Hamstra",
+   1464379201
+  ],
+  "marmbrus": [
+   "Michael Armbrust",
+   1464379201
+  ],
+  "matei": [
+   "Matei Alexandru Zaharia",
+   1464379201
+  ],
   "mattmann": [
    "Chris Mattmann",
    0
+  ],
+  "meng": [
+   "Xiangrui Meng",
+   1464379201
   ],
   "mridulm80": [
    "Mridul Muralidharan",
    0
   ],
+  "prashant": [
+   "Prashant Sharma",
+   1464379201
+  ],
+  "pwendell": [
+   "Patrick Wendell",
+   1464379201
+  ],
   "rxin": [
    "Reynold Xin",
    0
+  ],
+  "sandy": [
+   "Sanford Ryza",
+   1464379201
+  ],
+  "sarutak": [
+   "Kousuke Saruta",
+   1464379201
+  ],
+  "shivaram": [
+   "Shivaram Venkataraman",
+   1464379201
   ],
   "srowen": [
    "Sean R. Owen",
@@ -2399,9 +2487,33 @@
    "Steve Loughran",
    0
   ],
+  "tdas": [
+   "Tathagata Das",
+   1464379201
+  ],
+  "tedyu": [
+   "Zhihong Yu",
+   1464379201
+  ],
+  "tgraves": [
+   "Thomas Graves",
+   1464379201
+  ],
   "vanzin": [
    "Marcelo Masiero Vanzin",
    0
+  ],
+  "wenchen": [
+   "Wenchen Fan",
+   1464379201
+  ],
+  "yhuai": [
+   "Yin Huai",
+   1464379201
+  ],
+  "zsxwing": [
+   "Shixiong Zhu",
+   1464379201
   ]
  },
  "bigtop": {
@@ -5914,6 +6026,10 @@
    "Dingcheng Li",
    0
   ],
+  "lewismc": [
+   "Lewis John McGibbney",
+   1464379201
+  ],
   "liuhongfang": [
    "Hongfang Liu",
    0
@@ -5933,6 +6049,14 @@
   "mminnah": [
    "Murali Nagendranath",
    1382271256
+  ],
+  "pkluegl": [
+   "Peter Klügl",
+   1464379201
+  ],
+  "rec": [
+   "Richard Eckart de Castilho",
+   1464379201
   ],
   "seanfinan": [
    "Sean Finan",
