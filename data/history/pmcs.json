@@ -9231,10 +9231,6 @@
    "Bryan Bende",
    0
   ],
-  "bimargulies": [
-   "Benson Margulies",
-   0
-  ],
   "busbey": [
    "Sean Busbey",
    1448481602
@@ -13190,6 +13186,40 @@
   ],
   "wsmoak": [
    "Wendy Smoak",
+   0
+  ]
+ },
+ "tinkerpop": {
+  "dkuppitz": [
+   "Daniel Kuppitz",
+   0
+  ],
+  "dmill": [
+   "Dylan Millikin",
+   0
+  ],
+  "espeed": [
+   "James Thornton",
+   0
+  ],
+  "hadrian": [
+   "Hadrian Zbarcea",
+   0
+  ],
+  "humbedooh": [
+   "Daniel Gruno",
+   0
+  ],
+  "okram": [
+   "Marko A. Rodriguez",
+   0
+  ],
+  "spmallette": [
+   "Stephen Mallette",
+   0
+  ],
+  "twilmes": [
+   "Ted Wilmes",
    0
   ]
  },
