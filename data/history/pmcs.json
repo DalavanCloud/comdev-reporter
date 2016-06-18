@@ -4478,28 +4478,7 @@
    0
   ]
  },
- "etch": {
-  "dashorst": [
-   "Martijn Dashorst",
-   0
-  ],
-  "fitzner": [
-   "Michael Fitzner",
-   0
-  ],
-  "sccomer": [
-   "Robert Scott Comer",
-   0
-  ],
-  "veithm": [
-   "Martin Veith",
-   0
-  ],
-  "ypark": [
-   "Youngjin Park",
-   0
-  ]
- },
+ "etch": {},
  "falcon": {
   "ajayyadava": [
    "Ajay Yadav",
