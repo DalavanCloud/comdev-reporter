@@ -44,10 +44,10 @@ SITE_DEV = 'Site Development <site-dev@apache.org>'
 INFRA = 'Infrastructure <infrastructure@apache.org>'
 
 # Print to log and send an email (intended for WARN messages)
-def printMail(msg, file=sys.stdout, recipients=SITE_DEV):
+def printMail(msg, body='', file=sys.stdout, recipients=SITE_DEV):
     print(msg, file=file)
     try:
-        sendmail.sendMail(msg, recipients=recipients)
+        sendmail.sendMail(msg, body=body, recipients=recipients)
     except ConnectionRefusedError:
         print("*** Failed to send the email to " + str(recipients))
 
@@ -132,8 +132,9 @@ for group in ldapgroups:
 nonldapgroups = loadJson('https://whimsy.apache.org/public/public_nonldap_groups.json')['groups']
 for nongroup in sorted(nonldapgroups):
     if nongroup in ldapgroups:
-        printMail("WARN: the non-ldap group '%s' is also defined as an LDAP unix group" % nongroup,
-                  recipients=[SITE_DEV, INFRA])
+        printMail("WARN: duplicate definition of group '%s'" % nongroup,
+            body="The non-LDAP group '%s' is defined in the asf-authorization-template file, and should not also exist as an LDAP unix group"  % nongroup,
+            recipients=[SITE_DEV])
     else:
         if nongroup in projects:
             print("Dropping non-ldap group %s" % nongroup)
