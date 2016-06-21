@@ -40,13 +40,16 @@ import time
 import re
 import sendmail
 
+SITE_DEV = 'Site Development <site-dev@apache.org>'
+INFRA = 'Infrastructure <infrastructure@apache.org>'
+
 # Print to log and send an email (intended for WARN messages)
-def printMail(msg, file=sys.stdout):
+def printMail(msg, file=sys.stdout, recipients=SITE_DEV):
     print(msg, file=file)
     try:
-        sendmail.sendMail(msg)
+        sendmail.sendMail(msg, recipients=recipients)
     except ConnectionRefusedError:
-        print("*** Failed to send the email")
+        print("*** Failed to send the email to " + str(recipients))
 
 uc = UrlCache(interval=0)
 
@@ -129,7 +132,8 @@ for group in ldapgroups:
 nonldapgroups = loadJson('https://whimsy.apache.org/public/public_nonldap_groups.json')['groups']
 for nongroup in sorted(nonldapgroups):
     if nongroup in ldapgroups:
-        printMail("WARN: non-ldap group '%s' also present in unix group - should not happen" % nongroup)
+        printMail("WARN: the non-ldap group '%s' is also defined as an LDAP unix group" % nongroup,
+                  recipients=[SITE_DEV, INFRA])
     else:
         if nongroup in projects:
             print("Dropping non-ldap group %s" % nongroup)
