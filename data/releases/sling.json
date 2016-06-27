@@ -1,6 +1,7 @@
 {
  " Apache Sling Models API 1.2.0, Models Impl 1.2.0": 1437944400, 
  " Apache Sling NoSQL MongoDB Resource Provider 1.0.0": 1442782800, 
+ " Apache Sling Repository API Bundle 2.4.0": 1466974800, 
  " Apache Sling Scripting JavaScript 2.0.24": 1441573200, 
  " Apache Sling Scripting JavaScript Support 2.0.18": 1435784400, 
  " Apache Sling Scripting Sightly 1.0.2": 1428354000, 
@@ -71,6 +72,7 @@
  "Apache Sling IDE Tooling 1.1.0": 1457906400, 
  "Apache Sling IDE Tooling for Eclipse 1.0.8": 1444251600, 
  "Apache Sling Initial Content Archetype 1.0.4": 1445202000, 
+ "Apache Sling JCR Base Bundle 2.4.0": 1466974800, 
  "Apache Sling JCR Installer 3.1.18": 1455490800, 
  "Apache Sling JCR Mock 1.1.6": 1432674000, 
  "Apache Sling JCR Resource 2.5.4": 1437080400, 
