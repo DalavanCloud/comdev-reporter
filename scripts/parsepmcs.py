@@ -49,7 +49,7 @@ def printMail(msg, body='', file=sys.stdout, recipients=SITE_DEV):
     try:
         sendmail.sendMail(msg, body=body, recipients=recipients)
     except ConnectionRefusedError:
-        print("*** Failed to send the email to " + str(recipients))
+        print("*** Failed to send the email to " + str(recipients), file=file)
 
 uc = UrlCache(interval=0)
 
