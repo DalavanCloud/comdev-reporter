@@ -28,7 +28,9 @@
  "cordova-common@1.1.1": 1458716400, 
  "cordova-common@1.2.0": 1461186000, 
  "cordova-common@1.3.0": 1464040800, 
+ "cordova-common@1.4.0": 1469048400, 
  "cordova-fetch@1.0.0": 1464040800, 
+ "cordova-fetch@1.0.1": 1469048400, 
  "cordova-firefoxos@3.7.0": 1427871600, 
  "cordova-ios@3.9.0": 1438585200, 
  "cordova-ios@3.9.1": 1439449200, 
@@ -57,6 +59,7 @@
  "cordova-lib@6.1.0": 1458716400, 
  "cordova-lib@6.1.1": 1459753200, 
  "cordova-lib@6.2.0": 1464040800, 
+ "cordova-lib@6.3.0": 1469048400, 
  "cordova-osx@4.0.0": 1455609600, 
  "cordova-osx@4.0.1": 1457424000, 
  "cordova-plugin file@4.1.1": 1455004800, 
@@ -215,6 +218,7 @@
  "cordova@6.1.0": 1458716400, 
  "cordova@6.1.1": 1459753200, 
  "cordova@6.2.0": 1464040800, 
+ "cordova@6.3.0": 1469048400, 
  "plugman@1.2.1": 1459753200, 
  "plugman@1.3.0": 1464040800
 }
