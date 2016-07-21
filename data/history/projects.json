@@ -9128,6 +9128,10 @@
    "Wangda Tan",
    1421698421
   ],
+  "weichiu": [
+   "Wei-Chiu Chuang",
+   1469073601
+  ],
   "wheat9": [
    "Haohui Mai",
    1387901228
@@ -9135,6 +9139,10 @@
   "xgong": [
    "Xuan Gong",
    1396700829
+  ],
+  "xiao": [
+   "Xiao Chen",
+   1469073601
   ],
   "xyao": [
    "Xiaoyu Yao",
@@ -10412,6 +10420,10 @@
   ]
  },
  "incubator": {
+  "a_budroni": [
+   "Alessandro Budroni",
+   1469073601
+  ],
   "aa": [
    "Andrew Ahn",
    1438714801.8492293
@@ -14911,6 +14923,10 @@
   "kmensah": [
    "Kuassi Mensah",
    0
+  ],
+  "kmiller": [
+   "Karen Miller",
+   1469073601
   ],
   "kminder": [
    "Kevin Minder",
@@ -20294,6 +20310,60 @@
    1440442801.9017665
   ]
  },
+ "kudu": {
+  "adar": [
+   "Adar Dembo",
+   0
+  ],
+  "bchang": [
+   "Binglin Chang",
+   0
+  ],
+  "danburkert": [
+   "Dan Burkert",
+   0
+  ],
+  "dralves": [
+   "David Alves",
+   0
+  ],
+  "jarcec": [
+   "Jarek Jarcec Cecho",
+   0
+  ],
+  "jdcryans": [
+   "Jean-Daniel Cryans",
+   0
+  ],
+  "jfarrell": [
+   "Jake Farrell",
+   0
+  ],
+  "julien": [
+   "Julien Le Dem",
+   0
+  ],
+  "mattmann": [
+   "Chris Mattmann",
+   0
+  ],
+  "misty": [
+   "Misty Stanley-Jones",
+   0
+  ],
+  "mpercy": [
+   "Mike Percy",
+   0
+  ],
+  "stack": [
+   "Michael Stack",
+   0
+  ],
+  "todd": [
+   "Todd Lipcon",
+   0
+  ]
+ },
  "kylin": {
   "ankur": [
    "Ankur Bansal",
@@ -23293,6 +23363,10 @@
   ]
  },
  "opennlp": {
+  "anastasijam": [
+   "Anastasija Mensikova",
+   1469073601
+  ],
   "autayeu": [
    "Aliaksandr Autayeu",
    0
