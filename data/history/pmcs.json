@@ -540,6 +540,10 @@
    "Robert Levas",
    1466452801
   ],
+  "rnettleton": [
+   "Bob Nettleton",
+   1471665601
+  ],
   "smohanty": [
    "Sumit Mohanty",
    0
@@ -2344,9 +2348,21 @@
    "T Jake Luciani",
    0
   ],
+  "jasobrown": [
+   "Jason Brown",
+   1471665601
+  ],
   "jbellis": [
    "Jonathan Ellis",
    0
+  ],
+  "jfarrell": [
+   "Jake Farrell",
+   1471665601
+  ],
+  "jjirsa": [
+   "Jeff Jirsa",
+   1471665601
   ],
   "junrao": [
    "Jun Rao",
@@ -2367,6 +2383,10 @@
   "xedin": [
    "Pavel Yaskevich",
    0
+  ],
+  "zznate": [
+   "Nate McCall",
+   1471665601
   ]
  },
  "cayenne": {
