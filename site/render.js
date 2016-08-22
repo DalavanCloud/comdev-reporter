@@ -121,12 +121,12 @@ function setReportDate(json, x) {
 		pmc = fullname
 	}
 
-	rm = json[pmc] // reporting months for the pmc
+	var rm = json[pmc] // reporting months for the pmc
 
 	// First check if the list contains an every month indicator
 	// This is necessary to ensure that the dates are added to the list in order
-	for (i in json[pmc]) {
-		sm = json[pmc][i]
+	for (var i in json[pmc]) {
+		var sm = json[pmc][i]
 		if (everyMonth(sm)) {
 			rm = m // reset to every month
 			break
@@ -134,7 +134,7 @@ function setReportDate(json, x) {
 	}
 
 	// Check the months in order, so it does not matter if the data is unordered
-	for (x in m) {
+	for (var x in m) {
 		for (i in rm) {
 			if (m[x] == rm[i]) {
 				dates.push(getWednesdays(x)[2])
@@ -501,7 +501,7 @@ function renderFrontPage(json) {
 				lr = version
 			}
 			if (date >= after.getTime() / 1000) {
-				err = ""
+				var err = ""
 				if (new Date(date * 1000) > new Date()) {
 					err = " (<font color='red'>This seems wrong?!</font>)"
 				}
@@ -555,7 +555,7 @@ function renderFrontPage(json) {
 
 		for (i in first) {
 
-			ml = pmc + ".apache.org-" + first[i]
+			var ml = pmc + ".apache.org-" + first[i]
 			if (ml != prev && ml.search("infra") < 0 && json.mail[pmc] && json.mail[pmc][ml]) {
 				f++;
 				prev = ml
@@ -568,7 +568,7 @@ function renderFrontPage(json) {
 				var diff = x[1]
 				var div = x[2]
 
-				add = ""
+				var add = ""
 				if (json.delivery[pmc] && json.delivery[pmc][lookup]) {
 					add = ":\n    - " + json.delivery[pmc][lookup].quarterly[0] + " emails sent to list (" + json.delivery[pmc][lookup].quarterly[1] + " in previous quarter)";
 				}
@@ -602,7 +602,7 @@ function renderFrontPage(json) {
 		for (ml in json.mail[pmc]) {
 			var skip = false
 			for (i in first) {
-				xml = pmc + ".apache.org-" + first[i]
+				var xml = pmc + ".apache.org-" + first[i]
 				if (ml.search(xml) == 0) {
 					skip = true
 				}
@@ -825,8 +825,8 @@ function renderChart(json, name, container, delivery) {
 	var mlname = d[1] + "@" + d[0] + ".org"
 	dates.sort();
 	var cu = 0;
-	narr = []
-	hitFirst = false
+	var narr = []
+	var hitFirst = false
 
 	var dp = new Date();
 	dp.setMonth(dp.getMonth() - 3);
@@ -834,7 +834,7 @@ function renderChart(json, name, container, delivery) {
 	var odp = new Date();
 	odp.setMonth(odp.getMonth() - 6);
 
-	difference = 0
+	var difference = 0
 	for (i in dates) {
 		var date = dates[i];
 		var dateString = new Date(parseInt(date) * 1000);
