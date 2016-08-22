@@ -17,7 +17,7 @@ function GetAsyncJSON(theUrl, xstate, callback) {
 	if (window.XMLHttpRequest) {
 		xmlHttp = new XMLHttpRequest();
 	} else {
-		xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+	    xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
 	}
 	xmlHttp.open("GET", theUrl, true);
 	xmlHttp.send(null);
