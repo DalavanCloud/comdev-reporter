@@ -13,7 +13,7 @@
 import sys
 if sys.hexversion < 0x03000000:
     raise ImportError("This script requires Python 3")
-import re, json, os, time, email.utils, signal
+import re, json, os, time, email.utils, signal, calendar
 from datetime import datetime
 import urlutils
 import urllib.error
@@ -182,7 +182,7 @@ def weekly_stats(ml, date):
                 ct += 1
                 try:
                     d = email.utils.parsedate(c.group(1).decode('latin1')) # convert match to string
-                    timestamp = int(time.mktime(d))
+                    timestamp = int(calendar.timegm(d))
                     rounded = timestamp - (timestamp % SECS_PER_WEEK) + SECS_PER_WEEK
                     weekly[rounded] = (weekly[rounded] if rounded in weekly else 0) + 1
                 except Exception as err:
