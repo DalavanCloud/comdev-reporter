@@ -6,7 +6,7 @@
    TODO: cache the LDAP query responses or use the appropriate json files instead
 """
 
-import os, sys, json, urllib2, re, time, base64, cgi, subprocess
+import os, sys, json, urllib2, re, time, base64, cgi, subprocess, calendar
 
 form = cgi.FieldStorage();
 user = os.environ['HTTP_X_AUTHENTICATED_USER'] if 'HTTP_X_AUTHENTICATED_USER' in os.environ else None
@@ -72,7 +72,8 @@ if jiraname and user and (isMember(user) or project in getPMCs(user)):
         rdata = getReleaseData(project)
         for entry in cdata:
             if ('name' in entry and 'releaseDate' in entry and 'released' in entry and entry['released']):
-                date = time.mktime(time.strptime(entry['releaseDate'], "%Y-%m-%d"))
+                # force the use of UTC to avoid TZ issues; use float to agree with time.mktime
+                date = float(calendar.timegm(time.strptime(entry['releaseDate'], "%Y-%m-%d")))
                 if prepend:
                     entry['name'] = "%s-%s" % (prepend, entry['name'])
                 rdata[entry['name']] = date
