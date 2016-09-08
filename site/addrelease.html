@@ -59,8 +59,8 @@
      
      function validate(form) {
       var x = document.getElementById('xdate').value.split("-");
-      var y = new Date(x[0],parseInt(x[1])-1,parseInt(x[2]));
-      var nn = parseInt(y.getTime()/1000);
+      // ensure UTC date is used!
+      var nn = Date.UTC(x[0],parseInt(x[1])-1,parseInt(x[2]))/1000;
       document.getElementById('date').value = nn;
       if (isNaN(nn)) {
         alert("Please fill out the release date using YYYY-MMM-DD!")
