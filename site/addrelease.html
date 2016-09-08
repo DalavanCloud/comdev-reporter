@@ -74,6 +74,11 @@
        this.date = date;
      }
 
+     // display date as UTC so timezones west of GMT don't display previous date
+     function toUTCDate(date) {
+       return date.toUTCString().substring(0, 16)
+     }
+
      function listReleaseData(json, a,b) {
       if (done) {
         return;
@@ -97,7 +102,8 @@
         recent.sort(function(a,b){return b.date - a.date}); // reverse sort
         for (idx in recent) {
           rel = recent[idx];
-          obj.innerHTML += "- " + rel.version + ": " + new Date(rel.date*1000).toDateString() + "<br>"
+          d = new Date(rel.date*1000)
+          obj.innerHTML += "- " + rel.version + ": " + toUTCDate(d) + "<br>"
         }
       }
       document.getElementById('committee').value = committee;
