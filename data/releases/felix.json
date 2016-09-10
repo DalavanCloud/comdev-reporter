@@ -1,5 +1,4 @@
 {
- " org.apache.felix.webconsole.plugins.subsystems-0.1.0": 1447632000, 
  "maven-bundle-plugin-3.0.0": 1443139200, 
  "maven-bundle-plugin-3.0.1": 1447369200, 
  "org.apache.felix.bundlerepository 2.0.8": 1459724400, 
@@ -27,5 +26,6 @@
  "org.apache.felix.http.bridge-3.1.6": 1452294000, 
  "org.apache.felix.http.jetty-3.1.6": 1452294000, 
  "org.apache.felix.scr.bnd 1.5.0": 1464386400, 
- "org.apache.felix.threaddump-1.0.0": 1440716400
+ "org.apache.felix.threaddump-1.0.0": 1440716400, 
+ "org.apache.felix.webconsole.plugins.subsystems-0.1.0": 1447632000
 }

@@ -74,9 +74,10 @@ if jiraname and user and (isMember(user) or project in getPMCs(user)):
             if ('name' in entry and 'releaseDate' in entry and 'released' in entry and entry['released']):
                 # force the use of UTC to avoid TZ issues; use float to agree with time.mktime
                 date = float(calendar.timegm(time.strptime(entry['releaseDate'], "%Y-%m-%d")))
+                ename = entry['name'].strip()
                 if prepend:
-                    entry['name'] = "%s-%s" % (prepend, entry['name'])
-                rdata[entry['name']] = date
+                    ename = "%s-%s" % (prepend, ename)
+                rdata[ename] = date
                 added += 1
         # Only update the file if there was an addition:
         if added > 0:

@@ -1,5 +1,4 @@
 {
- " cordova-blackberry@3.8.0": 1441436400, 
  "cordova-android@4.0.0": 1429074000, 
  "cordova-android@4.0.1": 1431414000, 
  "cordova-android@4.1.0": 1437980400, 
@@ -12,6 +11,7 @@
  "cordova-android@5.2.2": 1471849200, 
  "cordova-app-hello-world@3.8.0": 1426575600, 
  "cordova-app-hello-world@3.9.0": 1427353200, 
+ "cordova-blackberry@3.8.0": 1441436400, 
  "cordova-browser@4.0.0": 1439967600, 
  "cordova-browser@4.1.0": 1457470800, 
  "cordova-cli@4.3.1": 1433401200, 
