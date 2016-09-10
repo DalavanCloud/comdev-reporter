@@ -99,11 +99,16 @@
       if (x == 0) {
         obj.innerHTML += "No releases registered yet since " + bd.toDateString() 
       } else {
+        var now = new Date()
         recent.sort(function(a,b){return b.date - a.date}); // reverse sort
         for (idx in recent) {
           rel = recent[idx];
           d = new Date(rel.date*1000)
-          obj.innerHTML += "- " + rel.version + ": " + toUTCDate(d) + "<br>"
+          obj.innerHTML += "- " + rel.version + ": " + toUTCDate(d)
+          if (d > now){
+            obj.innerHTML += " (<font color='red'>This is in the future?!</font>)"
+          }
+          obj.innerHTML +="<br>"
         }
       }
       document.getElementById('committee').value = committee;
