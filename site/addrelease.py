@@ -44,7 +44,7 @@ err = None
 if date != None and version and committee:
     if committee in getPMCs(user) or isMember(user):
         rdata = getReleaseData(committee)
-        if date > 0:
+        if date >= 86400: # allow for local time just in case
             rdata[version] = date
         else: # it's 1970-01-01
             if version in rdata:
