@@ -1022,6 +1022,11 @@ function addRelease(pmc, version, date) {
 		var x = date.split("-");
 		var y = new Date(x[0], parseInt(x[1]) - 1, parseInt(x[2]));
 		var nn = parseInt(y.getTime() / 1000);
+		var now = (new Date().getTime()) / 1000;
+		if (nn >= now) {
+		    alert("Date is in the future!")
+		    return
+		}
 		GetAsyncJSON("addrelease.py?json=true&committee=" + pmc + "&version=" + escape(version) + "&date=" + nn, null, function(json) {
 			if (json && json.versions) {
 				var n = 0;

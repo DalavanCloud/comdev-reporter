@@ -66,6 +66,11 @@
         alert("Please fill out the release date using YYYY-MMM-DD!")
         return false
       }
+      var now = (new Date().getTime())/1000
+      if (nn >= now) {
+        alert("The date is in the future!")
+        return false
+      }
       return true
      }
      
