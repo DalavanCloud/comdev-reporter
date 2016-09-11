@@ -792,8 +792,9 @@ function renderJIRA(pmc) {
 	obj.innerHTML += jsdata.jira[pmc][0] + " JIRA tickets created in the last 3 months<br>";
 	obj.innerHTML += jsdata.jira[pmc][1] + " JIRA tickets closed/resolved in the last 3 months<br>";
 	if (jsdata.keys[pmc]) {
-		obj.innerHTML += "Keys used: <kbd>" + jsdata.keys[pmc].join(", ") + "</kbd>"
+		obj.innerHTML += "Keys used: <kbd>" + jsdata.keys[pmc].join(", ") + "</kbd><br>"
 	}
+	obj.innerHTML += "Keys with tickets: <kbd>" + jsdata.jira[pmc][2].join(", ") + "</kbd>"
 
 }
 

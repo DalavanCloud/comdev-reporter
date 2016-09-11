@@ -293,20 +293,24 @@ if re.match(r"^[-a-zA-Z0-9_.]+$", user):
         jiraname = group.upper()
         if group in jmap:
             keys[group] = []
+            jdata[group][2] = []
             for jiraname in jmap[group]:
                 x,y, p = getJIRAS(jiraname)
                 jdata[group][0] += x
                 jdata[group][1] += y
-                jdata[group][2] = p
+                if x > 0 or y > 0:
+                    jdata[group][2].append(p)
                 keys[group].append(jiraname)
         elif group in ddata and 'name' in ddata[group]:
             jiras = getJIRAProjects(ddata[group]['name'])
             keys[group] = jiras
+            jdata[group][2] = []
             for jiraname in jiras:
                 x,y, p= getJIRAS(jiraname)
                 jdata[group][0] += x
                 jdata[group][1] += y
-                jdata[group][2] = p
+                if x > 0 or y > 0:
+                    jdata[group][2].append(p)
         elif jiraname:
             keys[group]=[jiraname]
             x,y, p= getJIRAS(jiraname)
