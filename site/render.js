@@ -689,7 +689,12 @@ function renderFrontPage(json) {
 		dialog.setAttribute("id", "dialog_" + pmc);
 		dialog.setAttribute("title", "Fetch data from JIRA for " + pmc)
 		dialog.setAttribute("style", "display: none;")
-		dialog.innerHTML = "<form><b>JIRA Project:</b><input type='text' name='jira' placeholder='FOO'><br><b>Optional prepend:</b> <input name='prepend' type='text' placeholder='Foo'/><br>"+
+        if (jsdata.keys[pmc] && jsdata.keys[pmc].length > 0) {
+            dialog.innerHTML = "<p>Suggested JIRA Keys: <kbd>" + jsdata.keys[pmc].join(", ") + "</kbd></p>"
+        } else {
+            dialog.innerHTML = "<p>No JIRA keys found - are you sure this project uses JIRA?</p>"
+        }
+		dialog.innerHTML += "<form><b>JIRA Project:</b><input type='text' name='jira' placeholder='FOO'><br><b>Optional prepend:</b> <input name='prepend' type='text' placeholder='Foo'/><br>"+
 		                   "<input type='button' value='Fetch from JIRA' onclick='fetchJIRA(\"" + pmc + "\", this.form[\"jira\"].value, this.form[\"prepend\"].value);'></form>"+
 		                   "<p>If you have multiple JIRA projects and they only have the version number in their release versions, please enter the component name in the 'prepend' field.</p>"
 		document.getElementById('tab_' + pmc).appendChild(dialog)
