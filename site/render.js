@@ -687,7 +687,7 @@ function renderFrontPage(json) {
 		// Fetch from JIRA dialog
 		var dialog = document.createElement('div');
 		dialog.setAttribute("id", "dialog_" + pmc);
-		dialog.setAttribute("title", "Fetch data from JIRA")
+		dialog.setAttribute("title", "Fetch data from JIRA for " + pmc)
 		dialog.setAttribute("style", "display: none;")
 		dialog.innerHTML = "<form><b>JIRA Project:</b><input type='text' name='jira' placeholder='FOO'><br><b>Optional prepend:</b> <input name='prepend' type='text' placeholder='Foo'/><br>"+
 		                   "<input type='button' value='Fetch from JIRA' onclick='fetchJIRA(\"" + pmc + "\", this.form[\"jira\"].value, this.form[\"prepend\"].value);'></form>"+
@@ -697,7 +697,7 @@ function renderFrontPage(json) {
 		// Manually add release dialog
 		var rdialog = document.createElement('div');
 		rdialog.setAttribute("id", "rdialog_" + pmc);
-		rdialog.setAttribute("title", "Add a release")
+		rdialog.setAttribute("title", "Add a release for " + pmc)
 		rdialog.setAttribute("style", "display: none;")
 		rdialog.innerHTML = "<form><b>Version:</b><input type='text' name='version' placeholder='1.2.3'><br>"+
 		                    "<b>Date:</b> <input name='date' type='text' placeholder='YYYY-MM-DD'/><br>"+
