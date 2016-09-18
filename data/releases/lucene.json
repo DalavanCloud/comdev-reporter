@@ -71,5 +71,6 @@
  "Field Type branch": 1350000000.0, 
  "IOContext branch": 1350000000.0, 
  "Realtime Branch": 1350000000.0, 
- "flexscoring branch": 1350000000.0
+ "flexscoring branch": 1350000000.0, 
+ "pylucene 6.2.0": 1474156800
 }
