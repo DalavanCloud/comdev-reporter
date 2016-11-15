@@ -11,7 +11,7 @@
  document.getElementById('committee').value = committee;
  var xdate = document.getElementById('xdate');
  var done = false;
- xdate.value = new Date().toISOString().substring(0, 10)
+ xdate.defaultValue = new Date().toISOString().substring(0, 10)
  
  function validate(form) {
   var x = document.getElementById('xdate').value.split("-");
