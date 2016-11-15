@@ -22,15 +22,16 @@
      should use a prefix to distinguish these. 
      For example Apache Commons releases LANG and IO separately, so uses versions such as "LANG-1.2" and "IO-2.3" 
   </p>
-  <p>To remove a release, provide its version and set the date to 1970-01-01</p>
-  <p>If an entry is incorrect, just provide the corrected details and they will replace the existing entry.</p>
+  <p>To remove a release, provide its version and set the date to 1970-01-01<br>
+     If an entry is incorrect, just provide the corrected details and they will replace the existing entry.
+  </p>
 
    <form action="addrelease.py" method="post" id="form" onsubmit="return validate(this)">
     
     <input type="hidden" name="date" value="" id="date"/>
     <b>Committee:</b><input type="text" name="committee" value="" readonly="readonly" id="committee"/>
     <b>Full version name:</b> (Note: use a product name prefix if the PMC releases multiple products)<input type="text" name="version" value="" placeholder="1.2.0 or LANG-1.2.0 (e.g. Commons)" id="version"/>
-    <b>Date of release (YYYY-MM-DD):</b><input type="text" name="xdate" value="" placeholder="YYYY-MM-DD (use 1970-01-01 to remove a release)" id="xdate"/>
+    <b>Date of release (YYYY-MM-DD):</b> (Note: use 1970-01-01 to remove a release)<input type="text" name="xdate" value="" placeholder="YYYY-MM-DD (use 1970-01-01 to remove a release)" id="xdate"/>
     <input type="submit" value="Update release data"/>
    </form>
 </div>
