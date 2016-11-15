@@ -9,10 +9,9 @@
      }
  }
  document.getElementById('committee').value = committee;
- var date = new Date();
  var xdate = document.getElementById('xdate');
  var done = false;
- xdate.value = date.getFullYear() + "-" + ((date.getMonth()+1) < 10? "0"+(date.getMonth()+1) : (date.getMonth()+1)) + "-" + ((date.getDay()+1) < 10? "0"+(date.getDay()+1) : (date.getDay()+1))
+ xdate.value = new Date().toISOString().substring(0, 10)
  
  function validate(form) {
   var x = document.getElementById('xdate').value.split("-");
