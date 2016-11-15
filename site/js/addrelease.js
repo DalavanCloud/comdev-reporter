@@ -35,11 +35,6 @@
    this.date = date;
  }
 
- // display date as UTC so timezones west of GMT don't display previous date
- function toUTCDate(date) {
-   return date.toUTCString().substring(0, 16)
- }
-
  function listReleaseData(json, a,b) {
   if (done) {
     return;
@@ -65,7 +60,7 @@
     for (idx in recent) {
       rel = recent[idx];
       d = new Date(rel.date*1000)
-      obj.innerHTML += "- " + rel.version + ": " + toUTCDate(d)
+      obj.innerHTML += "- " + rel.version + ": " + d.toISOString().substring(0, 10)
       if (d > now){
         obj.innerHTML += " (<font color='red'>This is in the future?!</font>)"
       }
