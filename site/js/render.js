@@ -505,7 +505,7 @@ function renderFrontPage(json) {
 				if (new Date(date * 1000) > new Date()) {
 					err = " (<font color='red'>This seems wrong?!</font>)"
 				}
-				releases.innerHTML += "&rarr; " + "<b>" + version + " was released on </b>" + new Date(date * 1000).toDateString() + err + "<br>"
+				releases.innerHTML += "&rarr; " + "<b>" + version + "</b> was released on " + new Date(date * 1000).toDateString() + err + "<br>"
 				addLine(pmc, " - " + version + " was released on " + new Date(date * 1000).toDateString() + err)
 				nr++;
 			}
