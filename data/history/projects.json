@@ -796,6 +796,10 @@
    "Janos Matyas",
    1412323133
   ],
+  "mgergely": [
+   "Miklos Gergely",
+   1479355201
+  ],
   "mithmatt": [
    "Matt",
    1456862401
@@ -3014,6 +3018,10 @@
   "cipi": [
    "Ciprian Ciubotariu",
    1454356802
+  ],
+  "geomacy": [
+   "Geoff Macartney",
+   1479355201
   ],
   "grkvlt": [
    "Andrew Donald Kennedy",
@@ -7318,6 +7326,10 @@
    "Mehant Baid",
    1417038548
   ],
+  "neerajar": [
+   "Neeraja Rentachintala",
+   1479355201
+  ],
   "parthc": [
    "parthc",
    1417038548
@@ -8323,6 +8335,128 @@
   ],
   "twl": [
    "Ted Leung",
+   0
+  ]
+ },
+ "geode": {
+  "abaker": [
+   "Anthony Baker",
+   0
+  ],
+  "adongre": [
+   "Avinash",
+   0
+  ],
+  "agingade": [
+   "Anilkumar Gingade",
+   0
+  ],
+  "ashvin": [
+   "Ashvin Agrawal",
+   0
+  ],
+  "boglesby": [
+   "Barrett Oglesby",
+   0
+  ],
+  "bschuchardt": [
+   "Bruce J Schuchardt",
+   0
+  ],
+  "cos": [
+   "Konstantin I Boudnik",
+   0
+  ],
+  "dbarnes": [
+   "Dave Barnes",
+   0
+  ],
+  "dschneider": [
+   "Darrel Schneider",
+   0
+  ],
+  "eshu11": [
+   "Eric Shu",
+   0
+  ],
+  "gregchase": [
+   "Gregory Chase",
+   0
+  ],
+  "hiteshkhamesra": [
+   "Hitesh Khamesra",
+   0
+  ],
+  "jasonhuynh": [
+   "Jason Huynh",
+   0
+  ],
+  "jchen21": [
+   "Jianxia Chen",
+   0
+  ],
+  "jensdeppe": [
+   "Jens Deppe",
+   0
+  ],
+  "jinmeiliao": [
+   "Jinmei Liao",
+   0
+  ],
+  "jxblum": [
+   "John Blum",
+   0
+  ],
+  "klund": [
+   "Kirk Lund",
+   0
+  ],
+  "kmiller": [
+   "Karen Miller",
+   0
+  ],
+  "markito": [
+   "William Markito",
+   0
+  ],
+  "mbretl": [
+   "Mark Bretl",
+   0
+  ],
+  "niallp": [
+   "Niall Pemberton",
+   0
+  ],
+  "nlamba": [
+   "Nitin Lamba",
+   0
+  ],
+  "nnag": [
+   "Nabarun Nag",
+   0
+  ],
+  "rvs": [
+   "Roman Shaposhnik",
+   0
+  ],
+  "sai_boorlagadda": [
+   "Sai Boorlagadda",
+   0
+  ],
+  "sbawaskar": [
+   "Swapnil Bawaskar",
+   0
+  ],
+  "udo": [
+   "Udo Kohlmeyer",
+   0
+  ],
+  "upthewaterspout": [
+   "Dan Smith",
+   0
+  ],
+  "zhouxj": [
+   "Xiaojian Zhou",
    0
   ]
  },
@@ -12200,6 +12334,10 @@
   "chandanva": [
    "Chandan V.A",
    0
+  ],
+  "chanlee": [
+   "Chan Lee",
+   1479355201
   ],
   "chansen": [
    "Carol B. Hansen",
@@ -19197,6 +19335,10 @@
    "Tathagata Das",
    0
   ],
+  "tdomhan": [
+   "Tobias Domhan",
+   1479355201
+  ],
   "tdunning": [
    "Ted Dunning",
    0
@@ -24841,6 +24983,10 @@
   "mikeadvo": [
    "Dr. Michael Stehmann",
    0
+  ],
+  "mseidel": [
+   "Matthias Seidel",
+   1479355201
   ],
   "mst": [
    "Michael Stahl",
