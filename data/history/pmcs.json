@@ -1859,6 +1859,64 @@
    0
   ]
  },
+ "beam": {
+  "aljoscha": [
+   "Aljoscha Krettek",
+   0
+  ],
+  "amitsela": [
+   "Amit Sela",
+   0
+  ],
+  "bchambers": [
+   "Ben Chambers",
+   0
+  ],
+  "davor": [
+   "Davor Bonaci",
+   0
+  ],
+  "dhalperi": [
+   "Dan Halperin",
+   0
+  ],
+  "frances": [
+   "Frances Perry",
+   0
+  ],
+  "jbonofre": [
+   "Jean-Baptiste Onofré",
+   0
+  ],
+  "jwills": [
+   "Josh Wills",
+   0
+  ],
+  "kenn": [
+   "Kenneth Knowles",
+   0
+  ],
+  "lcwik": [
+   "Luke Cwik",
+   0
+  ],
+  "mxm": [
+   "Maximilian Michels",
+   0
+  ],
+  "robertwb": [
+   "Robert Bradshaw",
+   0
+  ],
+  "sewen": [
+   "Stephan Ewen",
+   0
+  ],
+  "takidau": [
+   "Tyler Akidau",
+   0
+  ]
+ },
  "bigtop": {
   "abayer": [
    "Andrew Bayer",
@@ -4573,6 +4631,68 @@
   ],
   "venki": [
    "Venki Korukanti",
+   0
+  ]
+ },
+ "eagle": {
+  "arunmanoharan": [
+   "Arun Manoharan",
+   0
+  ],
+  "cgupta": [
+   "Chaitali Gupta",
+   0
+  ],
+  "dazhou": [
+   "Daniel Zhou",
+   0
+  ],
+  "hao": [
+   "Hao Chen",
+   0
+  ],
+  "hdendukuri": [
+   "Hemanth Dendukuri",
+   0
+  ],
+  "jhyde": [
+   "Julian Hyde",
+   0
+  ],
+  "jilin": [
+   "Jilin Jiang",
+   0
+  ],
+  "jinhuwu": [
+   "Jinhu Wu",
+   0
+  ],
+  "libsun": [
+   "Libin Sun",
+   0
+  ],
+  "mw": [
+   "Michael Wu",
+   0
+  ],
+  "ptgoetz": [
+   "P. Taylor Goetz",
+   0
+  ],
+  "qingwzhao": [
+   "Qingwen Zhao",
+   0
+  ],
+  "ralphsu": [
+   "Ralph Su",
+   0
+  ],
+  "senthilec566": [
+   "Senthil Kumar",
+   0
+  ],
+  "yonzhang2012": [
+   "Edward Zhang",
    0
   ]
  },
