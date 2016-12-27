@@ -7090,60 +7090,7 @@
    0
   ]
  },
- "devicemap": {
-  "abellucci": [
-   "Alessandro Bellucci",
-   1417034508
-  ],
-  "asavory": [
-   "Andrew Savory",
-   1417034508
-  ],
-  "bdelacretaz": [
-   "Bertrand Delacretaz",
-   1417034508
-  ],
-  "brianleroux": [
-   "Brian James LeRoux",
-   1417034508
-  ],
-  "chregu": [
-   "Christian Stocker",
-   1417034508
-  ],
-  "pjespersen": [
-   "Philip Jespersen",
-   1417034508
-  ],
-  "radu": [
-   "Radu Cotescu",
-   1417034508
-  ],
-  "sandreani": [
-   "Stefano Andreani",
-   1417034508
-  ],
-  "scottbw": [
-   "Scott Wilson",
-   1417034508
-  ],
-  "sylvain": [
-   "Sylvain Wallez",
-   1417034508
-  ],
-  "timfernando": [
-   "Tim Fernando",
-   1417034508
-  ],
-  "vy": [
-   "Volkan Yazici",
-   1429815602.774942
-  ],
-  "wkeil": [
-   "Werner Keil",
-   1417034508
-  ]
- },
+ "devicemap": {},
  "directmemory": {},
  "directory": {
   "aadomowski": [
@@ -32966,80 +32913,7 @@
    1473739201
   ]
  },
- "zest": {
-  "adreghiciu": [
-   "Alin George Dreghiciu",
-   1433790002.9962668
-  ],
-  "akarasulu": [
-   "Alex Karasulu",
-   1428577202.2278588
-  ],
-  "efy": [
-   "Edward Yakop",
-   1428577202.2556217
-  ],
-  "gragaller": [
-   "Georg Ragaller",
-   1466078401
-  ],
-  "jaydatt": [
-   "Jaydatt Desai",
-   1432666802.7124434
-  ],
-  "jcarman": [
-   "James W. Carman",
-   1428577202.2720912
-  ],
-  "jgenender": [
-   "Jeff Genender",
-   1428577202.2741437
-  ],
-  "jiri": [
-   "Jiri Jetmar",
-   1430247602.3568454
-  ],
-  "marrs": [
-   "Marcel Offermans",
-   1428577202.2899766
-  ],
-  "mattmann": [
-   "Chris Mattmann",
-   1428577202.2907665
-  ],
-  "mlynarik": [
-   "Tibor Mlynarik",
-   1432321202.5615954
-  ],
-  "niclas": [
-   "Par Niclas Hedhman",
-   0
-  ],
-  "paulmerlin": [
-   "Paul Merlin",
-   1428951610.3354218
-  ],
-  "pvdyck": [
-   "Philippe Van Dyck",
-   1433185202.557861
-  ],
-  "rvs": [
-   "Roman Shaposhnik",
-   1428577202.314027
-  ],
-  "smartini": [
-   "Sandro Martini",
-   1428577202.320817
-  ],
-  "soelvsten": [
-   "Kent Sølvsten",
-   1434279602.1909933
-  ],
-  "stanislavm": [
-   "Stanislav Muhametsin",
-   1428980402.969614
-  ]
- },
+ "zest": {},
  "zookeeper": {
   "akornev": [
    "Andrew Kornev",

@@ -4475,16 +4475,7 @@
    0
   ]
  },
- "devicemap": {
-  "radu": [
-   "Radu Cotescu",
-   0
-  ],
-  "wkeil": [
-   "Werner Keil",
-   0
-  ]
- },
+ "devicemap": {},
  "directmemory": {},
  "directory": {
   "akarasulu": [
@@ -15125,52 +15116,7 @@
    0
   ]
  },
- "zest": {
-  "akarasulu": [
-   "Alex Karasulu",
-   0
-  ],
-  "jcarman": [
-   "James W. Carman",
-   0
-  ],
-  "jgenender": [
-   "Jeff Genender",
-   0
-  ],
-  "jiri": [
-   "Jiri Jetmar",
-   1433185202.5243347
-  ],
-  "marrs": [
-   "Marcel Offermans",
-   0
-  ],
-  "mattmann": [
-   "Chris Mattmann",
-   0
-  ],
-  "niclas": [
-   "Par Niclas Hedhman",
-   0
-  ],
-  "paulmerlin": [
-   "Paul Merlin",
-   1430247602.3855963
-  ],
-  "rvs": [
-   "Roman Shaposhnik",
-   0
-  ],
-  "smartini": [
-   "Sandro Martini",
-   0
-  ],
-  "soelvsten": [
-   "Kent Sølvsten",
-   1442890809.1982014
-  ]
- },
+ "zest": {},
  "zookeeper": {
   "breed": [
    "Benjamin Reed",
