@@ -6559,6 +6559,10 @@
    "Stephen Henson",
    0
   ],
+  "druggeri": [
+   "Daniel Ruggeri",
+   1483041601
+  ],
   "fielding": [
    "Roy T. Fielding",
    0
@@ -6602,6 +6606,10 @@
   "jailletc36": [
    "Christophe Jaillet",
    1425927602.1302419
+  ],
+  "jchampion": [
+   "Jacob Champion",
+   1483041601
   ],
   "jerenkrantz": [
    "Justin Erenkrantz",
@@ -11271,6 +11279,52 @@
   ],
   "yegor": [
    "Yegor Kozlov",
+   0
+  ]
+ },
+ "polygene": {
+  "akarasulu": [
+   "Alex Karasulu",
+   0
+  ],
+  "jcarman": [
+   "James W. Carman",
+   0
+  ],
+  "jgenender": [
+   "Jeff Genender",
+   0
+  ],
+  "jiri": [
+   "Jiri Jetmar",
+   0
+  ],
+  "marrs": [
+   "Marcel Offermans",
+   0
+  ],
+  "mattmann": [
+   "Chris Mattmann",
+   0
+  ],
+  "niclas": [
+   "Par Niclas Hedhman",
+   0
+  ],
+  "paulmerlin": [
+   "Paul Merlin",
+   0
+  ],
+  "rvs": [
+   "Roman Shaposhnik",
+   0
+  ],
+  "smartini": [
+   "Sandro Martini",
+   0
+  ],
+  "soelvsten": [
+   "Kent Sølvsten",
    0
   ]
  },
