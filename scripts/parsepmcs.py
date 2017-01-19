@@ -204,7 +204,11 @@ chairs={}
 for e in c_info:
     if c_info[e]['pmc']:
         v = c_info[e]
-        chairs[v['display_name']] = list(v['chair'].values())[0]['name']
+        cn = v['chair'].values()
+        if len(cn) > 0:
+            chairs[v['display_name']] = list(cn)[0]['name']
+        else:
+            print("WARN: no chair name found for %s in CI" % v['display_name'])
 
 chairIndex = 'https://svn.apache.org/repos/asf/infrastructure/site/trunk/content/foundation/index.mdtext'
 resp = uc.get(chairIndex, name=None, encoding='utf-8', errors=None)
