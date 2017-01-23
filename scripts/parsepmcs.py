@@ -132,9 +132,8 @@ for group in ldapgroups:
 nonldapgroups = loadJson('https://whimsy.apache.org/public/public_nonldap_groups.json')['groups']
 for nongroup in sorted(nonldapgroups):
     if nongroup in ldapgroups:
-        printMail("WARN: duplicate definition of group '%s'" % nongroup,
-            body="The non-LDAP group '%s' is defined in the asf-authorization-template file, and should not also exist as an LDAP unix group"  % nongroup,
-            recipients=[SITE_DEV])
+#         Don't mail; the group might be still in use if the LDAP defn has yet to be added
+        print("WARN: duplicate definition of group '%s'" % nongroup)
     else:
         if nongroup in projects:
             print("Dropping non-ldap group %s" % nongroup)
