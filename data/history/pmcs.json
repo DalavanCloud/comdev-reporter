@@ -1,42 +1,5 @@
 {
- "abdera": {
-  "antelder": [
-   "Anthony Elder",
-   0
-  ],
-  "calavera": [
-   "David Calavera",
-   0
-  ],
-  "ckoppelt": [
-   "Christine Koppelt",
-   0
-  ],
-  "dandiep": [
-   "Daniel Diephouse",
-   0
-  ],
-  "jancona": [
-   "James P. Ancona",
-   0
-  ],
-  "jmsnell": [
-   "James M. Snell",
-   0
-  ],
-  "jrduncans": [
-   "Stephen Charles Duncan, Jr.",
-   0
-  ],
-  "rooneg": [
-   "Garrett Rooney",
-   0
-  ],
-  "ugo": [
-   "Ugo Cei",
-   0
-  ]
- },
+ "abdera": {},
  "accumulo": {
   "acordova": [
    "Aaron Michael Cordova",
