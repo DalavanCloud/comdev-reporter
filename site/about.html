@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<!--
+
+Licensed to the Apache Software Foundation (ASF) under one or more
+contributor license agreements.  See the NOTICE file distributed with
+this work for additional information regarding copyright ownership.
+The ASF licenses this file to You under the Apache License, Version 2.0
+(the "License"); you may not use this file except in compliance with
+the License.  You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-->
+<!--[if IE 9]><html class="lt-ie10" lang="en" > <![endif]-->
+<html class="no-js" lang="en">
+<head>
+  <title>About the Apache Project Reporter Tool</title>
+  <meta name="description" content="Technical details about the Apache Project Reporter tool">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="/favicons/favicon.ico">
+  <link rel="stylesheet" href="css/foundation.css" />
+  <style type="text/css">
+    #footer {
+      break-before: always;
+      position:absolute;
+      bottom:20px;
+      font-style: italic;
+      font-size: small;
+      text-align: center;
+      width: 100%;
+    }
+  </style>  
+</head>
+<body>
+  <div class="row">
+    <div class="large-12 columns">
+      <h1>About This Website</h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="large-9 columns" role="content">
+      <article>
+        <p>
+          This website is maintained by the 
+          <span itemscope itemprop="author" itemtype="http://schema.org/Organization">
+            <span itemprop="name"><a itemprop="url" href="http://community.apache.org/">Apache Community Development PMC</a></span> who works on the 
+            <span itemprop="email">dev@community.apache.org</span>
+            <span itemscope itemtype="https://schema.org/ContactPage"><a itemprop="url" href="https://community.apache.org/lists.html">archived mailing list</a></span>.
+          </span>
+        </p>
+        <p>
+          The text for this website is static HTML, but most of the work happens in JavaScript which loads a variety of JSON data sources to display the project report sample.
+          <br/>
+          The underlying sources are stored in a Subversion repository at: <pre itemscope itemtype="https://schema.org/SoftwareSourceCode" style="border:1px solid #999; padding: 12px; margin: 1em 7px 1em 7px;">svn co <a itemprop="codeRepository" href="https://svn.apache.org/repos/asf/comdev/reporter.apache.org/trunk/">https://svn.apache.org/repos/asf/comdev/reporter.apache.org/trunk/</a></pre>
+          <br/>
+          Changes checked into the HTML are reflected immediately on the production server.
+        </p>
+        <p>
+          Bugs with the reporter tool can be reported in JIRA's <a href="https://issues.apache.org/jira/browse/COMDEV/component/12327329/">COMDEV project, component Reporter</a>.
+        </p>
+        <p>
+          See <a href="https://svn.apache.org/repos/asf/comdev/reporter.apache.org/trunk/README.txt">README.txt</a> for technical details on how the site builds the data.
+        </p>
+      </article>
+    </div>
+    <aside class="large-3 columns">
+      <div class="panel">  
+        <h5>Links</h5>
+        <ul class="side-nav">
+          <li><a href="https://reporter.apache.org/" class="button">Back to Reporter</a></li>
+          <li><a href="https://community.apache.org/" class="button">ComDev PMC</a></li>
+        </ul>    
+      </div>
+    </aside>    
+  </div><!-- /row -->
+  <footer class="row" id="footer">
+    <p>
+      Managed by the <a href="http://community.apache.org/">Apache Community Development Project</a>.<br/>
+      Copyright&copy; 2017, the Apache Software Foundation. Licensed under the <a rel="license" href="http://www.apache.org/licenses/LICENSE-2.0">Apache License, Version 2.0</a><br/>
+    </p>
+  </footer>
+</body>
+</html>
