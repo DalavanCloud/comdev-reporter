@@ -282,7 +282,7 @@ function epochSecsYYYYMMDD(t) {
 function renderFrontPage(json) {
 	jsdata = json
 	var container = document.getElementById('contents')
-	container.innerHTML = "<h2 style='text-align: center; margin-bottom: 10px;' class='hide-for-small-only'>Apache Committee Report Helper (proposed)</h2>Click on a committee name to view statistics:"
+	container.innerHTML = "Click on a committee name to view statistics:"
 	var top = document.createElement('div');
 	container.appendChild(top)
 
