@@ -300,7 +300,7 @@ function renderFrontPage(json) {
 
 	var pcontainer = document.createElement('div');
 	pcontainer.setAttribute("id", "tabcontents")
-	pcontainer.setAttribute("style", "text-align: left !important; margin: 0 auto; width: 1000px; border-radius: 5px; border: 2px solid #666; height: 100%; overflow: scroll !important; overflow-y: scroll !important; ")
+	pcontainer.setAttribute("style", "text-align: left !important; margin: 0 auto; width: 1000px; border-radius: 5px; border: 2px solid #666; overflow: scroll !important; overflow-y: scroll !important; ")
 	container.appendChild(pcontainer)
 
 	var sproject = document.location.search.substr(1);
