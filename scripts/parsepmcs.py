@@ -77,7 +77,11 @@ newgroups = []
 newpmcs = []
 
 def updateProjects(stamp, group, cid):
-    cname = ldappeople[cid]['name']
+    if cid in ldappeople:
+        cname = ldappeople[cid]['name']
+    else:
+        print("ERROR: LDAP unix group '%s' has entry '%s' not in people LDAP group" % (group, cid), file=sys.stderr)
+        cname = '(Missing from LDAP people)'
     now = stamp
     if not group in projects:
         print("New unx group %s" % group)
@@ -93,7 +97,11 @@ def updateProjects(stamp, group, cid):
         projects[group][cid] = [cname, projects[group][cid][1], stamp]
 
 def updateCommittees(stamp, group, cid):
-    cname = ldappeople[cid]['name']
+    if cid in ldappeople:
+        cname = ldappeople[cid]['name']
+    else:
+        print("ERROR: LDAP committee group '%s' has entry '%s' not in people LDAP group" % (group, cid), file=sys.stderr)
+        cname = '(Missing from LDAP people)'
     now = stamp
     if not group in pmcs: # a new project
         print("New pmc group %s" % group)
