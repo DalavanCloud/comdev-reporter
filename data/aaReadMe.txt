@@ -1,5 +1,5 @@
-This directory contains both scripts (which are stored in SVN)
-and JSON files (which are not, because they are recreated on demand)
+This directory contains JSON files which are not stored in SVN,
+because they are recreated on demand
 
 Note that the JIRA subdirectory contents can be recreated on demand
 However the releases and history subdirectories contain json files
