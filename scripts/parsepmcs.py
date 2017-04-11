@@ -159,6 +159,15 @@ for project in projects:
             ret += 1
     projects[project] =  {i:projects[project][i] for i in projects[project] if projects[project][i]!="!"}
 
+# drop empty projects
+projects = {
+    p : projects[p]
+    for p in projects 
+        if len(projects[p]) > 0 # only keep ones with entries 
+        or # else print a message; this leaves the condition as false 
+        print("Dropping empty project: %s" % p) # print returns None == false
+}
+
 for project in pmcs:
     for cid in pmcs[project]:
         if len(pmcs[project][cid]) < 3 or pmcs[project][cid][2] < (time.time() - (86400*3)):
@@ -166,6 +175,15 @@ for project in pmcs:
             pmcs[project][cid] = "!" # flag for deletion
             ret += 1
     pmcs[project] =  {i:pmcs[project][i] for i in pmcs[project] if pmcs[project][i]!="!"}
+
+# drop empty PMCs
+pmcs = {
+    p : pmcs[p]
+    for p in pmcs 
+        if len(pmcs[p]) > 0 # only keep ones with entries 
+        or # else print a message; this leaves the condition as false 
+        print("Dropping empty PMC: %s" % p) # print returns None == false
+}
 
 
 print("Writing pmcs.json")
