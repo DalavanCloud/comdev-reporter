@@ -10,7 +10,9 @@ if sys.hexversion < 0x030000F0:
    { "pmc1" : [created, resolved],
      "pmc2: ...
    }
-   
+
+    Output:
+    ../data/bugzillastats.json
 """
 import errtee
 import re
