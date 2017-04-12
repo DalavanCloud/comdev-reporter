@@ -59,18 +59,30 @@ def loadJson(url):
     resp.close()
     return j
 
+def readJson(file):
+    print("Reading " + file)
+    with open(file, "r", encoding='utf-8') as f:
+        return json.loads(f.read())
+
 __HOME = '../data/'
 
 pmcs = {}
 
-print("Reading pmcs.json")
-with open(__HOME + "pmcs.json", "r", encoding='utf-8') as f:
-    pmcs = json.loads(f.read())
+print("Processing pmcs.json")
+try:
+    pmcs=readJson(__HOME + "pmcs.json")
+except Exception as e:
+    print(e," - using backup")
+    pmcs=readJson(__HOME + "history/pmcs.json")
 
 projects = {}
-print("Reading projects.json")
-with open(__HOME + "projects.json", "r", encoding='utf-8') as f:
-    projects = json.loads(f.read())
+
+print("Processing projects.json")
+try:
+    projects=readJson(__HOME + "projects.json")
+except Exception as e:
+    print(e," - using backup")
+    projects=readJson(__HOME + "history/projects.json")
 
 newgroups = []
 newpmcs = []
