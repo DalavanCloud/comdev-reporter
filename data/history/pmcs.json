@@ -1,5 +1,4 @@
 {
- "abdera": {},
  "accumulo": {
   "acordova": [
    "Aaron Michael Cordova",
@@ -3466,7 +3465,6 @@
    0
   ]
  },
- "continuum": {},
  "cordova": {
   "abub": [
    "Abu Obeida Bakhach",
@@ -4411,7 +4409,6 @@
    0
   ]
  },
- "deltacloud": {},
  "deltaspike": {
   "arne": [
    "Arne Limburg",
@@ -4490,8 +4487,6 @@
    0
   ]
  },
- "devicemap": {},
- "directmemory": {},
  "directory": {
   "akarasulu": [
    "Alex Karasulu",
@@ -4748,7 +4743,6 @@
    1468180802
   ]
  },
- "etch": {},
  "falcon": {
   "ajayyadava": [
    "Ajay Yadav",
@@ -9743,7 +9737,6 @@
    0
   ]
  },
- "mrunit": {},
  "myfaces": {
   "awiner": [
    "Adam Winer",
@@ -10298,7 +10291,6 @@
    1465848002
   ]
  },
- "onami": {},
  "oodt": {
   "ahart": [
    "Andrew Hart",
@@ -11801,7 +11793,6 @@
    0
   ]
  },
- "rave": {},
  "reef": {
   "afchung90": [
    "Andrew Chung",
@@ -12340,7 +12331,6 @@
    0
   ]
  },
- "shindig": {},
  "shiro": {
   "ankon": [
    "Andreas Kohn",
@@ -13031,7 +13021,6 @@
    1450382402
   ]
  },
- "stratos": {},
  "struts": {
   "amashchenko": [
    "Aleksandr Mashchenko",
@@ -14370,7 +14359,6 @@
    0
   ]
  },
- "tuscany": {},
  "twill": {
   "anew": [
    "Andreas Neumann",
@@ -14881,7 +14869,6 @@
    0
   ]
  },
- "wookie": {},
  "ws": {
   "amilas": [
    "Amila Chinthaka Suriarachchi",
@@ -15250,7 +15237,6 @@
    0
   ]
  },
- "zest": {},
  "zookeeper": {
   "breed": [
    "Benjamin Reed",

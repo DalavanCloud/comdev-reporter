@@ -1,5 +1,4 @@
 {
- "abdera": {},
  "accumulo": {
   "acordova": [
    "Aaron Michael Cordova",
@@ -1544,7 +1543,6 @@
    1404071826
   ]
  },
- "apsite": {},
  "archiva": {
   "aheritier": [
    "Arnaud Heritier",
@@ -5845,7 +5843,6 @@
    1478491201
   ]
  },
- "continuum": {},
  "cordova": {
   "abub": [
    "Abu Obeida Bakhach",
@@ -7066,7 +7063,6 @@
    0
   ]
  },
- "deltacloud": {},
  "deltaspike": {
   "antoinesd": [
    "Antoine Sabot-Durand",
@@ -7201,8 +7197,6 @@
    0
   ]
  },
- "devicemap": {},
- "directmemory": {},
  "directory": {
   "aadomowski": [
    "Aleksander Adamowski",
@@ -7663,7 +7657,6 @@
    0
   ]
  },
- "etch": {},
  "falcon": {
   "ajayyadava": [
    "Ajay Yadav",
@@ -21594,11 +21587,6 @@
    0
   ]
  },
- "incubator-site": {},
- "infra": {},
- "infrastructure": {},
- "infrastructure-interest": {},
- "infrastructure-root": {},
  "isis": {
   "bibryam": [
    "Bilgin Ismet Ibryam",
@@ -23007,8 +22995,6 @@
    1440500401.9268813
   ]
  },
- "lenya": {},
- "lenya-soc": {},
  "libcloud": {
   "alex_gaynor": [
    "Alex Gaynor",
@@ -24079,7 +24065,6 @@
    0
   ]
  },
- "member": {},
  "mesos": {
   "alexr": [
    "Alex R",
@@ -24378,7 +24363,6 @@
    0
   ]
  },
- "mrunit": {},
  "myfaces": {
   "alexanderbell": [
    "Alexander Bell",
@@ -24689,7 +24673,6 @@
    1435086002.9830115
   ]
  },
- "mysos": {},
  "nifi": {
   "afucs": [
    "Andre FdM",
@@ -25334,7 +25317,6 @@
    0
   ]
  },
- "onami": {},
  "oodt": {
   "ahart": [
    "Andrew Hart",
@@ -27239,7 +27221,6 @@
    0
   ]
  },
- "pmc-chairs": {},
  "poi": {
   "amol": [
    "Amol S. Deshmukh",
@@ -27906,7 +27887,6 @@
    1488744001
   ]
  },
- "rave": {},
  "reef": {
   "afchung90": [
    "Andrew Chung",
@@ -28721,7 +28701,6 @@
    1404243660
   ]
  },
- "shindig": {},
  "shiro": {
   "adc": [
    "Alan Cabrera",
@@ -29712,7 +29691,6 @@
    1450152002
   ]
  },
- "stratos": {},
  "struts": {
   "amashchenko": [
    "Aleksandr Mashchenko",
@@ -30273,7 +30251,6 @@
    0
   ]
  },
- "svnadmins": {},
  "synapse": {
   "ajith": [
    "Ajith Ranabahu",
@@ -31762,7 +31739,6 @@
    0
   ]
  },
- "tuscany": {},
  "twill": {
   "anew": [
    "Andreas Neumann",
@@ -32133,7 +32109,6 @@
    1449633602
   ]
  },
- "whirr": {},
  "wicket": {
   "adelbene": [
    "Andrea Del Bene",
@@ -32326,7 +32301,6 @@
    0
   ]
  },
- "wookie": {},
  "ws": {
   "acutright": [
    "Andrew Scott Cutright",
@@ -33695,7 +33669,6 @@
    1490932801
   ]
  },
- "zest": {},
  "zookeeper": {
   "akornev": [
    "Andrew Kornev",
