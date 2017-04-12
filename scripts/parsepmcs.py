@@ -7,7 +7,6 @@ if sys.hexversion < 0x030000F0:
    https://whimsy.apache.org/public/committee-info.json
    https://whimsy.apache.org/public/public_ldap_people.json
    https://whimsy.apache.org/public/public_ldap_groups.json
-   https://whimsy.apache.org/public/public_ldap_committees.json
    and updates:
    data/pmcs.json - members of pmcs
    data/projects.json - committers of projects
@@ -121,12 +120,12 @@ stamp = int(time.time())
 c_info = loadJson('https://whimsy.apache.org/public/committee-info.json')['committees']
 ldappeople = loadJson('https://whimsy.apache.org/public/public_ldap_people.json')['people']
 ldapgroups = loadJson('https://whimsy.apache.org/public/public_ldap_groups.json')['groups']
-ldapcttees = loadJson('https://whimsy.apache.org/public/public_ldap_committees.json')['committees']
 
-for group in ldapcttees:
-    if group in c_info:
-        for cid in ldapcttees[group]['roster']:
+for group in c_info:
+    if c_info[group]['pmc']:
+        for cid in c_info[group]['roster']:
             updateCommittees(stamp, group, cid)
+
 for group in ldapgroups:
     if group != 'committers' and group in c_info:
         for cid in ldapgroups[group]['roster']:
