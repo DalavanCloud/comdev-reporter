@@ -4660,10 +4660,6 @@
    "Daniel Zhou",
    0
   ],
-  "denglg": [
-   "Lin Gang Deng",
-   1491364801
-  ],
   "hao": [
    "Hao Chen",
    0
@@ -12027,44 +12023,6 @@
    0
   ]
  },
- "security": {
-  "ben": [
-   "Ben Laurie",
-   0
-  ],
-  "dirkx": [
-   "Dirk-Willem van Gulik",
-   0
-  ],
-  "jorton": [
-   "Joe Orton",
-   0
-  ],
-  "lars": [
-   "Lars Eilebrecht",
-   0
-  ],
-  "markt": [
-   "Mark Thomas",
-   0
-  ],
-  "mjc": [
-   "Mark J. Cox",
-   0
-  ],
-  "striker": [
-   "Sander Striker",
-   0
-  ],
-  "wrowe": [
-   "William A. Rowe Jr.",
-   0
-  ],
-  "ylavic": [
-   "Yann Ylavic",
-   1434826803.592754
-  ]
- },
  "sentry": {
   "ali": [
    "Ali Abbas Rizvi",
@@ -13443,56 +13401,6 @@
   "mdisabatino": [
    "Marco Di Sabatino Di Diodoro",
    0
-  ]
- },
- "tac": {
-  "cdutz": [
-   "Christofer Dutz",
-   1449720001
-  ],
-  "darshankumar": [
-   "Darshan Kumar",
-   1481860801
-  ],
-  "gmcdonald": [
-   "Gavin McDonald",
-   0
-  ],
-  "gsaini": [
-   "Gaurav Saini",
-   1481860801
-  ],
-  "humbedooh": [
-   "Daniel Gruno",
-   0
-  ],
-  "issac": [
-   "Issac Goldstand",
-   1481860801
-  ],
-  "jani": [
-   "Jan Iversen",
-   0
-  ],
-  "lewismc": [
-   "Lewis John McGibbney",
-   0
-  ],
-  "mbenson": [
-   "Matthew Jason Benson",
-   0
-  ],
-  "missy": [
-   "Melissa Warnkin",
-   1443812417.0020037
-  ],
-  "nick": [
-   "Nick Burch",
-   0
-  ],
-  "wikier": [
-   "Sergio Fernández",
-   1479240001
   ]
  },
  "tajo": {
