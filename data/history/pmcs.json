@@ -2423,6 +2423,40 @@
    0
   ]
  },
+ "carbondata": {
+  "chenliang613": [
+   "Liang Chen",
+   0
+  ],
+  "hsaputra": [
+   "Henry Saputra",
+   0
+  ],
+  "jackylk": [
+   "Jacky Li",
+   0
+  ],
+  "jarray888": [
+   "Heng Qiu",
+   0
+  ],
+  "jbonofre": [
+   "Jean-Baptiste Onofré",
+   0
+  ],
+  "jihongma": [
+   "Jihong Ma",
+   0
+  ],
+  "umamahesh": [
+   "Uma Maheswara Rao G",
+   0
+  ],
+  "vimaldas": [
+   "Vimal Das Kammath",
+   0
+  ]
+ },
  "cassandra": {
   "aleksey": [
    "Aleksey Yeschenko",
@@ -4916,6 +4950,56 @@
   ],
   "walkerr": [
    "Rob Walker",
+   0
+  ]
+ },
+ "fineract": {
+  "edcable": [
+   "Ed Cable",
+   0
+  ],
+  "gsaini": [
+   "Gaurav Saini",
+   0
+  ],
+  "ishan1604": [
+   "Ishan Khanna",
+   0
+  ],
+  "jim": [
+   "Jim Jagielski",
+   0
+  ],
+  "mage": [
+   "Markus Geiss",
+   0
+  ],
+  "myrle": [
+   "Myrle Krantz",
+   0
+  ],
+  "nazeer1100126": [
+   "Nazeer Shaik",
+   0
+  ],
+  "rajuan": [
+   "Adi Raju",
+   0
+  ],
+  "sheyden": [
+   "Sander van der Heyden",
+   0
+  ],
+  "terencemo": [
+   "Terence Monteiro",
+   0
+  ],
+  "vishwasbabu": [
+   "Vishwas Babu A J",
+   0
+  ],
+  "vorburger": [
+   "Michael Vorburger",
    0
   ]
  },
@@ -9691,6 +9775,104 @@
    0
   ]
  },
+ "metron": {
+  "bjkolly": [
+   "Brad Kolarov",
+   0
+  ],
+  "cestella": [
+   "Casey Stella",
+   0
+  ],
+  "cporter": [
+   "Charles Porter",
+   0
+  ],
+  "dbhirko": [
+   "Dave Hirko",
+   0
+  ],
+  "ddutta": [
+   "Debo",
+   0
+  ],
+  "dev_warlord": [
+   "Andrew Hartnett",
+   0
+  ],
+  "discovery": [
+   "Discovery Gerdes",
+   0
+  ],
+  "gvetticaden": [
+   "George Vetticaden",
+   0
+  ],
+  "jsirota": [
+   "James Sirota",
+   0
+  ],
+  "kirankom": [
+   "Kiran",
+   0
+  ],
+  "lmccay": [
+   "Larry McCay",
+   0
+  ],
+  "lyle": [
+   "David Lyle",
+   0
+  ],
+  "mbittmann": [
+   "Mark Bittmann",
+   0
+  ],
+  "mperez": [
+   "Michael Perez",
+   0
+  ],
+  "nickallen": [
+   "Nick Allen",
+   0
+  ],
+  "prhodes": [
+   "Phillip Rhodes",
+   0
+  ],
+  "ptgoetz": [
+   "P. Taylor Goetz",
+   0
+  ],
+  "reaperhulk": [
+   "Paul Kehrer",
+   0
+  ],
+  "rmerriman": [
+   "Ryan Merriman",
+   0
+  ],
+  "rurcioli": [
+   "Ray Sting",
+   0
+  ],
+  "sheetal_dolas": [
+   "Sheetal Dolas",
+   0
+  ],
+  "sirsean": [
+   "Sean Schulte",
+   0
+  ],
+  "smogg": [
+   "Oskar Zabik",
+   0
+  ],
+  "vinodkv": [
+   "Vinod Kumar Vavilapalli",
+   0
+  ]
+ },
  "mina": {
   "akarasulu": [
    "Alex Karasulu",
@@ -10703,6 +10885,10 @@
   "colen": [
    "William Colen",
    0
+  ],
+  "druss": [
+   "Daniel Russ",
+   1492632001
   ],
   "gsingers": [
    "Grant Ingersoll",
