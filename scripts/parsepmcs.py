@@ -152,7 +152,7 @@ nonldapgroups = loadJson('https://whimsy.apache.org/public/public_nonldap_groups
 for nongroup in sorted(nonldapgroups):
     if nongroup in ldapgroups:
 #         Don't mail; the group might be still in use if the LDAP defn has yet to be added
-        print("WARN: duplicate definition of group '%s'" % nongroup)
+        print("WARN: duplicate definition of non-ldap group '%s'" % nongroup)
     else:
         if nongroup in projects:
             print("Dropping non-ldap group %s" % nongroup)
