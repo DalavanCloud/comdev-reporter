@@ -1,6 +1,7 @@
 {
  "maven-bundle-plugin-3.0.0": 1443139200, 
  "maven-bundle-plugin-3.0.1": 1447369200, 
+ "org.apache.felix.bundlerepository 2.0.10": 1492992000, 
  "org.apache.felix.bundlerepository 2.0.8": 1459724400, 
  "org.apache.felix.bundlerepository-2.0.6": 1443135600, 
  "org.apache.felix.configadmin-1.8.6": 1432854000, 
