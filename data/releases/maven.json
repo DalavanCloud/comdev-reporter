@@ -47,6 +47,7 @@
  "Maven Eclipse Plugin 2.10": 1432764000, 
  "Maven Enforcer 1.4": 1422486000, 
  "Maven Enforcer 1.4.1": 1440280800, 
+ "Maven Failsafe Plugin 2.20": 1492041600, 
  "Maven Fluido Skin 1.4": 1430949600, 
  "Maven Fluido Skin 1.5": 1456182000, 
  "Maven Fluido Skin 1.6": 1478390400, 
@@ -92,6 +93,7 @@
  "Maven Site Plugin 3.6": 1479340800, 
  "Maven Stage Plugin 1.0": 1425337200, 
  "Maven Stage Plugin Version 1.0": 1425337200, 
+ "Maven Surefire Plugin 2.20": 1492041600, 
  "Maven Verifier 1.6": 1435183200, 
  "Maven Wagon 2.10": 1442008800, 
  "Maven Wagon 2.12": 1485475200, 
@@ -104,6 +106,5 @@
  "maven-parent-28": 1444708800, 
  "maven-release 2.5.3": 1445054400, 
  "maven-verifier-plugin 1.1": 1428962400, 
- "surefire-2.19": 1445140800, 
- "surefire-2.20": 1492041600
+ "surefire-2.19": 1445140800
 }
