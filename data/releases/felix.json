@@ -45,6 +45,7 @@
  "org.apache.felix.scr.bnd 1.5.0": 1464386400, 
  "org.apache.felix.threaddump-1.0.0": 1440716400, 
  "org.apache.felix.webconsole-4.3.2": 1494288000, 
+ "org.apache.felix.webconsole-4.3.4": 1494547200, 
  "org.apache.felix.webconsole.plugins.obr-1.0.4": 1494288000, 
  "org.apache.felix.webconsole.plugins.subsystems-0.1.0": 1447632000
 }
