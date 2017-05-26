@@ -6532,6 +6532,10 @@
   ]
  },
  "hive": {
+  "aihuaxu": [
+   "Aihua Xu",
+   1495800001
+  ],
   "athusoo": [
    "Ashish Thusoo",
    0
@@ -6540,9 +6544,17 @@
    "Brock Noland",
    0
   ],
+  "ctang": [
+   "Chaoyu Tang",
+   1495800001
+  ],
   "cws": [
    "Carl Steinbach",
    0
+  ],
+  "daijy": [
+   "Jianyong Dai",
+   1495800001
   ],
   "ecapriolo": [
    "Edward Capriolo",
@@ -6588,6 +6600,10 @@
    "Joydeep Sensarma",
    0
   ],
+  "jxiang": [
+   "Jimmy Xiang",
+   1495800001
+  ],
   "kevinwilfong": [
    "Kevin Wilfong",
    0
@@ -6599,6 +6615,10 @@
   "leftyl": [
    "Lefty Leverenz",
    0
+  ],
+  "lirui": [
+   "Rui Li",
+   1495800001
   ],
   "namit": [
    "Namit Jain",
@@ -6640,6 +6660,10 @@
    "Sergey Shelukhin",
    1425956401.949171
   ],
+  "spena": [
+   "Sergio Peña",
+   1495800001
+  ],
   "sunchao": [
    "Sun Chao",
    1434135603.052665
@@ -6652,6 +6676,10 @@
    "Thejas Nair",
    0
   ],
+  "vgumashta": [
+   "Vaibhav Gumashta",
+   1495800001
+  ],
   "vikram": [
    "Vikram Dixit K",
    0
@@ -6659,6 +6687,10 @@
   "xuefu": [
    "Xuefu Zhang",
    0
+  ],
+  "ychena": [
+   "Yongzhi Chen",
+   1495800001
   ]
  },
  "httpcomponents": {
