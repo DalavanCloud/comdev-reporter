@@ -12876,6 +12876,10 @@
    "Robert Joseph Evans",
    0
   ],
+  "dbtsai": [
+   "DB Tsai",
+   1497672002
+  ],
   "haoyuan": [
    "Haoyuan Li",
    0
@@ -12883,6 +12887,10 @@
   "harsha": [
    "Ram Sriharsha",
    0
+  ],
+  "hvanhovell": [
+   "Herman van Hövell",
+   1497672002
   ],
   "irashid": [
    "Imran Rashid",
@@ -12907,6 +12915,10 @@
   "kayousterhout": [
    "Kay Ousterhout",
    0
+  ],
+  "lian": [
+   "Cheng Lian",
+   1497672002
   ],
   "markhamstra": [
    "Mark Hamstra",
@@ -12984,6 +12996,14 @@
    "Thomas Dudziak",
    0
   ],
+  "vanzin": [
+   "Marcelo Masiero Vanzin",
+   1497672002
+  ],
+  "wenchen": [
+   "Wenchen Fan",
+   1497672002
+  ],
   "woggle": [
    "Charles Reiss",
    0
@@ -12995,6 +13015,10 @@
   "yhuai": [
    "Yin Huai",
    1455652801
+  ],
+  "zsxwing": [
+   "Shixiong Zhu",
+   1497672002
   ]
  },
  "sqoop": {
