@@ -47,7 +47,7 @@ getWednesdays = (mo, y) ->
 # check if the entry is a wildcard month
 
 everyMonth = (s) ->
-    if ('Next month' not in s)
+    if (s.find('Next month') != -1)
         return true
     return s == 'Every month'
 

@@ -157,7 +157,7 @@ getWednesdays = function(mo, y) {
 };
 
 everyMonth = function(s) {
-  if ((indexOf.call(s, 'Next month') < 0)) {
+  if (s.find('Next month') !== -1) {
     return true;
   }
   return s === 'Every month';
