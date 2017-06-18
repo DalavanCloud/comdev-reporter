@@ -25,7 +25,6 @@ a {
 #dialog {
     position: relative;
     display: inline-block;
-    background: #eee;
     width: 90%;
     max-width: 1600px;
     min-width: 1200px;
@@ -33,26 +32,28 @@ a {
 }
 
 .tabs {
+    margin-left: 2px;
     border-top-left-radius: 3px;
     border-top-right-radius: 3px;
     float: left;
     height: 36px;
     width: 100%;
+    background: none;
     text-align: center;
-    background: #456;
 }
 
 .tablink {
-    background: linear-gradient(to bottom, #eeeeee 0%,#d5d5d5 100%);
+    background: linear-gradient(to bottom, #FAFAFA 0%,#dfdfdf 100%);
     color: #555;
     padding-top: 10px;
     float: left;
     height: 26px;
     min-width: 110px;
     text-align: center;
-    border-right: 4px solid #456;
+    margin-right: 4px;
     box-shadow: inset 0px -1px 2px rgba(0,0,0,0.75);
 }
+
 
 .tablink:first-child {
     border-top-left-radius: 5px;
@@ -66,24 +67,25 @@ a {
 
 .tablink_selected {
     border-bottom: none;
-    box-shadow: none;
+    box-shadow: 2px -2px 2px rgba(0,0,0,0.25);
     cursor: default;
     color: #338;
-    background: #eee;
+    background: #FAFAFA;
 }
 
 .bread {
-    
+    box-shadow: 2px -2px 2px rgba(0,0,0,0.25);
     margin: 0 auto;
     padding:8px;
+    margin-top: 36px;
     width: calc(100% - 20px);
-    background: #eee;
+    background: #FAFAFA;
     text-align: left;
 }
 
 h2 {
     text-align: center;
-    padding-top: 28px;
+    padding-top: 0px;
     margin-bottom: 8px;
 }
 
