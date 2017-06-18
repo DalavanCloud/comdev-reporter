@@ -1151,7 +1151,7 @@ preloadTabs = function(json, state) {
 currentTab = 0;
 
 loadTabs = function(stab) {
-  var all, bread, j, k, l, len1, len2, main, pmc, ref, sel, tab, tdiv, title, v;
+  var all, bread, j, k, l, len1, len2, main, pmc, ref, sel, tab, tdiv, v;
   main = new HTML('div', {
     id: 'dialog'
   });
@@ -1170,8 +1170,6 @@ loadTabs = function(stab) {
       tab = new HTML('div', {
         "class": 'tablink tablink_selected'
       }, v.title);
-      title = new HTML('h2', {}, v.title + ":");
-      main.inject(title);
     } else {
       tab = new HTML('div', {
         "class": 'tablink',

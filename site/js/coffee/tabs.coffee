@@ -16,8 +16,6 @@ loadTabs = (stab) ->
             currentTab = k
             history.pushState(null, null, "?#{k}")
             tab = new HTML('div', {class: 'tablink tablink_selected'}, v.title)
-            title = new HTML('h2', {}, v.title+":")
-            main.inject(title)
         else
             tab = new HTML('div', {class: 'tablink', onclick: "loadTabs(" + k + ");"}, v.title)
         tdiv.inject(tab)
