@@ -176,7 +176,7 @@ formatRm = function(array) {
 };
 
 setReportDate = function(json, x) {
-  var dates, fullname, i, j, l, len1, len2, len3, len4, len5, link, nextdate, ny, o, pmc, q, r, ref, ref1, ref2, reportdate, rm, sm, today;
+  var dates, fullname, i, j, l, len1, len2, len3, len4, len5, link, nextdate, ny, o, pmc, q, r, ref, ref1, reportdate, rm, sm, today;
   pmc = x[0];
   reportdate = x[1];
   fullname = (x[2] || "Unknown").replace(/Apache /, "");
@@ -221,9 +221,7 @@ setReportDate = function(json, x) {
   reportdate.innerHTML += "<b>Reporting schedule:</b> " + (json[pmc] ? formatRm(json[pmc]) : "Unknown(?)") + "<br>";
   reportdate.innerHTML += "<b>Next report date: " + (nextdate ? nextdate.toDateString() : "Unknown(?)") + "</b>";
   if (nextdate) {
-    link = "https://svn.apache.org/repos/private/foundation/board/board_agenda_" + nextdate.getFullYear() + "_" + ((ref2 = nextdate.getMonth() < 9) != null ? ref2 : {
-      "0": ""
-    }) + (nextdate.getMonth() + 1) + "_" + nextdate.getDate() + ".txt";
+    link = "https://svn.apache.org/repos/private/foundation/board/board_agenda_" + nextdate.getFullYear() + "_" + (nextdate.getMonth() < 9 ? "0" : "") + (nextdate.getMonth() + 1) + "_" + nextdate.getDate() + ".txt";
     return reportdate.innerHTML += "<br>File your report in <a href='" + link + "'>" + link + "</a> when it has been seeded.";
   }
 };
@@ -257,7 +255,7 @@ buildPanel = function(pmc, title) {
 };
 
 addLine = function(pmc, line) {
-  var i, j, l, len, len1, len2, lines, out, ref, ref1, results, word, words, xline;
+  var i, j, l, len, len1, len2, lines, out, results, word, words, xline;
   line = line ? line : "  ";
   lines = line.split(/\n/);
   results = [];
@@ -268,14 +266,10 @@ addLine = function(pmc, line) {
     out = "";
     for (i = l = 0, len2 = words.length; l < len2; i = ++l) {
       word = words[i];
-      len += word.replace(/<.+?>/, "").length + ((ref = i === words.length - 1) != null ? ref : {
-        0: 1
-      });
+      len += word.replace(/<.+?>/, "").length + (i === words.length - 1 ? 0 : 1);
       if (len >= 78) {
         out += "\n   ";
-        len = words[i].replace(/<.+?>/, "").length + ((ref1 = i === words.length - 1) != null ? ref1 : {
-          0: 1
-        });
+        len = words[i].replace(/<.+?>/, "").length + (i === words.length - 1 ? 0 : 1);
       }
       out += words[i] + " ";
     }
@@ -289,7 +283,7 @@ isNewPMC = function(json, pmc, after) {
 };
 
 PMCchanges = function(json, pmc, after) {
-  var afterTime, c, changes, entry, k, nc, ncn, np, npmc, npn, pmcStartTime, ref, roster;
+  var afterTime, c, changes, entry, k, nc, ncn, np, npmc, npn, pmcStartTime, roster;
   changes = buildPanel(pmc, "PMC changes (from committee-info)");
   roster = json.pmcdates[pmc].roster;
   nc = 0;
@@ -327,9 +321,7 @@ PMCchanges = function(json, pmc, after) {
     }
     if (entry[1] > afterTime) {
       changes.innerHTML += "&rarr; " + entry[0] + " was added to the PMC on " + new Date(entry[1] * 1000).toDateString() + "<br>";
-      addLine(pmc, ((ref = npmc > 1) != null ? ref : {
-        "   ": ""
-      }) + " - " + entry[0] + " was added to the PMC on " + new Date(entry[1] * 1000).toDateString());
+      addLine(pmc, (npmc > 1 ? "   " : "") + " - " + entry[0] + " was added to the PMC on " + new Date(entry[1] * 1000).toDateString());
     }
   }
   if (npmc === 0) {
@@ -357,7 +349,7 @@ epochSecsYYYYMMDD = (function(_this) {
 })(this);
 
 renderFrontPage = function(tpmc) {
-  var a, add, after, c, changes, container, cu, d, date, dialog, diff, div, entry, err, f, first, hcolors, health, hvalues, i, j, json, k, l, len1, len2, lookup, lr, lrn, ml, mlbox, mlname, mo, nc, ncn, ncom, np, npmc, npn, nr, obj, p, pmc, prev, rdialog, ref, ref1, ref2, ref3, ref4, ref5, ref6, ref7, ref8, ref9, releases, reportdate, results, skip, sproject, template, text, thisHour, title, top, total, tr, ul, version, x, xml, y;
+  var a, add, after, c, changes, container, cu, d, date, dialog, diff, div, entry, err, f, first, hcolors, health, hvalues, i, j, json, k, l, len1, len2, lookup, lr, lrn, ml, mlbox, mlname, mo, nc, ncn, ncom, np, npmc, npn, nr, obj, p, pmc, prev, rdialog, ref, ref1, ref2, ref3, ref4, ref5, ref6, ref7, ref8, releases, reportdate, results, skip, sproject, template, text, thisHour, title, top, total, tr, ul, version, x, xml, y;
   thisHour = toInt(new Date().getTime() / (3600 * 1000));
   container = document.getElementById('contents');
   top = document.createElement('div');
@@ -502,9 +494,7 @@ renderFrontPage = function(tpmc) {
           }
           if (entry[1] > after.getTime() / 1000) {
             changes.innerHTML += "&rarr; " + entry[0] + " was added as a committer on " + new Date(entry[1] * 1000).toDateString() + "<br>";
-            addLine(pmc, ((ref8 = ncom > 1) != null ? ref8 : {
-              "   ": ""
-            }) + " - " + entry[0] + " was added as a committer on " + new Date(entry[1] * 1000).toDateString());
+            addLine(pmc, (ncom > 1 ? "   " : "") + " - " + entry[0] + " was added as a committer on " + new Date(entry[1] * 1000).toDateString());
           }
         }
         if (ncom === 0) {
@@ -530,9 +520,9 @@ renderFrontPage = function(tpmc) {
       lr = null;
       lrn = 0;
       tr = 0;
-      ref9 = json.releases[pmc];
-      for (version in ref9) {
-        date = ref9[version];
+      ref8 = json.releases[pmc];
+      for (version in ref8) {
+        date = ref8[version];
         tr++;
         if (date > lrn) {
           lrn = date;

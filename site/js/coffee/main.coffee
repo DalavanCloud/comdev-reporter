@@ -110,7 +110,7 @@ setReportDate = (json, x) ->
     reportdate.innerHTML += "<b>Next report date: " + (if nextdate then nextdate.toDateString() else "Unknown(?)") + "</b>"
     if (nextdate)
         link = "https://svn.apache.org/repos/private/foundation/board/board_agenda_" + nextdate.getFullYear() +
-            "_" + (nextdate.getMonth() < 9 ? "0" : "") + (nextdate.getMonth() + 1) + "_" + nextdate.getDate() + ".txt"
+            "_" + (if nextdate.getMonth() < 9 then "0" else "") + (nextdate.getMonth() + 1) + "_" + nextdate.getDate() + ".txt"
         reportdate.innerHTML += "<br>File your report in <a href='" + link + "'>" + link + "</a> when it has been seeded."
     
 
@@ -151,10 +151,10 @@ addLine = (pmc, line) ->
         len = 0
         out = ""
         for word, i in words
-            len += word.replace(/<.+?>/, "").length + (i == words.length - 1 ? 0 : 1)
+            len += word.replace(/<.+?>/, "").length + (if i == words.length - 1 then 0 else 1)
             if (len >= 78)
                 out += "\n   "
-                len = words[i].replace(/<.+?>/, "").length + (i == words.length - 1 ? 0 : 1)
+                len = words[i].replace(/<.+?>/, "").length + (if i == words.length - 1 then 0 else 1)
             out += words[i] + " "
         templates[pmc] += out + "\n"
 
@@ -202,7 +202,7 @@ PMCchanges = (json, pmc, after) ->
             
             if (entry[1] > afterTime)
                 changes.innerHTML += "&rarr; " + entry[0] + " was added to the PMC on " + new Date(entry[1] * 1000).toDateString() + "<br>";
-                addLine(pmc, (npmc > 1 ? "   " : "") + " - " + entry[0] + " was added to the PMC on " + new Date(entry[1] * 1000).toDateString())
+                addLine(pmc, (if npmc > 1 then "   " else "") + " - " + entry[0] + " was added to the PMC on " + new Date(entry[1] * 1000).toDateString())
 
         if (npmc == 0)
             addLine(pmc, " - No new PMC members added in the last 3 months")
@@ -372,7 +372,7 @@ renderFrontPage = (tpmc) ->
                         
                         if (entry[1] > after.getTime() / 1000)
                             changes.innerHTML += "&rarr; " + entry[0] + " was added as a committer on " + new Date(entry[1] * 1000).toDateString() + "<br>"
-                            addLine(pmc, (ncom > 1 ? "   " : "") + " - " + entry[0] + " was added as a committer on " + new Date(entry[1] * 1000).toDateString())
+                            addLine(pmc, (if ncom > 1 then "   " else "") + " - " + entry[0] + " was added as a committer on " + new Date(entry[1] * 1000).toDateString())
                         
                     if (ncom == 0) 
                         changes.innerHTML += "&rarr; <font color='red'><b>No new committers in the last 3 months.</b></font><br>";
