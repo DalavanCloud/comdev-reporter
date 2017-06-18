@@ -17,6 +17,11 @@ a {
     color: #224;
 }
 
+.warning {
+    font-size: 1.2rem;
+    color: #A60;
+}
+
 #dialog {
     position: relative;
     display: inline-block;

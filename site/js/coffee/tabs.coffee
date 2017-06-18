@@ -21,15 +21,23 @@ loadTabs = (stab) ->
         tdiv.inject(tab)
         k++
     
-    all = ['Add a tab:', '---------------']
-    for pmc in jsdata.all or []
-        all.push(pmc)
-    sel = makeSelect('project', all)
-    sel.setAttribute("onchange", "addTab(this.value);")
-    tdiv.inject(sel)
-    bread = new HTML('div', { class: 'bread', id: 'contents'}, "Loading page, please wait...")
-    main.inject(bread)
-    loadBread(stab)
+    # Check if person is a member of any PMC or an ASF member
+    if jsdata.all.length > 0
+        # Dirty hack to determine membership for now
+        if jsdata.all.length > 200
+            all = ['Add a tab:', '---------------']
+            for pmc in jsdata.all or []
+                all.push(pmc)
+            sel = makeSelect('project', all)
+            sel.setAttribute("onchange", "addTab(this.value);")
+            tdiv.inject(sel)
+            bread = new HTML('div', { class: 'bread', id: 'contents'}, "Loading page, please wait...")
+            main.inject(bread)
+            
+        # If all good, render the tab
+        loadBread(stab)
+    else
+        main.inject(new HTML('p', { class: 'warning'}, "You need to be a member of at least one PMC in order to utilize the reporting tool."))
 
 addTab = (pmc) ->
     fetch("getjson.py?only="+pmc, {pmc: pmc}, preloadTabs)
