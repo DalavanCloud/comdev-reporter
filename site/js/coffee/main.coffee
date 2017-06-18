@@ -87,18 +87,16 @@ setReportDate = (json, x) ->
             break
 
     # Check the months in order, so it does not matter if the data is unordered
-    for x in m
+    for x,y in m
         for i in rm
-            if (m[x] == rm[i])
-                dates.push(getWednesdays(x)[2])
-
+            if (x == i)
+                dates.push(getWednesdays(y)[2])
     # Cannot combine with the code above because that would destroy the order
     ny = today.getFullYear() + 1
-    for x in m
+    for x,y in m
         for i in rm
-            if (m[x] == rm[i])
-                dates.push(getWednesdays(x, ny)[2])
-
+            if (x == i)
+                dates.push(getWednesdays(y, ny)[2])
     nextdate = dates[0];
     while (nextdate < today)
         nextdate = dates.shift()

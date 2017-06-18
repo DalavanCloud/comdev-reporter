@@ -177,7 +177,7 @@ formatRm = function(array) {
 };
 
 setReportDate = function(json, x) {
-  var dates, fullname, i, j, l, len1, len2, len3, len4, len5, link, nextdate, ny, o, pmc, q, r, ref, ref1, reportdate, rm, sm, today;
+  var dates, fullname, i, j, l, len1, len2, len3, len4, len5, link, nextdate, ny, o, pmc, q, r, ref, ref1, reportdate, rm, sm, today, y;
   pmc = x[0];
   reportdate = x[1];
   fullname = (x[2] || "Unknown").replace(/Apache /, "");
@@ -195,22 +195,22 @@ setReportDate = function(json, x) {
       break;
     }
   }
-  for (l = 0, len2 = m.length; l < len2; l++) {
-    x = m[l];
+  for (y = l = 0, len2 = m.length; l < len2; y = ++l) {
+    x = m[y];
     for (o = 0, len3 = rm.length; o < len3; o++) {
       i = rm[o];
-      if (m[x] === rm[i]) {
-        dates.push(getWednesdays(x)[2]);
+      if (x === i) {
+        dates.push(getWednesdays(y)[2]);
       }
     }
   }
   ny = today.getFullYear() + 1;
-  for (q = 0, len4 = m.length; q < len4; q++) {
-    x = m[q];
+  for (y = q = 0, len4 = m.length; q < len4; y = ++q) {
+    x = m[y];
     for (r = 0, len5 = rm.length; r < len5; r++) {
       i = rm[r];
-      if (m[x] === rm[i]) {
-        dates.push(getWednesdays(x, ny)[2]);
+      if (x === i) {
+        dates.push(getWednesdays(y, ny)[2]);
       }
     }
   }
