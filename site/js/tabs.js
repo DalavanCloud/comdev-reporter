@@ -1163,6 +1163,11 @@ loadTabs = function(stab) {
     k++;
   }
   if (jsdata.all.length > 0) {
+    bread = new HTML('div', {
+      "class": 'bread',
+      id: 'contents'
+    }, "Loading page, please wait...");
+    main.inject(bread);
     if (jsdata.all.length > 200) {
       all = ['Add a tab:', '---------------'];
       ref = jsdata.all || [];
@@ -1173,11 +1178,6 @@ loadTabs = function(stab) {
       sel = makeSelect('project', all);
       sel.setAttribute("onchange", "addTab(this.value);");
       tdiv.inject(sel);
-      bread = new HTML('div', {
-        "class": 'bread',
-        id: 'contents'
-      }, "Loading page, please wait...");
-      main.inject(bread);
     }
     return loadBread(stab);
   } else {
