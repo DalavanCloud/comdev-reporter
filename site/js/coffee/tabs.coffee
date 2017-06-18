@@ -23,6 +23,9 @@ loadTabs = (stab) ->
     
     # Check if person is a member of any PMC or an ASF member
     if jsdata.all.length > 0
+        bread = new HTML('div', { class: 'bread', id: 'contents'}, "Loading page, please wait...")
+        main.inject(bread)
+        
         # Dirty hack to determine membership for now
         if jsdata.all.length > 200
             all = ['Add a tab:', '---------------']
@@ -31,8 +34,7 @@ loadTabs = (stab) ->
             sel = makeSelect('project', all)
             sel.setAttribute("onchange", "addTab(this.value);")
             tdiv.inject(sel)
-            bread = new HTML('div', { class: 'bread', id: 'contents'}, "Loading page, please wait...")
-            main.inject(bread)
+            
             
         # If all good, render the tab
         loadBread(stab)
