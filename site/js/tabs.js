@@ -1114,8 +1114,8 @@ mergeData = function(json, pmc) {
     }
   }
   todo = new Array('count', 'mail', 'delivery', 'bugzilla', 'jira', 'changes', 'pmcdates', 'pdata', 'releases', 'keys', 'health');
-  for (i = l = 0, len2 = todo.length; l < len2; i = ++l) {
-    key = todo[i];
+  for (l = 0, len2 = todo.length; l < len2; l++) {
+    key = todo[l];
     jsdata[key][pmc] = json[key][pmc];
   }
   jsdata.pmcs.push(pmc);

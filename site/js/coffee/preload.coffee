@@ -20,7 +20,7 @@ mergeData = (json, pmc) ->
                 break
             
     todo = new Array('count', 'mail', 'delivery', 'bugzilla', 'jira', 'changes', 'pmcdates', 'pdata', 'releases', 'keys', 'health')
-    for key, i in todo
+    for key in todo
         jsdata[key][pmc] = json[key][pmc];
     jsdata.pmcs.push(pmc)
     nproject = pmc
