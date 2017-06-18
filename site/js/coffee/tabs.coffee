@@ -27,7 +27,7 @@ loadTabs = (stab) ->
         main.inject(bread)
         
         # Dirty hack to determine membership for now
-        if jsdata.all.length > 200
+        if jsdata.all.length > 100
             all = ['Add a tab:', '---------------']
             for pmc in jsdata.all or []
                 all.push(pmc)

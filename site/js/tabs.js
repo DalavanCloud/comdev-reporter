@@ -1168,7 +1168,7 @@ loadTabs = function(stab) {
       id: 'contents'
     }, "Loading page, please wait...");
     main.inject(bread);
-    if (jsdata.all.length > 200) {
+    if (jsdata.all.length > 100) {
       all = ['Add a tab:', '---------------'];
       ref = jsdata.all || [];
       for (l = 0, len2 = ref.length; l < len2; l++) {
