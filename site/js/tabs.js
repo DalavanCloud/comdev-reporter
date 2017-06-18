@@ -1095,7 +1095,7 @@ tabs = [];
 jsdata = {};
 
 mergeData = function(json, pmc) {
-  var i, j, key, l, len1, len2, ref, todo;
+  var i, j, key, l, len1, len2, ref, todo, xpmc;
   if (!pmc) {
     jsdata = json;
     return;
@@ -1105,17 +1105,16 @@ mergeData = function(json, pmc) {
   }
   if (nproject && nproject.length > 0) {
     ref = jsdata.pmcs;
-    for (j = 0, len1 = ref.length; j < len1; j++) {
-      i = ref[j];
-      if (jsdata.pmcs[i] === nproject) {
+    for (i = j = 0, len1 = ref.length; j < len1; i = ++j) {
+      xpmc = ref[i];
+      if (xpmc === nproject) {
         jsdata.pmcs.splice(i, 1);
         break;
       }
     }
   }
   todo = new Array('count', 'mail', 'delivery', 'bugzilla', 'jira', 'changes', 'pmcdates', 'pdata', 'releases', 'keys', 'health');
-  for (l = 0, len2 = todo.length; l < len2; l++) {
-    i = todo[l];
+  for (i = l = 0, len2 = todo.length; l < len2; i = ++l) {
     key = todo[i];
     jsdata[key][pmc] = json[key][pmc];
   }
