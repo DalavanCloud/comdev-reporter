@@ -24,7 +24,7 @@ a {
     width: 90%;
     max-width: 1600px;
     min-width: 1200px;
-    height: 700px;
+    
     border-radius: 3px;
 }
 
@@ -72,7 +72,7 @@ a {
     
     margin: 0 auto;
     padding:8px;
-    height: 600px;
+    
     width: calc(100% - 20px);
     overflow: auto;
     background: #eee;
