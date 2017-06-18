@@ -249,7 +249,7 @@ buildPanel = function(pmc, title) {
   div.setAttribute("id", linkname + "_" + pmc);
   parent.appendChild(div);
   titlebox = document.createElement('div');
-  titlebox.innerHTML = "<h3 style='background: #666; color: #EEE; border: 1px solid #66A; margin-top: 30px;'>" + title + " &nbsp; &nbsp; <small> <b>&uarr;</b> <a style='color: #FFF; font-size: 0.9rem;' href='#tab_" + pmc + "'>Back to top</a></small></h3>";
+  titlebox.innerHTML = "<h3 style='background: #666; color: #EEE; border: 1px solid #66A; margin-top: 30px;'>" + title + " &nbsp; &nbsp; <small> <b>&uarr;</b> <a style='color: #FFF; font-size: 0.9rem;' href='#top'>Back to top</a></small></h3>";
   div.appendChild(titlebox);
   return div;
 };
@@ -1087,7 +1087,7 @@ tabs = [];
 jsdata = {};
 
 mergeData = function(json, pmc) {
-  var i, j, key, l, len1, len2, ref, todo, xpmc;
+  var j, key, len1, todo;
   if (!pmc) {
     jsdata = json;
     return;
@@ -1095,19 +1095,9 @@ mergeData = function(json, pmc) {
   if (indexOf.call(jsdata.pmcs, pmc) >= 0) {
     return;
   }
-  if (nproject && nproject.length > 0) {
-    ref = jsdata.pmcs;
-    for (i = j = 0, len1 = ref.length; j < len1; i = ++j) {
-      xpmc = ref[i];
-      if (xpmc === nproject) {
-        jsdata.pmcs.splice(i, 1);
-        break;
-      }
-    }
-  }
   todo = new Array('count', 'mail', 'delivery', 'bugzilla', 'jira', 'changes', 'pmcdates', 'pdata', 'releases', 'keys', 'health');
-  for (l = 0, len2 = todo.length; l < len2; l++) {
-    key = todo[l];
+  for (j = 0, len1 = todo.length; j < len1; j++) {
+    key = todo[j];
     jsdata[key][pmc] = json[key][pmc];
   }
   jsdata.pmcs.push(pmc);
@@ -1172,21 +1162,29 @@ loadTabs = function(stab) {
     tdiv.inject(tab);
     k++;
   }
-  all = ['Add a tab:', '---------------'];
-  ref = jsdata.all || [];
-  for (l = 0, len2 = ref.length; l < len2; l++) {
-    pmc = ref[l];
-    all.push(pmc);
+  if (jsdata.all.length > 0) {
+    if (jsdata.all.length > 200) {
+      all = ['Add a tab:', '---------------'];
+      ref = jsdata.all || [];
+      for (l = 0, len2 = ref.length; l < len2; l++) {
+        pmc = ref[l];
+        all.push(pmc);
+      }
+      sel = makeSelect('project', all);
+      sel.setAttribute("onchange", "addTab(this.value);");
+      tdiv.inject(sel);
+      bread = new HTML('div', {
+        "class": 'bread',
+        id: 'contents'
+      }, "Loading page, please wait...");
+      main.inject(bread);
+    }
+    return loadBread(stab);
+  } else {
+    return main.inject(new HTML('p', {
+      "class": 'warning'
+    }, "You need to be a member of at least one PMC in order to utilize the reporting tool."));
   }
-  sel = makeSelect('project', all);
-  sel.setAttribute("onchange", "addTab(this.value);");
-  tdiv.inject(sel);
-  bread = new HTML('div', {
-    "class": 'bread',
-    id: 'contents'
-  }, "Loading page, please wait...");
-  main.inject(bread);
-  return loadBread(stab);
 };
 
 addTab = function(pmc) {
