@@ -17,6 +17,10 @@ a {
     color: #224;
 }
 
+br {
+    line-height: 1.5rem;
+}
+
 .warning {
     font-size: 1.2rem;
     color: #A60;
@@ -87,6 +91,16 @@ h2 {
     text-align: center;
     padding-top: 0px;
     margin-bottom: 8px;
+}
+
+h3 {
+    height: 24px;
+    padding-top: 4px;
+    padding-left: 4px;
+}
+
+h3 a {
+    color: #8AD !important;
 }
 
 
