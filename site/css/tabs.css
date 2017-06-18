@@ -100,8 +100,9 @@ h2 {
   display: block;
   width: auto;
   overflow: hidden;
-  margin-bottom: -0.25rem 0 1.125rem;
-  padding-top: 0.25rem; }
+  margin-bottom: 20px;
+  padding-top: 0.25rem;
+  }
   .sub-nav dt {
     text-transform: uppercase; }
   .sub-nav dt,
@@ -117,9 +118,9 @@ h2 {
     .sub-nav dt a,
     .sub-nav dd a,
     .sub-nav li a {
-      text-decoration: none;
-      color: #999999;
-      padding: 0.1875rem 1rem; }
+      text-decoration: underline;
+      color: #555;
+      padding: 0rem 1.5rem 1.5rem 0rem; }
       .sub-nav dt a:hover,
       .sub-nav dd a:hover,
       .sub-nav li a:hover {
