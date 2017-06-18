@@ -134,7 +134,7 @@ buildPanel = (pmc, title) ->
     parent.appendChild(div)
 
     titlebox = document.createElement('div');
-    titlebox.innerHTML = "<h3 style='background: #666; color: #EEE; border: 1px solid #66A; margin-top: 30px;'>" + title + " &nbsp; &nbsp; <small> <b>&uarr;</b> <a style='color: #FFF; font-size: 0.9rem;' href='#tab_" + pmc + "'>Back to top</a></small></h3>"
+    titlebox.innerHTML = "<h3 style='background: #666; color: #EEE; border: 1px solid #66A; margin-top: 30px;'>" + title + " &nbsp; &nbsp; <small> <b>&uarr;</b> <a style='color: #FFF; font-size: 0.9rem;' href='#top'>Back to top</a></small></h3>"
     div.appendChild(titlebox);
     return div
 
