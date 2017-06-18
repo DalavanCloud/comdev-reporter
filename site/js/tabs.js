@@ -157,7 +157,7 @@ getWednesdays = function(mo, y) {
 };
 
 everyMonth = function(s) {
-  if (s.find('Next month') !== -1) {
+  if (s.search(/next month/i !== -1)) {
     return true;
   }
   return s === 'Every month';

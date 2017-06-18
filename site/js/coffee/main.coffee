@@ -47,7 +47,7 @@ getWednesdays = (mo, y) ->
 # check if the entry is a wildcard month
 
 everyMonth = (s) ->
-    if (s.find('Next month') != -1)
+    if (s.search /next month/i != -1)
         return true
     return s == 'Every month'
 
