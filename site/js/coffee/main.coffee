@@ -82,8 +82,7 @@ setReportDate = (json, x) ->
 
     # First check if the list contains an every month indicator
     # This is necessary to ensure that the dates are added to the list in order
-    for i in json[pmc]
-        sm = json[pmc][i]
+    for sm in json[pmc]
         if everyMonth(sm)
             # Reset to every month
             rm = m

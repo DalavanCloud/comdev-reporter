@@ -190,8 +190,7 @@ setReportDate = function(json, x) {
   rm = json[pmc];
   ref1 = json[pmc];
   for (j = 0, len1 = ref1.length; j < len1; j++) {
-    i = ref1[j];
-    sm = json[pmc][i];
+    sm = ref1[j];
     if (everyMonth(sm)) {
       rm = m;
       break;
