@@ -137,7 +137,7 @@ makeSelect = function(name, arr) {
 getWednesdays = function(mo, y) {
   var d, month, wednesdays;
   d = new Date();
-  if (mo) {
+  if (!isNaN(mo)) {
     d.setMonth(mo);
   }
   if (y) {
@@ -349,23 +349,23 @@ epochSecsYYYYMMDD = (function(_this) {
 })(this);
 
 renderFrontPage = function(tpmc) {
-  var a, add, after, c, changes, container, cu, d, date, dialog, diff, div, entry, err, f, first, hcolors, health, hvalues, i, j, json, k, l, len1, len2, lookup, lr, lrn, ml, mlbox, mlname, mo, nc, ncn, ncom, np, npmc, npn, nr, obj, p, pmc, prev, rdialog, ref, ref1, ref2, ref3, ref4, ref5, ref6, ref7, ref8, releases, reportdate, results, skip, sproject, template, text, thisHour, title, top, total, tr, ul, version, x, xml, y;
+  var a, add, after, c, changes, container, cu, d, date, dialog, diff, div, entry, err, f, first, hcolors, health, hvalues, i, j, json, k, l, len1, len2, lookup, lr, lrn, ml, mlbox, mlname, mo, nc, ncn, ncom, np, npmc, npn, nr, obj, p, pmc, prev, rdialog, ref, ref1, ref2, ref3, ref4, ref5, ref6, ref7, ref8, releases, reportdate, skip, sproject, template, text, thisHour, title, top, total, tr, ul, version, x, xml, y;
   thisHour = toInt(new Date().getTime() / (3600 * 1000));
   container = document.getElementById('contents');
-  top = document.createElement('div');
-  container.appendChild(top);
   json = jsdata;
   sproject = tpmc;
   hcolors = ["#000070", "#007000", "#407000", "#70500", "#700000", "#A00000"];
   hvalues = ["Super Healthy", "Healthy", "Mostly Okay", "Unhealthy", "Action required!", "URGENT ACTION REQUIRED!"];
   container.innerHTML = "";
   ref = json.pmcs;
-  results = [];
   for (i = j = 0, len1 = ref.length; j < len1; i = ++j) {
     pmc = ref[i];
     if (pmc === tpmc || !tpmc) {
+      top = document.createElement('div');
+      container.appendChild(top);
       if (rendered[pmc]) {
         container.appendChild(rendered[pmc]);
+        return;
       }
       if ((ref1 = !pmc, indexOf.call(json.pmcdates, ref1) >= 0)) {
         continue;
@@ -691,12 +691,9 @@ renderFrontPage = function(tpmc) {
       rdialog.setAttribute("title", "Add a release for " + pmc);
       rdialog.setAttribute("style", "display: none;");
       rdialog.innerHTML = "<form><b>Version:</b><input type='text' name='version' placeholder='1.2.3'><br>" + "<b>Date:</b> <input name='date' type='text' placeholder='YYYY-MM-DD'/><br>" + "<input type='button' value='Add release' onclick='addRelease(\"" + pmc + "\", this.form[\"version\"].value, this.form[\"date\"].value);'></form>";
-      results.push(container.appendChild(rdialog));
-    } else {
-      results.push(void 0);
+      container.appendChild(rdialog);
     }
   }
-  return results;
 };
 
 renderJIRA = function(pmc) {

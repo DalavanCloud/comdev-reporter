@@ -22,7 +22,7 @@ makeSelect = (name, arr) ->
 
 getWednesdays = (mo, y) ->
     d = new Date();
-    if mo
+    if not isNaN(mo)
         d.setMonth(mo);
     if y
         d.setFullYear(y, d.getMonth(), d.getDate())
@@ -223,8 +223,7 @@ epochSecsYYYYMMDD = (t) =>
 renderFrontPage = (tpmc) ->
     thisHour = toInt(new Date().getTime() / (3600*1000)) # this changes once per hour
     container = document.getElementById('contents')
-    top = document.createElement('div');
-    container.appendChild(top)
+    
     json = jsdata
     sproject = tpmc;
     hcolors = ["#000070", "#007000", "#407000", "#70500", "#700000", "#A00000"]
@@ -232,9 +231,12 @@ renderFrontPage = (tpmc) ->
     container.innerHTML = ""
     for pmc, i in json.pmcs
         if pmc == tpmc or not tpmc
+            top = document.createElement('div');
+            container.appendChild(top)
             # If we already rendered this, just re-add it
             if rendered[pmc]
                 container.appendChild(rendered[pmc])
+                return
             # Stuff has broken, check that we have dates!
             if (not pmc in json.pmcdates)
                 continue
