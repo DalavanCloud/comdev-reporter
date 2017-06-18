@@ -368,7 +368,6 @@ renderFrontPage = function(tpmc) {
       if (rendered[pmc]) {
         container.innerHTML = "";
         container.appendChild(rendered[pmc]);
-        alert("cached");
       }
       if ((ref1 = !pmc, indexOf.call(json.pmcdates, ref1) >= 0)) {
         continue;
