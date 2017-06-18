@@ -1184,7 +1184,7 @@ loadTabs = function(stab) {
   bread = new HTML('div', {
     "class": 'bread',
     id: 'contents'
-  });
+  }, "Loading page, please wait...");
   main.inject(bread);
   return loadBread(stab);
 };
