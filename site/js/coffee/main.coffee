@@ -46,10 +46,8 @@ getWednesdays = (mo, y) ->
 
 # check if the entry is a wildcard month
 
-everyMonth = (s) ->
-    if (s.search /next month/i != -1)
-        return true
-    return s == 'Every month'
+everyMonth = (s) =>
+    s == 'Every month' or s.match(/next month/i)    
 
 
 m = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']

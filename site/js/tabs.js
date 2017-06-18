@@ -156,12 +156,11 @@ getWednesdays = function(mo, y) {
   return wednesdays;
 };
 
-everyMonth = function(s) {
-  if (s.search(/next month/i !== -1)) {
-    return true;
-  }
-  return s === 'Every month';
-};
+everyMonth = (function(_this) {
+  return function(s) {
+    return s === 'Every month' || s.match(/next month/i);
+  };
+})(this);
 
 m = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
