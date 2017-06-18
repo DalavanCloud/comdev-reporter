@@ -234,11 +234,11 @@ renderFrontPage = (tpmc) ->
     sproject = tpmc;
     hcolors = ["#000070", "#007000", "#407000", "#70500", "#700000", "#A00000"]
     hvalues = ["Super Healthy", "Healthy", "Mostly Okay", "Unhealthy", "Action required!", "URGENT ACTION REQUIRED!"]
+    container.innerHTML = ""
     for pmc, i in json.pmcs
         if pmc == tpmc or not tpmc
             # If we already rendered this, just re-add it
             if rendered[pmc]
-                container.innerHTML = ""
                 container.appendChild(rendered[pmc])
             # Stuff has broken, check that we have dates!
             if (not pmc in json.pmcdates)

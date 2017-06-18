@@ -360,13 +360,13 @@ renderFrontPage = function(tpmc) {
   sproject = tpmc;
   hcolors = ["#000070", "#007000", "#407000", "#70500", "#700000", "#A00000"];
   hvalues = ["Super Healthy", "Healthy", "Mostly Okay", "Unhealthy", "Action required!", "URGENT ACTION REQUIRED!"];
+  container.innerHTML = "";
   ref = json.pmcs;
   results = [];
   for (i = j = 0, len1 = ref.length; j < len1; i = ++j) {
     pmc = ref[i];
     if (pmc === tpmc || !tpmc) {
       if (rendered[pmc]) {
-        container.innerHTML = "";
         container.appendChild(rendered[pmc]);
       }
       if ((ref1 = !pmc, indexOf.call(json.pmcdates, ref1) >= 0)) {
