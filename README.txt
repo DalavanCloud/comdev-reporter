@@ -3,10 +3,14 @@ This file is an attempt to start to document how the reporter.apache.org site is
 It is currently very rudimentary.
 
 
+Original version:
+  Javascript and CSS are Foundation
+  http://foundation.zurb.com
+  Current version seems to be 5.5.1 (see start of site/css/foundation.css)
 
-Javascript and CSS are Foundation
-http://foundation.zurb.com
-Current version seems to be 5.5.1 (see start of site/css/foundation.css)
+NG version:
+  jQuery and custom CSS/CoffeeScript compiled into tabs.js using:
+    cat coffee/*.coffee | coffee -b --compile --stdio > tabs.js
 
 Also uses Google Loader:
 https://developers.google.com/loader/
