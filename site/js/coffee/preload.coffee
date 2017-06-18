@@ -33,16 +33,17 @@ preloadTabs = (json, state) ->
     a = 0
     ctab = 0
     for pmc in jsdata.pmcs
-        tab = {
-            id: pmc,
-            title: pmc,
-            renderer: renderFrontPage,
-            state: pmc
-        }
-        tabs.push(tab)
-        if cpmc == pmc
-            ctab = a
-        a++
+        if jsdata.pdata[pmc] and jsdata.pdata[pmc].chair # Require this to show a tab
+            tab = {
+                id: pmc,
+                title: pmc,
+                renderer: renderFrontPage,
+                state: pmc
+            }
+            tabs.push(tab)
+            if cpmc == pmc
+                ctab = a
+            a++
     loadTabs(ctab)
 
 

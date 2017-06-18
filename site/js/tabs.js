@@ -1122,17 +1122,19 @@ preloadTabs = function(json, state) {
   ref = jsdata.pmcs;
   for (j = 0, len1 = ref.length; j < len1; j++) {
     pmc = ref[j];
-    tab = {
-      id: pmc,
-      title: pmc,
-      renderer: renderFrontPage,
-      state: pmc
-    };
-    tabs.push(tab);
-    if (cpmc === pmc) {
-      ctab = a;
+    if (jsdata.pdata[pmc] && jsdata.pdata[pmc].chair) {
+      tab = {
+        id: pmc,
+        title: pmc,
+        renderer: renderFrontPage,
+        state: pmc
+      };
+      tabs.push(tab);
+      if (cpmc === pmc) {
+        ctab = a;
+      }
+      a++;
     }
-    a++;
   }
   return loadTabs(ctab);
 };
