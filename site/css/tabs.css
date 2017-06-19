@@ -112,16 +112,20 @@ h3 a {
   left: calc(50% - 225px);
 }
 
+
+#wrapper {
+    min-height: calc(100vh - 150px);
+}
+
 .ngfooter {
-  border-top: 2px solid #333;
-  position: fixed;
-  bottom: -16px;
-  height: 50px;
-  width: 100%;
-  text-align: center;
-  color: #000;
-  background: #DDB;
-  font-size: 0.85rem;
+    border-top: 1px solid #333;
+    margin-bottom: -16px;
+    height: 50px;
+    width: 100%;
+    text-align: center;
+    color: #000;
+    background: #DDD;
+    font-size: 0.85rem;
 }
 
 
