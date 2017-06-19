@@ -12,11 +12,14 @@ html {
     background-size: cover;
 }
 
-
 a {
     color: #224;
 }
 
+body {
+    padding: 0px;
+    margin: 0px;
+}
 br {
     line-height: 1.5rem;
 }
@@ -33,6 +36,7 @@ br {
     max-width: 1600px;
     min-width: 1200px;
     border-radius: 3px;
+    padding-bottom: 60px;
 }
 
 .tabs {
@@ -106,6 +110,18 @@ h3 a {
   position: absolute;
   top: 20px;
   left: calc(50% - 225px);
+}
+
+.ngfooter {
+  border-top: 2px solid #333;
+  position: fixed;
+  bottom: -16px;
+  height: 50px;
+  width: 100%;
+  text-align: center;
+  color: #000;
+  background: #DDB;
+  font-size: 0.85rem;
 }
 
 
