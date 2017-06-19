@@ -51,12 +51,13 @@ br {
 }
 
 .tablink {
+    font-size: 0.9rem;
     background: #EAEAEA;
     color: #555;
     padding-top: 10px;
     float: left;
     height: 26px;
-    min-width: 110px;
+    min-width: 90px;
     padding-left: 6px;
     padding-right: 6px;
     text-align: center;
