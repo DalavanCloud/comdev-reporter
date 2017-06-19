@@ -36,7 +36,7 @@ br {
     max-width: 1600px;
     min-width: 1200px;
     border-radius: 3px;
-    padding-bottom: 60px;
+    padding-bottom: 10px;
 }
 
 .tabs {
