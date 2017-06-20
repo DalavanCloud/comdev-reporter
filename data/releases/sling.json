@@ -250,6 +250,8 @@
  "Apache Sling Tenant version 1.1.0": 1484611200, 
  "Apache Sling Testing Clients 1.0.0": 1474848000, 
  "Apache Sling Testing Clients 1.1.0": 1496707200, 
+ "Apache Sling Testing Clients 1.1.4": 1497916800, 
+ "Apache Sling Testing Email 1.0.0": 1497916800, 
  "Apache Sling Testing Hamcrest 1.0.2": 1483747200, 
  "Apache Sling Testing JCR Mock 1.1.10": 1441832400, 
  "Apache Sling Testing JCR Mock 1.1.14, OSGi Mock 2.0.4, ResourceResolver Mock 1.1.14": 1465768800, 
