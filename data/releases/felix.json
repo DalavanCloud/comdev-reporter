@@ -36,6 +36,7 @@
  "org.apache.felix.http.bridge-3.0.6": 1452294000, 
  "org.apache.felix.http.bridge-3.1.6": 1452294000, 
  "org.apache.felix.http.jetty-3.1.6": 1452294000, 
+ "org.apache.felix.http.sslfilter-1.2.2": 1499644800, 
  "org.apache.felix.jaas-1.0.2": 1487203200, 
  "org.apache.felix.main-5.6.0": 1474761600, 
  "org.apache.felix.main-5.6.1": 1477267200, 
