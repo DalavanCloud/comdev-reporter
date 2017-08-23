@@ -19,7 +19,7 @@
         data/mailinglists.json
         data/maildata_extended.json
         https://whimsy.apache.org/public/member-info.json
-        https://whimsy.apache.org/public/public_ldap_committees.json
+        https://whimsy.apache.org/public/public_ldap_projects.json
         
     
     Environment variables:
@@ -42,7 +42,7 @@ uc = UrlCache(interval=60, silent=True)
 RAOHOME = '../'
 
 MEMBER_INFO = 'https://whimsy.apache.org/public/member-info.json'
-COMMITTEES = 'https://whimsy.apache.org/public/public_ldap_committees.json'
+PROJECTS = 'https://whimsy.apache.org/public/public_ldap_projects.json'
 
 # Pick up environment settings
 form = cgi.FieldStorage();
@@ -95,15 +95,15 @@ def loadJson(url):
     resp.close()
     return j
 
-committees = loadJson(COMMITTEES)['committees']
+projects = loadJson(PROJECTS)['projects']
 members = loadJson(MEMBER_INFO)['members']
 
 def getPMCs(uid):
     """Returns the array of LDAP committee groups to which the uid belongs. Excludes incubator"""
     groups = []
-    for group in committees:
-        if group != "incubator":
-            if uid in committees[group]['roster']:
+    for group in projects:
+        if group != "incubator" and 'pmc' in projects[group]:
+            if uid in projects[group]['owners']:
                 groups.append(group)
     return groups
 
