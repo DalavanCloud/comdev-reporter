@@ -131,6 +131,7 @@ stamp = int(time.time())
 
 c_info = loadJson('https://whimsy.apache.org/public/committee-info.json')['committees']
 ldappeople = loadJson('https://whimsy.apache.org/public/public_ldap_people.json')['people']
+ldapprojs  = loadJson('https://whimsy.apache.org/public/public_ldap_projects.json')['projects']
 ldapgroups = loadJson('https://whimsy.apache.org/public/public_ldap_groups.json')['groups']
 
 for group in c_info:
@@ -138,27 +139,17 @@ for group in c_info:
         for cid in c_info[group]['roster']:
             updateCommittees(stamp, group, cid)
 
+for proj in ldapprojs:
+    if proj in c_info:
+        for cid in ldapprojs[proj]['members']:
+            updateProjects(stamp, proj, cid)
+
+# only security and concom left
 for group in ldapgroups:
-    if group != 'committers' and group in c_info:
+    if group != 'committers' and group in c_info and not group in ldapprojs:
         for cid in ldapgroups[group]['roster']:
             updateProjects(stamp, group, cid)
 
-
-"""
-    Check for inconsistencies in non-ldap groups
-"""
-
-nonldapgroups = loadJson('https://whimsy.apache.org/public/public_nonldap_groups.json')['groups']
-for nongroup in sorted(nonldapgroups):
-    if nongroup in ldapgroups:
-#         Don't mail; the group might be still in use if the LDAP defn has yet to be added
-        print("WARN: duplicate definition of non-ldap group '%s'" % nongroup)
-    else:
-        if nongroup in projects:
-            print("Dropping non-ldap group %s" % nongroup)
-            del projects[nongroup]
-#         else: # e.g. podling or special interest group
-#             print("Not found non-ldap group %s" % nongroup)
 
 # Delete retired members
 ret = 0
