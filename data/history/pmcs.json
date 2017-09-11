@@ -882,10 +882,6 @@
    "Karl Fogel",
    0
   ],
-  "kotkov": [
-   "Evgeny Kotkov",
-   1504900802
-  ],
   "martin": [
    "Martin Kraemer",
    0
@@ -5712,6 +5708,10 @@
    "Dave Barnes",
    0
   ],
+  "dgkimura": [
+   "David Kimura",
+   1505160002
+  ],
   "dschneider": [
    "Darrel Schneider",
    0
@@ -6117,6 +6117,10 @@
   "mattmann": [
    "Chris Mattmann",
    0
+  ],
+  "nishadi": [
+   "Nishadi Kirielle",
+   1505160002
   ],
   "otrack": [
    "Pierre Sutra",
