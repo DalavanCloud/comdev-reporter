@@ -1,7 +1,9 @@
 {
+ "build-resources-2.0.0": 1505347200, 
  "fluo-1.0.0-incubating": 1476417600, 
  "fluo-1.1.0-incubating": 1497240000, 
  "fluo-parent-1-incubating": 1470888000, 
+ "fluo-parent-2": 1505347200, 
  "fluo-recipes-1.0.0-incubating": 1477627200, 
  "fluo-recipes-1.1.0-incubating": 1498104000
 }
