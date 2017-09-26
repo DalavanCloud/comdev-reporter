@@ -5778,6 +5778,10 @@
    "Eric Shu",
    0
   ],
+  "gosullivan": [
+   "Galen O'Sullivan",
+   1506456002
+  ],
   "gregchase": [
    "Gregory Chase",
    0
@@ -12842,6 +12846,48 @@
   ],
   "waldo": [
    "James Waldo",
+   0
+  ]
+ },
+ "rocketmq": {
+  "bsnyder": [
+   "Bruce Snyder",
+   0
+  ],
+  "dongeforever": [
+   "Zhendong Liu",
+   0
+  ],
+  "jim": [
+   "Jim Jagielski",
+   0
+  ],
+  "jmclean": [
+   "Justin Mclean",
+   0
+  ],
+  "lizhanhui": [
+   "Zhanhui Li",
+   0
+  ],
+  "lollipop": [
+   "Jixiang Jin",
+   0
+  ],
+  "ningjiang": [
+   "Willem Ning Jiang",
+   0
+  ],
+  "vintagewang": [
+   "Xiaorui Wang",
+   0
+  ],
+  "vongosling": [
+   "Von Gosling",
+   0
+  ],
+  "yukon": [
+   "Xinyu Zhou",
    0
   ]
  },
