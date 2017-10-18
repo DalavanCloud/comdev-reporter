@@ -23555,6 +23555,44 @@
    0
   ]
  },
+ "juneau": {
+  "clr": [
+   "Craig L Russell",
+   0
+  ],
+  "dmg": [
+   "David Goddard",
+   0
+  ],
+  "jamesbognar": [
+   "James Bognar",
+   0
+  ],
+  "jochen": [
+   "Jochen Wiedmann",
+   0
+  ],
+  "johndament": [
+   "John D. Ament",
+   0
+  ],
+  "phaumer": [
+   "Peter Haumer",
+   0
+  ],
+  "sblackmon": [
+   "Steve Blackmon",
+   0
+  ],
+  "stain": [
+   "Stian Soiland-Reyes",
+   0
+  ],
+  "yidonguk": [
+   "Raphi D Lee",
+   0
+  ]
+ },
  "kafka": {
   "adc": [
    "Alan Cabrera",
@@ -23776,6 +23814,52 @@
   ],
   "trenaman": [
    "Adrian Trenaman",
+   0
+  ]
+ },
+ "kibble": {
+  "cdutz": [
+   "Christofer Dutz",
+   0
+  ],
+  "hboutemy": [
+   "Herve Boutemy",
+   0
+  ],
+  "humbedooh": [
+   "Daniel Gruno",
+   0
+  ],
+  "ke4qqq": [
+   "David Nalley",
+   0
+  ],
+  "lmccay": [
+   "Larry McCay",
+   0
+  ],
+  "pono": [
+   "Daniel Takamori",
+   0
+  ],
+  "rbowen": [
+   "Rich Bowen",
+   0
+  ],
+  "sbp": [
+   "Sean Palmer",
+   0
+  ],
+  "sharan": [
+   "Sharan Foga",
+   0
+  ],
+  "sk": [
+   "Sally Khudairi",
+   0
+  ],
+  "ucb": [
+   "Ulises",
    0
   ]
  },
@@ -29320,6 +29404,124 @@
   ],
   "zheng": [
    "Zheng Zhong",
+   0
+  ]
+ },
+ "predictionio": {
+  "apurtell": [
+   "Andrew Kyle Purtell",
+   0
+  ],
+  "chanlee": [
+   "Chan Lee",
+   0
+  ],
+  "donald": [
+   "Donald Szeto",
+   0
+  ],
+  "emergentorder": [
+   "Alex Merritt",
+   0
+  ],
+  "felipe": [
+   "Felipe Oliveira",
+   0
+  ],
+  "hagino": [
+   "Takahiro Hagino",
+   0
+  ],
+  "jtaylor": [
+   "James Taylor",
+   0
+  ],
+  "kenneth": [
+   "Kenneth Chan",
+   0
+  ],
+  "larsh": [
+   "Lars Hofhansl",
+   0
+  ],
+  "lresende": [
+   "Luciano Resende",
+   0
+  ],
+  "mars": [
+   "Mars Hall",
+   0
+  ],
+  "meng": [
+   "Xiangrui Meng",
+   0
+  ],
+  "moon": [
+   "Lee Moon Soo",
+   0
+  ],
+  "mvivero": [
+   "Marco Vivero",
+   0
+  ],
+  "pat": [
+   "Pat Ferrel",
+   0
+  ],
+  "paulli": [
+   "Paul Li",
+   0
+  ],
+  "shimamoto": [
+   "Takako Shimamoto",
+   0
+  ],
+  "shinsuke": [
+   "Shinsuke Sugaya",
+   0
+  ],
+  "simonc": [
+   "Simon Chan",
+   0
+  ],
+  "smarthi": [
+   "Suneel Marthi",
+   0
+  ],
+  "takezoe": [
+   "Naoki Takezoe",
+   0
+  ],
+  "tchan": [
+   "Tom Chan",
+   0
+  ],
+  "tjambor": [
+   "Tamas Jambor",
+   0
+  ],
+  "tovbinm": [
+   "Matthew Tovbin",
+   0
+  ],
+  "vitaly": [
+   "Vitaly Gordon",
+   0
+  ],
+  "yev": [
+   "Yevgeny Khodorkovsky",
+   0
+  ],
+  "yin": [
+   "Xusen Yin",
+   0
+  ],
+  "yipjustin": [
+   "Justin Yip",
+   0
+  ],
+  "ziemin": [
+   "Marcin Ziemiński",
    0
   ]
  },
