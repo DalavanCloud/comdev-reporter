@@ -6303,6 +6303,40 @@
    0
   ]
  },
+ "guacamole": {
+  "frode": [
+   "Frode Langelo",
+   0
+  ],
+  "gtrasuk": [
+   "Greg Trasuk",
+   0
+  ],
+  "humbedooh": [
+   "Daniel Gruno",
+   0
+  ],
+  "jbonofre": [
+   "Jean-Baptiste Onofré",
+   0
+  ],
+  "jim": [
+   "Jim Jagielski",
+   0
+  ],
+  "jmuehlner": [
+   "James Muehlner",
+   0
+  ],
+  "mjumper": [
+   "Mike Jumper",
+   0
+  ],
+  "vnick": [
+   "Nick Couchman",
+   0
+  ]
+ },
  "gump": {
   "ajack": [
    "Adam R. B. Jack",
@@ -7474,6 +7508,104 @@
   ],
   "yzhdanov": [
    "Yakov Zhdanov",
+   0
+  ]
+ },
+ "impala": {
+  "abehm": [
+   "Alex Behm",
+   0
+  ],
+  "bharathv": [
+   "Bharath Vissapragada",
+   0
+  ],
+  "brock": [
+   "Brock Noland",
+   0
+  ],
+  "casey": [
+   "Casey Ching",
+   0
+  ],
+  "cws": [
+   "Carl Steinbach",
+   0
+  ],
+  "dhecht": [
+   "Daniel Hecht",
+   0
+  ],
+  "dtsirogiannis": [
+   "Dimitris Tsirogiannis",
+   0
+  ],
+  "henry": [
+   "Henry Robinson",
+   0
+  ],
+  "ishaan": [
+   "Ishaan Joshi",
+   0
+  ],
+  "jbapple": [
+   "Jim Apple",
+   0
+  ],
+  "jrussell": [
+   "John Russell",
+   0
+  ],
+  "jyu": [
+   "Juan Yu",
+   0
+  ],
+  "kwho": [
+   "Michael Ho",
+   0
+  ],
+  "lskuff": [
+   "Lenni Kuff",
+   0
+  ],
+  "lv": [
+   "Lars Volker",
+   0
+  ],
+  "marcel": [
+   "Marcel Kornacker",
+   0
+  ],
+  "mgrund": [
+   "Martin Grund",
+   0
+  ],
+  "mikeb": [
+   "Michael Brown",
+   0
+  ],
+  "mjacobs": [
+   "Matthew Jacobs",
+   0
+  ],
+  "sailesh": [
+   "Sailesh Mukil",
+   0
+  ],
+  "skye": [
+   "Skye Wanderman-Milne",
+   0
+  ],
+  "tarasbob": [
+   "Taras Bobrovytsky",
+   0
+  ],
+  "tarmstrong": [
+   "Tim Armstrong",
+   0
+  ],
+  "todd": [
+   "Todd Lipcon",
    0
   ]
  },
@@ -10664,6 +10796,52 @@
   ],
   "ngn": [
    "Niklas Gustavsson",
+   0
+  ]
+ },
+ "mnemonic": {
+  "apurtell": [
+   "Andrew Kyle Purtell",
+   0
+  ],
+  "chhao01": [
+   "Hao Cheng",
+   0
+  ],
+  "ddutta": [
+   "Debo",
+   0
+  ],
+  "drankye": [
+   "Kai Zheng",
+   0
+  ],
+  "garyw": [
+   "Gang Wang",
+   0
+  ],
+  "jamestaylor": [
+   "James R. Taylor",
+   0
+  ],
+  "johnu": [
+   "Johnu George",
+   0
+  ],
+  "phunt": [
+   "Patrick D. Hunt",
+   0
+  ],
+  "rakeshr": [
+   "Rakesh Radhakrishnan",
+   0
+  ],
+  "umamahesh": [
+   "Uma Maheswara Rao G",
+   0
+  ],
+  "yanpingw": [
+   "Yanping Wang",
    0
   ]
  },
