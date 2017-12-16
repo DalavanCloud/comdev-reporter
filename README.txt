@@ -58,6 +58,7 @@ crontab -l -u www-data:
 
 # Run scandist
 @reboot         cd /var/www/reporter.apache.org/scripts && ./scandist.sh
+@monthly        cd /var/www/reporter.apache.org/scripts && ./scandist.sh restart
 
 
 Scripts:
