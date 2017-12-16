@@ -6,7 +6,7 @@ BASE=$(basename $SCRIPT .py)
 
 YYMM=$(date '+%Y-%m')
 
-exec  >>${LOGDIR}/${BASE}_${YYMM}.log
+exec  >>${LOGDIR}/${BASE}_${YYMM}_startup.log
 echo
 echo '>>>'
 echo Starting $SCRIPT at $(date)
@@ -17,7 +17,7 @@ then
     python3 -u $SCRIPT stop
 fi
 
-LOGFILE=$LOGDIR/${BASE}_daemon.log python3 -u $SCRIPT start
+LOGFILE=$LOGDIR/${BASE}_${YYMM}_daemon.log python3 -u $SCRIPT start
 
 echo Completed $SCRIPT at $(date)
 echo '<<<'
