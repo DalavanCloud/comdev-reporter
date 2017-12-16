@@ -199,6 +199,8 @@ def read_chunk(req):
 IGNORED_FILES={
     ".htaccess",
     "KEYS",
+    "META",
+    "META.asc",
     "HEADER.html",
     "README.html",
     }
