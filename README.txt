@@ -43,13 +43,6 @@ crontab -l -u root (in puppet, part of projects-vm.apache.org.yaml):
 
 crontab -l -u www-data:
 # m h   dom mon dow   command
-00 00 * * * cd /var/www/projects.apache.org/scripts/cronjobs && ./python3logger.sh podlings.py
-01 00 * * * cd /var/www/projects.apache.org/scripts/cronjobs && ./python3logger.sh parsecommitters.py
-02 00 * * * cd /var/www/projects.apache.org/scripts/cronjobs && ./python3logger.sh countaccounts.py
-03 00 * * * cd /var/www/projects.apache.org/scripts/cronjobs && ./python3logger.sh parsereleases.py
-00 01 * * * cd /var/www/projects.apache.org/scripts/cronjobs && ./python3logger.sh parsecommitteeinfo.py
-00 02 * * * cd /var/www/projects.apache.org/scripts/cronjobs && ./python3logger.sh parseprojects.py
-
 00 4,12,20 * * * cd /var/www/reporter.apache.org/scripts && ./python3logger.sh parsepmcs.py
 00 01 * * *      cd /var/www/reporter.apache.org/scripts && ./python3logger.sh mailglomper2.py
 00 09 * * *      cd /var/www/reporter.apache.org/scripts && ./python3logger.sh readjira.py
@@ -59,13 +52,9 @@ crontab -l -u www-data:
 50 00      * * * cd /var/www/reporter.apache.org/scripts && ./python3logger.sh health.py
 
 # ensure that any new data files get picked up by the commit (which must be done by root)
-10 4 * * *      cd /var/www/projects.apache.org/scripts/cronjobs && ./svnadd.sh ../../site/json
 40 * * * *      cd /var/www/reporter.apache.org/scripts          && ./svnadd.sh ../data/releases
 
 00 12 * * * curl -sS "(redacted)" > /var/www/reporter.apache.org/data/mailinglists.json
-
-# Run pubsubber
-@reboot         cd /var/www/projects.apache.org/scripts/cronjobs && ./pubsubber.sh
 
 # Run scandist
 @reboot         cd /var/www/reporter.apache.org/scripts && ./scandist.sh
