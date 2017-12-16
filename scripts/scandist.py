@@ -2,6 +2,12 @@
 # scandist.py: a minimalistic svnwcsub program  #
 #################################################
 
+# This script runs permanently
+# To restart when a new version is released:
+#
+# cd /var/www/reporter.apache.org/scripts
+# sudo -u www-data ./scandist.sh restart
+
 from threading import Thread
 from datetime import datetime
 import os
