@@ -1,6 +1,7 @@
 {
  "maven-bundle-plugin-3.0.0": 1443139200, 
  "maven-bundle-plugin-3.0.1": 1447369200, 
+ "maven-bundle-plugin-3.4.0": 1513555200, 
  "maven-scr-plugin-1.25.0": 1506729600, 
  "org.apache.felix.bundlerepository 2.0.10": 1492992000, 
  "org.apache.felix.bundlerepository 2.0.8": 1459724400, 
@@ -73,6 +74,7 @@
  "org.apache.felix.resolver-1.12.0": 1487548800, 
  "org.apache.felix.resolver-1.14.0": 1495584000, 
  "org.apache.felix.scr-2.0.12": 1498435200, 
+ "org.apache.felix.scr-2.0.14": 1513555200, 
  "org.apache.felix.scr.annotations-1.12.0": 1505088000, 
  "org.apache.felix.scr.bnd 1.5.0": 1464386400, 
  "org.apache.felix.scr.bnd-1.8.0": 1506729600, 
