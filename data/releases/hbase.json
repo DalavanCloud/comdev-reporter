@@ -131,5 +131,6 @@
  "2.0.0-alpha-2": 1503273600.0, 
  "2.0.0-alpha-3": 1505620800, 
  "hbase-thirdparty-1.0.0": 1499212800, 
- "hbase-thirdparty-1.0.1": 1503878400
+ "hbase-thirdparty-1.0.1": 1503878400, 
+ "hbase-thrirdparty-2.0.0": 1514246400
 }
