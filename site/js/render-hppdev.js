@@ -679,6 +679,10 @@ function renderFrontPage(json) {
 			renderJIRA(pmc)
 		}
 
+        if (json.checker[pmc]['errors'] > 0) {
+            renderChecker(pmc)
+        }
+
 
 		// Reporting example
 		var template = buildPanel(pmc, "Report template");
@@ -815,6 +819,12 @@ function renderBZ(pmc) {
     obj.innerHTML += jsdata.bugzilla[pmc][0] + " Bugzilla tickets created in the last 3 months<br>";
     obj.innerHTML += jsdata.bugzilla[pmc][1] + " Bugzilla tickets resolved in the last 3 months<br>";
     obj.innerHTML += "Tickets were found for the following products:<br><kbd>" + Object.keys(jsdata.bugzilla[pmc][2]).sort().join(", ") + "</kbd>"
+}
+
+function renderChecker(pmc) {
+    var obj = buildPanel(pmc, "Dist Checker")
+    var errs = jsdata.checker[pmc]['errors'] ;
+    obj.innerHTML += errors + ' errors'
 }
 
 function renderChart(json, name, container, delivery) {
