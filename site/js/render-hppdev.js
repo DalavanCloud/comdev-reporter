@@ -826,12 +826,10 @@ function renderChecker(pmc) {
     var data = jsdata.checker[pmc] ;
     var meta = data['meta'] ;
     var errs = data['errors'] ;
-    var summ = data['summary'] ;
     var href = meta['uri_base'] + data['uri_proj'] ;
     var summ = '' ;
     for ( idx in data['summary'] ) {
-      var item = summ[idx] ;
-      summ += '<li>' + item + "</li>\n" ;
+      summ += '<li>' + data['summary'][idx] + "</li>\n" ;
     }
     summ = "<ul>\n" + summ + "</ul>\n" ;
     obj.innerHTML += errs + ' error(s)<br>' ;
