@@ -834,12 +834,10 @@ function renderChecker(pmc) {
     var dist = my_url( dist, dist ) ;
     var summ = '' ;
     for ( idx in data['summary'] ) {
-      summ += '<li>' + data['summary'][idx] + "</li>\n" ;
+      summ += ( '<li>' + data['summary'][idx] + "</li>\n" ) ;
     }
-    summ = "<ul>\n" + summ + "</ul>\n" ;
-
     obj.innerHTML += "Site " + site + " checks the health of " + dist " ;\n" ;
-    obj.innerHTML += 'For ' + pmc + " it reports these errors :\n" + summ ;
+    obj.innerHTML += 'For ' + pmc + " it reports these errors :\n<ul>\n" + summ + "</ul>\n" ;
     obj.innerHTML += 'For details see ' + my_url(href,href) ;
 }
 
