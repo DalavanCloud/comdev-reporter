@@ -828,8 +828,13 @@ function renderChecker(pmc) {
     var errs = data['errors'] ;
     var summ = data['summary'] ;
     var href = meta['uri_base'] + data['uri_proj'] ;
+    var summ = '' ;
+    for ( item in data['summary'] ) {
+      summ += '<li>' + item + "</li>\n" ;
+    }
+    summ = "<ul>\n" + summ + "</ul>\n" ;
     obj.innerHTML += errs + ' errors<br>' ;
-    obj.innerHTML += 'for details see <a href="' + href + '">' + href + '</a><br>' ;
+    obj.innerHTML += 'For details see <a href="' + href + '">' + href + '</a><br>' ;
 }
 
 function renderChart(json, name, container, delivery) {
