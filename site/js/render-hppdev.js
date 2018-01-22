@@ -823,7 +823,7 @@ function renderBZ(pmc) {
 
 function renderChecker(pmc) {
     var obj = buildPanel(pmc, "Dist Checker")
-    var errs = jsdata.checker[pmc]['errors'] ;
+    var errors = jsdata.checker[pmc]['errors'] ;
     obj.innerHTML += errors + ' errors'
 }
 
