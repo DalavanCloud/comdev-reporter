@@ -340,9 +340,10 @@ if re.match(r"^[-a-zA-Z0-9_.]+$", user):
         meta = checker_json['meta']
         prjs = checker_json['projects']
         if oproject in prjs:
-           checker = { 'meta': meta, oproject: prjs[oproject] }
+           checker = { oproject: prjs[oproject] }
         else:
-           checker = { 'meta': meta, oproject: {'errors': 0 } }
+           checker = { oproject: { 'errors': 0 } }
+        checker[oproject]['meta'] = meta
     output = {
         'count': count,
         'pmcs': groups,
