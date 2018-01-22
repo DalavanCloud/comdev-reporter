@@ -273,6 +273,8 @@ if re.match(r"^[-a-zA-Z0-9_.]+$", user):
     keys = {}
     count = {}
     health = {}
+    checker_json = readJson(RAOHOME+"data/cache/checker.json", None)
+    checker = None ;
     for group in groups:
         jiras = []
         count[group] = [0,0]
@@ -332,18 +334,16 @@ if re.match(r"^[-a-zA-Z0-9_.]+$", user):
                         cdata[group]['committer'][member] = cchanges[pmc][member]
         if group in pmcdates: # Make sure we have this PMC in the JSON, so as to not bork
             dates[group] = pmcdates[group] # only send the groups we want
+        if checker_json and 'meta' in checker_json and 'projects' in checker_json:
+            meta = checker_json['meta']
+            prjs = checker_json['projects']
+            if group in prjs:
+               checker = { group: prjs[group] }
+            else:
+               checker = { group: { 'errors': 0 } }
+            checker[group]['meta'] = meta
     if not isMember:
         allpmcs = []
-    checker_json  = readJson(RAOHOME+"data/cache/checker.json", None)
-    checker = None ;
-    if oproject and checker_json and 'meta' in checker_json and 'projects' in checker_json:
-        meta = checker_json['meta']
-        prjs = checker_json['projects']
-        if oproject in prjs:
-           checker = { oproject: prjs[oproject] }
-        else:
-           checker = { oproject: { 'errors': 0 } }
-        checker[oproject]['meta'] = meta
     output = {
         'count': count,
         'pmcs': groups,
