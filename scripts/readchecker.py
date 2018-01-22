@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 
 """
-   Refreshes the data/cache/checker.json file
+   Refreshes the data/cache/checker.json file.
+   Based on readjira.py.
 
    This script is run under cron, so does not check the age of any files.
    It is assumed that the job is run as frequently as necessary
@@ -22,7 +23,7 @@ from inspect import getsourcefile
 
 MYHOME = dirname(dirname(abspath(getsourcefile(lambda:0)))) # automatically work out home location so can run the code anywhere
 SRC = "https://checker.apache.org/json/"
-DST = "%s/cache/checker.json" % MYHOME
+DST = "%s/data/cache/checker.json" % MYHOME
 print("Using MYHOME=%s" % MYHOME)
 print("Using source [%s]" % SRC)
 print("Using dest   [%s]" % DST)
