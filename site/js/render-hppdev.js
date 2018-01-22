@@ -821,20 +821,26 @@ function renderBZ(pmc) {
     obj.innerHTML += "Tickets were found for the following products:<br><kbd>" + Object.keys(jsdata.bugzilla[pmc][2]).sort().join(", ") + "</kbd>"
 }
 
+function url (href,text) { '<a href="' + href + '">' + text + '</a>' ; }
 function renderChecker(pmc) {
     var obj = buildPanel(pmc, "Dist Checker") ;
     var data = jsdata.checker[pmc] ;
     var meta = data['meta'] ;
     var errs = data['errors'] ;
+    var base = meta['uri_base'] ;
+    var dist = 'https://www.apache.org/dist/' ;
     var href = meta['uri_base'] + data['uri_proj'] ;
+    var site = url( base, base ) ;
+    var dist = url( dist, dist ) ;
     var summ = '' ;
     for ( idx in data['summary'] ) {
       summ += '<li>' + data['summary'][idx] + "</li>\n" ;
     }
     summ = "<ul>\n" + summ + "</ul>\n" ;
-    obj.innerHTML += errs + ' error(s)<br>' ;
-    obj.innerHTML += summ ;
-    obj.innerHTML += 'For details see <a href="' + href + '">' + href + '</a><br>' ;
+
+    obj.innerHTML += "Site " + site + " checks the health of " + dist " ;\n" ;
+    obj.innerHTML += 'For ' + pmc + " it reports these errors :\n" + summ ;
+    obj.innerHTML += 'For details see ' + url(href,href) ;
 }
 
 function renderChart(json, name, container, delivery) {
