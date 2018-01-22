@@ -840,6 +840,9 @@ function renderChecker(pmc) {
     obj.innerHTML += 'for ' + pmc + " it reports these errors :\n<ul>\n" + summ + "</ul>\n" ;
     obj.innerHTML += 'For details see ' + my_url(href,href) + "<br>\n" ;
     obj.innerHTML += 'Last update : ' + meta['refreshed']['date'] ;
+    addLine( pmc, "## /dist/ error(s): " + errs ) ;
+    addLine( pmc, " - <font color='red'>TODO - fix the errors or explain why they can't be fixed.</font>" ) ;
+    addLine( pmc ) ;
 }
 
 function renderChart(json, name, container, delivery) {
