@@ -829,7 +829,7 @@ function renderChecker(pmc) {
     var summ = data['summary'] ;
     var href = meta['uri_base'] + data['uri_proj'] ;
     obj.innerHTML += errs + ' errors<br>' ;
-    obj.innerHTML += 'for details see <a href="' + uri + '">' + uri + '</a><br>' ;
+    obj.innerHTML += 'for details see <a href="' + href + '">' + href + '</a><br>' ;
 }
 
 function renderChart(json, name, container, delivery) {
