@@ -50,6 +50,7 @@ crontab -l -u www-data:
 20 00 * * *      cd /var/www/reporter.apache.org/scripts && ./python3logger.sh pmcdates.py
 30 00 * * *      cd /var/www/reporter.apache.org/scripts && ./python3logger.sh bugzillastats.py
 50 00      * * * cd /var/www/reporter.apache.org/scripts && ./python3logger.sh health.py
+*  32 * * *      cd /var/www/reporter.apache.org/scripts && ./python3logger.sh readchecker.py
 
 # ensure that any new data files get picked up by the commit (which must be done by root)
 40 * * * *      cd /var/www/reporter.apache.org/scripts          && ./svnadd.sh ../data/releases
