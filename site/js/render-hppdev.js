@@ -833,7 +833,8 @@ function renderChecker(pmc) {
       summ += '<li>' + item + "</li>\n" ;
     }
     summ = "<ul>\n" + summ + "</ul>\n" ;
-    obj.innerHTML += errs + ' errors<br>' ;
+    obj.innerHTML += errs + ' error(s)<br>' ;
+    obj.innerHTML += summ ;
     obj.innerHTML += 'For details see <a href="' + href + '">' + href + '</a><br>' ;
 }
 
