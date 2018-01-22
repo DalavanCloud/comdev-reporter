@@ -822,9 +822,9 @@ function renderBZ(pmc) {
 }
 
 function renderChecker(pmc) {
-    var obj = buildPanel(pmc, "Dist Checker")
+    var obj = buildPanel(pmc, "Dist Checker") ;
     var errors = jsdata.checker[pmc]['errors'] ;
-    obj.innerHTML += errors + ' errors'
+    obj.innerHTML += errors + ' errors' ;
 }
 
 function renderChart(json, name, container, delivery) {
