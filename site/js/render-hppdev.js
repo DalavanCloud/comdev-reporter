@@ -836,7 +836,7 @@ function renderChecker(pmc) {
     for ( idx in data['summary'] ) {
       summ += ( '<li>' + data['summary'][idx] + "</li>\n" ) ;
     }
-    obj.innerHTML += "Site " + site + " checks the health of " + dist " ;\n" ;
+    obj.innerHTML += "Site " + site + " checks the health of " + dist + " ;\n" ;
     obj.innerHTML += 'For ' + pmc + " it reports these errors :\n<ul>\n" + summ + "</ul>\n" ;
     obj.innerHTML += 'For details see ' + my_url(href,href) ;
 }
