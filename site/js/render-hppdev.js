@@ -821,7 +821,7 @@ function renderBZ(pmc) {
     obj.innerHTML += "Tickets were found for the following products:<br><kbd>" + Object.keys(jsdata.bugzilla[pmc][2]).sort().join(", ") + "</kbd>"
 }
 
-function url (href,text) { '<a href="' + href + '">' + text + '</a>' ; }
+function my_url (href,text) { return '<a href="' + href + '">' + text + '</a>' ; }
 function renderChecker(pmc) {
     var obj = buildPanel(pmc, "Dist Checker") ;
     var data = jsdata.checker[pmc] ;
@@ -830,8 +830,8 @@ function renderChecker(pmc) {
     var base = meta['uri_base'] ;
     var dist = 'https://www.apache.org/dist/' ;
     var href = meta['uri_base'] + data['uri_proj'] ;
-    var site = url( base, base ) ;
-    var dist = url( dist, dist ) ;
+    var site = my_url( base, base ) ;
+    var dist = my_url( dist, dist ) ;
     var summ = '' ;
     for ( idx in data['summary'] ) {
       summ += '<li>' + data['summary'][idx] + "</li>\n" ;
@@ -840,7 +840,7 @@ function renderChecker(pmc) {
 
     obj.innerHTML += "Site " + site + " checks the health of " + dist " ;\n" ;
     obj.innerHTML += 'For ' + pmc + " it reports these errors :\n" + summ ;
-    obj.innerHTML += 'For details see ' + url(href,href) ;
+    obj.innerHTML += 'For details see ' + my_url(href,href) ;
 }
 
 function renderChart(json, name, container, delivery) {
