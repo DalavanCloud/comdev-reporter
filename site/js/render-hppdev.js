@@ -837,8 +837,9 @@ function renderChecker(pmc) {
       summ += ( '<li>' + data['summary'][idx] + "</li>\n" ) ;
     }
     obj.innerHTML += "Site " + site + " checks the health of " + dist + " ;\n" ;
-    obj.innerHTML += 'For ' + pmc + " it reports these errors :\n<ul>\n" + summ + "</ul>\n" ;
-    obj.innerHTML += 'For details see ' + my_url(href,href) ;
+    obj.innerHTML += 'for ' + pmc + " it reports these errors :\n<ul>\n" + summ + "</ul>\n" ;
+    obj.innerHTML += 'For details see ' + my_url(href,href) + "<br>\n" ;
+    obj.innerHTML += 'Last update : ' + meta['refreshed']['date'] ;
 }
 
 function renderChart(json, name, container, delivery) {
