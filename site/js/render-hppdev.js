@@ -829,7 +829,8 @@ function renderChecker(pmc) {
     var summ = data['summary'] ;
     var href = meta['uri_base'] + data['uri_proj'] ;
     var summ = '' ;
-    for ( item in data['summary'] ) {
+    for ( idx in data['summary'] ) {
+      var item = summ[idx] ;
       summ += '<li>' + item + "</li>\n" ;
     }
     summ = "<ul>\n" + summ + "</ul>\n" ;
