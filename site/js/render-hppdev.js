@@ -750,7 +750,7 @@ function renderFrontPage(json) {
 		var sel = makeSelect("project", json.all)
 		sel.setAttribute("style", "height: 32px !important; padding: 0px !important; margin: 0px !important; margin-left: 32px !important;")
 		sel.style = "break-before: never; break-after: never; float: left"
-		sel.setAttribute("onchange", "GetAsyncJSON('getjson.py?only='+ this.value, this.value, mergeData);")
+		sel.setAttribute("onchange", "GetAsyncJSON('getjson-hppdev.py?only='+ this.value, this.value, mergeData);")
 		btn.appendChild(sel)
 		panellist.appendChild(btn)
 
