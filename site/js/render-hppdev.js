@@ -841,7 +841,7 @@ function renderChecker(pmc) {
       summ += ( '<li>' + data['summary'][idx] + "</li>\n" ) ;
     }
     var date = new Date() ;
-    var time = date.getTime() ;
+    var time = Math.round ( date.getTime() / 1000 ) ;
     var ival = time - meta['refreshed']['time'] ;
     obj.innerHTML += "Site " + site + " checks the health of " + dist + " ;\n" ;
     obj.innerHTML += 'for ' + pmc + " it reports these errors :\n<ul>\n" + summ + "</ul>\n" ;
