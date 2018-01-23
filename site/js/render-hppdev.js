@@ -840,7 +840,7 @@ function renderChecker(pmc) {
     for ( idx in data['summary'] ) {
       summ += ( '<li>' + data['summary'][idx] + "</li>\n" ) ;
     }
-    var ival = Date.time() - meta['refreshed']['time'] ;
+    var ival = Date.now().getUnixTime() - meta['refreshed']['time'] ;
     obj.innerHTML += "Site " + site + " checks the health of " + dist + " ;\n" ;
     obj.innerHTML += 'for ' + pmc + " it reports these errors :\n<ul>\n" + summ + "</ul>\n" ;
     obj.innerHTML += 'For details see ' + my_url(href,href) + "<br>\n" ;
