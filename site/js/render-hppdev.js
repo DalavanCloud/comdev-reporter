@@ -826,6 +826,22 @@ function renderBZ(pmc) {
 }
 
 function my_url (href,text) { return '<a href="' + href + '">' + text + '</a>' ; }
+function ival2str (ival) {
+  var n = ival ;
+  var m = Math.round ( 0.5 + n / 60 ) ;
+  var h = Math.round ( 0.5 + n / 60 / 60 ) ;
+  var d = Math.round ( 0.5 + n / 60 / 60 / 24 ) ;
+  var u ;
+  if ( n < 60 )
+    { u = 'second' ; }
+  else if ( m < 60 )
+    { n = m ; u = 'minute' ; }
+  else if ( h < 24 )
+    { n = h ; u = 'hour' ; }
+  else
+    { n = d ; u = 'day' ; }
+  return n + ' ' + u + ( ( n == 1 ) ? '' : 's' ) ;
+}
 function renderChecker(pmc) {
     var obj = buildPanel(pmc, "Dist Checker") ;
     var data = jsdata.checker[pmc] ;
@@ -846,7 +862,7 @@ function renderChecker(pmc) {
     obj.innerHTML += "Site " + site + " checks the health of " + dist + " ;\n" ;
     obj.innerHTML += 'for ' + pmc + " it reports these errors :\n<ul>\n" + summ + "</ul>\n" ;
     obj.innerHTML += 'For details see ' + my_url(href,href) + "<br>\n" ;
-    obj.innerHTML += 'Last update : ' + meta['refreshed']['date'] + ' ; ' + ival + ' seconds ago.' ;
+    obj.innerHTML += 'Last update : ' + meta['refreshed']['date'] + ' ; ' + ival2str(ival) + ' ago.' ;
     addLine( pmc, "## /dist/ error(s): " + errs ) ;
     addLine( pmc, " - <font color='red'>TODO - fix the errors or explain why they can't be fixed.</font>" ) ;
     addLine( pmc ) ;
