@@ -852,6 +852,7 @@ function renderChecker(pmc) {
     var href = meta['uri_base'] + data['uri_proj'] ;
     var site = my_url( base, base ) ;
     var dist = my_url( dist, dist ) ;
+    var help = meta['uri_base'] + '/doc/README.html' ;
     var summ = '' ;
     for ( idx in data['summary'] ) {
       summ += ( '<li>' + data['summary'][idx] + "</li>\n" ) ;
@@ -860,8 +861,9 @@ function renderChecker(pmc) {
     var time = Math.round ( date.getTime() / 1000 ) ;
     var ival = time - meta['refreshed']['time'] ;
     obj.innerHTML += "Site " + site + " checks the health of " + dist + " ;\n" ;
-    obj.innerHTML += 'for ' + pmc + " it reports these errors :\n<ul>\n" + summ + "</ul>\n" ;
+    obj.innerHTML += 'for PMC <i>' + pmc + "</i> it reports these errors :\n<ul>\n" + summ + "</ul>\n" ;
     obj.innerHTML += 'For details see ' + my_url(href,href) + "<br>\n" ;
+    obj.innerHTML += 'For help see ' + my_url(help,help) + "<br>\n" ;
     obj.innerHTML += 'Last update : ' + meta['refreshed']['date'] + ' ; ' + ival2str(ival) + ' ago.' ;
     addLine( pmc, "## /dist/ error(s): " + errs ) ;
     addLine( pmc, " - <font color='red'>TODO - fix the errors or explain why they can't be fixed.</font>" ) ;
