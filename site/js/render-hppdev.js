@@ -864,7 +864,7 @@ function renderChecker(pmc) {
     obj.innerHTML += 'for PMC <i>' + pmc + "</i> it reports these errors :\n<ul>\n" + summ + "</ul>\n" ;
     obj.innerHTML += 'For details see ' + my_url(href,href) + "<br>\n" ;
     obj.innerHTML += 'For help see ' + my_url(help,help) + "<br>\n" ;
-    obj.innerHTML += 'Last update : ' + meta['refreshed']['date'] + ' ; ' + ival2str(ival) + ' ago.' ;
+    obj.innerHTML += 'Last update : ' + meta['refreshed']['date'] + ' ; ' + ival2str(ival) + ' ago [' + ival + 's].' ;
     addLine( pmc, "## /dist/ error(s): " + errs ) ;
     addLine( pmc, " - <font color='red'>TODO - fix the errors or explain why they can't be fixed.</font>" ) ;
     addLine( pmc ) ;
