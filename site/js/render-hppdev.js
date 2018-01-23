@@ -828,9 +828,9 @@ function renderBZ(pmc) {
 function my_url (href,text) { return '<a href="' + href + '">' + text + '</a>' ; }
 function ival2str (ival) {
   var n = ival ;
-  var m = Math.round ( 0.5 + n / 60 ) ;
-  var h = Math.round ( 0.5 + n / 60 / 60 ) ;
-  var d = Math.round ( 0.5 + n / 60 / 60 / 24 ) ;
+  var m = Math.round ( n / 60 ) ;
+  var h = Math.round ( n / 60 / 60 ) ;
+  var d = Math.round ( n / 60 / 60 / 24 ) ;
   var u ;
   if ( n < 60 )
     { u = 'second' ; }
