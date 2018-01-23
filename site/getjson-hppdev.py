@@ -274,7 +274,7 @@ if re.match(r"^[-a-zA-Z0-9_.]+$", user):
     count = {}
     health = {}
     checker_json = readJson(RAOHOME+"data/cache/checker.json", None)
-    checker = None ;
+    checker = {} ;
     for group in groups:
         jiras = []
         count[group] = [0,0]
@@ -337,10 +337,7 @@ if re.match(r"^[-a-zA-Z0-9_.]+$", user):
         if checker_json and 'meta' in checker_json and 'projects' in checker_json:
             meta = checker_json['meta']
             prjs = checker_json['projects']
-            if group in prjs:
-               checker = { group: prjs[group] }
-            else:
-               checker = { group: { 'errors': 0 } }
+            checker[group] = prjs[group] if group in prjs else { 'errors': 0 }
             checker[group]['meta'] = meta
     if not isMember:
         allpmcs = []
