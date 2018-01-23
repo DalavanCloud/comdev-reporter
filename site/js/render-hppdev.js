@@ -679,8 +679,12 @@ function renderFrontPage(json) {
 			renderJIRA(pmc)
 		}
 
-        if (json.checker[pmc]['errors'] > 0) {
-            renderChecker(pmc)
+        // XXX HPP : json.checker[pmc] is undefinded, sometimes
+        if ( json.checker[pmc] ) {
+             if ( json.checker[pmc]['errors'] > 0 ) { renderChecker(pmc) }
+        } else {
+             var obj = buildPanel(pmc, "Dist Checker") ;
+             obj.innerHTML += "No checker data for PMC [" + pmc + "]\n" ;
         }
 
 
