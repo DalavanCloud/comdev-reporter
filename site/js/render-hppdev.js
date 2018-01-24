@@ -679,7 +679,7 @@ function renderFrontPage(json) {
 			renderJIRA(pmc)
 		}
 
-        // XXX HPP : json.checker[pmc] is undefinded, sometimes
+        // HPP : handle json.checker[pmc] == undefined ; shouldn't happen
         if ( json.checker[pmc] ) {
              if ( json.checker[pmc]['errors'] > 0 ) { renderChecker(pmc) }
         } else {
@@ -825,13 +825,14 @@ function renderBZ(pmc) {
     obj.innerHTML += "Tickets were found for the following products:<br><kbd>" + Object.keys(jsdata.bugzilla[pmc][2]).sort().join(", ") + "</kbd>"
 }
 
-function my_url (href,text) { return '<a href="' + href + '">' + text + '</a>' ; }
+function my_url (href) { return '<a href="' + href + '">' + href + '</a>' ; }
 function ival2str (ival) {
   var n = ival ;
   var m = Math.round ( n / 60 ) ;
   var h = Math.round ( n / 60 / 60 ) ;
   var d = Math.round ( n / 60 / 60 / 24 ) ;
   var u ;
+  var r ;
   if ( n < 60 )
     { u = 'second' ; }
   else if ( m < 60 )
@@ -840,7 +841,8 @@ function ival2str (ival) {
     { n = h ; u = 'hour' ; }
   else
     { n = d ; u = 'day' ; }
-  return n + ' ' + u + ( ( n == 1 ) ? '' : 's' ) ;
+  r = n + ' ' + u + ( ( n == 1 ) ? '' : 's' ) ;
+  r = "<font color='red'>" + r + "</font>" if ival > 4 * 3600 ;
 }
 function renderChecker(pmc) {
     var obj = buildPanel(pmc, "Dist Checker") ;
@@ -848,11 +850,10 @@ function renderChecker(pmc) {
     var meta = data['meta'] ;
     var errs = data['errors'] ;
     var base = meta['uri_base'] ;
-    var dist = 'https://www.apache.org/dist/' ;
-    var href = meta['uri_base'] + data['uri_proj'] ;
-    var site = my_url( base, base ) ;
-    var dist = my_url( dist, dist ) ;
-    var help = meta['uri_base'] + '/doc/README.html' ;
+    var home = my_url(base) ;
+    var help = my_url(meta['uri_help']) ;
+    var proj = my_url(base + data['uri_proj']) ;
+    var dist = my_url('https://www.apache.org/dist/') ;
     var summ = '' ;
     for ( idx in data['summary'] ) {
       summ += ( '<li>' + data['summary'][idx] + "</li>\n" ) ;
@@ -860,13 +861,13 @@ function renderChecker(pmc) {
     var date = new Date() ;
     var time = Math.round ( date.getTime() / 1000 ) ;
     var ival = time - meta['refreshed']['time'] ;
-    obj.innerHTML += "Site " + site + " checks the health of " + dist + " ;\n" ;
+    obj.innerHTML += "Site " + home + " checks the health of " + dist + " ;\n" ;
     obj.innerHTML += 'for PMC <i>' + pmc + "</i> it reports these errors :\n<ul>\n" + summ + "</ul>\n" ;
-    obj.innerHTML += 'For details see ' + my_url(href,href) + "<br>\n" ;
-    obj.innerHTML += 'For help see ' + my_url(help,help) + "<br>\n" ;
+    obj.innerHTML += 'For details see ' + proj + "<br>\n" ;
+    obj.innerHTML += 'For help see ' + help + "<br>\n" ;
     obj.innerHTML += 'Last update : ' + meta['refreshed']['date'] + ' ; ' + ival2str(ival) + ' ago [' + ival + 's].' ;
     addLine( pmc, "## /dist/ error(s): " + errs ) ;
-    addLine( pmc, " - <font color='red'>TODO - fix the errors or explain why they can't be fixed.</font>" ) ;
+    addLine( pmc, " - <font color='red'>TODO - fix the errors or explain why you can't.</font>" ) ;
     addLine( pmc ) ;
 }
 
