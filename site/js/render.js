@@ -679,6 +679,14 @@ function renderFrontPage(json) {
 			renderJIRA(pmc)
 		}
 
+        // HPP : handle json.checker[pmc] == undefined ; shouldn't happen
+        if ( json.checker[pmc] ) {
+             if ( json.checker[pmc]['errors'] > 0 ) { renderChecker(pmc) }
+        } else {
+             var obj = buildPanel(pmc, "Dist Checker") ;
+             obj.innerHTML += "No checker data for PMC [" + pmc + "]\n" ;
+        }
+
 
 		// Reporting example
 		var template = buildPanel(pmc, "Report template");
@@ -775,7 +783,7 @@ function mergeData(json, pmc) {
 		}
 	}
 
-	var todo = new Array('count', 'mail', 'delivery', 'bugzilla', 'jira', 'changes', 'pmcdates', 'pdata', 'releases', 'keys', 'health')
+	var todo = new Array('count', 'mail', 'delivery', 'bugzilla', 'jira', 'changes', 'pmcdates', 'pdata', 'releases', 'keys', 'health', 'checker')
 	for (i in todo) {
 		var key = todo[i]
 		jsdata[key][pmc] = json[key][pmc];
@@ -815,6 +823,53 @@ function renderBZ(pmc) {
     obj.innerHTML += jsdata.bugzilla[pmc][0] + " Bugzilla tickets created in the last 3 months<br>";
     obj.innerHTML += jsdata.bugzilla[pmc][1] + " Bugzilla tickets resolved in the last 3 months<br>";
     obj.innerHTML += "Tickets were found for the following products:<br><kbd>" + Object.keys(jsdata.bugzilla[pmc][2]).sort().join(", ") + "</kbd>"
+}
+
+function my_url (href) { return '<a href="' + href + '">' + href + '</a>' ; }
+function ival2str (ival) {
+  var n = ival ;
+  var m = Math.round ( n / 60 ) ;
+  var h = Math.round ( n / 60 / 60 ) ;
+  var d = Math.round ( n / 60 / 60 / 24 ) ;
+  var u ;
+  var r ;
+  if ( n < 60 )
+    { u = 'second' ; }
+  else if ( m < 60 )
+    { n = m ; u = 'minute' ; }
+  else if ( h < 24 )
+    { n = h ; u = 'hour' ; }
+  else
+    { n = d ; u = 'day' ; }
+  r = n + ' ' + u + ( ( n == 1 ) ? '' : 's' ) ;
+  if ( ival > 4 * 3600 ) { r = "<font color='red'>" + r + "</font>" ; }
+  return r ;
+}
+function renderChecker(pmc) {
+    var obj = buildPanel(pmc, "Dist Checker") ;
+    var data = jsdata.checker[pmc] ;
+    var meta = data['meta'] ;
+    var errs = data['errors'] ;
+    var base = meta['uri_base'] ;
+    var home = my_url(base) ;
+    var help = my_url(meta['uri_help']) ;
+    var proj = my_url(base + data['uri_proj']) ;
+    var dist = my_url('https://www.apache.org/dist/') ;
+    var summ = '' ;
+    for ( idx in data['summary'] ) {
+      summ += ( '<li>' + data['summary'][idx] + "</li>\n" ) ;
+    }
+    var date = new Date() ;
+    var time = Math.round ( date.getTime() / 1000 ) ;
+    var ival = time - meta['refreshed']['time'] ;
+    obj.innerHTML += "Site " + home + " checks the health of " + dist + " ;\n" ;
+    obj.innerHTML += 'for PMC <i>' + pmc + "</i> it reports these errors :\n<ul>\n" + summ + "</ul>\n" ;
+    obj.innerHTML += 'For details see ' + proj + "<br>\n" ;
+    obj.innerHTML += 'For help see ' + help + "<br>\n" ;
+    obj.innerHTML += 'Last update : ' + meta['refreshed']['date'] + ' ; ' + ival2str(ival) + ' ago [' + ival + 's].' ;
+    addLine( pmc, "## /dist/ error(s): " + errs ) ;
+    addLine( pmc, " - <font color='red'>TODO - Please fix the errors or explain why you can't.</font>" ) ;
+    addLine( pmc ) ;
 }
 
 function renderChart(json, name, container, delivery) {
