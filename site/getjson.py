@@ -20,6 +20,7 @@
         data/maildata_extended.json
         https://whimsy.apache.org/public/member-info.json
         https://whimsy.apache.org/public/public_ldap_projects.json
+        data/cache/checker.json
         
     
     Environment variables:
@@ -272,6 +273,8 @@ if re.match(r"^[-a-zA-Z0-9_.]+$", user):
     keys = {}
     count = {}
     health = {}
+    checker_json = readJson(RAOHOME+"data/cache/checker.json", None)
+    checker = {}
     for group in groups:
         jiras = []
         count[group] = [0,0]
@@ -331,6 +334,11 @@ if re.match(r"^[-a-zA-Z0-9_.]+$", user):
                         cdata[group]['committer'][member] = cchanges[pmc][member]
         if group in pmcdates: # Make sure we have this PMC in the JSON, so as to not bork
             dates[group] = pmcdates[group] # only send the groups we want
+        if checker_json and 'meta' in checker_json and 'projects' in checker_json:
+            meta = checker_json['meta']
+            prjs = checker_json['projects']
+            checker[group] = prjs[group] if group in prjs else { 'errors': 0 }
+            checker[group]['meta'] = meta
     if not isMember:
         allpmcs = []
     output = {
@@ -346,7 +354,8 @@ if re.match(r"^[-a-zA-Z0-9_.]+$", user):
         'pdata': ddata,
         'releases': rdata,
         'keys': keys,
-        'health': health
+        'health': health,
+        'checker': checker
     }
 
     # AFAICT dumps always uses \n for EOL
