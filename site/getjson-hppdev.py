@@ -274,7 +274,7 @@ if re.match(r"^[-a-zA-Z0-9_.]+$", user):
     count = {}
     health = {}
     checker_json = readJson(RAOHOME+"data/cache/checker.json", None)
-    checker = {} ;
+    checker = {}
     for group in groups:
         jiras = []
         count[group] = [0,0]
