@@ -842,7 +842,8 @@ function ival2str (ival) {
   else
     { n = d ; u = 'day' ; }
   r = n + ' ' + u + ( ( n == 1 ) ? '' : 's' ) ;
-  r = "<font color='red'>" + r + "</font>" if ival > 4 * 3600 ;
+  r = "<font color='red'>" + r + "</font>" if ival > 4 * 3600 else r ;
+  return r ;
 }
 function renderChecker(pmc) {
     var obj = buildPanel(pmc, "Dist Checker") ;
