@@ -273,7 +273,13 @@ if re.match(r"^[-a-zA-Z0-9_.]+$", user):
     keys = {}
     count = {}
     health = {}
-    checker_json = readJson(RAOHOME+"data/cache/checker.json", None)
+    checker_json = None
+    try:
+        request  = urllib2.Request("https://checker.apache.org/json/", None)
+        response = urllib2.urlopen(request, timeout=1)
+        checker_json = response.read()
+    except:
+        checker_json = readJson(RAOHOME+"data/cache/checker.json", None)
     checker = {}
     for group in groups:
         jiras = []
