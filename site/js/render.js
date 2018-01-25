@@ -537,6 +537,16 @@ function renderFrontPage(json) {
 
 		addLine(pmc)
 
+                // Dist Checker 
+                // HPP : handle json.checker[pmc] == undefined ; shouldn't happen
+                if ( json.checker[pmc] ) {
+                     if ( json.checker[pmc]['errors'] > 0 ) { renderChecker(pmc) }
+                } else {
+                     var obj = buildPanel(pmc, "Dist Checker") ;
+                     obj.innerHTML += "No checker data for PMC [" + pmc + "]\n" ;
+                }
+
+
 		var mlbox = buildPanel(pmc, "Mailing lists");
 
 		var ul = document.createElement('ul')
@@ -678,15 +688,6 @@ function renderFrontPage(json) {
 		if (json.jira[pmc][0] > 0 || json.jira[pmc][1] > 0) {
 			renderJIRA(pmc)
 		}
-
-        // HPP : handle json.checker[pmc] == undefined ; shouldn't happen
-        if ( json.checker[pmc] ) {
-             if ( json.checker[pmc]['errors'] > 0 ) { renderChecker(pmc) }
-        } else {
-             var obj = buildPanel(pmc, "Dist Checker") ;
-             obj.innerHTML += "No checker data for PMC [" + pmc + "]\n" ;
-        }
-
 
 		// Reporting example
 		var template = buildPanel(pmc, "Report template");
