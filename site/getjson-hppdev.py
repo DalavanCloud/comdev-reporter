@@ -274,6 +274,7 @@ if re.match(r"^[-a-zA-Z0-9_.]+$", user):
     count = {}
     health = {}
     checker_json = None
+    # fetch checker_json from checker.apache.org ; use cache as fallback
     try:
         request  = urllib2.Request("https://checker.apache.org/json/", None)
         response = urllib2.urlopen(request, timeout=1)
