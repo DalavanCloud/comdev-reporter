@@ -856,6 +856,7 @@ function renderChecker(pmc) {
     var help = my_url(meta['uri_help']) ;
     var proj = my_url(base + data['uri_proj']) ;
     var dist = my_url('https://www.apache.org/dist/') ;
+    var etxt = ( errs == 1 ? 'error' : 'errors' ) ;
     var summ = '' ;
     for ( idx in data['summary'] ) {
       summ += ( '<li>' + data['summary'][idx] + "</li>\n" ) ;
@@ -869,7 +870,7 @@ function renderChecker(pmc) {
     obj.innerHTML += 'For help see ' + help + "<br>\n" ;
     obj.innerHTML += 'Last update : ' + meta['refreshed']['date'] + ' ; ' + ival2str(ival) + ' ago [' + ival + 's].' ;
     addLine( pmc, "## /dist/ errors: " + errs ) ;
-    addLine( pmc, " - <font color='red'>TODO - Please fix the errors or explain why you can't.</font>" ) ;
+    addLine( pmc, " - <font color='red'>TODO - Please fix the " + etxt " or explain why you can't.</font>" ) ;
     addLine( pmc ) ;
 }
 
