@@ -184,6 +184,10 @@ class UrlCache(object):
         """
         if name == None:
             name = basename(urlparse(url).path)
+            if name == '': # no-name URL
+                import re
+                # convert URL to file name: replace all but alphanum and '-'
+                name = re.sub(r'[^\w]+','_',url)
         target=self.__getname(name)
         fileTime = self.__file_mtime(target)
         if useFileModTime:
@@ -256,6 +260,7 @@ class UrlCache(object):
 
 if __name__ == '__main__':
     fc2 = UrlCache(cachedir=None,interval=0, debug=True)
+    fc2.get("https://www.apache.org/", name=None, encoding='utf-8')
     fc2.get("https://svn.apache.org/repos/asf/subversion/README","README", encoding='utf-8')
     fc = UrlCache(cachedir=None,interval=10, silent=True, debug=True)
     GIT='https://raw.githubusercontent.com/apache/infrastructure-puppet/deployment/modules/subversion_server/files/authorization/'
