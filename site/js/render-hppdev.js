@@ -870,7 +870,7 @@ function renderChecker(pmc) {
     obj.innerHTML += 'For help see ' + help + "<br>\n" ;
     obj.innerHTML += 'Last update : ' + meta['refreshed']['date'] + ' ; ' + ival2str(ival) + ' ago [' + ival + 's].' ;
     addLine( pmc, "## /dist/ errors: " + errs ) ;
-    addLine( pmc, " - <font color='red'>TODO - Please fix the " + etxt " or explain why you can't.</font>" ) ;
+    addLine( pmc, " - <font color='red'>TODO - Please fix the " + etxt + " or explain why you can't.</font>" ) ;
     addLine( pmc ) ;
 }
 
