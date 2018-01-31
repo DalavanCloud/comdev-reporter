@@ -58,18 +58,12 @@ function makeSelect(name, arr) {
 	return sel
 }
 
+// return all the Wednesdays in the month
 function getWednesdays(mo, y) {
 	var d = new Date();
-	if (mo) {
-		d.setMonth(mo);
-	}
-	if (y) {
-		d.setFullYear(y, d.getMonth(), d.getDate())
-	}
+	d.setFullYear(y, mo, 1)
 	var month = d.getMonth(),
 		wednesdays = [];
-
-	d.setDate(1);
 
 	// Get the first Wednesday (day 3 of week) in the month
 	while (d.getDay() !== 3) {
@@ -133,23 +127,26 @@ function setReportDate(json, x) {
 		}
 	}
 
+    // Find the 3rd Wed in each month for this year
+    var this_year = today.getFullYear();
 	// Check the months in order, so it does not matter if the data is unordered
 	for (var x in m) {
 		for (i in rm) {
 			if (m[x] == rm[i]) {
-				dates.push(getWednesdays(x)[2])
+				dates.push(getWednesdays(x, this_year)[2])
 			}
 		}
 	}
+	// Also for next year to allow for year-end wrap-round
 	// cannot combine with the code above because that would destroy the order
-	var ny = today.getFullYear() + 1;
 	for (x in m) {
 		for (i in rm) {
 			if (m[x] == rm[i]) {
-				dates.push(getWednesdays(x, ny)[2])
+				dates.push(getWednesdays(x, this_year+1)[2])
 			}
 		}
 	}
+	// find the first Wed that has not been reached
 	var nextdate = dates[0];
 	while (nextdate < today) {
 		nextdate = dates.shift();
