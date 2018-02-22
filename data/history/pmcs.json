@@ -4541,6 +4541,52 @@
    0
   ]
  },
+ "datafu": {
+  "cestella": [
+   "Casey Stella",
+   0
+  ],
+  "evion": [
+   "Evion Kim",
+   0
+  ],
+  "eyal": [
+   "Eyal Allweil",
+   0
+  ],
+  "jarcec": [
+   "Jarek Jarcec Cecho",
+   0
+  ],
+  "jwills": [
+   "Josh Wills",
+   0
+  ],
+  "mhayes": [
+   "Matthew Hayes",
+   0
+  ],
+  "mitultiwari": [
+   "Mitul Tiwari",
+   0
+  ],
+  "rjurney": [
+   "Russell Jurney",
+   0
+  ],
+  "rvs": [
+   "Roman Shaposhnik",
+   0
+  ],
+  "samshah": [
+   "Sam Shah",
+   0
+  ],
+  "wvaughan": [
+   "Will Vaughan",
+   0
+  ]
+ },
  "db": {
   "abrown": [
    "Army",
@@ -5803,6 +5849,10 @@
   "dgkimura": [
    "David Kimura",
    1505160002
+  ],
+  "dixie": [
+   "Dick Cavender",
+   1519272002
   ],
   "dschneider": [
    "Darrel Schneider",
