@@ -688,6 +688,7 @@ function renderFrontPage(json) {
 
 		// Reporting example
 		var template = buildPanel(pmc, "Report template");
+		template.innerHTML += "<a href='https://www.apache.org/foundation/board/reporting#guidelines'>Reporting Guidelines</a>"
 		template.innerHTML += "<pre style='border: 2px dotted #444; padding: 10px; background: #FFD;' contenteditable='true'>" + templates[pmc] + "</pre>"
 
 		// Fetch from JIRA dialog
