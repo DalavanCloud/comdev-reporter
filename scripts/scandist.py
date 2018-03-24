@@ -40,6 +40,7 @@ targets = {} # dict: key = project name, value = {dict: key = committer, value =
 sendEmail = True # Allow e-mails to be disabled for testing
 debug = False
 trace = False # More detailed debug
+interactive = False # are we running locally?
 
 logger = None # initial setting
 
@@ -211,6 +212,11 @@ IGNORED_FILES={
     "README.html",
     }
 
+IGNORED_PROJECTS={
+    "incubator",
+    "META"
+}
+
 def isIgnored(filename):
     return filename.endswith('/') or  filename in IGNORED_FILES
 
@@ -230,7 +236,10 @@ def processCommit(commit):
         match = re.match(RELEASE_MATCH, path)
         if match:
             project = match.group(1) 
-            if project != "incubator":
+            if project in IGNORED_PROJECTS:
+                if debug:
+                    print("Ignoring commit for path: %s" % path)
+            else:
                 match = re.match(".*/(.+)$", path)
                 if match:
                     if paths[path]['flags'] == 'D  ':
@@ -251,9 +260,6 @@ def processCommit(commit):
                     targets[project][committer] = []
                 if not commit in targets[project][committer]: 
                     targets[project][committer].append(commit)
-            else:
-                if trace:
-                    print("Ignoring incubator commit: %s" % path)
         else:
             if trace:
                 print("Did not match: %s" % path)
@@ -351,7 +357,8 @@ def main():
                time.sleep(600)
         except KeyboardInterrupt:
             logger.info("Detected shutdown interrupt")
-            pass
+            if interactive:
+                break
            
         processTargets()
 
@@ -465,11 +472,13 @@ if __name__ == "__main__":
                     daemon.restart()
                 elif 'foreground' == sys.argv[1]:
                     debug = True
+                    interactive = True
                     main()
                 elif 'test' == sys.argv[1]: # allow override of URL and RE for tesing purposes
                     debug = True
                     sendEmail = False
                     trace = True
+                    interactive = True
                     if len(sys.argv) > 2:
                         DEFAULT_URL = sys.argv[2]
                     if len(sys.argv) > 3:
