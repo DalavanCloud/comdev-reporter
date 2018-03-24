@@ -1523,3 +1523,13 @@ COMMIT: from http://hades.apache.org:2069/commits/svn/0d268c88-bc11-4956-87df-91
   u'log': u'dist += lens (new TLP)',
   u'repository': u'0d268c88-bc11-4956-87df-91683dc98e59',
   u'type': u'svn'}
+COMMIT: from http://hades.apache.org:2069/commits/svn/0d268c88-bc11-4956-87df-91683dc98e59
+{ u'changed': { u'release/META/lens/': { u'flags': u'D  '},
+                u'release/META/lens/': { u'flags': u'A  '}},
+  u'committer': u'coreyg',
+  u'date': u'2015-08-21 19:05:24 +0000 (Fri, 21 Aug 2015)',
+  u'format': 1,
+  u'id': 10257,
+  u'log': u'dist += lens (new TLP)',
+  u'repository': u'0d268c88-bc11-4956-87df-91683dc98e59',
+  u'type': u'svn'}

@@ -33,6 +33,7 @@ if __name__ == "__main__":
     prevdate=None
     scandist.sendEmail = False
     #scandist.trace = True
+    scandist.debug = True
     with open("scandist_test.dat") as data:
         inCommit = False
         for line in data:
