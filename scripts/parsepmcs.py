@@ -253,7 +253,7 @@ for c in sorted(chairs):
     if not c in web:
         chairDiffs.append("Missing from web page \n| V.P., Apache %s | %s |" % (c, chairs[c]))
     else:
-        if not chairs[c] == web[c]:
+        if not chairs[c] == web[c].strip():
             chairDiffs.append("Mismatch: Apache %s ctte %s web %s" % (c, chairs[c], web[c]))
         
 DEST='Site Development <site-dev@apache.org>'
