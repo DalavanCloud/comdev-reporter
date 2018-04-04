@@ -214,7 +214,8 @@ IGNORED_FILES={
 
 IGNORED_PROJECTS={
     "incubator",
-    "META"
+    "META",
+    "zzz",
 }
 
 def isIgnored(filename):
