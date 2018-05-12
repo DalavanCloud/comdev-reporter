@@ -37,5 +37,6 @@
  "hive-storage-2.3.1": 1496102400, 
  "hive-storage-2.4.0": 1500249600, 
  "hive-storage-2.5.0": 1522108800, 
- "hive-storage-2.6.0": 1525046400
+ "hive-storage-2.6.0": 1525046400, 
+ "hive-storage-2.6.1": 1525996800
 }
