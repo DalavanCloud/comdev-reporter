@@ -742,6 +742,10 @@
    "Chetan Narsude",
    0
   ],
+  "chinmay": [
+   "Chinmay Kolhatkar",
+   1526500801
+  ],
   "cnauroth": [
    "Chris Nauroth",
    0
@@ -16197,6 +16201,60 @@
   "tveronezi": [
    "Thiago Veronezi",
    1439895609.5858712
+  ]
+ },
+ "trafficcontrol": {
+  "covener": [
+   "Eric Covener",
+   0
+  ],
+  "dangogh": [
+   "Dan Kirkwood",
+   0
+  ],
+  "dewrich": [
+   "Dewayne Richardson",
+   0
+  ],
+  "elsloo": [
+   "Jeff Elsloo",
+   0
+  ],
+  "friede": [
+   "Eric Friedrich",
+   0
+  ],
+  "hbeatty": [
+   "Hank Beatty",
+   0
+  ],
+  "jvd": [
+   "Jan van Doorn",
+   0
+  ],
+  "mitchell852": [
+   "Jeremy Mitchell",
+   0
+  ],
+  "mtorluemke": [
+   "Mark Torluemke",
+   0
+  ],
+  "neuman": [
+   "David Neuman",
+   0
+  ],
+  "smalenfant": [
+   "Steve Malenfant",
+   0
+  ],
+  "sorber": [
+   "Phil Sorber",
+   0
+  ],
+  "zwoop": [
+   "Leif Hedstrom",
+   0
   ]
  },
  "trafficserver": {
