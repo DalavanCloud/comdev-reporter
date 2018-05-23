@@ -1,4 +1,5 @@
 {
+ "Batik-1.10": 1527033600, 
  "Batik-1.6.1": 1431208800, 
  "Batik-1.7.1": 1431208800, 
  "Batik-1.8": 1426546800, 
@@ -7,6 +8,7 @@
  "FOP-2.0": 1433286000, 
  "XMLGraphics Commons 2.1": 1452729600, 
  "XMLGraphics Commons 2.2": 1490313600, 
+ "XMLGraphics Commons 2.3": 1527033600, 
  "XMLGraphics FOP 2.1": 1452729600, 
  "XMLGraphics FOP 2.2": 1491782400, 
  "XMLGraphics FOP-PDF-IMAGES 2.2": 1491782400, 
