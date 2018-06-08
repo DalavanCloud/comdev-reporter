@@ -2476,10 +2476,6 @@
    "Francis Chuang",
    1524427201
   ],
-  "gates": [
-   "Alan Gates",
-   0
-  ],
   "hashutosh": [
    "Ashutosh Chauhan",
    0
@@ -9392,6 +9388,10 @@
    "Sebastian Bazley",
    0
   ],
+  "vladimirsitnikov": [
+   "Vladimir Sitnikov",
+   1528488001
+  ],
   "woolfel": [
    "Peter Lin",
    0
@@ -12836,6 +12836,10 @@
    "Nick Dimiduk",
    0
   ],
+  "pboado": [
+   "Pedro Boado",
+   1528488001
+  ],
   "rajeshbabu": [
    "Rajeshbabu Chintaguntla",
    1426388401.8286629
@@ -12871,6 +12875,10 @@
   "tdsilva": [
    "Thomas D'Silva",
    1448193602
+  ],
+  "vincentpoon": [
+   "Vincent Poon",
+   1528488001
   ]
  },
  "pig": {
