@@ -64,6 +64,7 @@
  "org.apache.felix.http.whiteboard-4.0.0": 1525039200, 
  "org.apache.felix.inventory-1.0.6": 1512950400, 
  "org.apache.felix.jaas-1.0.2": 1487203200, 
+ "org.apache.felix.logback-1.0.0": 1529884800, 
  "org.apache.felix.main-5.6.0": 1474761600, 
  "org.apache.felix.main-5.6.1": 1477267200, 
  "org.apache.felix.main-5.6.10": 1510531200, 
