@@ -17,7 +17,13 @@ then
     python3 -u $SCRIPT stop
 fi
 
-LOGFILE=$LOGDIR/${BASE}_${YYMM}_daemon.log python3 -u $SCRIPT start
+if [ "$1" = 'stop' ]
+then
+    python3 -u $SCRIPT stop
+    echo "Remember to start scandist again" >&2
+else
+    LOGFILE=$LOGDIR/${BASE}_${YYMM}_daemon.log python3 -u $SCRIPT start
+fi
 
 echo Completed $SCRIPT at $(date)
 echo '<<<'
