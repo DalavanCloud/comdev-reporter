@@ -66,6 +66,7 @@
  "geronimo-jwt-auth-1.0.0": 1529280000, 
  "geronimo-metrics-1.0.0": 1530230400, 
  "geronimo-openapi-1.0.0": 1532131200, 
+ "geronimo-opentracing-1.0.0": 1532822400, 
  "geronimo-safeguard-1.0": 1515628800, 
  "v1.0-incubating-M1": 1151625600.0, 
  "v1.0-incubating-M2": 1173830400.0, 
