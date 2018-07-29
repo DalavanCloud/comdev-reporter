@@ -64,7 +64,7 @@ def getProjects():
         req.add_header("Authorization", "Basic %s" % base64string)
         x = json.loads(urlopen(req, timeout=JIRATIMEOUT).read().decode('utf-8'))
         with open(PROJECT_JSON, "w") as f:
-            json.dump(x, f, indent=1)
+            json.dump(x, f, indent=1, sort_keys=True)
             f.close()
             print("Created %s" % PROJECT_JSON)
     except Exception as e:
@@ -80,13 +80,13 @@ def getJIRAS(project):
         req.add_header("Authorization", "Basic %s" % base64string)
         rdata = json.loads(urlopen(req, timeout=JIRATIMEOUT).read().decode('utf-8'))
         with open("%s/data/JIRA/%s.json" % (MYHOME, project), "w") as f:
-            json.dump([cdata['total'], rdata['total'], project], f, indent=1)
+            json.dump([cdata['total'], rdata['total'], project], f, indent=1, sort_keys=True)
             f.close()
         return cdata['total'], rdata['total'], project
     except Exception as err:
         print("Failed to get data for %s: %s " % (project, err))
         with open("%s/data/JIRA/%s.json" % (MYHOME, project), "w") as f:
-            json.dump([0,0,None], f, indent=1)
+            json.dump([0,0,None], f, indent=1, sort_keys=True)
             f.close()
         handleError()
         return 0,0, None
