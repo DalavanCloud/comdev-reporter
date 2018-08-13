@@ -236,22 +236,25 @@ def processCommit(commit):
         # Is it a dist/release commit?
         match = re.match(RELEASE_MATCH, path)
         if match:
+            if paths[path]['flags'] == 'D  ':
+                if debug:
+                    print("Ignoring deletion of path '%s' " % path)
+                continue  # it's a deletion; ignore        
             project = match.group(1) 
+            # 
             if project in IGNORED_PROJECTS:
                 if debug:
-                    print("Ignoring commit for path: %s" % path)
+                    print("Ignoring commit for path: %s (%s)" % (path, project))
             else:
                 match = re.match(".*/(.+)$", path)
                 if match:
-                    if paths[path]['flags'] == 'D  ':
-                        if debug:
-                            print("Ignoring deletion of path '%s' " % path)
-                        continue  # it's a deletion; ignore        
                     fileName = match.group(1)
                     if isIgnored(fileName):
                         if debug:
                             print("Ignoring update of file %s" % path)
                         continue
+                if debug:
+                    print("Processing update of file %s" % path)
                 # a single commit can potentially affect multiple projects
                 # create the dict and array if necessary
                 if not project in targets:
