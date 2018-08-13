@@ -20,12 +20,12 @@ import datetime
 def processBatch():
     for project in scandist.targets:
         # show what is to be processed
-        print("Batch: <<",project, end="")
+        print("Batch: <<",project, end="~")
         committers = scandist.targets[project]
         for committer in committers:
-            print(committer, end="")
+            print(committer, end="~")
             for entry in committers[committer]:
-                print(entry['id'], end="")
+                print(entry['id'], end="~")
         print(">>")
     scandist.processTargets()
     
