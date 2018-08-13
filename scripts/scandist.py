@@ -418,7 +418,10 @@ and add your release data (version and date) to the database.
 
 If you are not a PMC member, please have a PMC member add this information.
 
-While this is not a requirement, we ask that you still add this data to the
+NOTE:
+This task is entirely optional and your release does NOT depend on it.
+
+While not a requirement, we kindly ask that you still add this data to the
 reporter database, so that people using the Apache Reporter Service will be
 able to see the latest release data for this project.
 
