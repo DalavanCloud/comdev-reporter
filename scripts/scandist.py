@@ -455,6 +455,7 @@ class MyDaemon(daemon):
         main()
  
 if __name__ == "__main__":
+        PID_FILE = '/tmp/scandist.pid'
         logger = logging.getLogger('scandist')
         logger.setLevel(logging.INFO)
         formatter = logging.Formatter('%(asctime)s %(levelname)s: %(message)s')
@@ -463,14 +464,16 @@ if __name__ == "__main__":
         logger.addHandler(ch)
         logfile = os.environ.get('LOGFILE')
         logger.info("LOGFILE=%s", logfile)
-        daemon = MyDaemon('/tmp/scandist.pid', logfile)
         if len(sys.argv) >= 2:
                 if 'start' == sys.argv[1]:
-                    daemon.start()
+                    my_daemon = MyDaemon(PID_FILE, logfile)
+                    my_daemon.start()
                 elif 'stop' == sys.argv[1]:
-                    daemon.stop()
+                    my_daemon = MyDaemon(PID_FILE, logfile)
+                    my_daemon.stop()
                 elif 'restart' == sys.argv[1]:
-                    daemon.restart()
+                    my_daemon = MyDaemon(PID_FILE, logfile)
+                    my_daemon.restart()
                 elif 'foreground' == sys.argv[1]:
                     debug = True
                     interactive = True
@@ -480,7 +483,7 @@ if __name__ == "__main__":
                     sendEmail = False
                     trace = True
                     interactive = True
-                    if len(sys.argv) > 2:
+                    if len(sys.argv) > 2 and len(sys.argv[2]) > 0: # only override if non-empty
                         DEFAULT_URL = sys.argv[2]
                     if len(sys.argv) > 3:
                         RELEASE_MATCH = sys.argv[3]
