@@ -376,7 +376,7 @@ def processTargets():
             tmpdict = {'project' : project}
             for committer in targetstwo[project]:
                 tmpdict.update({'committer' : committer})
-                # gather up all the commits for this preject+committer
+                # gather up all the commits for this project+committer
                 ids=[]
                 logs=[]
                 dates=[]
