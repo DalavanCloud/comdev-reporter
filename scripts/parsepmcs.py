@@ -128,6 +128,8 @@ def updateCommittees(stamp, group, cid):
         pmcs[group][cid] = [cname, pmcs[group][cid][1], stamp]
     
 stamp = int(time.time())
+#  Round to nearest 10 secs to make comparisons easier
+stamp = stamp - (stamp % 10)
 
 c_info = loadJson('https://whimsy.apache.org/public/committee-info.json')['committees']
 ldappeople = loadJson('https://whimsy.apache.org/public/public_ldap_people.json')['people']
