@@ -170,6 +170,7 @@ def weekly_stats(ml, date):
         if ct != None and length == lengthold:
             tsprint("Unchanged length, using cached data (%d)" % ct)
             mldata.close()
+            mldcache[fname]['stamp'] = stamp # update the stamp so we don't keep trying to download the same file
             return ct, weekly
 
         ct = 0
