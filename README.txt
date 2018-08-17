@@ -16,18 +16,19 @@ Also uses Google Loader:
 https://developers.google.com/loader/
 This is used by site/index.html which loads the visualization API modules: corechart, timeline
 
-The site seems to run on the host nyx-ssl
+The site seems to run on the host nyx-ssl at present (Jul 2018)
 
-The HTTPD conf is defined here:
+The HTTPD conf was originally defined here:
 https://svn.apache.org/repos/infra/infrastructure/trunk/machines/vms/nyx-ssl.apache.org/etc/apache2/sites-available/reporter.apache.org.conf
 
 Some Puppet data is here
 https://svn.apache.org/repos/infra/infrastructure/trunk/puppet/hosts/nyx-ssl/manifests/init.pp
 
 The apache puppet config for the VM is stored at:
-https://git-wip-us.apache.org/repos/asf?p=infrastructure-puppet.git;a=blob_plain;f=data/nodes/projects-vm.apache.org.yaml
+https://gitbox.apache.org/repos/asf?p=infrastructure-puppet.git;a=blob_plain;f=data/nodes/projects-vm.apache.org.yaml
 
 There must be other puppet data files for the host; details TBA
+modules/projects_pvm_asf/manifests/init.pp
 
 Crontab:
 
@@ -41,7 +42,7 @@ crontab -l -u root (in puppet, part of projects-vm.apache.org.yaml):
 # Puppet Name: pao_json_ci
 20 4 * * * cd /var/www/projects.apache.org/site/json && sudo -n -u www-data svn ci -m "updating projects data" --username projects_role --password `cat /root/.rolepwd` --non-interactive >>/var/log/www-data-root/svnjson_$(date "+\%Y-\%m").log
 
-crontab -l -u www-data:
+crontab -l -u www-data: (Not currently stored in puppet)
 # m h   dom mon dow   command
 00 4,12,20 * * * cd /var/www/reporter.apache.org/scripts && ./python3logger.sh parsepmcs.py
 00 01 * * *      cd /var/www/reporter.apache.org/scripts && ./python3logger.sh mailglomper2.py
@@ -49,11 +50,11 @@ crontab -l -u www-data:
 10 00 * * *      cd /var/www/reporter.apache.org/scripts && ./python3logger.sh reportingcycles.py
 20 00 * * *      cd /var/www/reporter.apache.org/scripts && ./python3logger.sh pmcdates.py
 30 00 * * *      cd /var/www/reporter.apache.org/scripts && ./python3logger.sh bugzillastats.py
-50 00      * * * cd /var/www/reporter.apache.org/scripts && ./python3logger.sh health.py
-*  32 * * *      cd /var/www/reporter.apache.org/scripts && ./python3logger.sh readchecker.py
+50 00 * * *      cd /var/www/reporter.apache.org/scripts && ./python3logger.sh health.py
+32  * * * *      cd /var/www/reporter.apache.org/scripts && ./python3logger.sh readchecker.py
 
 # ensure that any new data files get picked up by the commit (which must be done by root)
-40 * * * *      cd /var/www/reporter.apache.org/scripts          && ./svnadd.sh ../data/releases
+40  * * * *      cd /var/www/reporter.apache.org/scripts && ./svnadd.sh ../data/releases
 
 00 12 * * * curl -sS "(redacted)" > /var/www/reporter.apache.org/data/mailinglists.json
 
@@ -79,8 +80,12 @@ Scripts:
 - scripts/mailglomper.py
   Updates data/maildata_extended.json from http://mail-archives.us.apache.org/mod_mbox/<list>/<date>.mbox
 
+- scripts/readchecker.py
+  Caches output of https://checker.apache.org/json/ in data/cache/checker.json
+
 - scripts/readjira.py
-  Creates JSON files under data/JIRA
+   For each .json file found under data/JSON (apart from jira_projects.json) it recreates the file.
+   Also refreshes data/JIRA/jira_projects.json
 
 - site/addrelease.py
   Updates data/releases/%s.json % committee from form data
