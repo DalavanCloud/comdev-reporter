@@ -117,7 +117,6 @@ Data file consumers:
 
 - health.py
   data/maildata_extended.json
-  data/mailinglists.json
   data/pmcs.json
   data/projects.json
   data/releases/%s.json % project

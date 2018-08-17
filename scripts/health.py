@@ -5,7 +5,6 @@
    - data/releases/%s.json
    - data/pmcs.json
    - data/projects.json
-   - data/mailinglists.json
    - data/maildata_extended.json
    - https://whimsy.apache.org/public/committee-info.json via committee_info
 
@@ -57,17 +56,6 @@ afterQuarter = time.time() - (3*31*86400)
 afterHalf = time.time() - (6*31*86400)
 afterFull = time.time() - (12*31*86400)
 cdata = {}
-mlstats = {} # Populated, but does not appear to be used
-with open(join(RAO_DATA,"mailinglists.json"), "r") as f:
-    ml = json.loads(f.read())
-    f.close()
-    for entry in ml:
-        tlp = entry.split(".")[0] # e.g. lucene.apache.org-general => lucene
-        if tlp in pmap:
-            tlp = pmap[tlp]
-        if True:
-            mlstats[tlp] = mlstats[tlp] if tlp in mlstats else {}
-            mlstats[tlp][entry] = ml[entry]
 emails = {}
 with open(join(RAO_DATA,"maildata_extended.json"), "r") as f:
     mld = json.loads(f.read())
