@@ -90,9 +90,6 @@ Scripts:
 - site/addrelease.py
   Updates data/releases/%s.json % committee from form data
 
-- site/chi.py
-  Creates data/health.json
-
 - site/getjson.py
   If stale, re-creates data/JIRA/jira_projects.json (from JIRA)
   If stale, re-creates data/JIRA/%s.json % project (from JIRA)
@@ -102,12 +99,7 @@ Scripts:
 
 Data file consumers:
 - chi.py
-  data/maildata_extended.json
-  data/mailinglists.json
-  data/pmcs.json
-  data/projects.json
-  data/releases/%s.json % project
-  https://whimsy.apache.org/public/committee-info.json
+  data/health.json
 
 - getjson.py
   data/health.json
