@@ -18,9 +18,11 @@ import errtee
 import re, os, json, base64, time
 try:
     from urllib.request import urlopen, Request
+    from urllib.error import HTTPError
     py3 = True
 except:
     from urllib2 import urlopen,Request
+    from urllib2 import HTTPError
     py3 = False
 from os import listdir
 from os.path import isfile, join, dirname, abspath
@@ -72,6 +74,7 @@ def getProjects():
         handleError()
 
 def getJIRAS(project):
+    file = "%s/data/JIRA/%s.json" % (MYHOME, project)
     try:
         req = Request("""https://issues.apache.org/jira/rest/api/2/search?jql=project='""" + project + """'+AND+created%3E=-91d""") # >=
         req.add_header("Authorization", "Basic %s" % base64string)
@@ -79,15 +82,21 @@ def getJIRAS(project):
         req = Request("""https://issues.apache.org/jira/rest/api/2/search?jql=project='""" + project + """'+AND+resolved%3E=-91d""") # >=
         req.add_header("Authorization", "Basic %s" % base64string)
         rdata = json.loads(urlopen(req, timeout=JIRATIMEOUT).read().decode('utf-8'))
-        with open("%s/data/JIRA/%s.json" % (MYHOME, project), "w") as f:
+        with open(file, "w") as f:
             json.dump([cdata['total'], rdata['total'], project], f, indent=1, sort_keys=True)
             f.close()
         return cdata['total'], rdata['total'], project
     except Exception as err:
-        print("Failed to get data for %s: %s " % (project, err))
-        with open("%s/data/JIRA/%s.json" % (MYHOME, project), "w") as f:
-            json.dump([0,0,None], f, indent=1, sort_keys=True)
-            f.close()
+        response = ''
+        if isinstance(err, HTTPError):
+            response = err.read().decode('utf-8')
+        print("Failed to get data for %s: %s %s" % (project, err, response))
+        if "does not exist for the field 'project'" in response:
+            print("Removing %s" % file)
+            os.remove(file)
+        else:
+            with open(file, "w") as f:
+                json.dump([0,0,None], f, indent=1, sort_keys=True)
         handleError()
         return 0,0, None
 
