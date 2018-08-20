@@ -76,10 +76,10 @@ def getProjects():
 def getJIRAS(project):
     file = "%s/data/JIRA/%s.json" % (MYHOME, project)
     try:
-        req = Request("""https://issues.apache.org/jira/rest/api/2/search?jql=project='""" + project + """'+AND+created%3E=-91d""") # >=
+        req = Request("""https://issues.apache.org/jira/rest/api/2/search?jql=project='""" + project + """'+AND+created%3E=-91d&fields=key""") # >=
         req.add_header("Authorization", "Basic %s" % base64string)
         cdata = json.loads(urlopen(req, timeout=JIRATIMEOUT).read().decode('utf-8'))
-        req = Request("""https://issues.apache.org/jira/rest/api/2/search?jql=project='""" + project + """'+AND+resolved%3E=-91d""") # >=
+        req = Request("""https://issues.apache.org/jira/rest/api/2/search?jql=project='""" + project + """'+AND+resolved%3E=-91d&fields=key""") # >=
         req.add_header("Authorization", "Basic %s" % base64string)
         rdata = json.loads(urlopen(req, timeout=JIRATIMEOUT).read().decode('utf-8'))
         with open(file, "w") as f:
