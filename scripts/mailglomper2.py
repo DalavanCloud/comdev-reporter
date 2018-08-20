@@ -214,7 +214,8 @@ pmcmails = committee_info.PMCmails()
 if 'empire-db' in pmcmails: # append entry
     pmcmails.append('empire')
 
-lastCheckpoint = time.time() # when output files were last saved
+# get all the mailing lists so we can drop only those that are no longer present even if the process is stopped early
+mlists = []
 for mlist in re.finditer(r"<a href='([-a-z0-9]+)/'", data):
     ml = mlist.group(1)
     pfx = ml.split('-')[0]
@@ -222,7 +223,10 @@ for mlist in re.finditer(r"<a href='([-a-z0-9]+)/'", data):
     if not pfx in pmcmails:
 #         tsprint("Skipping " + ml) # temporary for checking
         continue
+    mlists.append(ml)
     
+lastCheckpoint = time.time() # when output files were last saved
+for ml in mlists:
     tsprint("Processing: " + ml)
     start = time.time()
     mls[ml] = {}
@@ -276,6 +280,13 @@ for mlist in re.finditer(r"<a href='([-a-z0-9]+)/'", data):
 tsprint("Completed scanning, writing JSON files (%s)" % str(interrupted))
 with open(__MAILDATA_EXTENDED,'w+') as f:
     json.dump(mls, f, indent=1, sort_keys=True)
+
+# all the possible lists and dates
+found = [ ml + "-" + date for ml in mlists for date in months]
+obsolete = mldcache.keys() - found # drop any left over
+for key in obsolete:
+    tsprint("Dropping unused cache entry: " + key)
+    del mldcache[key]
 with open(__MAILDATA_CACHE,"w") as f:
     json.dump(mldcache, f, indent=1, sort_keys=True)
 tsprint("Dumped JSON files")
