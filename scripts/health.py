@@ -16,7 +16,7 @@ from os.path import join
 
 import committee_info
 
-RAO_DATA = '/var/www/reporter.apache.org/data'
+RAO_DATA = '../data'
 
 pmap = {
     'community': 'comdev',
