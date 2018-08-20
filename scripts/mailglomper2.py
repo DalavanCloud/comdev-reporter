@@ -60,12 +60,8 @@ def handle(signum, frame):
 tsprint("Start")
 startTime = time.time()
 
-try:
-    with open(__MAILDATA_EXTENDED,'r') as f:
-        mls = json.loads(f.read())
-    tsprint("Read JSON successfully")
-except:
-    mls = {}
+# we don't need to retain history
+mls = {}
 
 try:
     with open(__MAILDATA_CACHE,'r') as f:
