@@ -2,10 +2,10 @@
 Simple test harness
 
 Reads output from svnpubsub/wacher.py (or similar)
-Input is parsed by scandist.processTargets()
+Commits are parsed by scandist.processCommit()
 
 If a sufficient gap occurs between commits, then
-the parsed data is passed to scandist.processCommit()
+the parsed data is passed to scandist.processTargets()
 
 TODO: needs to check the output somehow
 
