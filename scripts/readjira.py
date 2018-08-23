@@ -94,9 +94,7 @@ def getJIRAS(project):
         if "does not exist for the field 'project'" in response:
             print("Removing %s" % file)
             os.remove(file)
-        else:
-            with open(file, "w") as f:
-                json.dump([0,0,None], f, indent=1, sort_keys=True)
+        # Don't write an empty file
         handleError()
         return 0,0, None
 
