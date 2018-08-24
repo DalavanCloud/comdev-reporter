@@ -16,6 +16,7 @@ import scandist
 import json
 import ast
 import datetime
+import sys
 
 def processBatch():
     for project in scandist.targets:
@@ -30,11 +31,16 @@ def processBatch():
     scandist.processTargets()
     
 if __name__ == "__main__":
+    if len(sys.argv) > 1:
+        INPUT = sys.argv[1]
+    else:
+        INPUT = "scandist_test.dat"
+    print("Scanning %s" % INPUT)
     prevdate=None
     scandist.sendEmail = False
     #scandist.trace = True
     scandist.debug = True
-    with open("scandist_test.dat") as data:
+    with open(INPUT) as data:
         inCommit = False
         for line in data:
             if inCommit:
