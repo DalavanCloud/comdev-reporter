@@ -1,0 +1,631 @@
+Using Python 3
+9811 2015-07-13 22:37:08 +0000 (Mon, 13 Jul 2015) Apache Zeppelin 0.5.0-incubating rc1
+9812 2015-07-14 01:55:33 +0000 (Tue, 14 Jul 2015) removed cordova-plugin-file-transfer-1.2.0
+Ignoring deletion of path 'release/cordova/plugins/cordova-plugin-file-transfer-1.2.0.tgz' 
+Ignoring deletion of path 'release/cordova/plugins/cordova-plugin-file-transfer-1.2.0.tgz.asc' 
+Ignoring deletion of path 'release/cordova/plugins/cordova-plugin-file-transfer-1.2.0.tgz.md5' 
+Ignoring deletion of path 'release/cordova/plugins/cordova-plugin-file-transfer-1.2.0.tgz.sha' 
+9813 2015-07-14 09:51:21 +0000 (Tue, 14 Jul 2015) Adding 2.0.5 release
+Ignoring deletion of path 'release/santuario/java-library/2_0_4/' 
+Ignoring update of file release/santuario/java-library/2_0_5/
+Processing update of file release/santuario/java-library/2_0_5/xmlsec-2.0.5-source-release.zip
+Processing update of file release/santuario/java-library/2_0_5/xmlsec-2.0.5-source-release.zip.asc
+Processing update of file release/santuario/java-library/2_0_5/xmlsec-2.0.5-source-release.zip.md5
+Processing update of file release/santuario/java-library/2_0_5/xmlsec-2.0.5-source-release.zip.sha1
+Batch: << santuario~coheigea~9813~>>
+Notifying 'coheigea' of new data pushed to 'santuario' in r9813
+Not sending email to ['coheigea@apache.org']
+r9813
+Adding 2.0.5 release
+9814 2015-07-14 12:18:02 +0000 (Tue, 14 Jul 2015) Push to mirrors
+Processing update of file release/httpd/Announcement2.4.html
+Processing update of file release/httpd/Announcement2.4.txt
+Processing update of file release/httpd/CHANGES_2.4
+Ignoring deletion of path 'release/httpd/CHANGES_2.4.12' 
+Processing update of file release/httpd/CHANGES_2.4.16
+Ignoring deletion of path 'release/httpd/httpd-2.4.12-deps.tar.bz2' 
+Ignoring deletion of path 'release/httpd/httpd-2.4.12-deps.tar.bz2.asc' 
+Ignoring deletion of path 'release/httpd/httpd-2.4.12-deps.tar.bz2.md5' 
+Ignoring deletion of path 'release/httpd/httpd-2.4.12-deps.tar.bz2.sha1' 
+Ignoring deletion of path 'release/httpd/httpd-2.4.12-deps.tar.gz' 
+Ignoring deletion of path 'release/httpd/httpd-2.4.12-deps.tar.gz.asc' 
+Ignoring deletion of path 'release/httpd/httpd-2.4.12-deps.tar.gz.md5' 
+Ignoring deletion of path 'release/httpd/httpd-2.4.12-deps.tar.gz.sha1' 
+Ignoring deletion of path 'release/httpd/httpd-2.4.12.tar.bz2' 
+Ignoring deletion of path 'release/httpd/httpd-2.4.12.tar.bz2.asc' 
+Ignoring deletion of path 'release/httpd/httpd-2.4.12.tar.bz2.md5' 
+Ignoring deletion of path 'release/httpd/httpd-2.4.12.tar.bz2.sha1' 
+Ignoring deletion of path 'release/httpd/httpd-2.4.12.tar.gz' 
+Ignoring deletion of path 'release/httpd/httpd-2.4.12.tar.gz.asc' 
+Ignoring deletion of path 'release/httpd/httpd-2.4.12.tar.gz.md5' 
+Ignoring deletion of path 'release/httpd/httpd-2.4.12.tar.gz.sha1' 
+Processing update of file release/httpd/httpd-2.4.16-deps.tar.bz2
+Processing update of file release/httpd/httpd-2.4.16-deps.tar.bz2.asc
+Processing update of file release/httpd/httpd-2.4.16-deps.tar.bz2.md5
+Processing update of file release/httpd/httpd-2.4.16-deps.tar.bz2.sha1
+Processing update of file release/httpd/httpd-2.4.16-deps.tar.gz
+Processing update of file release/httpd/httpd-2.4.16-deps.tar.gz.asc
+Processing update of file release/httpd/httpd-2.4.16-deps.tar.gz.md5
+Processing update of file release/httpd/httpd-2.4.16-deps.tar.gz.sha1
+Processing update of file release/httpd/httpd-2.4.16.tar.bz2
+Processing update of file release/httpd/httpd-2.4.16.tar.bz2.asc
+Processing update of file release/httpd/httpd-2.4.16.tar.bz2.md5
+Processing update of file release/httpd/httpd-2.4.16.tar.bz2.sha1
+Processing update of file release/httpd/httpd-2.4.16.tar.gz
+Processing update of file release/httpd/httpd-2.4.16.tar.gz.asc
+Processing update of file release/httpd/httpd-2.4.16.tar.gz.md5
+Processing update of file release/httpd/httpd-2.4.16.tar.gz.sha1
+Batch: << httpd~jim~9814~>>
+Notifying 'jim' of new data pushed to 'httpd' in r9814
+Not sending email to ['jim@apache.org']
+r9814
+Push to mirrors
+9815 2015-07-14 13:56:00 +0000 (Tue, 14 Jul 2015) remove lenya dev area
+9816 2015-07-14 13:57:28 +0000 (Tue, 14 Jul 2015) remove all releases, add redirect to attic lenya page
+Ignoring update of file release/lenya/.htaccess
+Ignoring deletion of path 'release/lenya/BINARIES/' 
+Ignoring deletion of path 'release/lenya/HEADER.html' 
+Ignoring deletion of path 'release/lenya/KEYS' 
+Ignoring deletion of path 'release/lenya/SOURCES/' 
+Ignoring deletion of path 'release/lenya/images/' 
+Ignoring deletion of path 'release/lenya/styles/' 
+9817 2015-07-14 14:27:45 +0000 (Tue, 14 Jul 2015) taverna-parent 1-incubating-RC3 taverna-language 0.15.0-incubating-RC3
+9818 2015-07-14 18:36:29 +0000 (Tue, 14 Jul 2015) Apache Maven Shade Plugin Version 2.4.1
+Ignoring deletion of path 'release/maven/plugins/maven-shade-plugin-2.4-source-release.zip' 
+Ignoring deletion of path 'release/maven/plugins/maven-shade-plugin-2.4-source-release.zip.asc' 
+Ignoring deletion of path 'release/maven/plugins/maven-shade-plugin-2.4-source-release.zip.md5' 
+Processing update of file release/maven/plugins/maven-shade-plugin-2.4.1-source-release.zip
+Processing update of file release/maven/plugins/maven-shade-plugin-2.4.1-source-release.zip.asc
+Processing update of file release/maven/plugins/maven-shade-plugin-2.4.1-source-release.zip.md5
+Batch: << maven~khmarbaise~9818~>>
+Notifying 'khmarbaise' of new data pushed to 'maven' in r9818
+Not sending email to ['khmarbaise@apache.org']
+r9818
+Apache Maven Shade Plugin Version 2.4.1
+9819 2015-07-14 19:42:47 +0000 (Tue, 14 Jul 2015) update current
+Ignoring deletion of path 'release/httpd/CURRENT-IS-2.4.12' 
+Processing update of file release/httpd/CURRENT-IS-2.4.16
+Batch: << httpd~jim~9819~>>
+Notifying 'jim' of new data pushed to 'httpd' in r9819
+Not sending email to ['jim@apache.org']
+r9819
+update current
+9820 2015-07-14 21:02:29 +0000 (Tue, 14 Jul 2015) add docs packages for 2.4.16
+Ignoring deletion of path 'release/httpd/docs/httpd-docs-2.4.10.da.war' 
+Ignoring deletion of path 'release/httpd/docs/httpd-docs-2.4.10.da.zip' 
+Ignoring deletion of path 'release/httpd/docs/httpd-docs-2.4.10.de.chm' 
+Ignoring deletion of path 'release/httpd/docs/httpd-docs-2.4.10.de.war' 
+Ignoring deletion of path 'release/httpd/docs/httpd-docs-2.4.10.de.zip' 
+Ignoring deletion of path 'release/httpd/docs/httpd-docs-2.4.10.en.chm' 
+Ignoring deletion of path 'release/httpd/docs/httpd-docs-2.4.10.en.pdf' 
+Ignoring deletion of path 'release/httpd/docs/httpd-docs-2.4.10.en.war' 
+Ignoring deletion of path 'release/httpd/docs/httpd-docs-2.4.10.en.zip' 
+Ignoring deletion of path 'release/httpd/docs/httpd-docs-2.4.10.es.chm' 
+Ignoring deletion of path 'release/httpd/docs/httpd-docs-2.4.10.es.war' 
+Ignoring deletion of path 'release/httpd/docs/httpd-docs-2.4.10.es.zip' 
+Ignoring deletion of path 'release/httpd/docs/httpd-docs-2.4.10.fr.chm' 
+Ignoring deletion of path 'release/httpd/docs/httpd-docs-2.4.10.fr.war' 
+Ignoring deletion of path 'release/httpd/docs/httpd-docs-2.4.10.fr.zip' 
+Ignoring deletion of path 'release/httpd/docs/httpd-docs-2.4.10.ja.chm' 
+Ignoring deletion of path 'release/httpd/docs/httpd-docs-2.4.10.ja.war' 
+Ignoring deletion of path 'release/httpd/docs/httpd-docs-2.4.10.ja.zip' 
+Ignoring deletion of path 'release/httpd/docs/httpd-docs-2.4.10.ko.chm' 
+Ignoring deletion of path 'release/httpd/docs/httpd-docs-2.4.10.ko.war' 
+Ignoring deletion of path 'release/httpd/docs/httpd-docs-2.4.10.ko.zip' 
+Ignoring deletion of path 'release/httpd/docs/httpd-docs-2.4.10.pt-br.war' 
+Ignoring deletion of path 'release/httpd/docs/httpd-docs-2.4.10.pt-br.zip' 
+Ignoring deletion of path 'release/httpd/docs/httpd-docs-2.4.10.tr.chm' 
+Ignoring deletion of path 'release/httpd/docs/httpd-docs-2.4.10.tr.war' 
+Ignoring deletion of path 'release/httpd/docs/httpd-docs-2.4.10.tr.zip' 
+Ignoring deletion of path 'release/httpd/docs/httpd-docs-2.4.10.zh-cn.chm' 
+Ignoring deletion of path 'release/httpd/docs/httpd-docs-2.4.10.zh-cn.war' 
+Ignoring deletion of path 'release/httpd/docs/httpd-docs-2.4.10.zh-cn.zip' 
+Processing update of file release/httpd/docs/httpd-docs-2.4.16.da.war
+Processing update of file release/httpd/docs/httpd-docs-2.4.16.da.zip
+Processing update of file release/httpd/docs/httpd-docs-2.4.16.de.chm
+Processing update of file release/httpd/docs/httpd-docs-2.4.16.de.war
+Processing update of file release/httpd/docs/httpd-docs-2.4.16.de.zip
+Processing update of file release/httpd/docs/httpd-docs-2.4.16.en.chm
+Processing update of file release/httpd/docs/httpd-docs-2.4.16.en.pdf
+Processing update of file release/httpd/docs/httpd-docs-2.4.16.en.war
+Processing update of file release/httpd/docs/httpd-docs-2.4.16.en.zip
+Processing update of file release/httpd/docs/httpd-docs-2.4.16.es.chm
+Processing update of file release/httpd/docs/httpd-docs-2.4.16.es.war
+Processing update of file release/httpd/docs/httpd-docs-2.4.16.es.zip
+Processing update of file release/httpd/docs/httpd-docs-2.4.16.fr.chm
+Processing update of file release/httpd/docs/httpd-docs-2.4.16.fr.war
+Processing update of file release/httpd/docs/httpd-docs-2.4.16.fr.zip
+Processing update of file release/httpd/docs/httpd-docs-2.4.16.ja.chm
+Processing update of file release/httpd/docs/httpd-docs-2.4.16.ja.war
+Processing update of file release/httpd/docs/httpd-docs-2.4.16.ja.zip
+Processing update of file release/httpd/docs/httpd-docs-2.4.16.ko.chm
+Processing update of file release/httpd/docs/httpd-docs-2.4.16.ko.war
+Processing update of file release/httpd/docs/httpd-docs-2.4.16.ko.zip
+Processing update of file release/httpd/docs/httpd-docs-2.4.16.pt-br.war
+Processing update of file release/httpd/docs/httpd-docs-2.4.16.pt-br.zip
+Processing update of file release/httpd/docs/httpd-docs-2.4.16.tr.chm
+Processing update of file release/httpd/docs/httpd-docs-2.4.16.tr.war
+Processing update of file release/httpd/docs/httpd-docs-2.4.16.tr.zip
+Processing update of file release/httpd/docs/httpd-docs-2.4.16.zh-cn.chm
+Processing update of file release/httpd/docs/httpd-docs-2.4.16.zh-cn.war
+Processing update of file release/httpd/docs/httpd-docs-2.4.16.zh-cn.zip
+Batch: << httpd~nd~9820~>>
+Notifying 'nd' of new data pushed to 'httpd' in r9820
+Not sending email to ['nd@apache.org']
+r9820
+add docs packages for 2.4.16
+9821 2015-07-14 22:47:58 +0000 (Tue, 14 Jul 2015) jUDDI 3.3.0 release
+Ignoring update of file release/juddi/KEYS
+Ignoring update of file release/juddi/juddi/3.3.0/
+Processing update of file release/juddi/juddi/3.3.0/juddi-dist-3.3.0.pom
+Processing update of file release/juddi/juddi/3.3.0/juddi-dist-3.3.0.pom.asc
+Processing update of file release/juddi/juddi/3.3.0/juddi-distro-3.3.0.tar.gz
+Processing update of file release/juddi/juddi/3.3.0/juddi-distro-3.3.0.tar.gz.asc
+Processing update of file release/juddi/juddi/3.3.0/juddi-distro-3.3.0.tar.gz.sha
+Processing update of file release/juddi/juddi/3.3.0/juddi-distro-3.3.0.zip
+Processing update of file release/juddi/juddi/3.3.0/juddi-distro-3.3.0.zip.asc
+Processing update of file release/juddi/juddi/3.3.0/juddi-distro-3.3.0.zip.sha
+Processing update of file release/juddi/juddi/3.3.0/readme.txt
+Processing update of file release/juddi/juddi/3.3.0/uddi-client-dist-3.3.0.pom
+Processing update of file release/juddi/juddi/3.3.0/uddi-client-dist-3.3.0.pom.asc
+Processing update of file release/juddi/juddi/3.3.0/uddi-client-distro-3.3.0.tar.gz
+Processing update of file release/juddi/juddi/3.3.0/uddi-client-distro-3.3.0.tar.gz.asc
+Processing update of file release/juddi/juddi/3.3.0/uddi-client-distro-3.3.0.tar.gz.sha
+Processing update of file release/juddi/juddi/3.3.0/uddi-client-distro-3.3.0.zip
+Processing update of file release/juddi/juddi/3.3.0/uddi-client-distro-3.3.0.zip.asc
+Processing update of file release/juddi/juddi/3.3.0/uddi-client-distro-3.3.0.zip.sha
+Batch: << juddi~alexoree~9821~>>
+Notifying 'alexoree' of new data pushed to 'juddi' in r9821
+Not sending email to ['alexoree@apache.org']
+r9821
+jUDDI 3.3.0 release
+9822 2015-07-14 23:16:35 +0000 (Tue, 14 Jul 2015) Committing Release 2.1.0
+Ignoring update of file release/ambari/ambari-2.1.0/
+Processing update of file release/ambari/ambari-2.1.0/apache-ambari-2.1.0-src.tar.gz
+Processing update of file release/ambari/ambari-2.1.0/apache-ambari-2.1.0-src.tar.gz.asc
+Processing update of file release/ambari/ambari-2.1.0/apache-ambari-2.1.0-src.tar.gz.md5
+Processing update of file release/ambari/ambari-2.1.0/apache-ambari-2.1.0-src.tar.gz.sha1
+Batch: << ambari~jluniya~9822~>>
+Notifying 'jluniya' of new data pushed to 'ambari' in r9822
+Not sending email to ['jluniya@apache.org']
+r9822
+Committing Release 2.1.0
+9823 2015-07-15 02:15:25 +0000 (Wed, 15 Jul 2015) Add 1.5.1-incubating artifacts
+Ignoring commit for path: release/incubator/sentry/1.5.1-incubating/ (incubator)
+Ignoring commit for path: release/incubator/sentry/1.5.1-incubating/apache-sentry-1.5.1-incubating-src.tar.gz (incubator)
+Ignoring commit for path: release/incubator/sentry/1.5.1-incubating/apache-sentry-1.5.1-incubating-src.tar.gz.asc (incubator)
+Ignoring commit for path: release/incubator/sentry/1.5.1-incubating/apache-sentry-1.5.1-incubating-src.tar.gz.md5 (incubator)
+Ignoring commit for path: release/incubator/sentry/1.5.1-incubating/apache-sentry-1.5.1-incubating-src.tar.gz.sha (incubator)
+9824 2015-07-15 03:25:59 +0000 (Wed, 15 Jul 2015) Adding Spark 1.4.1 RC4
+9825 2015-07-15 03:28:40 +0000 (Wed, 15 Jul 2015) Removing hive developer build
+9826 2015-07-15 03:29:55 +0000 (Wed, 15 Jul 2015) Spark release 1.4.1
+Ignoring update of file release/spark/spark-1.4.1/
+9827 2015-07-15 04:22:25 +0000 (Wed, 15 Jul 2015) Adding files for Apache Parquet release 1.8.0
+Ignoring update of file release/parquet/parquet-1.8.0/
+Processing update of file release/parquet/parquet-1.8.0/apache-parquet-1.8.0.tar.gz
+Processing update of file release/parquet/parquet-1.8.0/apache-parquet-1.8.0.tar.gz.asc
+Processing update of file release/parquet/parquet-1.8.0/apache-parquet-1.8.0.tar.gz.md5
+Processing update of file release/parquet/parquet-1.8.0/apache-parquet-1.8.0.tar.gz.sha
+Batch: << parquet~blue~9827~>>
+Notifying 'blue' of new data pushed to 'parquet' in r9827
+Not sending email to ['blue@apache.org']
+r9827
+Adding files for Apache Parquet release 1.8.0
+9828 2015-07-15 05:37:10 +0000 (Wed, 15 Jul 2015) Prepare for Apache Twill 0.6.0-incubating release
+9829 2015-07-15 05:46:56 +0000 (Wed, 15 Jul 2015) Prepare for Apache Twill 0.6.0-incubating release RC2
+9830 2015-07-15 09:54:15 +0000 (Wed, 15 Jul 2015) Add apache-brooklyn-0.7.0-incubating-rc1 to dist/dev/incubator/brooklyn
+9831 2015-07-15 16:06:53 +0000 (Wed, 15 Jul 2015) usergrid-1.0.2 release
+Ignoring commit for path: release/incubator/usergrid/1.0.2/ (incubator)
+9832 2015-07-15 16:35:00 +0000 (Wed, 15 Jul 2015) Tagged 2.2.31 for review and release vote
+9833 2015-07-15 22:08:40 +0000 (Wed, 15 Jul 2015) Add win32-src image w/ apr-iconv 1.2.1
+9834 2015-07-16 00:02:23 +0000 (Thu, 16 Jul 2015) obsolete
+9835 2015-07-16 02:10:56 +0000 (Thu, 16 Jul 2015) update KEYS
+9836 2015-07-16 06:18:02 +0000 (Thu, 16 Jul 2015) Release 2.2-beta-incubating
+Ignoring deletion of path 'release/incubator/lens/2.1-beta-incubating/' 
+Ignoring commit for path: release/incubator/lens/2.2-beta-incubating/ (incubator)
+Ignoring commit for path: release/incubator/lens/2.2-beta-incubating/apache-lens-2.2.0-beta-incubating-bin.tar.gz (incubator)
+Ignoring commit for path: release/incubator/lens/2.2-beta-incubating/apache-lens-2.2.0-beta-incubating-bin.tar.gz.asc (incubator)
+Ignoring commit for path: release/incubator/lens/2.2-beta-incubating/apache-lens-2.2.0-beta-incubating-bin.tar.gz.md5 (incubator)
+Ignoring commit for path: release/incubator/lens/2.2-beta-incubating/apache-lens-2.2.0-beta-incubating-bin.tar.gz.sha512 (incubator)
+Ignoring commit for path: release/incubator/lens/2.2-beta-incubating/apache-lens-2.2.0-beta-incubating-source-release.zip (incubator)
+Ignoring commit for path: release/incubator/lens/2.2-beta-incubating/apache-lens-2.2.0-beta-incubating-source-release.zip.asc (incubator)
+Ignoring commit for path: release/incubator/lens/2.2-beta-incubating/apache-lens-2.2.0-beta-incubating-source-release.zip.md5 (incubator)
+Ignoring commit for path: release/incubator/lens/2.2-beta-incubating/apache-lens-2.2.0-beta-incubating-source-release.zip.sha512 (incubator)
+9837 2015-07-16 08:33:59 +0000 (Thu, 16 Jul 2015) 3.13-beta1-rc1
+9838 2015-07-16 08:52:31 +0000 (Thu, 16 Jul 2015) Release of Apache Groovy 2.4.4-incubating
+Ignoring commit for path: release/incubator/groovy/ (incubator)
+Ignoring commit for path: release/incubator/groovy/2.4.4-incubating/ (incubator)
+Ignoring commit for path: release/incubator/groovy/2.4.4-incubating/distribution/ (incubator)
+Ignoring commit for path: release/incubator/groovy/2.4.4-incubating/distribution/apache-groovy-binary-2.4.4.zip (incubator)
+Ignoring commit for path: release/incubator/groovy/2.4.4-incubating/distribution/apache-groovy-binary-2.4.4.zip.asc (incubator)
+Ignoring commit for path: release/incubator/groovy/2.4.4-incubating/distribution/apache-groovy-binary-2.4.4.zip.md5 (incubator)
+Ignoring commit for path: release/incubator/groovy/2.4.4-incubating/distribution/apache-groovy-docs-2.4.4.zip (incubator)
+Ignoring commit for path: release/incubator/groovy/2.4.4-incubating/distribution/apache-groovy-docs-2.4.4.zip.asc (incubator)
+Ignoring commit for path: release/incubator/groovy/2.4.4-incubating/distribution/apache-groovy-docs-2.4.4.zip.md5 (incubator)
+Ignoring commit for path: release/incubator/groovy/2.4.4-incubating/distribution/apache-groovy-sdk-2.4.4.zip (incubator)
+Ignoring commit for path: release/incubator/groovy/2.4.4-incubating/distribution/apache-groovy-sdk-2.4.4.zip.asc (incubator)
+Ignoring commit for path: release/incubator/groovy/2.4.4-incubating/distribution/apache-groovy-sdk-2.4.4.zip.md5 (incubator)
+Ignoring commit for path: release/incubator/groovy/2.4.4-incubating/sources/ (incubator)
+Ignoring commit for path: release/incubator/groovy/2.4.4-incubating/sources/apache-groovy-src-2.4.4-incubating.zip (incubator)
+Ignoring commit for path: release/incubator/groovy/2.4.4-incubating/sources/apache-groovy-src-2.4.4-incubating.zip.asc (incubator)
+Ignoring commit for path: release/incubator/groovy/2.4.4-incubating/sources/apache-groovy-src-2.4.4-incubating.zip.md5 (incubator)
+Ignoring commit for path: release/incubator/groovy/KEYS (incubator)
+9839 2015-07-16 09:21:24 +0000 (Thu, 16 Jul 2015) remove whirr dev area - INFRA-10015
+9840 2015-07-16 09:21:59 +0000 (Thu, 16 Jul 2015) remove whirr releases, add redirect to attic - INFRA-10015
+Ignoring update of file release/whirr/.htaccess
+Ignoring deletion of path 'release/whirr/HEADER.html' 
+Ignoring deletion of path 'release/whirr/KEYS' 
+Ignoring deletion of path 'release/whirr/stable' 
+Ignoring deletion of path 'release/whirr/whirr-0.8.2/' 
+9841 2015-07-16 11:55:37 +0000 (Thu, 16 Jul 2015) Tobago
+Processing update of file release/myfaces/binaries/myfaces-tobago-1.0.42-dist.tar.gz
+9842 2015-07-16 11:55:42 +0000 (Thu, 16 Jul 2015) Tobago
+Processing update of file release/myfaces/binaries/myfaces-tobago-1.0.42-dist.tar.gz.asc
+9843 2015-07-16 11:55:46 +0000 (Thu, 16 Jul 2015) Tobago
+Processing update of file release/myfaces/binaries/myfaces-tobago-1.0.42-dist.tar.gz.md5
+9844 2015-07-16 11:55:50 +0000 (Thu, 16 Jul 2015) Tobago
+Processing update of file release/myfaces/binaries/myfaces-tobago-1.0.42-dist.tar.gz.sha1
+9845 2015-07-16 11:55:56 +0000 (Thu, 16 Jul 2015) Tobago
+Processing update of file release/myfaces/binaries/myfaces-tobago-1.0.42-dist.tar.gz.sha256
+9846 2015-07-16 11:56:23 +0000 (Thu, 16 Jul 2015) Tobago
+Processing update of file release/myfaces/binaries/myfaces-tobago-1.0.42-dist.zip
+9847 2015-07-16 11:56:27 +0000 (Thu, 16 Jul 2015) Tobago
+Processing update of file release/myfaces/binaries/myfaces-tobago-1.0.42-dist.zip.asc
+9848 2015-07-16 11:56:32 +0000 (Thu, 16 Jul 2015) Tobago
+Processing update of file release/myfaces/binaries/myfaces-tobago-1.0.42-dist.zip.md5
+9849 2015-07-16 11:56:36 +0000 (Thu, 16 Jul 2015) Tobago
+Processing update of file release/myfaces/binaries/myfaces-tobago-1.0.42-dist.zip.sha1
+9850 2015-07-16 11:56:41 +0000 (Thu, 16 Jul 2015) Tobago
+Processing update of file release/myfaces/binaries/myfaces-tobago-1.0.42-dist.zip.sha256
+9851 2015-07-16 11:57:12 +0000 (Thu, 16 Jul 2015) Tobago
+Processing update of file release/myfaces/binaries/myfaces-tobago-1.0.42-example.tar.gz
+9852 2015-07-16 11:57:17 +0000 (Thu, 16 Jul 2015) Tobago
+Processing update of file release/myfaces/binaries/myfaces-tobago-1.0.42-example.tar.gz.asc
+9853 2015-07-16 11:57:22 +0000 (Thu, 16 Jul 2015) Tobago
+Processing update of file release/myfaces/binaries/myfaces-tobago-1.0.42-example.tar.gz.md5
+9854 2015-07-16 11:57:26 +0000 (Thu, 16 Jul 2015) Tobago
+Processing update of file release/myfaces/binaries/myfaces-tobago-1.0.42-example.tar.gz.sha1
+9855 2015-07-16 11:57:31 +0000 (Thu, 16 Jul 2015) Tobago
+Processing update of file release/myfaces/binaries/myfaces-tobago-1.0.42-example.tar.gz.sha256
+9856 2015-07-16 11:57:57 +0000 (Thu, 16 Jul 2015) Tobago
+Processing update of file release/myfaces/binaries/myfaces-tobago-1.0.42-example.zip
+9857 2015-07-16 11:58:01 +0000 (Thu, 16 Jul 2015) Tobago
+Processing update of file release/myfaces/binaries/myfaces-tobago-1.0.42-example.zip.asc
+9858 2015-07-16 11:58:06 +0000 (Thu, 16 Jul 2015) Tobago
+Processing update of file release/myfaces/binaries/myfaces-tobago-1.0.42-example.zip.md5
+9859 2015-07-16 11:58:10 +0000 (Thu, 16 Jul 2015) Tobago
+Processing update of file release/myfaces/binaries/myfaces-tobago-1.0.42-example.zip.sha1
+9860 2015-07-16 11:58:15 +0000 (Thu, 16 Jul 2015) Tobago
+Processing update of file release/myfaces/binaries/myfaces-tobago-1.0.42-example.zip.sha256
+9861 2015-07-16 11:58:23 +0000 (Thu, 16 Jul 2015) Tobago
+Processing update of file release/myfaces/source/myfaces-tobago-1.0.42-source-release.zip
+9862 2015-07-16 11:58:28 +0000 (Thu, 16 Jul 2015) Tobago
+Processing update of file release/myfaces/source/myfaces-tobago-1.0.42-source-release.zip.asc
+9863 2015-07-16 11:58:33 +0000 (Thu, 16 Jul 2015) Tobago
+Processing update of file release/myfaces/source/myfaces-tobago-1.0.42-source-release.zip.md5
+9864 2015-07-16 11:58:38 +0000 (Thu, 16 Jul 2015) Tobago
+Processing update of file release/myfaces/source/myfaces-tobago-1.0.42-source-release.zip.sha1
+9865 2015-07-16 11:58:44 +0000 (Thu, 16 Jul 2015) Tobago
+Processing update of file release/myfaces/source/myfaces-tobago-1.0.42-source-release.zip.sha256
+Batch: << myfaces~lofwyr~9841~9842~9843~9844~9845~9846~9847~9848~9849~9851~9852~9853~9854~9855~9856~9857~9858~9859~9860~9861~9862~9863~9864~9865~lofwyr2~9850~>>
+Notifying 'lofwyr' of new data pushed to 'myfaces' in r9841
+Not sending email to ['lofwyr@apache.org']
+r9841
+Tobago
+See also: r9842 r9843 r9844 r9845 r9846 r9847 r9848 r9849 r9851 r9852 r9853
+ r9854 r9855 r9856 r9857 r9858 r9859 r9860 r9861 r9862 r9863 r9864 r9865
+Notifying 'lofwyr2' of new data pushed to 'myfaces' in r9850
+Not sending email to ['lofwyr2@apache.org']
+r9850
+Tobago
+9866 2015-07-16 13:59:35 +0000 (Thu, 16 Jul 2015) Moving 1.0.2 to correct directory
+Ignoring deletion of path 'release/incubator/usergrid/1.0.2/' 
+Ignoring commit for path: release/incubator/usergrid/usergrid-1/1.0.2/ (incubator)
+9867 2015-07-16 14:34:52 +0000 (Thu, 16 Jul 2015) Uploading release artifacts and convenience binaries
+Ignoring commit for path: release/incubator/nifi/0.2.0-incubating/ (incubator)
+Ignoring commit for path: release/incubator/nifi/0.2.0-incubating/nifi-0.2.0-incubating-bin.tar.gz (incubator)
+Ignoring commit for path: release/incubator/nifi/0.2.0-incubating/nifi-0.2.0-incubating-bin.tar.gz.asc (incubator)
+Ignoring commit for path: release/incubator/nifi/0.2.0-incubating/nifi-0.2.0-incubating-bin.tar.gz.md5 (incubator)
+Ignoring commit for path: release/incubator/nifi/0.2.0-incubating/nifi-0.2.0-incubating-bin.tar.gz.sha1 (incubator)
+Ignoring commit for path: release/incubator/nifi/0.2.0-incubating/nifi-0.2.0-incubating-bin.zip (incubator)
+Ignoring commit for path: release/incubator/nifi/0.2.0-incubating/nifi-0.2.0-incubating-bin.zip.asc (incubator)
+Ignoring commit for path: release/incubator/nifi/0.2.0-incubating/nifi-0.2.0-incubating-bin.zip.md5 (incubator)
+Ignoring commit for path: release/incubator/nifi/0.2.0-incubating/nifi-0.2.0-incubating-bin.zip.sha1 (incubator)
+Ignoring commit for path: release/incubator/nifi/0.2.0-incubating/nifi-0.2.0-incubating-source-release.zip (incubator)
+Ignoring commit for path: release/incubator/nifi/0.2.0-incubating/nifi-0.2.0-incubating-source-release.zip.asc (incubator)
+Ignoring commit for path: release/incubator/nifi/0.2.0-incubating/nifi-0.2.0-incubating-source-release.zip.md5 (incubator)
+Ignoring commit for path: release/incubator/nifi/0.2.0-incubating/nifi-0.2.0-incubating-source-release.zip.sha1 (incubator)
+9868 2015-07-16 15:29:28 +0000 (Thu, 16 Jul 2015) Add Apache Aries Versioning 0.3.1, Blueprint Core 1.4.4 and Blueprint CM 1.0.7
+Ignoring deletion of path 'release/aries/org.apache.aries.blueprint.cm-1.0.0-source-release.zip' 
+Ignoring deletion of path 'release/aries/org.apache.aries.blueprint.cm-1.0.0-source-release.zip.asc' 
+Ignoring deletion of path 'release/aries/org.apache.aries.blueprint.cm-1.0.0-source-release.zip.md5' 
+Ignoring deletion of path 'release/aries/org.apache.aries.blueprint.cm-1.0.0-source-release.zip.sha1' 
+Ignoring deletion of path 'release/aries/org.apache.aries.blueprint.cm-1.0.0.jar' 
+Ignoring deletion of path 'release/aries/org.apache.aries.blueprint.cm-1.0.0.jar.asc' 
+Ignoring deletion of path 'release/aries/org.apache.aries.blueprint.cm-1.0.0.jar.md5' 
+Ignoring deletion of path 'release/aries/org.apache.aries.blueprint.cm-1.0.0.jar.sha1' 
+Ignoring deletion of path 'release/aries/org.apache.aries.blueprint.cm-1.0.1-source-release.zip' 
+Ignoring deletion of path 'release/aries/org.apache.aries.blueprint.cm-1.0.1-source-release.zip.asc' 
+Ignoring deletion of path 'release/aries/org.apache.aries.blueprint.cm-1.0.1-source-release.zip.md5' 
+Ignoring deletion of path 'release/aries/org.apache.aries.blueprint.cm-1.0.1-source-release.zip.sha1' 
+Ignoring deletion of path 'release/aries/org.apache.aries.blueprint.cm-1.0.1.jar' 
+Ignoring deletion of path 'release/aries/org.apache.aries.blueprint.cm-1.0.1.jar.asc' 
+Ignoring deletion of path 'release/aries/org.apache.aries.blueprint.cm-1.0.1.jar.md5' 
+Ignoring deletion of path 'release/aries/org.apache.aries.blueprint.cm-1.0.1.jar.sha1' 
+Ignoring deletion of path 'release/aries/org.apache.aries.blueprint.cm-1.0.6-source-release.zip' 
+Ignoring deletion of path 'release/aries/org.apache.aries.blueprint.cm-1.0.6-source-release.zip.asc' 
+Ignoring deletion of path 'release/aries/org.apache.aries.blueprint.cm-1.0.6-source-release.zip.md5' 
+Ignoring deletion of path 'release/aries/org.apache.aries.blueprint.cm-1.0.6-source-release.zip.sha1' 
+Ignoring deletion of path 'release/aries/org.apache.aries.blueprint.cm-1.0.6.jar' 
+Ignoring deletion of path 'release/aries/org.apache.aries.blueprint.cm-1.0.6.jar.asc' 
+Ignoring deletion of path 'release/aries/org.apache.aries.blueprint.cm-1.0.6.jar.md5' 
+Ignoring deletion of path 'release/aries/org.apache.aries.blueprint.cm-1.0.6.jar.sha1' 
+Processing update of file release/aries/org.apache.aries.blueprint.cm-1.0.7-javadoc.jar
+Processing update of file release/aries/org.apache.aries.blueprint.cm-1.0.7-javadoc.jar.asc
+Processing update of file release/aries/org.apache.aries.blueprint.cm-1.0.7-javadoc.jar.md5
+Processing update of file release/aries/org.apache.aries.blueprint.cm-1.0.7-javadoc.jar.sha1
+Processing update of file release/aries/org.apache.aries.blueprint.cm-1.0.7-source-release.zip
+Processing update of file release/aries/org.apache.aries.blueprint.cm-1.0.7-source-release.zip.asc
+Processing update of file release/aries/org.apache.aries.blueprint.cm-1.0.7-source-release.zip.asc.md5
+Processing update of file release/aries/org.apache.aries.blueprint.cm-1.0.7-source-release.zip.asc.sha1
+Processing update of file release/aries/org.apache.aries.blueprint.cm-1.0.7-source-release.zip.md5
+Processing update of file release/aries/org.apache.aries.blueprint.cm-1.0.7-source-release.zip.sha1
+Processing update of file release/aries/org.apache.aries.blueprint.cm-1.0.7-sources.jar
+Processing update of file release/aries/org.apache.aries.blueprint.cm-1.0.7-sources.jar.asc
+Processing update of file release/aries/org.apache.aries.blueprint.cm-1.0.7-sources.jar.md5
+Processing update of file release/aries/org.apache.aries.blueprint.cm-1.0.7-sources.jar.sha1
+Processing update of file release/aries/org.apache.aries.blueprint.cm-1.0.7.jar
+Processing update of file release/aries/org.apache.aries.blueprint.cm-1.0.7.jar.asc
+Processing update of file release/aries/org.apache.aries.blueprint.cm-1.0.7.jar.md5
+Processing update of file release/aries/org.apache.aries.blueprint.cm-1.0.7.jar.sha1
+Processing update of file release/aries/org.apache.aries.blueprint.cm-1.0.7.pom
+Processing update of file release/aries/org.apache.aries.blueprint.cm-1.0.7.pom.asc
+Processing update of file release/aries/org.apache.aries.blueprint.cm-1.0.7.pom.asc.md5
+Processing update of file release/aries/org.apache.aries.blueprint.cm-1.0.7.pom.asc.sha1
+Processing update of file release/aries/org.apache.aries.blueprint.cm-1.0.7.pom.md5
+Processing update of file release/aries/org.apache.aries.blueprint.cm-1.0.7.pom.sha1
+Ignoring deletion of path 'release/aries/org.apache.aries.blueprint.core-1.2.0-source-release.zip' 
+Ignoring deletion of path 'release/aries/org.apache.aries.blueprint.core-1.2.0-source-release.zip.asc' 
+Ignoring deletion of path 'release/aries/org.apache.aries.blueprint.core-1.2.0-source-release.zip.md5' 
+Ignoring deletion of path 'release/aries/org.apache.aries.blueprint.core-1.2.0-source-release.zip.sha1' 
+Ignoring deletion of path 'release/aries/org.apache.aries.blueprint.core-1.2.0.jar' 
+Ignoring deletion of path 'release/aries/org.apache.aries.blueprint.core-1.2.0.jar.asc' 
+Ignoring deletion of path 'release/aries/org.apache.aries.blueprint.core-1.2.0.jar.md5' 
+Ignoring deletion of path 'release/aries/org.apache.aries.blueprint.core-1.2.0.jar.sha1' 
+Ignoring deletion of path 'release/aries/org.apache.aries.blueprint.core-1.4.3-source-release.zip' 
+Ignoring deletion of path 'release/aries/org.apache.aries.blueprint.core-1.4.3-source-release.zip.asc' 
+Ignoring deletion of path 'release/aries/org.apache.aries.blueprint.core-1.4.3-source-release.zip.md5' 
+Ignoring deletion of path 'release/aries/org.apache.aries.blueprint.core-1.4.3-source-release.zip.sha1' 
+Ignoring deletion of path 'release/aries/org.apache.aries.blueprint.core-1.4.3.jar' 
+Ignoring deletion of path 'release/aries/org.apache.aries.blueprint.core-1.4.3.jar.asc' 
+Ignoring deletion of path 'release/aries/org.apache.aries.blueprint.core-1.4.3.jar.md5' 
+Ignoring deletion of path 'release/aries/org.apache.aries.blueprint.core-1.4.3.jar.sha1' 
+Processing update of file release/aries/org.apache.aries.blueprint.core-1.4.4-javadoc.jar
+Processing update of file release/aries/org.apache.aries.blueprint.core-1.4.4-javadoc.jar.asc
+Processing update of file release/aries/org.apache.aries.blueprint.core-1.4.4-javadoc.jar.md5
+Processing update of file release/aries/org.apache.aries.blueprint.core-1.4.4-javadoc.jar.sha1
+Processing update of file release/aries/org.apache.aries.blueprint.core-1.4.4-source-release.zip
+Processing update of file release/aries/org.apache.aries.blueprint.core-1.4.4-source-release.zip.asc
+Processing update of file release/aries/org.apache.aries.blueprint.core-1.4.4-source-release.zip.asc.md5
+Processing update of file release/aries/org.apache.aries.blueprint.core-1.4.4-source-release.zip.asc.sha1
+Processing update of file release/aries/org.apache.aries.blueprint.core-1.4.4-source-release.zip.md5
+Processing update of file release/aries/org.apache.aries.blueprint.core-1.4.4-source-release.zip.sha1
+Processing update of file release/aries/org.apache.aries.blueprint.core-1.4.4-sources.jar
+Processing update of file release/aries/org.apache.aries.blueprint.core-1.4.4-sources.jar.asc
+Processing update of file release/aries/org.apache.aries.blueprint.core-1.4.4-sources.jar.md5
+Processing update of file release/aries/org.apache.aries.blueprint.core-1.4.4-sources.jar.sha1
+Processing update of file release/aries/org.apache.aries.blueprint.core-1.4.4.jar
+Processing update of file release/aries/org.apache.aries.blueprint.core-1.4.4.jar.asc
+Processing update of file release/aries/org.apache.aries.blueprint.core-1.4.4.jar.md5
+Processing update of file release/aries/org.apache.aries.blueprint.core-1.4.4.jar.sha1
+Processing update of file release/aries/org.apache.aries.blueprint.core-1.4.4.pom
+Processing update of file release/aries/org.apache.aries.blueprint.core-1.4.4.pom.asc
+Processing update of file release/aries/org.apache.aries.blueprint.core-1.4.4.pom.asc.md5
+Processing update of file release/aries/org.apache.aries.blueprint.core-1.4.4.pom.asc.sha1
+Processing update of file release/aries/org.apache.aries.blueprint.core-1.4.4.pom.md5
+Processing update of file release/aries/org.apache.aries.blueprint.core-1.4.4.pom.sha1
+Processing update of file release/aries/org.apache.aries.versioning.checker-0.3.1-javadoc.jar
+Processing update of file release/aries/org.apache.aries.versioning.checker-0.3.1-javadoc.jar.asc
+Processing update of file release/aries/org.apache.aries.versioning.checker-0.3.1-javadoc.jar.md5
+Processing update of file release/aries/org.apache.aries.versioning.checker-0.3.1-javadoc.jar.sha1
+Processing update of file release/aries/org.apache.aries.versioning.checker-0.3.1-source-release.zip
+Processing update of file release/aries/org.apache.aries.versioning.checker-0.3.1-source-release.zip.asc
+Processing update of file release/aries/org.apache.aries.versioning.checker-0.3.1-source-release.zip.md5
+Processing update of file release/aries/org.apache.aries.versioning.checker-0.3.1-source-release.zip.sha1
+Processing update of file release/aries/org.apache.aries.versioning.checker-0.3.1-sources.jar
+Processing update of file release/aries/org.apache.aries.versioning.checker-0.3.1-sources.jar.asc
+Processing update of file release/aries/org.apache.aries.versioning.checker-0.3.1-sources.jar.md5
+Processing update of file release/aries/org.apache.aries.versioning.checker-0.3.1-sources.jar.sha1
+Processing update of file release/aries/org.apache.aries.versioning.checker-0.3.1.jar
+Processing update of file release/aries/org.apache.aries.versioning.checker-0.3.1.jar.asc
+Processing update of file release/aries/org.apache.aries.versioning.checker-0.3.1.jar.md5
+Processing update of file release/aries/org.apache.aries.versioning.checker-0.3.1.jar.sha1
+Processing update of file release/aries/org.apache.aries.versioning.checker-0.3.1.pom
+Processing update of file release/aries/org.apache.aries.versioning.checker-0.3.1.pom.asc
+Processing update of file release/aries/org.apache.aries.versioning.checker-0.3.1.pom.md5
+Processing update of file release/aries/org.apache.aries.versioning.checker-0.3.1.pom.sha1
+Processing update of file release/aries/org.apache.aries.versioning.plugin-0.3.1-javadoc.jar
+Processing update of file release/aries/org.apache.aries.versioning.plugin-0.3.1-javadoc.jar.asc
+Processing update of file release/aries/org.apache.aries.versioning.plugin-0.3.1-javadoc.jar.md5
+Processing update of file release/aries/org.apache.aries.versioning.plugin-0.3.1-javadoc.jar.sha1
+Processing update of file release/aries/org.apache.aries.versioning.plugin-0.3.1-source-release.zip
+Processing update of file release/aries/org.apache.aries.versioning.plugin-0.3.1-source-release.zip.asc
+Processing update of file release/aries/org.apache.aries.versioning.plugin-0.3.1-source-release.zip.md5
+Processing update of file release/aries/org.apache.aries.versioning.plugin-0.3.1-source-release.zip.sha1
+Processing update of file release/aries/org.apache.aries.versioning.plugin-0.3.1-sources.jar
+Processing update of file release/aries/org.apache.aries.versioning.plugin-0.3.1-sources.jar.asc
+Processing update of file release/aries/org.apache.aries.versioning.plugin-0.3.1-sources.jar.md5
+Processing update of file release/aries/org.apache.aries.versioning.plugin-0.3.1-sources.jar.sha1
+Processing update of file release/aries/org.apache.aries.versioning.plugin-0.3.1.jar
+Processing update of file release/aries/org.apache.aries.versioning.plugin-0.3.1.jar.asc
+Processing update of file release/aries/org.apache.aries.versioning.plugin-0.3.1.jar.md5
+Processing update of file release/aries/org.apache.aries.versioning.plugin-0.3.1.jar.sha1
+Processing update of file release/aries/org.apache.aries.versioning.plugin-0.3.1.pom
+Processing update of file release/aries/org.apache.aries.versioning.plugin-0.3.1.pom.asc
+Processing update of file release/aries/org.apache.aries.versioning.plugin-0.3.1.pom.md5
+Processing update of file release/aries/org.apache.aries.versioning.plugin-0.3.1.pom.sha1
+Batch: << aries~gnodet~9868~>>
+Notifying 'gnodet' of new data pushed to 'aries' in r9868
+Not sending email to ['gnodet@apache.org']
+r9868
+Add Apache Aries Versioning 0.3.1, Blueprint Core 1.4.4 and Blueprint CM 1.0.7
+9869 2015-07-16 16:39:22 +0000 (Thu, 16 Jul 2015) Store diffs to Announcement message
+9870 2015-07-16 17:12:20 +0000 (Thu, 16 Jul 2015) Sync 2.2.31 to mirrors in anticipation of announcement
+Processing update of file release/httpd/Announcement2.2.html
+Processing update of file release/httpd/Announcement2.2.txt
+Processing update of file release/httpd/CHANGES_2.2
+Processing update of file release/httpd/CHANGES_2.2.31
+Processing update of file release/httpd/httpd-2.2.31-win32-src.zip
+Processing update of file release/httpd/httpd-2.2.31-win32-src.zip.asc
+Processing update of file release/httpd/httpd-2.2.31-win32-src.zip.md5
+Processing update of file release/httpd/httpd-2.2.31-win32-src.zip.sha1
+Processing update of file release/httpd/httpd-2.2.31.tar.bz2
+Processing update of file release/httpd/httpd-2.2.31.tar.bz2.asc
+Processing update of file release/httpd/httpd-2.2.31.tar.bz2.md5
+Processing update of file release/httpd/httpd-2.2.31.tar.bz2.sha1
+Processing update of file release/httpd/httpd-2.2.31.tar.gz
+Processing update of file release/httpd/httpd-2.2.31.tar.gz.asc
+Processing update of file release/httpd/httpd-2.2.31.tar.gz.md5
+Processing update of file release/httpd/httpd-2.2.31.tar.gz.sha1
+9871 2015-07-16 17:13:31 +0000 (Thu, 16 Jul 2015) This release is announced, no candidates for consideration at present
+9872 2015-07-16 17:14:18 +0000 (Thu, 16 Jul 2015) Released and live on www.a.o/dist/httpd/
+Batch: << httpd~wrowe~9870~>>
+Notifying 'wrowe' of new data pushed to 'httpd' in r9870
+Not sending email to ['wrowe@apache.org']
+r9870
+Sync 2.2.31 to mirrors in anticipation of announcement
+9873 2015-07-16 17:59:49 +0000 (Thu, 16 Jul 2015) Release files
+Ignoring commit for path: release/incubator/usergrid/usergrid-1/v1.0.2/ (incubator)
+Ignoring commit for path: release/incubator/usergrid/usergrid-1/v1.0.2/apache-usergrid-1.0.2-incubating.tar.gz (incubator)
+Ignoring commit for path: release/incubator/usergrid/usergrid-1/v1.0.2/apache-usergrid-1.0.2-incubating.tar.gz.asc (incubator)
+Ignoring commit for path: release/incubator/usergrid/usergrid-1/v1.0.2/apache-usergrid-1.0.2-incubating.tar.gz.md5 (incubator)
+Ignoring commit for path: release/incubator/usergrid/usergrid-1/v1.0.2/apache-usergrid-1.0.2-incubating.tar.gz.sha (incubator)
+9874 2015-07-16 18:49:32 +0000 (Thu, 16 Jul 2015) TinkerPop 3.0.0-incubating release
+Ignoring commit for path: release/incubator/tinkerpop/3.0.0-incubating/ (incubator)
+Ignoring commit for path: release/incubator/tinkerpop/3.0.0-incubating/KEYS (incubator)
+Ignoring commit for path: release/incubator/tinkerpop/3.0.0-incubating/apache-gremlin-console-3.0.0-incubating-bin.zip (incubator)
+Ignoring commit for path: release/incubator/tinkerpop/3.0.0-incubating/apache-gremlin-console-3.0.0-incubating-bin.zip.asc (incubator)
+Ignoring commit for path: release/incubator/tinkerpop/3.0.0-incubating/apache-gremlin-console-3.0.0-incubating-bin.zip.md5 (incubator)
+Ignoring commit for path: release/incubator/tinkerpop/3.0.0-incubating/apache-gremlin-console-3.0.0-incubating-bin.zip.sha1 (incubator)
+Ignoring commit for path: release/incubator/tinkerpop/3.0.0-incubating/apache-gremlin-server-3.0.0-incubating-bin.zip (incubator)
+Ignoring commit for path: release/incubator/tinkerpop/3.0.0-incubating/apache-gremlin-server-3.0.0-incubating-bin.zip.asc (incubator)
+Ignoring commit for path: release/incubator/tinkerpop/3.0.0-incubating/apache-gremlin-server-3.0.0-incubating-bin.zip.md5 (incubator)
+Ignoring commit for path: release/incubator/tinkerpop/3.0.0-incubating/apache-gremlin-server-3.0.0-incubating-bin.zip.sha1 (incubator)
+Ignoring commit for path: release/incubator/tinkerpop/3.0.0-incubating/apache-tinkerpop-3.0.0-incubating-src.zip (incubator)
+Ignoring commit for path: release/incubator/tinkerpop/3.0.0-incubating/apache-tinkerpop-3.0.0-incubating-src.zip.asc (incubator)
+Ignoring commit for path: release/incubator/tinkerpop/3.0.0-incubating/apache-tinkerpop-3.0.0-incubating-src.zip.md5 (incubator)
+Ignoring commit for path: release/incubator/tinkerpop/3.0.0-incubating/apache-tinkerpop-3.0.0-incubating-src.zip.sha1 (incubator)
+9875 2015-07-16 19:21:10 +0000 (Thu, 16 Jul 2015) Removing unnecessary directory
+Ignoring deletion of path 'release/incubator/usergrid/usergrid-1/1.0.2/' 
+9876 2015-07-16 20:37:42 +0000 (Thu, 16 Jul 2015) Stratos 4.1.0 rc4 release artifacts
+9877 2015-07-16 21:56:25 +0000 (Thu, 16 Jul 2015) Upload ServiceMix 5.4.1
+Ignoring update of file release/servicemix/servicemix-5/5.4.1/
+Processing update of file release/servicemix/servicemix-5/5.4.1/apache-servicemix-5.4.1-src.zip
+Processing update of file release/servicemix/servicemix-5/5.4.1/apache-servicemix-5.4.1-src.zip.asc
+Processing update of file release/servicemix/servicemix-5/5.4.1/apache-servicemix-5.4.1-src.zip.md5
+Processing update of file release/servicemix/servicemix-5/5.4.1/apache-servicemix-5.4.1-src.zip.sha1
+Processing update of file release/servicemix/servicemix-5/5.4.1/apache-servicemix-5.4.1.zip
+Processing update of file release/servicemix/servicemix-5/5.4.1/apache-servicemix-5.4.1.zip.asc
+Processing update of file release/servicemix/servicemix-5/5.4.1/apache-servicemix-5.4.1.zip.md5
+Processing update of file release/servicemix/servicemix-5/5.4.1/apache-servicemix-5.4.1.zip.sha1
+Batch: << servicemix~ksobkowiak~9877~>>
+Notifying 'ksobkowiak' of new data pushed to 'servicemix' in r9877
+Not sending email to ['ksobkowiak@apache.org']
+r9877
+Upload ServiceMix 5.4.1
+9878 2015-07-17 09:11:32 +0000 (Fri, 17 Jul 2015) Updates test release 2.5-BETA1
+9879 2015-07-17 09:58:16 +0000 (Fri, 17 Jul 2015) Archiving ServiceMix 5.4.0
+Ignoring deletion of path 'release/servicemix/servicemix-5/5.4.0/' 
+9880 2015-07-17 17:59:13 +0000 (Fri, 17 Jul 2015) Adding 2.1.2 release
+Ignoring deletion of path 'release/ws/wss4j/2.1.1/' 
+Ignoring update of file release/ws/wss4j/2.1.2/
+Processing update of file release/ws/wss4j/2.1.2/wss4j-2.1.2-source-release.zip
+Processing update of file release/ws/wss4j/2.1.2/wss4j-2.1.2-source-release.zip.asc
+Processing update of file release/ws/wss4j/2.1.2/wss4j-2.1.2-source-release.zip.md5
+Processing update of file release/ws/wss4j/2.1.2/wss4j-2.1.2-source-release.zip.sha1
+9881 2015-07-17 18:00:42 +0000 (Fri, 17 Jul 2015) Adding 2.0.5 release
+Ignoring deletion of path 'release/ws/wss4j/2.0.4/' 
+Ignoring update of file release/ws/wss4j/2.0.5/
+Processing update of file release/ws/wss4j/2.0.5/wss4j-2.0.5-source-release.zip
+Processing update of file release/ws/wss4j/2.0.5/wss4j-2.0.5-source-release.zip.asc
+Processing update of file release/ws/wss4j/2.0.5/wss4j-2.0.5-source-release.zip.md5
+Processing update of file release/ws/wss4j/2.0.5/wss4j-2.0.5-source-release.zip.sha1
+Batch: << ws~coheigea~9880~9881~>>
+Notifying 'coheigea' of new data pushed to 'ws' in r9880
+Not sending email to ['coheigea@apache.org']
+r9880
+Adding 2.1.2 release
+See also: r9881
+9882 2015-07-17 19:27:35 +0000 (Fri, 17 Jul 2015) With 2.2.31 now refreshed at www.a.o/dist/httpd, ready to blast 2.2.29
+Ignoring deletion of path 'release/httpd/CHANGES_2.2.29' 
+Ignoring deletion of path 'release/httpd/httpd-2.2.29-win32-src.zip' 
+Ignoring deletion of path 'release/httpd/httpd-2.2.29-win32-src.zip.asc' 
+Ignoring deletion of path 'release/httpd/httpd-2.2.29-win32-src.zip.md5' 
+Ignoring deletion of path 'release/httpd/httpd-2.2.29-win32-src.zip.sha1' 
+Ignoring deletion of path 'release/httpd/httpd-2.2.29.tar.bz2' 
+Ignoring deletion of path 'release/httpd/httpd-2.2.29.tar.bz2.asc' 
+Ignoring deletion of path 'release/httpd/httpd-2.2.29.tar.bz2.md5' 
+Ignoring deletion of path 'release/httpd/httpd-2.2.29.tar.bz2.sha1' 
+Ignoring deletion of path 'release/httpd/httpd-2.2.29.tar.gz' 
+Ignoring deletion of path 'release/httpd/httpd-2.2.29.tar.gz.asc' 
+Ignoring deletion of path 'release/httpd/httpd-2.2.29.tar.gz.md5' 
+Ignoring deletion of path 'release/httpd/httpd-2.2.29.tar.gz.sha1' 
+9883 2015-07-17 20:15:58 +0000 (Fri, 17 Jul 2015) Upload ServiceMix 5.5.0
+Ignoring update of file release/servicemix/servicemix-5/5.5.0/
+Processing update of file release/servicemix/servicemix-5/5.5.0/apache-servicemix-5.5.0-src.zip
+Processing update of file release/servicemix/servicemix-5/5.5.0/apache-servicemix-5.5.0-src.zip.asc
+Processing update of file release/servicemix/servicemix-5/5.5.0/apache-servicemix-5.5.0-src.zip.md5
+Processing update of file release/servicemix/servicemix-5/5.5.0/apache-servicemix-5.5.0-src.zip.sha1
+Processing update of file release/servicemix/servicemix-5/5.5.0/apache-servicemix-5.5.0.zip
+Processing update of file release/servicemix/servicemix-5/5.5.0/apache-servicemix-5.5.0.zip.asc
+Processing update of file release/servicemix/servicemix-5/5.5.0/apache-servicemix-5.5.0.zip.md5
+Processing update of file release/servicemix/servicemix-5/5.5.0/apache-servicemix-5.5.0.zip.sha1
+Batch: << servicemix~ksobkowiak~9883~>>
+Notifying 'ksobkowiak' of new data pushed to 'servicemix' in r9883
+Not sending email to ['ksobkowiak@apache.org']
+r9883
+Upload ServiceMix 5.5.0
+9884 2015-07-17 21:15:29 +0000 (Fri, 17 Jul 2015) Apache Parquet MR $version RC${rc}
+9885 2015-07-17 21:46:57 +0000 (Fri, 17 Jul 2015) Sync KEYS file with git repo
+9886 2015-07-17 22:15:12 +0000 (Fri, 17 Jul 2015) Sync KEYS file with git repo
+Ignoring update of file release/parquet/KEYS
+9887 2015-07-17 23:21:44 +0000 (Fri, 17 Jul 2015) Adding mesos-0.23.0-rc4.
+9888 2015-07-17 23:45:38 +0000 (Fri, 17 Jul 2015) NiFi is TLP now
+Ignoring deletion of path 'release/incubator/nifi/' 
+Ignoring update of file release/nifi/
+9889 2015-07-17 23:46:02 +0000 (Fri, 17 Jul 2015) NiFi is a TLP now
+9890 2015-07-18 04:31:01 +0000 (Sat, 18 Jul 2015) NIFI-768 testing commit priv post tlp
+9891 2015-07-18 13:20:36 +0000 (Sat, 18 Jul 2015) Use an actual example file name
+Note that hashes only provide download checks
+Ignoring update of file release/commons/README.html
+9892 2015-07-18 15:12:15 +0000 (Sat, 18 Jul 2015) Note that hashes only provide download checks
+Ignoring update of file release/jmeter/README.html
+9893 2015-07-18 15:59:52 +0000 (Sat, 18 Jul 2015) provide 1.8.10 release candidate
+10207 2015-08-18 14:44:53 +0000 (Tue, 18 Aug 2015) apache-empire-db-2.4.4
+Ignoring update of file release/empire-db/2.4.4/
+Processing update of file release/empire-db/2.4.4/apache-empire-db-2.4.4-dist.tar.bz2
+Processing update of file release/empire-db/2.4.4/apache-empire-db-2.4.4-dist.tar.bz2.asc
+Processing update of file release/empire-db/2.4.4/apache-empire-db-2.4.4-dist.tar.bz2.md5
+Processing update of file release/empire-db/2.4.4/apache-empire-db-2.4.4-dist.tar.bz2.sha
+Processing update of file release/empire-db/2.4.4/apache-empire-db-2.4.4-dist.tar.gz
+Processing update of file release/empire-db/2.4.4/apache-empire-db-2.4.4-dist.tar.gz.asc
+Processing update of file release/empire-db/2.4.4/apache-empire-db-2.4.4-dist.tar.gz.md5
+Processing update of file release/empire-db/2.4.4/apache-empire-db-2.4.4-dist.tar.gz.sha
+Processing update of file release/empire-db/2.4.4/apache-empire-db-2.4.4-dist.zip
+Processing update of file release/empire-db/2.4.4/apache-empire-db-2.4.4-dist.zip.asc
+Processing update of file release/empire-db/2.4.4/apache-empire-db-2.4.4-dist.zip.md5
+Processing update of file release/empire-db/2.4.4/apache-empire-db-2.4.4-dist.zip.sha
+Batch: << empire-db~francisdb~10207~>>
+Notifying 'francisdb' of new data pushed to 'empire-db' in r10207
+Not sending email to ['francisdb@apache.org']
+r10207
+apache-empire-db-2.4.4
+10256 2015-08-21 19:04:41 +0000 (Fri, 21 Aug 2015) dist += ignite (new TLP)
+Ignoring update of file release/ignite/
+Ignoring deletion of path 'release/incubator/ignite/' 
+10257 2015-08-21 19:05:24 +0000 (Fri, 21 Aug 2015) dist += lens (new TLP)
+Ignoring deletion of path 'release/incubator/lens/' 
+Ignoring update of file release/lens/
+10257 2015-08-21 19:05:24 +0000 (Fri, 21 Aug 2015) dist += lens (new TLP)
+Ignoring commit for path: release/META/lens/ (META)
+Ignoring commit for path: release/zzz/test.txt (zzz)
