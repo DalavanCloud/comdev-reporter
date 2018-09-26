@@ -43,5 +43,6 @@
  "nifi-nar-maven-plugin-1.1.0": 1440288000.0, 
  "nifi-nar-maven-plugin-1.2.0": 1489708800.0, 
  "registry-0.1.0": 1514764800, 
- "registry-0.2.0": 1529280000
+ "registry-0.2.0": 1529280000, 
+ "registry-0.3.0": 1537833600
 }
