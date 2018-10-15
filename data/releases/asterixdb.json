@@ -3,8 +3,10 @@
  "apache-asterixdb-0.9.1": 1492819200, 
  "apache-asterixdb-0.9.2": 1503558000, 
  "apache-asterixdb-0.9.3": 1515974400, 
+ "apache-asterixdb-0.9.4": 1538438400, 
  "apache-hyracks-0.3.0": 1485216000, 
  "apache-hyracks-0.3.1": 1492819200, 
  "apache-hyracks-0.3.2": 1503558000, 
- "apache-hyracks-0.3.3": 1515974400
+ "apache-hyracks-0.3.3": 1515974400, 
+ "apache-hyracks-0.3.4": 1538438400
 }
