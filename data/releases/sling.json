@@ -1,4 +1,5 @@
 {
+ "1.0.2": 1539561600, 
  "3": 1214179200.0, 
  "API 2.0.2": 1214179200.0, 
  "API 2.0.4": 1242259200.0, 
@@ -142,6 +143,7 @@
  "Apache Sling Impl 1.2.12": 1494460800, 
  "Apache Sling Initial Content Archetype 1.0.4": 1445202000, 
  "Apache Sling Installer Core 3.8.12": 1518998400, 
+ "Apache Sling Installer Vault Package Install Hook": 1539561600, 
  "Apache Sling Integration Tests 1.0.2": 1469397600, 
  "Apache Sling Integration Tests 1.0.4": 1497225600, 
  "Apache Sling JCR Base 3.0.0": 1482278400, 
