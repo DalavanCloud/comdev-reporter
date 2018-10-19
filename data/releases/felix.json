@@ -72,6 +72,7 @@
  "org.apache.felix.http.jetty-4.0.2": 1531440000, 
  "org.apache.felix.http.sslfilter-1.2.2": 1499644800, 
  "org.apache.felix.http.sslfilter-1.2.4": 1512086400, 
+ "org.apache.felix.http.sslfilter-1.2.6": 1539820800, 
  "org.apache.felix.http.whiteboard-4.0.0": 1525039200, 
  "org.apache.felix.inventory-1.0.6": 1512950400, 
  "org.apache.felix.jaas-1.0.2": 1487203200, 
