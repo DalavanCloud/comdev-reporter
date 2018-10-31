@@ -5,5 +5,22 @@
  "2.4.2": 1381788000, 
  "2.4.3": 1408226400, 
  "2.4.4": 1439848800, 
- "2.4.6": 1484611200
+ "2.4.6": 1484611200, 
+ "empire-db-2.0.4-incubating": 1222905600.0, 
+ "empire-db-2.0.5-incubating": 1253664000.0, 
+ "empire-db-2.0.6-incubating": 1273363200.0, 
+ "empire-db-2.0.7-incubating": 1292112000.0, 
+ "empire-db-2.1.0-incubating": 1299369600.0, 
+ "empire-db-2.2.0-incubating": 1320192000.0, 
+ "empire-db-2.3.0": 1333324800.0, 
+ "empire-db-2.4.0": 1344297600.0, 
+ "empire-db-2.4.1": 1351468800.0, 
+ "empire-db-2.4.2": 1381795200.0, 
+ "empire-db-2.4.3": 1408233600.0, 
+ "empire-db-2.4.4": 1439856000.0, 
+ "empire-db-2.4.5": 1483056000.0, 
+ "empire-db-2.4.6": 1484611200.0, 
+ "empire-db-2.4.7": 1540944000.0, 
+ "empire-struts2-ext-1.0.4-incubating": 1222905600.0, 
+ "empire-struts2-ext-1.0.5-incubating": 1253664000.0
 }
