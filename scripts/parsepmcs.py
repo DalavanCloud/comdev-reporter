@@ -6,7 +6,6 @@ if sys.hexversion < 0x030000F0:
    This script reads: 
    https://whimsy.apache.org/public/committee-info.json
    https://whimsy.apache.org/public/public_ldap_people.json
-   https://whimsy.apache.org/public/public_ldap_groups.json
    and updates:
    data/pmcs.json - members of pmcs
    data/projects.json - committers of projects
@@ -134,7 +133,6 @@ stamp = stamp - (stamp % 10)
 c_info = loadJson('https://whimsy.apache.org/public/committee-info.json')['committees']
 ldappeople = loadJson('https://whimsy.apache.org/public/public_ldap_people.json')['people']
 ldapprojs  = loadJson('https://whimsy.apache.org/public/public_ldap_projects.json')['projects']
-ldapgroups = loadJson('https://whimsy.apache.org/public/public_ldap_groups.json')['groups']
 
 for group in c_info:
     if c_info[group]['pmc']:
@@ -145,12 +143,6 @@ for proj in ldapprojs:
     if proj in c_info:
         for cid in ldapprojs[proj]['members']:
             updateProjects(stamp, proj, cid)
-
-# only security and concom left
-for group in ldapgroups:
-    if group != 'committers' and group in c_info and not group in ldapprojs:
-        for cid in ldapgroups[group]['roster']:
-            updateProjects(stamp, group, cid)
 
 
 # Delete retired members
