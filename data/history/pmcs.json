@@ -11242,9 +11242,17 @@
    "Gregory Chase",
    0
   ],
+  "jingyimei": [
+   "Jingyi Mei",
+   1550721600
+  ],
   "njayaram": [
    "Nandish Jayaram",
    0
+  ],
+  "nkak": [
+   "Nikhil Kak",
+   1550721600
   ],
   "okislal": [
    "Orhan Kislal",
@@ -17618,6 +17626,32 @@
   ],
   "twgoetz": [
    "Thilo Goetz",
+   0
+  ]
+ },
+ "unomi": {
+  "dgriffon": [
+   "David Griffon",
+   0
+  ],
+  "draier": [
+   "Thomas Draier",
+   0
+  ],
+  "fpapon": [
+   "Francois Papon",
+   0
+  ],
+  "jbonofre": [
+   "Jean-Baptiste Onofré",
+   0
+  ],
+  "jkevan": [
+   "Kevan Jahanshahi",
+   0
+  ],
+  "shuber": [
+   "Serge Huber",
    0
   ]
  },
