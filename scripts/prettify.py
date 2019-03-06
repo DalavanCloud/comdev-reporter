@@ -25,8 +25,8 @@ for arg in args.file:
     print("Reading " + arg)
     input = {}
     try:
-        with open(arg, "r") as f:
-            input = json.loads(f.read())
+        with open(arg, "rb") as f:
+            input = json.loads(f.read().decode('UTF-8', errors='replace'))
         out = arg if args.clobber else arg + ".out"
         print("Writing " + out)
         with open(out, "w") as f:
