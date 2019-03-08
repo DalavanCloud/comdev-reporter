@@ -8034,6 +8034,10 @@
    "Rodney Waldhoff",
    0
   ],
+  "scotsmatrix": [
+   "Laura Stewart",
+   1552075200
+  ],
   "seade": [
    "Scott Eade",
    0
@@ -38304,9 +38308,33 @@
   ]
  },
  "usergrid": {
+  "aasanaliev": [
+   "Askhat Asanaliev",
+   1552075200
+  ],
+  "akarasulu": [
+   "Alex Karasulu",
+   1552075200
+  ],
+  "amuramoto": [
+   "Alex Muramoto",
+   1552075200
+  ],
+  "edanuff": [
+   "Ed Anuff",
+   1552075200
+  ],
+  "fbicak": [
+   "Furkan Bıçak",
+   1552075200
+  ],
   "grey": [
    "George Reyes",
    1443582002.0549805
+  ],
+  "jeffreyawest": [
+   "Jeffrey West",
+   1552075200
   ],
   "jfarrell": [
    "Jake Farrell",
@@ -38315,6 +38343,10 @@
   "jim": [
    "Jim Jagielski",
    0
+  ],
+  "johndament": [
+   "John D. Ament",
+   1552075200
   ],
   "lewismc": [
    "Lewis John McGibbney",
@@ -38340,9 +38372,21 @@
    "Rod Simpson",
    0
   ],
+  "ryanb": [
+   "Ryan Bridges",
+   1552075200
+  ],
+  "scottganyo": [
+   "Scott Ganyo",
+   1552075200
+  ],
   "sfeldman": [
    "Shawn Feldman",
    0
+  ],
+  "skardan": [
+   "Salih Kardan",
+   1552075200
   ],
   "snoopdave": [
    "David M. Johnson",
@@ -38363,6 +38407,14 @@
   "toddnine": [
    "Todd Nine",
    0
+  ],
+  "yigits": [
+   "Yiğit Şaplı",
+   1552075200
+  ],
+  "zznate": [
+   "Nate McCall",
+   1552075200
   ]
  },
  "vcl": {
