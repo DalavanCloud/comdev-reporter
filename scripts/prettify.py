@@ -37,5 +37,8 @@ for arg in args.file:
 
 # No inout files provided
 if len(args.file) == 0:
-    input = json.loads(sys.stdin.read())
+    try:
+        input = json.loads(sys.stdin.buffer.read().decode('UTF-8', errors='replace'))
+    except AttributeError:
+        input = json.loads(sys.stdin.read().decode('UTF-8', errors='replace'))
     json.dump(input, sys.stdout, indent=args.indent, sort_keys=sort_keys)
